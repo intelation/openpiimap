@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv/
+venv/
+env/
+pip-log.txt
+
+# Virtual environments
+.Python
+*.pyc
+
+# VSCode settings
+.vscode/
+
+# React (frontend)
+ui/frontend/node_modules/
+ui/frontend/.env
+ui/frontend/build/
+ui/frontend/dist/
+
+# Logs and system files
+*.log
+*.DS_Store
+*.swp
+*.swo
+*.idea/
+*.bak
+*.tmp
+
+# Coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+coverage.xml
+.cache
+pytest_cache/
+
+# Test artifacts
+tests/__pycache__/
+tests/*.pyc
+
+# API and UI build artifacts
+api/__pycache__/
+api/*.pyc
+api/.env
+
+# Misc
+*.orig
+*.lock
