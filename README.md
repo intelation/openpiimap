@@ -1,45 +1,107 @@
-# OpenPIIMap 🌍
-> A global, open-source map of Personally Identifiable Information (PII) and Protected Health Information (PHI) definitions across jurisdictions and industries.
+# 🌍 OpenPIIMap
 
-## What is OpenPIIMap?
+**OpenPIIMap** is a global, open-source initiative that provides machine-readable definitions of Personally Identifiable Information (PII) and Protected Health Information (PHI) across countries, privacy frameworks, and industry verticals.
 
-OpenPIIMap is a free and open-source initiative to help developers, privacy engineers, and compliance teams understand what constitutes sensitive data — legally and operationally — across different countries and privacy frameworks.
-
-Unlike detection libraries, this project provides **structured, machine-readable definitions** of PII/PHI with legal references and regional context.
+It helps privacy engineers, data scientists, and compliance teams understand and enforce what constitutes sensitive data under laws like **GDPR**, **HIPAA**, **CPRA**, and more.
 
 ---
 
-## Why This Matters
+## Why OpenPIIMap?
 
-- No universal reference for PII/PHI across global frameworks  
-- Enables compliance-aware pipelines and anonymization  
-- Powers privacy scoring, enforcement tools, and PET automation
+There is no publicly available, standardized, developer-friendly map of what qualifies as sensitive data across jurisdictions. OpenPIIMap solves that by offering:
 
----
-
-## Structure
-
-- `/data`: Definitions organized by regulation and country
-- `/examples`: Sample use cases and test cases
-- `/api`: Planned REST API interface (optional)
-- `/ui`: (WIP) Visual dashboard and global PII map
-- `/docs`: Format guides and contributor documentation
+- **YAML/JSON definitions** of PII and PHI for 100+ regions
+- Legal **citations and classification** for each data type
+- A planned **REST API** and **interactive UI**
+- Extensible structure to support your data governance, anonymization, or policy automation workflows
 
 ---
 
-## Example: GDPR - Germany
+## Project Structure
+
+```
+
+openpiimap/
+├── data/                 # YAML definitions of PII/PHI by regulation and region
+├── api/                  # FastAPI-based API for programmatic access (WIP)
+├── ui/frontend/          # React UI for browsing definitions (WIP)
+├── examples/             # Sample use cases and before/after anonymization
+├── docs/                 # Format guides, contributor instructions
+├── .github/              # Issue and PR templates
+├── README.md             # This file
+├── LICENSE               # MIT License
+└── .gitignore
+
+````
+
+---
+
+## Example: GDPR – Germany
 
 ```yaml
 country: Germany
 framework: GDPR
 categories:
-  - name: Name
+  - name: Full Name
     type: direct_identifier
     required_masking: true
     citations:
-      - article: GDPR Article 4(1)
-  - name: Health data
+      - regulation: GDPR
+        article: Article 4(1)
+  - name: Health Data
     type: special_category
     required_masking: true
     citations:
-      - article: GDPR Article 9
+      - regulation: GDPR
+        article: Article 9
+````
+
+---
+
+## Getting Started
+
+1. **Clone the repo:**
+
+   ```bash
+   git clone https://github.com/YOUR-ORG/openpiimap.git
+   cd openpiimap
+   ```
+
+2. **Contribute a PII definition:**
+
+   * Fork the repo
+   * Add a YAML file under `/data`
+   * Submit a pull request
+
+3. **Run the API locally (optional):**
+
+   ```bash
+   cd api
+   pip install -r requirements.txt
+   uvicorn app:app --reload
+   ```
+
+---
+
+## Contributing
+
+We welcome contributions! You can:
+
+* Add new regions or frameworks (e.g., Canada, Brazil, ISO 27701)
+* Improve existing definitions or legal citations
+* Help build the API or UI
+
+Check out [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for details.
+
+---
+
+## License
+
+MIT License © 2025 [Intelation](https://intelation.com)
+Built for the global privacy community.
+
+---
+
+## 🔗 Project Website
+
+👉 Coming soon at [https://openpiimap.org](https://openpiimap.org)
