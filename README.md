@@ -97,7 +97,7 @@ Check out [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for details.
 
 ## License
 
-MIT License © 2025 [Intelation](https://intelation.com)
+MIT License © 2025 [Intelation](https://www.intelation.com)
 Built for the global privacy community.
 
 ---
