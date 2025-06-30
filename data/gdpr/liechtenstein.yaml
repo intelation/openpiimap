@@ -1,0 +1,109 @@
+country: Liechtenstein
+framework: GDPR
+region: EEA
+language: de
+version: 2024-06
+status: published
+last_updated: 2025-06-30
+source_verified: true
+authority: "Datenschutzstelle (DSS) – Liechtenstein Data Protection Authority"
+notes:
+  - "Liechtenstein is a member of the EEA and directly implements GDPR via the national Data Protection Act (Datenschutzgesetz, DSG 2018)."
+  - "The DSS enforces GDPR and provides additional national rules for public institutions, education, and sensitive data use."
+
+categories:
+  - name: Full Name
+    type: direct_identifier
+    subtype: personal_name
+    required_masking: true
+    category_tags: [core, identity]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: Email Address
+    type: direct_identifier
+    subtype: digital_contact
+    required_masking: true
+    category_tags: [core, contact]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: Phone Number
+    type: direct_identifier
+    subtype: telecom_contact
+    required_masking: true
+    category_tags: [core, contact]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: IP Address
+    type: indirect_identifier
+    subtype: network_identifier
+    required_masking: true
+    category_tags: [digital, behavioral]
+    citations:
+      - regulation: GDPR
+        recital: "30"
+
+  - name: Personenkennzahl (National Personal Identification Number)
+    type: national_identifier
+    subtype: government_id
+    required_masking: true
+    category_tags: [identity, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "87"
+      - national_law: Datenschutzgesetz (DSG 2018)
+        article: "6"
+        description: Restricts use of personal identifiers unless permitted by law
+
+  - name: Health Data (treatment history, diagnoses, prescriptions)
+    type: special_category
+    subtype: health
+    required_masking: true
+    category_tags: [health, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "9(1)"
+
+  - name: Biometric Data (e.g., face scans, retina, voiceprint)
+    type: special_category
+    subtype: biometric
+    required_masking: true
+    category_tags: [biometric, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "9(1)"
+
+  - name: Location Data (GPS, building access, transit usage)
+    type: behavioral
+    subtype: geolocation
+    required_masking: true
+    category_tags: [tracking, digital]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: Cookie Identifiers / Analytics Trackers
+    type: indirect_identifier
+    subtype: device_id
+    required_masking: true
+    category_tags: [tracking, digital]
+    citations:
+      - regulation: GDPR
+        recital: "30"
+
+  - name: Employment Data (salary, evaluations, digital time clocks)
+    type: contextual_identifier
+    subtype: hr_data
+    required_masking: true
+    category_tags: [employment, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "88"
+      - national_law: Datenschutzgesetz (DSG 2018)
+        article: "7"
+        description: Permits processing of employee data only under clear legal basis

@@ -1,0 +1,118 @@
+country: Spain
+framework: GDPR
+region: EU
+language: es
+version: 2024-06
+status: published
+last_updated: 2025-06-30
+source_verified: true
+authority: "Agencia Española de Protección de Datos (AEPD)"
+notes:
+  - "Spain enforces GDPR directly through Organic Law 3/2018 on the Protection of Personal Data and Guarantee of Digital Rights (LOPDGDD)."
+  - "The AEPD provides detailed sector-specific guidance, including on minors' data, education, health, and workplace surveillance."
+
+categories:
+  - name: Full Name
+    type: direct_identifier
+    subtype: personal_name
+    required_masking: true
+    category_tags: [core, identity]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: Email Address
+    type: direct_identifier
+    subtype: digital_contact
+    required_masking: true
+    category_tags: [core, contact]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: Phone Number
+    type: direct_identifier
+    subtype: telecom_contact
+    required_masking: true
+    category_tags: [core, contact]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: IP Address
+    type: indirect_identifier
+    subtype: network_identifier
+    required_masking: true
+    category_tags: [digital, behavioral]
+    citations:
+      - regulation: GDPR
+        recital: "30"
+      - authority: AEPD
+        guideline: "Guía sobre el uso de cookies"
+        url: "https://www.aepd.es/sites/default/files/2020-07/guia-cookies.pdf"
+
+  - name: DNI / NIE (National ID or Foreigner ID)
+    type: national_identifier
+    subtype: government_id
+    required_masking: true
+    category_tags: [identity, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "87"
+      - national_law: LOPDGDD
+        article: "9"
+        description: DNI and NIE are considered personal data under LOPDGDD
+
+  - name: Health Data (medical history, prescriptions, diagnoses)
+    type: special_category
+    subtype: health
+    required_masking: true
+    category_tags: [health, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "9(1)"
+      - national_law: LOPDGDD
+        article: "9"
+
+  - name: Biometric Data (e.g., facial recognition, fingerprints)
+    type: special_category
+    subtype: biometric
+    required_masking: true
+    category_tags: [biometric, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "9(1)"
+
+  - name: Location Data (real-time GPS, transport tracking)
+    type: behavioral
+    subtype: geolocation
+    required_masking: true
+    category_tags: [tracking, digital]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+        description: May contribute to personal identification
+
+  - name: Cookie Identifiers / Device Fingerprints
+    type: indirect_identifier
+    subtype: device_id
+    required_masking: true
+    category_tags: [digital, tracking]
+    citations:
+      - regulation: GDPR
+        recital: "30"
+      - authority: AEPD
+        guideline: "Cookies Guide"
+        url: "https://www.aepd.es/sites/default/files/2020-07/guia-cookies.pdf"
+
+  - name: Employment Records (contract, payroll, evaluations)
+    type: contextual_identifier
+    subtype: hr_data
+    required_masking: true
+    category_tags: [employment, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "88"
+      - national_law: LOPDGDD
+        article: "20"
+        description: Allows processing of employment data under specific lawful conditions

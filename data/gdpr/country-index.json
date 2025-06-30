@@ -1,0 +1,103 @@
+{
+  "framework": "GDPR",
+  "region": "EU + EEA",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "Germany",
+      "slug": "germany",
+      "path": "data/gdpr/germany.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "France",
+      "slug": "france",
+      "path": "data/gdpr/france.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Ireland",
+      "slug": "ireland",
+      "path": "data/gdpr/ireland.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Netherlands",
+      "slug": "netherlands",
+      "path": "data/gdpr/netherlands.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Spain",
+      "slug": "spain",
+      "path": "data/gdpr/spain.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Italy",
+      "slug": "italy",
+      "path": "data/gdpr/italy.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Belgium",
+      "slug": "belgium",
+      "path": "data/gdpr/belgium.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Sweden",
+      "slug": "sweden",
+      "path": "data/gdpr/sweden.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Austria",
+      "slug": "austria",
+      "path": "data/gdpr/austria.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Denmark",
+      "slug": "denmark",
+      "path": "data/gdpr/denmark.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Finland",
+      "slug": "finland",
+      "path": "data/gdpr/finland.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Poland",
+      "slug": "poland",
+      "path": "data/gdpr/poland.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Greece",
+      "slug": "greece",
+      "path": "data/gdpr/greece.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Norway",
+      "slug": "norway",
+      "path": "data/gdpr/norway.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Iceland",
+      "slug": "iceland",
+      "path": "data/gdpr/iceland.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Liechtenstein",
+      "slug": "liechtenstein",
+      "path": "data/gdpr/liechtenstein.yaml",
+      "status": "complete"
+    }
+  ]
+}
