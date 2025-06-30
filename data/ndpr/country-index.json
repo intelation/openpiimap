@@ -1,0 +1,13 @@
+{
+  "framework": "NDPR",
+  "region": "Africa",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "Nigeria",
+      "slug": "nigeria",
+      "path": "data/ndpr/nigeria.yaml",
+      "status": "complete"
+    }
+  ]
+}

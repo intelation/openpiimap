@@ -1,0 +1,13 @@
+{
+  "framework": "Privacy Act",
+  "region": "Oceania",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "Australia",
+      "slug": "australia",
+      "path": "data/privacyact/australia.yaml",
+      "status": "complete"
+    }
+  ]
+}

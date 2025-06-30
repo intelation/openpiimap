@@ -1,0 +1,145 @@
+country: Mexico
+framework: LFPDPPP
+region: North America
+language: es
+version: 2010-07
+status: published
+last_updated: 2025-06-30
+source_verified: true
+authority: "INAI (Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales)"
+notes:
+  - "The LFPDPPP regulates the processing of personal data by private entities in Mexico."
+  - "Sensitive personal data includes information that may affect the most intimate sphere of the data subject (Article 3, Section VI)."
+  - "Data subjects are granted ARCO rights: Access, Rectification, Cancellation, and Opposition."
+
+categories:
+  - name: Full Name
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section V – Personal Data
+    tags: [pii]
+
+  - name: Home Address
+    type: quasi_identifier
+    subtype: address
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section V
+    tags: [pii]
+
+  - name: Phone Number
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section V
+    tags: [pii]
+
+  - name: Email Address
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section V
+    tags: [pii]
+
+  - name: National ID (CURP) or Voter ID
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section V
+    tags: [pii]
+
+  - name: Financial or Payment Information
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section VI – Sensitive Personal Data
+    tags: [sensitive]
+
+  - name: Health or Medical Information
+    type: special_category
+    subtype: medical
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section VI
+    tags: [phi, sensitive]
+
+  - name: Biometric Data (e.g., fingerprint, iris, voice)
+    type: special_category
+    subtype: biometric
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section VI
+    tags: [biometric, sensitive]
+
+  - name: Genetic Data
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section VI
+    tags: [sensitive]
+
+  - name: Racial or Ethnic Origin
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section VI
+    tags: [sensitive]
+
+  - name: Religious, Philosophical, or Moral Beliefs
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section VI
+    tags: [sensitive]
+
+  - name: Political Opinions or Affiliation
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section VI
+    tags: [sensitive]
+
+  - name: Labor Union Membership
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section VI
+    tags: [sensitive]
+
+  - name: IP Address and Device Identifiers
+    type: quasi_identifier
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: General Interpretation (Guidelines)
+    tags: [tracking, pii]
+
+  - name: Geolocation Data
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: General Interpretation (Guidelines)
+    tags: [sensitive, tracking]
+
+  - name: Employment or Academic Records
+    type: quasi_identifier
+    required_masking: true
+    citations:
+      - regulation: LFPDPPP
+        article: Article 3, Section V
+    tags: [pii]

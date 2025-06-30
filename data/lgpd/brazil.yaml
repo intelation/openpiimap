@@ -1,0 +1,137 @@
+country: Brazil
+framework: LGPD
+region: South America
+language: pt
+version: 2018-08
+status: published
+last_updated: 2025-06-30
+source_verified: true
+authority: "ANPD (Autoridade Nacional de Proteção de Dados)"
+notes:
+  - "The LGPD applies to any processing of personal data carried out in Brazil or related to individuals located in Brazil."
+  - "Sensitive personal data is explicitly defined under Article 5, II and includes health, biometric, racial, and political information."
+  - "The law closely aligns with GDPR principles but applies to both online and offline data processing."
+
+categories:
+  - name: Full Name
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, I
+    tags: [pii]
+
+  - name: Home Address
+    type: quasi_identifier
+    subtype: address
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, I
+    tags: [pii]
+
+  - name: Phone Number
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, I
+    tags: [pii]
+
+  - name: Email Address
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, I
+    tags: [pii]
+
+  - name: CPF (Cadastro de Pessoas Físicas)
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, I
+    tags: [pii]
+
+  - name: RG (Registro Geral – National ID)
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, I
+    tags: [pii]
+
+  - name: Financial Information (e.g., banking, income)
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, II
+    tags: [sensitive]
+
+  - name: Health Data
+    type: special_category
+    subtype: medical
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, II
+    tags: [phi, sensitive]
+
+  - name: Biometric Data (e.g., fingerprint, face)
+    type: special_category
+    subtype: biometric
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, II
+    tags: [sensitive, biometric]
+
+  - name: Racial or Ethnic Origin
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, II
+    tags: [sensitive]
+
+  - name: Religious Belief
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, II
+    tags: [sensitive]
+
+  - name: Political Opinion
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, II
+    tags: [sensitive]
+
+  - name: Sexual Orientation
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, II
+    tags: [sensitive]
+
+  - name: Browsing Behavior or Access Logs
+    type: behavioral
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, I
+    tags: [tracking, pii]
+
+  - name: Geolocation Data
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: LGPD
+        article: Article 5, I
+    tags: [sensitive, tracking]
