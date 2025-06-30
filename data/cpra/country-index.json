@@ -1,0 +1,13 @@
+{
+  "framework": "CPRA",
+  "region": "United States",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "California",
+      "slug": "california",
+      "path": "data/cpra/california.yaml",
+      "status": "complete"
+    }
+  ]
+}
