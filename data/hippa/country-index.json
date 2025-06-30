@@ -1,0 +1,13 @@
+{
+  "framework": "HIPAA",
+  "region": "USA",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "United States",
+      "slug": "usa",
+      "path": "data/hipaa/usa.yaml",
+      "status": "complete"
+    }
+  ]
+}
