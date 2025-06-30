@@ -1,0 +1,121 @@
+country: Greece
+framework: GDPR
+region: EU
+language: el
+version: 2024-06
+status: published
+last_updated: 2025-06-30
+source_verified: true
+authority: "Hellenic Data Protection Authority (HDPA) – Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα"
+notes:
+  - "Greece enforces GDPR through Law 4624/2019, which supplements and adapts the regulation to national law."
+  - "The HDPA actively publishes decisions and guidelines, particularly around biometric processing, video surveillance, and the public sector."
+
+categories:
+  - name: Full Name
+    type: direct_identifier
+    subtype: personal_name
+    required_masking: true
+    category_tags: [core, identity]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: Email Address
+    type: direct_identifier
+    subtype: digital_contact
+    required_masking: true
+    category_tags: [core, contact]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: Phone Number
+    type: direct_identifier
+    subtype: telecom_contact
+    required_masking: true
+    category_tags: [core, contact]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: IP Address
+    type: indirect_identifier
+    subtype: network_identifier
+    required_masking: true
+    category_tags: [digital, behavioral]
+    citations:
+      - regulation: GDPR
+        recital: "30"
+      - authority: HDPA
+        guideline: "Cookies and electronic communications"
+        url: "https://www.dpa.gr/en/individuals/internet/cookies"
+
+  - name: Αριθμός Μητρώου Κοινωνικής Ασφάλισης (AMKA - Social Security Number)
+    type: national_identifier
+    subtype: government_id
+    required_masking: true
+    category_tags: [identity, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "87"
+      - national_law: Law 4624/2019
+        article: "5"
+        description: National identifiers must be processed only under legal justification
+
+  - name: Health Data (diagnoses, prescriptions, medical visits)
+    type: special_category
+    subtype: health
+    required_masking: true
+    category_tags: [health, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "9(1)"
+      - authority: HDPA
+        guideline: "Health data and confidentiality"
+        url: "https://www.dpa.gr/el/personal-data-protection/health"
+
+  - name: Biometric Data (e.g., facial recognition, fingerprints)
+    type: special_category
+    subtype: biometric
+    required_masking: true
+    category_tags: [biometric, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "9(1)"
+      - authority: HDPA
+        decision: "No. 28/2019"
+        description: Fingerprint collection in the workplace was deemed excessive
+
+  - name: Location Data (public transit cards, GPS tracking)
+    type: behavioral
+    subtype: geolocation
+    required_masking: true
+    category_tags: [tracking, digital]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: Cookie Identifiers / Analytics Tracking Tools
+    type: indirect_identifier
+    subtype: device_id
+    required_masking: true
+    category_tags: [tracking, digital]
+    citations:
+      - regulation: GDPR
+        recital: "30"
+      - authority: HDPA
+        guideline: "Cookies and consent"
+        url: "https://www.dpa.gr/en/individuals/internet/cookies"
+
+  - name: Employment Records (contracts, evaluations, access logs)
+    type: contextual_identifier
+    subtype: hr_data
+    required_masking: true
+    category_tags: [employment, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "88"
+      - national_law: Law 4624/2019
+        article: "27"
+        description: Allows lawful processing of employee data under defined conditions

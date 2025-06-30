@@ -1,0 +1,118 @@
+country: Sweden
+framework: GDPR
+region: EU
+language: sv
+version: 2024-06
+status: published
+last_updated: 2025-06-30
+source_verified: true
+authority: "Integritetsskyddsmyndigheten (IMY) – Swedish Authority for Privacy Protection"
+notes:
+  - "Sweden enforces GDPR directly, with complementary provisions under the Swedish Data Protection Act (Dataskyddslagen 2018:218)."
+  - "IMY is active in publishing guidance on data subject rights, employment surveillance, health data, and children’s privacy."
+
+categories:
+  - name: Full Name
+    type: direct_identifier
+    subtype: personal_name
+    required_masking: true
+    category_tags: [core, identity]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: Email Address
+    type: direct_identifier
+    subtype: digital_contact
+    required_masking: true
+    category_tags: [core, contact]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: Phone Number
+    type: direct_identifier
+    subtype: telecom_contact
+    required_masking: true
+    category_tags: [core, contact]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: IP Address
+    type: indirect_identifier
+    subtype: network_identifier
+    required_masking: true
+    category_tags: [digital, behavioral]
+    citations:
+      - regulation: GDPR
+        recital: "30"
+      - authority: IMY
+        guideline: "Cookies and tracking technologies"
+        url: "https://www.imy.se/vagledningar/cookies/"
+
+  - name: Personnummer (Swedish Personal Identity Number)
+    type: national_identifier
+    subtype: government_id
+    required_masking: true
+    category_tags: [identity, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "87"
+      - national_law: Dataskyddslagen 2018:218
+        chapter: "3 §"
+        description: Limits use of personnummer to cases where clearly justified
+
+  - name: Health Data
+    type: special_category
+    subtype: health
+    required_masking: true
+    category_tags: [health, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "9(1)"
+      - authority: IMY
+        guideline: "Health data and patient records"
+        url: "https://www.imy.se/vagledningar/halsa/"
+
+  - name: Biometric Data (e.g., facial scans, iris recognition)
+    type: special_category
+    subtype: biometric
+    required_masking: true
+    category_tags: [biometric, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "9(1)"
+
+  - name: Location Data (workplace entry logs, real-time GPS)
+    type: behavioral
+    subtype: geolocation
+    required_masking: true
+    category_tags: [tracking, digital]
+    citations:
+      - regulation: GDPR
+        article: "4(1)"
+
+  - name: Cookie Identifiers / Behavioral Tracking
+    type: indirect_identifier
+    subtype: device_id
+    required_masking: true
+    category_tags: [digital, tracking]
+    citations:
+      - regulation: GDPR
+        recital: "30"
+      - authority: IMY
+        guideline: "Cookies guidance"
+        url: "https://www.imy.se/vagledningar/cookies/"
+
+  - name: Employment Records (reviews, scheduling, camera monitoring)
+    type: contextual_identifier
+    subtype: hr_data
+    required_masking: true
+    category_tags: [employment, sensitive]
+    citations:
+      - regulation: GDPR
+        article: "88"
+      - authority: IMY
+        guideline: "Employee monitoring and data processing"
+        url: "https://www.imy.se/verksamhet/yrkesutovning/arbetsliv/"
