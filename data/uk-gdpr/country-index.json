@@ -1,0 +1,13 @@
+{
+  "framework": "UK GDPR + DPA 2018",
+  "region": "Europe",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "United Kingdom",
+      "slug": "united-kingdom",
+      "path": "data/uk-gdpr/united-kingdom.yaml",
+      "status": "complete"
+    }
+  ]
+}

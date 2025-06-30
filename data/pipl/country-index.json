@@ -1,0 +1,13 @@
+{
+  "framework": "PIPL",
+  "region": "Asia",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "China",
+      "slug": "china",
+      "path": "data/pipl/china.yaml",
+      "status": "complete"
+    }
+  ]
+}

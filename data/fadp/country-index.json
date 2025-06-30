@@ -1,0 +1,13 @@
+{
+  "framework": "FADP",
+  "region": "Europe",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "Switzerland",
+      "slug": "switzerland",
+      "path": "data/fadp/switzerland.yaml",
+      "status": "complete"
+    }
+  ]
+}

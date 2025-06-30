@@ -1,0 +1,13 @@
+{
+  "framework": "UAE Federal Data Protection Law (Law No. 45/2021)",
+  "region": "Middle East",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "United Arab Emirates",
+      "slug": "united-arab-emirates",
+      "path": "data/uae-dpl/united-arab-emirates.yaml",
+      "status": "complete"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "framework": "PDP Law",
+  "region": "Asia",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "Indonesia",
+      "slug": "indonesia",
+      "path": "data/pdp/indonesia.yaml",
+      "status": "complete"
+    }
+  ]
+}

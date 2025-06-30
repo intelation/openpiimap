@@ -1,0 +1,13 @@
+{
+  "framework": "LGPD",
+  "region": "South America",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "Brazil",
+      "slug": "brazil",
+      "path": "data/lgpd/brazil.yaml",
+      "status": "complete"
+    }
+  ]
+}

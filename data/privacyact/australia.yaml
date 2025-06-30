@@ -1,0 +1,137 @@
+country: Australia
+framework: Privacy Act
+region: Oceania
+language: en
+version: 1988-12
+status: published
+last_updated: 2025-06-30
+source_verified: true
+authority: "Office of the Australian Information Commissioner (OAIC)"
+notes:
+  - "The Privacy Act 1988 defines personal and sensitive information, and outlines obligations under the Australian Privacy Principles (APPs)."
+  - "Sensitive information requires higher protection and includes health, biometrics, racial origin, political opinions, and sexual orientation."
+  - "Employee records held by a current or former employer are partially exempt under APP 1.7."
+
+categories:
+  - name: Full Name
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: Section 6 – Personal Information Definition
+    tags: [pii]
+
+  - name: Home Address
+    type: quasi_identifier
+    subtype: address
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: Section 6
+    tags: [pii]
+
+  - name: Phone Number
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: Section 6
+    tags: [pii]
+
+  - name: Email Address
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: Section 6
+    tags: [pii]
+
+  - name: Medicare Number
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: Section 6
+    tags: [pii]
+
+  - name: Driver’s License or Passport Number
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: Section 6
+    tags: [pii]
+
+  - name: Financial Information (e.g., account, salary)
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: APP 11 (Security of Personal Information)
+    tags: [sensitive]
+
+  - name: Health and Medical Records
+    type: special_category
+    subtype: medical
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: Section 6 – Sensitive Information
+    tags: [phi, sensitive]
+
+  - name: Biometric Information (e.g., facial scans, fingerprints)
+    type: special_category
+    subtype: biometric
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: Section 6 – Sensitive Information
+    tags: [sensitive, biometric]
+
+  - name: Racial or Ethnic Origin
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: Section 6 – Sensitive Information
+    tags: [sensitive]
+
+  - name: Political Opinions or Membership
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: Section 6 – Sensitive Information
+    tags: [sensitive]
+
+  - name: Religious or Philosophical Beliefs
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: Section 6 – Sensitive Information
+    tags: [sensitive]
+
+  - name: Sexual Orientation or Practices
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: Section 6 – Sensitive Information
+    tags: [sensitive]
+
+  - name: Online Identifiers (IP address, device ID, cookies)
+    type: quasi_identifier
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: OAIC Guidelines – APP 1.3 & 6
+    tags: [pii, tracking]
+
+  - name: Employee Records (when held by employer)
+    type: quasi_identifier
+    required_masking: true
+    citations:
+      - regulation: Privacy Act 1988
+        section: APP 1.7 (Exemption)
+    tags: [pii, employment]

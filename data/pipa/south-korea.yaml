@@ -1,0 +1,138 @@
+country: South Korea
+framework: PIPA
+region: Asia
+language: ko
+version: 2023-03
+status: published
+last_updated: 2025-06-30
+source_verified: true
+authority: "Personal Information Protection Commission (PIPC)"
+notes:
+  - "PIPA applies to both public and private entities and contains comprehensive rules for the collection, use, and transfer of personal and sensitive information."
+  - "Sensitive information under Article 23 includes ideology, health, genetic, sexual life, and criminal records, requiring separate and explicit consent."
+  - "Recent amendments introduced stronger cross-border restrictions and new data subject rights."
+
+categories:
+  - name: Full Name
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 2(1) – Definition of Personal Information
+    tags: [pii]
+
+  - name: Resident Registration Number (RRN)
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 24
+    tags: [pii, sensitive]
+
+  - name: Passport or National ID Number
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 2(1)
+    tags: [pii]
+
+  - name: Address
+    type: quasi_identifier
+    subtype: address
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 2(1)
+    tags: [pii]
+
+  - name: Phone Number
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 2(1)
+    tags: [pii]
+
+  - name: Email Address
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 2(1)
+    tags: [pii]
+
+  - name: Biometric Data (e.g., fingerprints, facial image)
+    type: special_category
+    subtype: biometric
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 23(1)
+    tags: [biometric, sensitive]
+
+  - name: Health and Medical Information
+    type: special_category
+    subtype: medical
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 23(1)
+    tags: [phi, sensitive]
+
+  - name: Sexual Orientation or Sexual Life
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 23(1)
+    tags: [sensitive]
+
+  - name: Criminal Record or History
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 23(1)
+    tags: [sensitive]
+
+  - name: Political or Ideological Beliefs
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 23(1)
+    tags: [sensitive]
+
+  - name: Genetic Information
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 23(1)
+    tags: [sensitive]
+
+  - name: IP Address and Online Identifiers
+    type: quasi_identifier
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 2(1)
+    tags: [tracking, pii]
+
+  - name: Employment Information
+    type: quasi_identifier
+    subtype: employment
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 2(1)
+    tags: [pii]
+
+  - name: Minor or Child Data (under 14)
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: PIPA
+        article: Article 39-3
+    tags: [child, sensitive]

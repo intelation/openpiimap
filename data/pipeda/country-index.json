@@ -1,0 +1,13 @@
+{
+  "framework": "PIPEDA",
+  "region": "North America",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "Canada",
+      "slug": "canada",
+      "path": "data/pipeda/canada.yaml",
+      "status": "complete"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+country: Indonesia
+framework: PDP Law
+region: Asia
+language: id
+version: 2022-10
+status: published
+last_updated: 2025-06-30
+source_verified: true
+authority: "Personal Data Protection Supervisory Authority (under formation)"
+notes:
+  - "Indonesia’s PDP Law (Law No. 27 of 2022) provides a comprehensive framework for personal data protection, modeled in part after the GDPR."
+  - "It distinguishes between personal data and specific personal data (Article 3 & 4), with additional safeguards and consent requirements for the latter."
+  - "The law includes provisions on cross-border data transfers, profiling, automated processing, and children’s data."
+
+categories:
+  - name: Full Name
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 3 – Personal Data Definition
+    tags: [pii]
+
+  - name: Address
+    type: quasi_identifier
+    subtype: address
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 3
+    tags: [pii]
+
+  - name: Phone Number
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 3
+    tags: [pii]
+
+  - name: Email Address
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 3
+    tags: [pii]
+
+  - name: National ID Number (e.g., NIK)
+    type: direct_identifier
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 3
+    tags: [pii]
+
+  - name: Financial Data (e.g., account, transactions)
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 4 – Specific Personal Data
+    tags: [sensitive]
+
+  - name: Health Information
+    type: special_category
+    subtype: medical
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 4
+    tags: [phi, sensitive]
+
+  - name: Biometric Data (e.g., fingerprints, facial data)
+    type: special_category
+    subtype: biometric
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 4
+    tags: [sensitive, biometric]
+
+  - name: Genetic Data
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 4
+    tags: [sensitive]
+
+  - name: Religion or Beliefs
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 4
+    tags: [sensitive]
+
+  - name: Political Views or Affiliations
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 4
+    tags: [sensitive]
+
+  - name: Criminal Record or Legal History
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 4
+    tags: [sensitive, criminal]
+
+  - name: Child or Minor Data (under 17)
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 4
+    tags: [child, sensitive]
+
+  - name: IP Address or Online Identifiers
+    type: quasi_identifier
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 3
+    tags: [tracking, pii]
+
+  - name: Geolocation Data
+    type: special_category
+    required_masking: true
+    citations:
+      - regulation: PDP Law
+        article: Article 4
+    tags: [sensitive, tracking]
