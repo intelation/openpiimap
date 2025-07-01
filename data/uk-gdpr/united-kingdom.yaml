@@ -6,149 +6,156 @@ version: 2021-01
 status: published
 last_updated: 2025-06-30
 source_verified: true
-authority: "Information Commissioner's Office (ICO)"
+authority: Information Commissioner's Office (ICO)
 notes:
-  - "UK GDPR is the retained version of EU GDPR following Brexit, supplemented by the Data Protection Act 2018."
-  - "Special category data is defined under Article 9 UK GDPR; criminal offence data is governed by Part 3 of the DPA 2018."
-  - "The ICO has issued guidance on children’s data, biometric identifiers, and age-appropriate design."
-
+- UK GDPR is the retained version of EU GDPR following Brexit, supplemented by the Data Protection Act
+  2018.
+- Special category data is defined under Article 9 UK GDPR; criminal offence data is governed by Part
+  3 of the DPA 2018.
+- The ICO has issued guidance on children’s data, biometric identifiers, and age-appropriate design.
 categories:
-  - name: Full Name
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 4(1)
-    tags: [pii]
-
-  - name: Home Address
-    type: quasi_identifier
-    subtype: address
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 4(1)
-    tags: [pii]
-
-  - name: Phone Number
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 4(1)
-    tags: [pii]
-
-  - name: Email Address
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 4(1)
-    tags: [pii]
-
-  - name: National Insurance Number (NI)
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 4(1)
-    tags: [pii]
-
-  - name: Passport or Driving Licence Number
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 4(1)
-    tags: [pii]
-
-  - name: Health and Medical Information
-    type: special_category
-    subtype: medical
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 9(1)
-    tags: [phi, sensitive]
-
-  - name: Biometric Data for Identification
-    type: special_category
-    subtype: biometric
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 9(1)
-    tags: [sensitive, biometric]
-
-  - name: Genetic Information
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 9(1)
-    tags: [sensitive]
-
-  - name: Racial or Ethnic Origin
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 9(1)
-    tags: [sensitive]
-
-  - name: Religious or Philosophical Beliefs
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 9(1)
-    tags: [sensitive]
-
-  - name: Political Opinions
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 9(1)
-    tags: [sensitive]
-
-  - name: Sexual Orientation or Sex Life
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 9(1)
-    tags: [sensitive]
-
-  - name: Criminal Convictions or Offences
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: DPA 2018
-        article: Part 3 – Law Enforcement Processing
-    tags: [sensitive, criminal]
-
-  - name: Child Data (under 13 in UK)
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 8 – Conditions for Child Consent
-    tags: [sensitive, child]
-
-  - name: Online Identifiers (IP, cookie ID)
-    type: quasi_identifier
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Recital 30
-    tags: [pii, tracking]
-
-  - name: Employment Records
-    type: quasi_identifier
-    subtype: employment
-    required_masking: true
-    citations:
-      - regulation: UK GDPR
-        article: Article 4(1)
-    tags: [pii]
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UK GDPR
+    article: Article 4(1)
+- name: Home Address
+  type: quasi_identifier
+  subtype: address
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UK GDPR
+    article: Article 4(1)
+- name: Phone Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UK GDPR
+    article: Article 4(1)
+- name: Email Address
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UK GDPR
+    article: Article 4(1)
+- name: National Insurance Number (NI)
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UK GDPR
+    article: Article 4(1)
+- name: Passport or Driving Licence Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UK GDPR
+    article: Article 4(1)
+- name: Health and Medical Information
+  type: special_category
+  subtype: medical
+  required_masking: true
+  tags:
+  - phi
+  - sensitive
+  citations:
+  - regulation: UK GDPR
+    article: Article 9(1)
+- name: Biometric Data for Identification
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - sensitive
+  - biometric
+  citations:
+  - regulation: UK GDPR
+    article: Article 9(1)
+- name: Genetic Information
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: UK GDPR
+    article: Article 9(1)
+- name: Racial or Ethnic Origin
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: UK GDPR
+    article: Article 9(1)
+- name: Religious or Philosophical Beliefs
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: UK GDPR
+    article: Article 9(1)
+- name: Political Opinions
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: UK GDPR
+    article: Article 9(1)
+- name: Sexual Orientation or Sex Life
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: UK GDPR
+    article: Article 9(1)
+- name: Criminal Convictions or Offences
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  - criminal
+  citations:
+  - regulation: DPA 2018
+    article: Part 3 – Law Enforcement Processing
+- name: Child Data (under 13 in UK)
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  - child
+  citations:
+  - regulation: UK GDPR
+    article: Article 8 – Conditions for Child Consent
+- name: Online Identifiers (IP, cookie ID)
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  - tracking
+  citations:
+  - regulation: UK GDPR
+    article: Recital 30
+- name: Employment Records
+  type: quasi_identifier
+  subtype: employment
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UK GDPR
+    article: Article 4(1)

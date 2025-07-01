@@ -6,114 +6,146 @@ version: 2024-06
 status: published
 last_updated: 2025-06-30
 source_verified: true
-authority: "Datenschutzbehörde (DSB) – Austrian Data Protection Authority"
+authority: Datenschutzbehörde (DSB) – Austrian Data Protection Authority
 notes:
-  - "Austria enforces GDPR alongside the Austrian Data Protection Act (Datenschutzgesetz, DSG 2018)."
-  - "The DSB provides interpretation of GDPR provisions on consent, video surveillance, health data, and educational systems."
-
+- Austria enforces GDPR alongside the Austrian Data Protection Act (Datenschutzgesetz,
+  DSG 2018).
+- The DSB provides interpretation of GDPR provisions on consent, video surveillance,
+  health data, and educational systems.
 categories:
-  - name: Full Name
-    type: direct_identifier
-    subtype: personal_name
-    required_masking: true
-    category_tags: [core, identity]
-    citations:
-      - regulation: GDPR
-        article: "4(1)"
-
-  - name: Email Address
-    type: direct_identifier
-    subtype: digital_contact
-    required_masking: true
-    category_tags: [core, contact]
-    citations:
-      - regulation: GDPR
-        article: "4(1)"
-
-  - name: Phone Number
-    type: direct_identifier
-    subtype: telecom_contact
-    required_masking: true
-    category_tags: [core, contact]
-    citations:
-      - regulation: GDPR
-        article: "4(1)"
-
-  - name: IP Address
-    type: indirect_identifier
-    subtype: network_identifier
-    required_masking: true
-    category_tags: [digital, behavioral]
-    citations:
-      - regulation: GDPR
-        recital: "30"
-      - authority: DSB
-        guideline: "DSB-Empfehlung zu Cookies und Tracking"
-        url: "https://www.dsb.gv.at/download-links/dokumente"
-
-  - name: Sozialversicherungsnummer (Social Insurance Number)
-    type: national_identifier
-    subtype: government_id
-    required_masking: true
-    category_tags: [identity, sensitive]
-    citations:
-      - regulation: GDPR
-        article: "87"
-      - national_law: Datenschutzgesetz (DSG)
-        section: "11"
-        description: Regulates use of national identifiers like SVNR
-
-  - name: Health Data (clinical, diagnostics, prescriptions)
-    type: special_category
-    subtype: health
-    required_masking: true
-    category_tags: [health, sensitive]
-    citations:
-      - regulation: GDPR
-        article: "9(1)"
-      - authority: DSB
-        guideline: "Gesundheitsdatenverarbeitung"
-        url: "https://www.dsb.gv.at/rechtsgrundlagen/dokumente"
-
-  - name: Biometric Data (fingerprints, facial geometry)
-    type: special_category
-    subtype: biometric
-    required_masking: true
-    category_tags: [biometric, sensitive]
-    citations:
-      - regulation: GDPR
-        article: "9(1)"
-
-  - name: Location Data (workplace presence, GPS tracking)
-    type: behavioral
-    subtype: geolocation
-    required_masking: true
-    category_tags: [tracking, digital]
-    citations:
-      - regulation: GDPR
-        article: "4(1)"
-        description: Contributes to identification in many contexts
-
-  - name: Cookie Identifiers / Online Tracking
-    type: indirect_identifier
-    subtype: device_id
-    required_masking: true
-    category_tags: [tracking, digital]
-    citations:
-      - regulation: GDPR
-        recital: "30"
-      - authority: DSB
-        guideline: "Cookies-Empfehlung"
-        url: "https://www.dsb.gv.at/rechtsgrundlagen/dokumente"
-
-  - name: Employment Data (HR files, evaluations, schedules)
-    type: contextual_identifier
-    subtype: hr_data
-    required_masking: true
-    category_tags: [employment, sensitive]
-    citations:
-      - regulation: GDPR
-        article: "88"
-      - national_law: Datenschutzgesetz (DSG)
-        section: "4"
-        description: Covers employee data and employer access
+- name: Full Name
+  type: direct_identifier
+  subtype: personal_name
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - core
+  - identity
+  tags:
+  - pii
+- name: Email Address
+  type: direct_identifier
+  subtype: digital_contact
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - core
+  - contact
+  tags:
+  - pii
+- name: Phone Number
+  type: direct_identifier
+  subtype: telecom_contact
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - core
+  - contact
+  tags:
+  - pii
+- name: IP Address
+  type: indirect_identifier
+  subtype: network_identifier
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    recital: '30'
+  - authority: DSB
+    guideline: DSB-Empfehlung zu Cookies und Tracking
+    url: https://www.dsb.gv.at/download-links/dokumente
+  category_tags:
+  - digital
+  - behavioral
+  tags:
+  - tracking
+- name: Sozialversicherungsnummer (Social Insurance Number)
+  type: national_identifier
+  subtype: government_id
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: '87'
+  - national_law: Datenschutzgesetz (DSG)
+    section: '11'
+    description: Regulates use of national identifiers like SVNR
+  category_tags:
+  - identity
+  - sensitive
+  tags: []
+- name: Health Data (clinical, diagnostics, prescriptions)
+  type: special_category
+  subtype: health
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: 9(1)
+  - authority: DSB
+    guideline: Gesundheitsdatenverarbeitung
+    url: https://www.dsb.gv.at/rechtsgrundlagen/dokumente
+  category_tags:
+  - health
+  - sensitive
+  tags:
+  - phi
+  - sensitive
+  - tracking
+- name: Biometric Data (fingerprints, facial geometry)
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: 9(1)
+  category_tags:
+  - biometric
+  - sensitive
+  tags:
+  - biometric
+  - sensitive
+- name: Location Data (workplace presence, GPS tracking)
+  type: behavioral
+  subtype: geolocation
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+    description: Contributes to identification in many contexts
+  category_tags:
+  - tracking
+  - digital
+  tags: []
+- name: Cookie Identifiers / Online Tracking
+  type: indirect_identifier
+  subtype: device_id
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    recital: '30'
+  - authority: DSB
+    guideline: Cookies-Empfehlung
+    url: https://www.dsb.gv.at/rechtsgrundlagen/dokumente
+  category_tags:
+  - tracking
+  - digital
+  tags:
+  - tracking
+- name: Employment Data (HR files, evaluations, schedules)
+  type: contextual_identifier
+  subtype: hr_data
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: '88'
+  - national_law: Datenschutzgesetz (DSG)
+    section: '4'
+    description: Covers employee data and employer access
+  category_tags:
+  - employment
+  - sensitive
+  tags: []

@@ -1,0 +1,65 @@
+{
+  "APPI": [
+    "Japan"
+  ],
+  "CPRA": [
+    "California"
+  ],
+  "FADP": [
+    "Switzerland"
+  ],
+  "GDPR": [
+    "Austria",
+    "Belgium",
+    "Denmark",
+    "Finland",
+    "France",
+    "Germany",
+    "Greece",
+    "Iceland",
+    "Ireland",
+    "Italy",
+    "Liechtenstein",
+    "Netherlands",
+    "Norway",
+    "Poland",
+    "Spain",
+    "Sweden"
+  ],
+  "HIPAA": [
+    "United States"
+  ],
+  "LFPDPPP": [
+    "Mexico"
+  ],
+  "LGPD": [
+    "Brazil"
+  ],
+  "NDPR": [
+    "Nigeria"
+  ],
+  "PDP Law": [
+    "Indonesia"
+  ],
+  "PDPA": [
+    "Singapore"
+  ],
+  "PIPA": [
+    "South Korea"
+  ],
+  "PIPEDA": [
+    "Canada"
+  ],
+  "PIPL": [
+    "China"
+  ],
+  "Privacy Act": [
+    "Australia"
+  ],
+  "UAE Federal Data Protection Law (Law No. 45/2021)": [
+    "United Arab Emirates"
+  ],
+  "UK GDPR + DPA 2018": [
+    "United Kingdom"
+  ]
+}

@@ -6,116 +6,122 @@ version: 2023-09
 status: published
 last_updated: 2025-06-30
 source_verified: true
-authority: "Federal Data Protection and Information Commissioner (FDPIC)"
+authority: Federal Data Protection and Information Commissioner (FDPIC)
 notes:
-  - "The revised FADP came into effect on September 1, 2023, harmonizing with GDPR principles while maintaining Swiss legal specifics."
-  - "Sensitive personal data is explicitly defined and includes health, religion, biometric, political views, and racial origin."
-  - "Profiling and cross-border data transfers are regulated under stricter conditions."
-
+- The revised FADP came into effect on September 1, 2023, harmonizing with GDPR principles while maintaining
+  Swiss legal specifics.
+- Sensitive personal data is explicitly defined and includes health, religion, biometric, political views,
+  and racial origin.
+- Profiling and cross-border data transfers are regulated under stricter conditions.
 categories:
-  - name: Full Name
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(a) – Definition of Personal Data
-    tags: [pii]
-
-  - name: Address
-    type: quasi_identifier
-    subtype: address
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(a)
-    tags: [pii]
-
-  - name: Phone Number
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(a)
-    tags: [pii]
-
-  - name: Email Address
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(a)
-    tags: [pii]
-
-  - name: Swiss National ID or AVS Number
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(a)
-    tags: [pii]
-
-  - name: Health Information
-    type: special_category
-    subtype: medical
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(c) – Sensitive Personal Data
-    tags: [phi, sensitive]
-
-  - name: Biometric Data (e.g., iris scan, facial image)
-    type: special_category
-    subtype: biometric
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(c)
-    tags: [biometric, sensitive]
-
-  - name: Genetic Data
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(c)
-    tags: [sensitive]
-
-  - name: Racial or Ethnic Origin
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(c)
-    tags: [sensitive]
-
-  - name: Political Opinions or Activities
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(c)
-    tags: [sensitive]
-
-  - name: Religious or Philosophical Beliefs
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(c)
-    tags: [sensitive]
-
-  - name: Behavioral Data and Profiling
-    type: behavioral
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(f) – Definition of Profiling
-    tags: [sensitive, tracking]
-
-  - name: Online Identifiers (IP address, cookie ID)
-    type: quasi_identifier
-    required_masking: true
-    citations:
-      - regulation: FADP
-        article: Article 5(a)
-    tags: [pii, tracking]
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: FADP
+    article: Article 5(a) – Definition of Personal Data
+- name: Address
+  type: quasi_identifier
+  subtype: address
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: FADP
+    article: Article 5(a)
+- name: Phone Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: FADP
+    article: Article 5(a)
+- name: Email Address
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: FADP
+    article: Article 5(a)
+- name: Swiss National ID or AVS Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: FADP
+    article: Article 5(a)
+- name: Health Information
+  type: special_category
+  subtype: medical
+  required_masking: true
+  tags:
+  - phi
+  - sensitive
+  citations:
+  - regulation: FADP
+    article: Article 5(c) – Sensitive Personal Data
+- name: Biometric Data (e.g., iris scan, facial image)
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - biometric
+  - sensitive
+  citations:
+  - regulation: FADP
+    article: Article 5(c)
+- name: Genetic Data
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: FADP
+    article: Article 5(c)
+- name: Racial or Ethnic Origin
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: FADP
+    article: Article 5(c)
+- name: Political Opinions or Activities
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: FADP
+    article: Article 5(c)
+- name: Religious or Philosophical Beliefs
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: FADP
+    article: Article 5(c)
+- name: Behavioral Data and Profiling
+  type: behavioral
+  required_masking: true
+  tags:
+  - sensitive
+  - tracking
+  citations:
+  - regulation: FADP
+    article: Article 5(f) – Definition of Profiling
+- name: Online Identifiers (IP address, cookie ID)
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  - tracking
+  citations:
+  - regulation: FADP
+    article: Article 5(a)

@@ -6,140 +6,147 @@ version: 2023-08
 status: published
 last_updated: 2025-06-30
 source_verified: true
-authority: "Ministry of Electronics and Information Technology (MeitY)"
+authority: Ministry of Electronics and Information Technology (MeitY)
 notes:
-  - "India’s DPDP Act, 2023 applies to digital personal data processed within India and abroad if related to offering goods or services in India."
-  - "The law defines personal data broadly and emphasizes consent, purpose limitation, and fiduciary obligations."
+- India’s DPDP Act, 2023 applies to digital personal data processed within India and abroad if related
+  to offering goods or services in India.
+- The law defines personal data broadly and emphasizes consent, purpose limitation, and fiduciary obligations.
 categories:
-  - name: Full Name
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t) – Definition of Personal Data
-    tags: [pii]
-
-  - name: Postal Address
-    type: quasi_identifier
-    subtype: address
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [pii]
-
-  - name: Mobile Number
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [pii]
-
-  - name: Email Address
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [pii]
-
-  - name: Government-issued Identifier (e.g., Aadhaar, PAN, Passport)
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [pii, sensitive]
-
-  - name: Financial Information (e.g., bank account, payment data)
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [sensitive]
-
-  - name: Biometric Data (e.g., fingerprint, iris scan)
-    type: special_category
-    subtype: biometric
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [biometric, sensitive]
-
-  - name: Health Information
-    type: special_category
-    subtype: medical
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [phi, sensitive]
-
-  - name: Genetic Data
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [sensitive]
-
-  - name: Caste or Tribe Affiliation
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [sensitive]
-
-  - name: Religious or Political Beliefs
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [sensitive]
-
-  - name: Sexual Orientation
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [sensitive]
-
-  - name: Browsing History or Location Data
-    type: behavioral
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [tracking, sensitive]
-
-  - name: Educational Records
-    type: quasi_identifier
-    subtype: education
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [pii]
-
-  - name: Employment Details
-    type: quasi_identifier
-    subtype: employment
-    required_masking: true
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 2(t)
-    tags: [pii]
-
-  - name: Consent Metadata (timestamp, purpose, scope)
-    type: meta
-    required_masking: false
-    citations:
-      - regulation: DPDPB, 2023
-        section: Section 7 – Consent and Notice
-    tags: [compliance, meta]
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t) – Definition of Personal Data
+- name: Postal Address
+  type: quasi_identifier
+  subtype: address
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Mobile Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Email Address
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Government-issued Identifier (e.g., Aadhaar, PAN, Passport)
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Financial Information (e.g., bank account, payment data)
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Biometric Data (e.g., fingerprint, iris scan)
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - biometric
+  - sensitive
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Health Information
+  type: special_category
+  subtype: medical
+  required_masking: true
+  tags:
+  - phi
+  - sensitive
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Genetic Data
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Caste or Tribe Affiliation
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Religious or Political Beliefs
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Sexual Orientation
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Browsing History or Location Data
+  type: behavioral
+  required_masking: true
+  tags:
+  - tracking
+  - sensitive
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Educational Records
+  type: quasi_identifier
+  subtype: education
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Employment Details
+  type: quasi_identifier
+  subtype: employment
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 2(t)
+- name: Consent Metadata (timestamp, purpose, scope)
+  type: meta
+  required_masking: false
+  tags:
+  - compliance
+  - meta
+  citations:
+  - regulation: DPDPB, 2023
+    section: Section 7 – Consent and Notice

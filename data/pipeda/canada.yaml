@@ -6,118 +6,124 @@ version: 2018-11
 status: published
 last_updated: 2025-06-30
 source_verified: true
-authority: "Office of the Privacy Commissioner of Canada (OPC)"
+authority: Office of the Privacy Commissioner of Canada (OPC)
 notes:
-  - "PIPEDA applies to private-sector organizations that collect, use, or disclose personal information in the course of commercial activity."
-  - "Personal information is defined broadly and includes any information about an identifiable individual."
-  - "Sensitive information (e.g. health, financial, biometric) requires higher protection and typically express consent."
-
+- PIPEDA applies to private-sector organizations that collect, use, or disclose personal information in
+  the course of commercial activity.
+- Personal information is defined broadly and includes any information about an identifiable individual.
+- Sensitive information (e.g. health, financial, biometric) requires higher protection and typically express
+  consent.
 categories:
-  - name: Full Name
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: Section 2 – Definition of Personal Information
-    tags: [pii]
-
-  - name: Home Address
-    type: quasi_identifier
-    subtype: address
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: Section 2
-    tags: [pii]
-
-  - name: Phone Number
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: Section 2
-    tags: [pii]
-
-  - name: Email Address
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: Section 2
-    tags: [pii]
-
-  - name: Social Insurance Number (SIN)
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: Section 2
-    tags: [pii, sensitive]
-
-  - name: Financial Information (e.g., income, banking, credit)
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: Section 2, Schedule 1 Principle 4.3.4 (sensitivity)
-    tags: [sensitive]
-
-  - name: Purchase History or Transaction Records
-    type: behavioral
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: Schedule 1 Principle 4.2.3
-    tags: [pii]
-
-  - name: Employment History or Evaluations
-    type: quasi_identifier
-    subtype: employment
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: Section 2
-    tags: [pii]
-
-  - name: Education Records
-    type: quasi_identifier
-    subtype: education
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: Section 2
-    tags: [pii]
-
-  - name: Opinions or Personal Views (recorded)
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: Section 2
-    tags: [pii]
-
-  - name: Biometric Information (e.g., fingerprints, face data)
-    type: special_category
-    subtype: biometric
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: Schedule 1 Principle 4.3.4
-    tags: [sensitive, biometric]
-
-  - name: Health or Medical Information
-    type: special_category
-    subtype: medical
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: Schedule 1 Principle 4.3.4
-    tags: [sensitive, phi]
-
-  - name: IP Address and Online Identifiers
-    type: quasi_identifier
-    required_masking: true
-    citations:
-      - regulation: PIPEDA
-        section: OPC Interpretation (2013)
-    tags: [pii, tracking]
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PIPEDA
+    section: Section 2 – Definition of Personal Information
+- name: Home Address
+  type: quasi_identifier
+  subtype: address
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PIPEDA
+    section: Section 2
+- name: Phone Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PIPEDA
+    section: Section 2
+- name: Email Address
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PIPEDA
+    section: Section 2
+- name: Social Insurance Number (SIN)
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: PIPEDA
+    section: Section 2
+- name: Financial Information (e.g., income, banking, credit)
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: PIPEDA
+    section: Section 2, Schedule 1 Principle 4.3.4 (sensitivity)
+- name: Purchase History or Transaction Records
+  type: behavioral
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PIPEDA
+    section: Schedule 1 Principle 4.2.3
+- name: Employment History or Evaluations
+  type: quasi_identifier
+  subtype: employment
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PIPEDA
+    section: Section 2
+- name: Education Records
+  type: quasi_identifier
+  subtype: education
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PIPEDA
+    section: Section 2
+- name: Opinions or Personal Views (recorded)
+  type: special_category
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PIPEDA
+    section: Section 2
+- name: Biometric Information (e.g., fingerprints, face data)
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - sensitive
+  - biometric
+  citations:
+  - regulation: PIPEDA
+    section: Schedule 1 Principle 4.3.4
+- name: Health or Medical Information
+  type: special_category
+  subtype: medical
+  required_masking: true
+  tags:
+  - sensitive
+  - phi
+  citations:
+  - regulation: PIPEDA
+    section: Schedule 1 Principle 4.3.4
+- name: IP Address and Online Identifiers
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  - tracking
+  citations:
+  - regulation: PIPEDA
+    section: OPC Interpretation (2013)

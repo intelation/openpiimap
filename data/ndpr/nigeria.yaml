@@ -6,132 +6,138 @@ version: 2019-01
 status: published
 last_updated: 2025-06-30
 source_verified: true
-authority: "Nigeria Data Protection Commission (NDPC)"
+authority: Nigeria Data Protection Commission (NDPC)
 notes:
-  - "The Nigeria Data Protection Regulation (NDPR) governs the processing of personal data in Nigeria and applies to all public and private organizations handling such data."
-  - "Sensitive personal data includes health, race, ethnic origin, religion, political opinions, trade union membership, sexual orientation, and biometric data."
-  - "Data subjects are entitled to ARCO rights: Access, Rectification, Cancellation, and Objection."
-
+- The Nigeria Data Protection Regulation (NDPR) governs the processing of personal data in Nigeria and
+  applies to all public and private organizations handling such data.
+- Sensitive personal data includes health, race, ethnic origin, religion, political opinions, trade union
+  membership, sexual orientation, and biometric data.
+- 'Data subjects are entitled to ARCO rights: Access, Rectification, Cancellation, and Objection.'
 categories:
-  - name: Full Name
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 1 – Scope and Definitions
-    tags: [pii]
-
-  - name: Address
-    type: quasi_identifier
-    subtype: address
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 1
-    tags: [pii]
-
-  - name: Phone Number
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 1
-    tags: [pii]
-
-  - name: Email Address
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 1
-    tags: [pii]
-
-  - name: National Identity Number (NIN) or Voter ID
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 1
-    tags: [pii]
-
-  - name: Financial Information (e.g., bank account, income)
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 2.1(c)
-    tags: [sensitive]
-
-  - name: Health or Medical Information
-    type: special_category
-    subtype: medical
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 2.1(c)
-    tags: [phi, sensitive]
-
-  - name: Biometric Data (e.g., fingerprint, facial image)
-    type: special_category
-    subtype: biometric
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 2.1(c)
-    tags: [biometric, sensitive]
-
-  - name: Race or Ethnic Origin
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 2.1(c)
-    tags: [sensitive]
-
-  - name: Religious or Philosophical Beliefs
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 2.1(c)
-    tags: [sensitive]
-
-  - name: Political Opinions or Affiliation
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 2.1(c)
-    tags: [sensitive]
-
-  - name: Trade Union Membership
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 2.1(c)
-    tags: [sensitive]
-
-  - name: Sexual Orientation or Practices
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: Part 2.1(c)
-    tags: [sensitive]
-
-  - name: IP Address and Online Identifiers
-    type: quasi_identifier
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: NDPC Advisory (2023)
-    tags: [tracking, pii]
-
-  - name: Child or Minor Data (under 18)
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: NDPR
-        section: NDPC Guidance (2023)
-    tags: [child, sensitive]
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: NDPR
+    section: Part 1 – Scope and Definitions
+- name: Address
+  type: quasi_identifier
+  subtype: address
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: NDPR
+    section: Part 1
+- name: Phone Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: NDPR
+    section: Part 1
+- name: Email Address
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: NDPR
+    section: Part 1
+- name: National Identity Number (NIN) or Voter ID
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: NDPR
+    section: Part 1
+- name: Financial Information (e.g., bank account, income)
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: NDPR
+    section: Part 2.1(c)
+- name: Health or Medical Information
+  type: special_category
+  subtype: medical
+  required_masking: true
+  tags:
+  - phi
+  - sensitive
+  citations:
+  - regulation: NDPR
+    section: Part 2.1(c)
+- name: Biometric Data (e.g., fingerprint, facial image)
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - biometric
+  - sensitive
+  citations:
+  - regulation: NDPR
+    section: Part 2.1(c)
+- name: Race or Ethnic Origin
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: NDPR
+    section: Part 2.1(c)
+- name: Religious or Philosophical Beliefs
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: NDPR
+    section: Part 2.1(c)
+- name: Political Opinions or Affiliation
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: NDPR
+    section: Part 2.1(c)
+- name: Trade Union Membership
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: NDPR
+    section: Part 2.1(c)
+- name: Sexual Orientation or Practices
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: NDPR
+    section: Part 2.1(c)
+- name: IP Address and Online Identifiers
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - tracking
+  - pii
+  citations:
+  - regulation: NDPR
+    section: NDPC Advisory (2023)
+- name: Child or Minor Data (under 18)
+  type: special_category
+  required_masking: true
+  tags:
+  - child
+  - sensitive
+  citations:
+  - regulation: NDPR
+    section: NDPC Guidance (2023)

@@ -6,154 +6,164 @@ version: 2013-01
 status: published
 last_updated: 2025-06-30
 source_verified: true
-authority: "U.S. Department of Health and Human Services (HHS), Office for Civil Rights (OCR)"
+authority: U.S. Department of Health and Human Services (HHS), Office for Civil Rights (OCR)
 notes:
-  - "HIPAA governs the use and disclosure of protected health information (PHI) by covered entities and business associates."
-  - "De-identification standards are defined under 45 CFR §164.514, including the Safe Harbor and Expert Determination methods."
+- HIPAA governs the use and disclosure of protected health information (PHI) by covered entities and business
+  associates.
+- De-identification standards are defined under 45 CFR §164.514, including the Safe Harbor and Expert
+  Determination methods.
 categories:
-  - name: Full Name
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(A)
-    tags: [pii, phi]
-
-  - name: Geographic Subdivisions Smaller Than State
-    type: quasi_identifier
-    subtype: address
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(B)
-    tags: [pii, phi]
-
-  - name: All Elements of Dates (except year) for Dates Related to Individual
-    type: quasi_identifier
-    subtype: date
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(C)
-    tags: [phi]
-
-  - name: Telephone Numbers
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(D)
-    tags: [pii, phi]
-
-  - name: Fax Numbers
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(D)
-    tags: [phi]
-
-  - name: Email Addresses
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(E)
-    tags: [pii, phi]
-
-  - name: Social Security Numbers
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(F)
-    tags: [pii, phi]
-
-  - name: Medical Record Numbers
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(G)
-    tags: [phi]
-
-  - name: Health Plan Beneficiary Numbers
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(H)
-    tags: [phi]
-
-  - name: Account Numbers
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(I)
-    tags: [phi]
-
-  - name: Certificate or License Numbers
-    type: quasi_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(J)
-    tags: [phi]
-
-  - name: Vehicle Identifiers and Serial Numbers
-    type: quasi_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(K)
-    tags: [phi]
-
-  - name: Device Identifiers and Serial Numbers
-    type: quasi_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(L)
-    tags: [phi]
-
-  - name: Web URLs
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(M)
-    tags: [phi]
-
-  - name: IP Addresses
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(M)
-    tags: [phi]
-
-  - name: Biometric Identifiers (e.g., fingerprints, voiceprints)
-    type: special_category
-    subtype: biometric
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(C)
-    tags: [phi, biometric]
-
-  - name: Full-Face Photographic Images and Comparable Images
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(N)
-    tags: [phi, image]
-
-  - name: Any Other Unique Identifying Number, Characteristic, or Code
-    type: quasi_identifier
-    required_masking: true
-    citations:
-      - regulation: HIPAA
-        section: 45 CFR §164.514(b)(2)(i)(O)
-    tags: [phi]
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(A)
+- name: Geographic Subdivisions Smaller Than State
+  type: quasi_identifier
+  subtype: address
+  required_masking: true
+  tags:
+  - pii
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(B)
+- name: All Elements of Dates (except year) for Dates Related to Individual
+  type: quasi_identifier
+  subtype: date
+  required_masking: true
+  tags:
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(C)
+- name: Telephone Numbers
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(D)
+- name: Fax Numbers
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(D)
+- name: Email Addresses
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(E)
+- name: Social Security Numbers
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(F)
+- name: Medical Record Numbers
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(G)
+- name: Health Plan Beneficiary Numbers
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(H)
+- name: Account Numbers
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(I)
+- name: Certificate or License Numbers
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(J)
+- name: Vehicle Identifiers and Serial Numbers
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(K)
+- name: Device Identifiers and Serial Numbers
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(L)
+- name: Web URLs
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(M)
+- name: IP Addresses
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(M)
+- name: Biometric Identifiers (e.g., fingerprints, voiceprints)
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - phi
+  - biometric
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(C)
+- name: Full-Face Photographic Images and Comparable Images
+  type: special_category
+  required_masking: true
+  tags:
+  - phi
+  - image
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(N)
+- name: Any Other Unique Identifying Number, Characteristic, or Code
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - phi
+  citations:
+  - regulation: HIPAA
+    section: 45 CFR §164.514(b)(2)(i)(O)

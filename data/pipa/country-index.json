@@ -1,0 +1,13 @@
+{
+  "framework": "PIPA",
+  "region": "Asia",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "South Korea",
+      "slug": "south-korea",
+      "path": "data/pipa/south-korea.yaml",
+      "status": "complete"
+    }
+  ]
+}

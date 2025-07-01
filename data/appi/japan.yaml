@@ -6,125 +6,132 @@ version: 2022-04
 status: published
 last_updated: 2025-06-30
 source_verified: true
-authority: "Personal Information Protection Commission (PPC)"
+authority: Personal Information Protection Commission (PPC)
 notes:
-  - "Japan’s APPI regulates personal information handled by businesses and includes rules for sensitive data, data transfers, and anonymized processing."
-  - "Special care-required personal information includes race, religion, medical history, and criminal records (Article 2(3))."
-  - "Revised in 2022 to expand individual rights and cross-border transfer rules."
-
+- Japan’s APPI regulates personal information handled by businesses and includes rules for sensitive data,
+  data transfers, and anonymized processing.
+- Special care-required personal information includes race, religion, medical history, and criminal records
+  (Article 2(3)).
+- Revised in 2022 to expand individual rights and cross-border transfer rules.
 categories:
-  - name: Full Name
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: Article 2(1) – Definition of Personal Information
-    tags: [pii]
-
-  - name: Address
-    type: quasi_identifier
-    subtype: address
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: Article 2(1)
-    tags: [pii]
-
-  - name: Phone Number
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: Article 2(1)
-    tags: [pii]
-
-  - name: Email Address
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: Article 2(1)
-    tags: [pii]
-
-  - name: Government-issued Identifier (e.g., My Number)
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: Article 2(1)
-    tags: [pii, sensitive]
-
-  - name: Financial Information (bank account, credit card)
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: PPC Guidelines (2022)
-    tags: [sensitive]
-
-  - name: Medical or Health Information
-    type: special_category
-    subtype: medical
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: Article 2(3) – Special Care-Required Information
-    tags: [phi, sensitive]
-
-  - name: Biometric Data (e.g., fingerprint, facial image)
-    type: special_category
-    subtype: biometric
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: Article 2(3)
-    tags: [biometric, sensitive]
-
-  - name: Race or Ethnic Origin
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: Article 2(3)
-    tags: [sensitive]
-
-  - name: Religious Beliefs or Political Opinions
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: Article 2(3)
-    tags: [sensitive]
-
-  - name: Criminal Record or History
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: Article 2(3)
-    tags: [sensitive]
-
-  - name: IP Address or Online Identifiers
-    type: quasi_identifier
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: PPC Interpretation (2022)
-    tags: [tracking, pii]
-
-  - name: Employee Information
-    type: quasi_identifier
-    subtype: employment
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: Article 2(1)
-    tags: [pii]
-
-  - name: Minor Information (under age of majority)
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: APPI
-        article: PPC Interpretation (2022)
-    tags: [child, sensitive]
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: APPI
+    article: Article 2(1) – Definition of Personal Information
+- name: Address
+  type: quasi_identifier
+  subtype: address
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: APPI
+    article: Article 2(1)
+- name: Phone Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: APPI
+    article: Article 2(1)
+- name: Email Address
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: APPI
+    article: Article 2(1)
+- name: Government-issued Identifier (e.g., My Number)
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: APPI
+    article: Article 2(1)
+- name: Financial Information (bank account, credit card)
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: APPI
+    article: PPC Guidelines (2022)
+- name: Medical or Health Information
+  type: special_category
+  subtype: medical
+  required_masking: true
+  tags:
+  - phi
+  - sensitive
+  citations:
+  - regulation: APPI
+    article: Article 2(3) – Special Care-Required Information
+- name: Biometric Data (e.g., fingerprint, facial image)
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - biometric
+  - sensitive
+  citations:
+  - regulation: APPI
+    article: Article 2(3)
+- name: Race or Ethnic Origin
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: APPI
+    article: Article 2(3)
+- name: Religious Beliefs or Political Opinions
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: APPI
+    article: Article 2(3)
+- name: Criminal Record or History
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: APPI
+    article: Article 2(3)
+- name: IP Address or Online Identifiers
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - tracking
+  - pii
+  citations:
+  - regulation: APPI
+    article: PPC Interpretation (2022)
+- name: Employee Information
+  type: quasi_identifier
+  subtype: employment
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: APPI
+    article: Article 2(1)
+- name: Minor Information (under age of majority)
+  type: special_category
+  required_masking: true
+  tags:
+  - child
+  - sensitive
+  citations:
+  - regulation: APPI
+    article: PPC Interpretation (2022)

@@ -6,108 +6,116 @@ version: 2021-11
 status: published
 last_updated: 2025-06-30
 source_verified: true
-authority: "Cyberspace Administration of China (CAC)"
+authority: Cyberspace Administration of China (CAC)
 notes:
-  - "PIPL defines personal information broadly and imposes stricter rules for processing sensitive personal information, including biometric, religious, health, and children's data."
-  - "Cross-border transfers are highly regulated, requiring security assessments and contractual safeguards."
-  - "Personal information processing must follow principles of legality, necessity, and transparency under Article 5."
-
+- PIPL defines personal information broadly and imposes stricter rules for processing sensitive personal
+  information, including biometric, religious, health, and children's data.
+- Cross-border transfers are highly regulated, requiring security assessments and contractual safeguards.
+- Personal information processing must follow principles of legality, necessity, and transparency under
+  Article 5.
 categories:
-  - name: Full Name
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: PIPL
-        article: Article 4 – Definition of Personal Information
-    tags: [pii]
-
-  - name: Contact Information (Phone, Email)
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: PIPL
-        article: Article 4
-    tags: [pii]
-
-  - name: National ID Number (e.g., Resident Identity Card)
-    type: direct_identifier
-    required_masking: true
-    citations:
-      - regulation: PIPL
-        article: Article 4
-    tags: [pii]
-
-  - name: Home Address
-    type: quasi_identifier
-    subtype: address
-    required_masking: true
-    citations:
-      - regulation: PIPL
-        article: Article 4
-    tags: [pii]
-
-  - name: Network Identifiers (IP Address, Device ID)
-    type: quasi_identifier
-    required_masking: true
-    citations:
-      - regulation: PIPL
-        article: Article 4
-    tags: [pii, tracking]
-
-  - name: Location Data (precise)
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: PIPL
-        article: Article 28 – Definition of Sensitive Personal Information
-    tags: [sensitive, tracking]
-
-  - name: Biometric Information (e.g., facial features, voiceprints)
-    type: special_category
-    subtype: biometric
-    required_masking: true
-    citations:
-      - regulation: PIPL
-        article: Article 28
-    tags: [sensitive, biometric]
-
-  - name: Religious Beliefs
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: PIPL
-        article: Article 28
-    tags: [sensitive]
-
-  - name: Health and Medical Records
-    type: special_category
-    subtype: medical
-    required_masking: true
-    citations:
-      - regulation: PIPL
-        article: Article 28
-    tags: [sensitive, phi]
-
-  - name: Financial Information
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: PIPL
-        article: Article 28
-    tags: [sensitive]
-
-  - name: Personal Information of Minors Under 14
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: PIPL
-        article: Article 31
-    tags: [sensitive, child]
-
-  - name: Online Behavior and Profiling
-    type: behavioral
-    required_masking: true
-    citations:
-      - regulation: PIPL
-        article: Article 28
-    tags: [tracking, sensitive]
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PIPL
+    article: Article 4 – Definition of Personal Information
+- name: Contact Information (Phone, Email)
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PIPL
+    article: Article 4
+- name: National ID Number (e.g., Resident Identity Card)
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PIPL
+    article: Article 4
+- name: Home Address
+  type: quasi_identifier
+  subtype: address
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PIPL
+    article: Article 4
+- name: Network Identifiers (IP Address, Device ID)
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  - tracking
+  citations:
+  - regulation: PIPL
+    article: Article 4
+- name: Location Data (precise)
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  - tracking
+  citations:
+  - regulation: PIPL
+    article: Article 28 – Definition of Sensitive Personal Information
+- name: Biometric Information (e.g., facial features, voiceprints)
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - sensitive
+  - biometric
+  citations:
+  - regulation: PIPL
+    article: Article 28
+- name: Religious Beliefs
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: PIPL
+    article: Article 28
+- name: Health and Medical Records
+  type: special_category
+  subtype: medical
+  required_masking: true
+  tags:
+  - sensitive
+  - phi
+  citations:
+  - regulation: PIPL
+    article: Article 28
+- name: Financial Information
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: PIPL
+    article: Article 28
+- name: Personal Information of Minors Under 14
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  - child
+  citations:
+  - regulation: PIPL
+    article: Article 31
+- name: Online Behavior and Profiling
+  type: behavioral
+  required_masking: true
+  tags:
+  - tracking
+  - sensitive
+  citations:
+  - regulation: PIPL
+    article: Article 28

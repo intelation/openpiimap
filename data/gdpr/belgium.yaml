@@ -6,113 +6,124 @@ version: 2024-06
 status: published
 last_updated: 2025-06-30
 source_verified: true
-authority: "Gegevensbeschermingsautoriteit (GBA) / Autorité de protection des données (APD)"
+authority: Gegevensbeschermingsautoriteit (GBA) / Autorité de protection des données (APD)
 notes:
-  - "Belgium enforces GDPR directly, with limited national amendments. The GBA/APD issues regular guidance on public sector, telecom, education, and biometric processing."
-  - "Official guidance and rulings are published in Dutch, French, and occasionally German."
-
+- Belgium enforces GDPR directly, with limited national amendments. The GBA/APD issues regular guidance
+  on public sector, telecom, education, and biometric processing.
+- Official guidance and rulings are published in Dutch, French, and occasionally German.
 categories:
-  - name: Full Name
-    type: direct_identifier
-    subtype: personal_name
-    required_masking: true
-    category_tags: [core, identity]
-    citations:
-      - regulation: GDPR
-        article: "4(1)"
-
-  - name: Email Address
-    type: direct_identifier
-    subtype: digital_contact
-    required_masking: true
-    category_tags: [core, contact]
-    citations:
-      - regulation: GDPR
-        article: "4(1)"
-
-  - name: Phone Number
-    type: direct_identifier
-    subtype: telecom_contact
-    required_masking: true
-    category_tags: [core, contact]
-    citations:
-      - regulation: GDPR
-        article: "4(1)"
-
-  - name: IP Address
-    type: indirect_identifier
-    subtype: network_identifier
-    required_masking: true
-    category_tags: [digital, behavioral]
-    citations:
-      - regulation: GDPR
-        recital: "30"
-      - authority: GBA
-        guideline: "Gebruik van cookies en andere trackers"
-        url: "https://www.gegevensbeschermingsautoriteit.be/publications/aanbeveling-nr.-01-2020.pdf"
-
-  - name: National Registry Number (Rijksregisternummer / Numéro de Registre National)
-    type: national_identifier
-    subtype: government_id
-    required_masking: true
-    category_tags: [identity, sensitive]
-    citations:
-      - regulation: GDPR
-        article: "87"
-      - national_law: Wet van 8 augustus 1983
-        article: "1"
-        description: Governs the use of the Belgian national registry number
-
-  - name: Health Data
-    type: special_category
-    subtype: health
-    required_masking: true
-    category_tags: [health, sensitive]
-    citations:
-      - regulation: GDPR
-        article: "9(1)"
-      - authority: GBA
-        guideline: "Medische gegevens en beroepsgeheim"
-        url: "https://www.gegevensbeschermingsautoriteit.be/publications/aanbeveling-nr.-08-2020.pdf"
-
-  - name: Biometric Data (e.g., facial scans, fingerprint readers)
-    type: special_category
-    subtype: biometric
-    required_masking: true
-    category_tags: [biometric, sensitive]
-    citations:
-      - regulation: GDPR
-        article: "9(1)"
-
-  - name: Location Data (public transport tracking, GPS)
-    type: behavioral
-    subtype: geolocation
-    required_masking: true
-    category_tags: [tracking, digital]
-    citations:
-      - regulation: GDPR
-        article: "4(1)"
-
-  - name: Cookie Identifiers / Analytics Trackers
-    type: indirect_identifier
-    subtype: device_id
-    required_masking: true
-    category_tags: [tracking, digital]
-    citations:
-      - regulation: GDPR
-        recital: "30"
-      - authority: GBA
-        guideline: "Aanbeveling over cookies en tracking"
-        url: "https://www.gegevensbeschermingsautoriteit.be/publications/aanbeveling-nr.-01-2020.pdf"
-
-  - name: Employment Records (schedules, attendance logs, warnings)
-    type: contextual_identifier
-    subtype: hr_data
-    required_masking: true
-    category_tags: [employment, sensitive]
-    citations:
-      - regulation: GDPR
-        article: "88"
-      - authority: GBA
-        guideline: "Camerabewaking en werkplekcontrole"
-        url: "https://www.gegevensbeschermingsautoriteit.be/publications/aanbeveling-nr.-01-2023.pdf"
+- name: Full Name
+  type: direct_identifier
+  subtype: personal_name
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - core
+  - identity
+- name: Email Address
+  type: direct_identifier
+  subtype: digital_contact
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - core
+  - contact
+- name: Phone Number
+  type: direct_identifier
+  subtype: telecom_contact
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - core
+  - contact
+- name: IP Address
+  type: indirect_identifier
+  subtype: network_identifier
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    recital: '30'
+  - authority: GBA
+    guideline: Gebruik van cookies en andere trackers
+    url: https://www.gegevensbeschermingsautoriteit.be/publications/aanbeveling-nr.-01-2020.pdf
+  category_tags:
+  - digital
+  - behavioral
+- name: National Registry Number (Rijksregisternummer / Numéro de Registre National)
+  type: national_identifier
+  subtype: government_id
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: '87'
+  - national_law: Wet van 8 augustus 1983
+    article: '1'
+    description: Governs the use of the Belgian national registry number
+  category_tags:
+  - identity
+  - sensitive
+- name: Health Data
+  type: special_category
+  subtype: health
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: 9(1)
+  - authority: GBA
+    guideline: Medische gegevens en beroepsgeheim
+    url: https://www.gegevensbeschermingsautoriteit.be/publications/aanbeveling-nr.-08-2020.pdf
+  category_tags:
+  - health
+  - sensitive
+- name: Biometric Data (e.g., facial scans, fingerprint readers)
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: 9(1)
+  category_tags:
+  - biometric
+  - sensitive
+- name: Location Data (public transport tracking, GPS)
+  type: behavioral
+  subtype: geolocation
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - tracking
+  - digital
+- name: Cookie Identifiers / Analytics Trackers
+  type: indirect_identifier
+  subtype: device_id
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    recital: '30'
+  - authority: GBA
+    guideline: Aanbeveling over cookies en tracking
+    url: https://www.gegevensbeschermingsautoriteit.be/publications/aanbeveling-nr.-01-2020.pdf
+  category_tags:
+  - tracking
+  - digital
+- name: Employment Records (schedules, attendance logs, warnings)
+  type: contextual_identifier
+  subtype: hr_data
+  required_masking: true
+  citations:
+  - regulation: GDPR
+    article: '88'
+  - authority: GBA
+    guideline: Camerabewaking en werkplekcontrole
+    url: https://www.gegevensbeschermingsautoriteit.be/publications/aanbeveling-nr.-01-2023.pdf
+  category_tags:
+  - employment
+  - sensitive
