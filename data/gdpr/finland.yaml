@@ -8,14 +8,17 @@ last_updated: 2025-06-30
 source_verified: true
 authority: Tietosuojavaltuutetun toimisto – Office of the Data Protection Ombudsman
 notes:
-- Finland enforces GDPR alongside the Finnish Data Protection Act (Tietosuojalaki 1050/2018).
-- The Office of the Data Protection Ombudsman provides national guidance particularly in education, social
-  services, employment, and biometric use.
+- Finland enforces GDPR alongside the Finnish Data Protection Act (Tietosuojalaki
+  1050/2018).
+- The Office of the Data Protection Ombudsman provides national guidance particularly
+  in education, social services, employment, and biometric use.
 categories:
 - name: Full Name
   type: direct_identifier
   subtype: personal_name
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -26,6 +29,8 @@ categories:
   type: direct_identifier
   subtype: digital_contact
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -36,6 +41,8 @@ categories:
   type: direct_identifier
   subtype: telecom_contact
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -46,6 +53,8 @@ categories:
   type: indirect_identifier
   subtype: network_identifier
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     recital: '30'
@@ -59,12 +68,17 @@ categories:
   type: national_identifier
   subtype: government_id
   required_masking: true
+  tags:
+  - pii
+  - national_id
+  - government_id
   citations:
   - regulation: GDPR
     article: '87'
   - national_law: Tietosuojalaki 1050/2018
     section: 29 §
-    description: Restricts processing of the Finnish identity code to specific legal bases
+    description: Restricts processing of the Finnish identity code to specific legal
+      bases
   category_tags:
   - identity
   - sensitive
@@ -72,6 +86,9 @@ categories:
   type: special_category
   subtype: health
   required_masking: true
+  tags:
+  - phi
+  - sensitive
   citations:
   - regulation: GDPR
     article: 9(1)
@@ -85,6 +102,9 @@ categories:
   type: special_category
   subtype: biometric
   required_masking: true
+  tags:
+  - biometric
+  - sensitive
   citations:
   - regulation: GDPR
     article: 9(1)
@@ -95,6 +115,8 @@ categories:
   type: behavioral
   subtype: geolocation
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -105,6 +127,10 @@ categories:
   type: indirect_identifier
   subtype: device_id
   required_masking: true
+  tags:
+  - tracking
+  - online_identifier
+  - pii
   citations:
   - regulation: GDPR
     recital: '30'
@@ -118,6 +144,10 @@ categories:
   type: contextual_identifier
   subtype: hr_data
   required_masking: true
+  tags:
+  - pii
+  - hr_data
+  - employment_contracts
   citations:
   - regulation: GDPR
     article: '88'

@@ -1,112 +1,131 @@
-Absolutely! Here's a well-structured and copy-paste-ready `docs/CONTRIBUTING.md` file for the **OpenPIIMap** GitHub project. It’s designed to encourage clean, consistent contributions and help first-time contributors understand how to get involved.
-
----
-
-## `docs/CONTRIBUTING.md`
-
-```markdown
 # Contributing to OpenPIIMap
 
-Thank you for your interest in contributing to **OpenPIIMap** — the open-source project that maps and defines Personally Identifiable Information (PII) and Protected Health Information (PHI) across global jurisdictions and frameworks.
+Thank you for your interest in contributing to **OpenPIIMap** — the open-source project that maps and defines Personally Identifiable Information (PII) and Protected Health Information (PHI) across global jurisdictions and privacy frameworks.
 
-We welcome contributions from developers, privacy professionals, legal experts, and open data enthusiasts!
+We welcome contributions from developers, privacy professionals, legal experts, and open data enthusiasts! 🚀
 
 ---
 
 ## What You Can Contribute
 
-### Add or improve YAML definitions
-- Add a new country or framework (e.g., `india.yaml`, `lgpd/brazil.yaml`)
-- Improve existing definitions with citations, category tags, or legal updates
+### YAML Definitions
+- Add a new country or jurisdiction (e.g., `brazil.yaml`, `uae.yaml`)
+- Improve existing files with better:
+  - Legal citations
+  - Tags (`health`, `finance`, etc.)
+  - Data categories
 
-### Improve documentation
-- Clarify YAML format specifications
-- Update contributor guidelines or add usage examples
+### Documentation
+- Clarify format specs or examples
+- Add FAQs or tooling usage notes
 
-### Fix issues or suggest features
-- Comment on existing [GitHub Issues](https://github.com/YOUR-ORG/openpiimap/issues)
-- Open new issues for countries, edge cases, or improvements
+### Tooling & Issues
+- Improve scripts under `/scripts/`
+- File or comment on issues (coverage, edge cases, YAML bugs)
 
 ---
 
 ## Folder Overview
 
-```
-
-/data/           → YAML files by framework (e.g., GDPR, HIPAA)
-/examples/       → Sample use cases and data
-/docs/           → This file, format spec, roadmap
-/api/ (optional) → API to serve PII definitions (WIP)
-
+```bash
+/data/                → YAMLs by framework (e.g., gdpr/, hipaa/)
+/scripts/             → Validation, lint, and coverage tools
+/api/                 → WIP REST API
+/ui/frontend/         → WIP React web explorer
+/docs/                → This file, schema specs, roadmap
+.github/              → GitHub Actions, issue templates
 ````
-
-## YAML Format Expectations
-
-Please follow our [Data Format Specification](./data_format_spec.md), but here’s a quick summary:
-
-- File name: `country.yaml` (e.g., `germany.yaml`)
-- Structure:
-  - `country`, `framework`, `version`, `status`, `categories[]`, `citations[]`
-- Use valid field types: `direct_identifier`, `indirect_identifier`, `special_category`, etc.
-- Include at least 3–5 categories with at least one legal citation
-
-You can copy a template from `germany.yaml` or `france.yaml`.
 
 ---
 
-## Before You Submit
+## YAML Format Guidelines
 
-1. Ensure your YAML file is **well-formatted** (use spaces, not tabs)
-2. Validate the structure using our script (coming soon)
-3. Add proper **citations** for each category
-4. Keep pull requests focused — one file/feature per PR is best
+> Use an existing country like `germany.yaml` as your template.
+
+### Required fields:
+
+* `country`, `framework`, `categories[]`
+* Each category must include:
+
+  * `name`, `type` (e.g., `direct_identifier`, `special_category`)
+  * `required_masking` (true/false)
+  * `citations[]` (article, law, or national regulation)
+
+### Format Rules:
+
+* YAML files must use **2-space indentation**
+* **No tabs**, no trailing commas
+* All tags should be present and non-empty (e.g., `tags: [biometric]`)
+
+---
+
+## Pre-Submission Checklist
+
+Before submitting a pull request:
+
+1. ✔ Follow proper file naming (`data/gdpr/finland.yaml`)
+2. ✔ Include **at least 3–5 categories** with legal citations
+3. ✔ Run the linter and validator:
+
+   ```bash
+   python scripts/lint-yamls.py
+   python scripts/validate-yamls.py
+   ```
+4. Reformat your file:
+
+   ```bash
+   python scripts/reformat-yamls.py --path data/gdpr/yourfile.yaml
+   ```
+5. Check `git diff` for clean formatting and commit only your intended file(s)
 
 ---
 
 ## Submitting a Pull Request
 
-1. Fork this repo and clone it locally
+1. Fork the repository
 2. Create a new branch:
-   ```bash
-   git checkout -b feature/add-india-yaml
-````
 
-3. Add or edit files
+   ```bash
+   git checkout -b add-greece-yaml
+   ```
+3. Add or modify YAML and test with scripts
 4. Commit and push:
 
    ```bash
-   git commit -m "Add PII definitions for India under DPDPB"
-   git push origin feature/add-india-yaml
+   git commit -m "Add GDPR PII definitions for Greece"
+   git push origin add-greece-yaml
    ```
-5. Open a Pull Request on GitHub to merge into `main`
+5. Open a Pull Request to `main`
+
+> GitHub Actions will automatically run validation checks. Please fix any errors reported in the PR before requesting review.
 
 ---
 
 ## Need Help?
 
-If you're not sure where to start:
+* Check [`good first issue`](https://github.com/YOUR-ORG/openpiimap/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+* Ask in GitHub Discussions (coming soon)
+* Open an issue with the `question` label
 
-* Check the [`good first issue`](https://github.com/YOUR-ORG/openpiimap/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) label
-* Join the conversation in GitHub Discussions (coming soon)
-* Open an issue and tag it with `question`
+---
+
+## Suggest a Region or Framework
+
+Want to add a new law or country?
+
+> Open an issue titled:
+> `"Request: Add support for [Country/Framework]"`
+
+We’ll help you get started.
 
 ---
 
 ## Code of Conduct
 
-All contributors must follow our [Code of Conduct](../CODE_OF_CONDUCT.md). Be respectful, inclusive, and collaborative.
+All contributors must follow our [Code of Conduct](../CODE_OF_CONDUCT.md). Be respectful, inclusive, and constructive.
 
 ---
 
-## Want to Suggest a Region?
+Thank you for helping build the world’s first open-source PII/PHI definition atlas!
 
-Feel free to open an issue titled:
-
-> "Request: Add support for \[Country/Framework]"
-
-And we’ll help you shape it.
-
----
-
-Thank you for helping build the world’s first open PII definition map! 🌍
-
+```

@@ -9,16 +9,20 @@ source_verified: true
 authority: CNIL (Commission Nationale de l'Informatique et des Libertés)
 notes:
 - France enforces GDPR directly, supplemented by national guidance from CNIL.
-- CNIL offers detailed recommendations on biometric data, health data, and cookie tracking.
+- CNIL offers detailed recommendations on biometric data, health data, and cookie
+  tracking.
 categories:
 - name: Full Name
   type: direct_identifier
   subtype: personal_name
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
-    description: Defines personal data as any information relating to an identified or identifiable person
+    description: Defines personal data as any information relating to an identified
+      or identifiable person
   category_tags:
   - core
   - identity
@@ -26,6 +30,8 @@ categories:
   type: direct_identifier
   subtype: digital_contact
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -36,6 +42,8 @@ categories:
   type: direct_identifier
   subtype: telecom_contact
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -46,6 +54,8 @@ categories:
   type: indirect_identifier
   subtype: network_identifier
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     recital: '30'
@@ -60,6 +70,10 @@ categories:
   type: national_identifier
   subtype: government_id
   required_masking: true
+  tags:
+  - pii
+  - national_id
+  - government_id
   citations:
   - regulation: GDPR
     article: '87'
@@ -73,6 +87,9 @@ categories:
   type: special_category
   subtype: biometric
   required_masking: true
+  tags:
+  - biometric
+  - sensitive
   citations:
   - regulation: GDPR
     article: 9(1)
@@ -87,6 +104,9 @@ categories:
   type: special_category
   subtype: health
   required_masking: true
+  tags:
+  - phi
+  - sensitive
   citations:
   - regulation: GDPR
     article: 9(1)
@@ -101,6 +121,8 @@ categories:
   type: behavioral
   subtype: geolocation
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -112,6 +134,10 @@ categories:
   type: indirect_identifier
   subtype: device_id
   required_masking: true
+  tags:
+  - tracking
+  - online_identifier
+  - pii
   citations:
   - regulation: GDPR
     recital: '30'
@@ -125,6 +151,10 @@ categories:
   type: contextual_identifier
   subtype: hr_data
   required_masking: true
+  tags:
+  - pii
+  - hr_data
+  - employment_contracts
   citations:
   - regulation: GDPR
     article: '88'
@@ -138,6 +168,10 @@ categories:
   type: financial_identifier
   subtype: compensation
   required_masking: true
+  tags:
+  - pii
+  - compensation
+  - hr_data
   citations:
   - regulation: GDPR
     article: 4(1)

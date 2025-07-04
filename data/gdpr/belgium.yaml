@@ -6,16 +6,19 @@ version: 2024-06
 status: published
 last_updated: 2025-06-30
 source_verified: true
-authority: Gegevensbeschermingsautoriteit (GBA) / Autorité de protection des données (APD)
+authority: Gegevensbeschermingsautoriteit (GBA) / Autorité de protection des données
+  (APD)
 notes:
-- Belgium enforces GDPR directly, with limited national amendments. The GBA/APD issues regular guidance
-  on public sector, telecom, education, and biometric processing.
+- Belgium enforces GDPR directly, with limited national amendments. The GBA/APD issues
+  regular guidance on public sector, telecom, education, and biometric processing.
 - Official guidance and rulings are published in Dutch, French, and occasionally German.
 categories:
 - name: Full Name
   type: direct_identifier
   subtype: personal_name
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -26,6 +29,8 @@ categories:
   type: direct_identifier
   subtype: digital_contact
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -36,6 +41,8 @@ categories:
   type: direct_identifier
   subtype: telecom_contact
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -46,6 +53,8 @@ categories:
   type: indirect_identifier
   subtype: network_identifier
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     recital: '30'
@@ -59,6 +68,10 @@ categories:
   type: national_identifier
   subtype: government_id
   required_masking: true
+  tags:
+  - pii
+  - national_id
+  - government_id
   citations:
   - regulation: GDPR
     article: '87'
@@ -72,6 +85,9 @@ categories:
   type: special_category
   subtype: health
   required_masking: true
+  tags:
+  - phi
+  - sensitive
   citations:
   - regulation: GDPR
     article: 9(1)
@@ -85,6 +101,9 @@ categories:
   type: special_category
   subtype: biometric
   required_masking: true
+  tags:
+  - biometric
+  - sensitive
   citations:
   - regulation: GDPR
     article: 9(1)
@@ -95,6 +114,8 @@ categories:
   type: behavioral
   subtype: geolocation
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -105,6 +126,10 @@ categories:
   type: indirect_identifier
   subtype: device_id
   required_masking: true
+  tags:
+  - tracking
+  - online_identifier
+  - pii
   citations:
   - regulation: GDPR
     recital: '30'
@@ -118,6 +143,10 @@ categories:
   type: contextual_identifier
   subtype: hr_data
   required_masking: true
+  tags:
+  - pii
+  - hr_data
+  - workplace_monitoring
   citations:
   - regulation: GDPR
     article: '88'

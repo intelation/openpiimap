@@ -6,17 +6,20 @@ version: 2024-06
 status: published
 last_updated: 2025-06-30
 source_verified: true
-authority: Hellenic Data Protection Authority (HDPA) – Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα
+authority: Hellenic Data Protection Authority (HDPA) – Αρχή Προστασίας Δεδομένων Προσωπικού
+  Χαρακτήρα
 notes:
-- Greece enforces GDPR through Law 4624/2019, which supplements and adapts the regulation to national
-  law.
-- The HDPA actively publishes decisions and guidelines, particularly around biometric processing, video
-  surveillance, and the public sector.
+- Greece enforces GDPR through Law 4624/2019, which supplements and adapts the regulation
+  to national law.
+- The HDPA actively publishes decisions and guidelines, particularly around biometric
+  processing, video surveillance, and the public sector.
 categories:
 - name: Full Name
   type: direct_identifier
   subtype: personal_name
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -27,6 +30,8 @@ categories:
   type: direct_identifier
   subtype: digital_contact
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -37,6 +42,8 @@ categories:
   type: direct_identifier
   subtype: telecom_contact
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -47,6 +54,8 @@ categories:
   type: indirect_identifier
   subtype: network_identifier
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     recital: '30'
@@ -60,6 +69,10 @@ categories:
   type: national_identifier
   subtype: government_id
   required_masking: true
+  tags:
+  - pii
+  - national_id
+  - government_id
   citations:
   - regulation: GDPR
     article: '87'
@@ -73,6 +86,10 @@ categories:
   type: special_category
   subtype: health
   required_masking: true
+  tags:
+  - phi
+  - sensitive
+  - tracking
   citations:
   - regulation: GDPR
     article: 9(1)
@@ -86,6 +103,9 @@ categories:
   type: special_category
   subtype: biometric
   required_masking: true
+  tags:
+  - biometric
+  - sensitive
   citations:
   - regulation: GDPR
     article: 9(1)
@@ -99,6 +119,8 @@ categories:
   type: behavioral
   subtype: geolocation
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -109,6 +131,8 @@ categories:
   type: indirect_identifier
   subtype: device_id
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     recital: '30'
@@ -122,6 +146,10 @@ categories:
   type: contextual_identifier
   subtype: hr_data
   required_masking: true
+  tags:
+  - pii
+  - hr_data
+  - workplace_monitoring
   citations:
   - regulation: GDPR
     article: '88'

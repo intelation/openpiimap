@@ -8,19 +8,22 @@ last_updated: 2025-06-30
 source_verified: true
 authority: Data Protection Commission (DPC Ireland)
 notes:
-- Ireland enforces GDPR directly through the Data Protection Act 2018, with additional national clarifications
-  provided by the DPC.
-- Ireland is home to the European headquarters of several multinational tech companies, making its regulatory
-  interpretation highly influential.
+- Ireland enforces GDPR directly through the Data Protection Act 2018, with additional
+  national clarifications provided by the DPC.
+- Ireland is home to the European headquarters of several multinational tech companies,
+  making its regulatory interpretation highly influential.
 categories:
 - name: Full Name
   type: direct_identifier
   subtype: personal_name
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
-    description: Any information relating to an identified or identifiable natural person
+    description: Any information relating to an identified or identifiable natural
+      person
   category_tags:
   - core
   - identity
@@ -28,6 +31,8 @@ categories:
   type: direct_identifier
   subtype: digital_contact
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -38,6 +43,8 @@ categories:
   type: indirect_identifier
   subtype: network_identifier
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     recital: '30'
@@ -51,6 +58,8 @@ categories:
   type: direct_identifier
   subtype: telecom_contact
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -61,6 +70,9 @@ categories:
   type: special_category
   subtype: health
   required_masking: true
+  tags:
+  - phi
+  - sensitive
   citations:
   - regulation: GDPR
     article: 9(1)
@@ -74,6 +86,9 @@ categories:
   type: special_category
   subtype: biometric
   required_masking: true
+  tags:
+  - biometric
+  - sensitive
   citations:
   - regulation: GDPR
     article: 9(1)
@@ -84,6 +99,10 @@ categories:
   type: national_identifier
   subtype: government_id
   required_masking: true
+  tags:
+  - pii
+  - national_id
+  - government_id
   citations:
   - regulation: GDPR
     article: '87'
@@ -97,6 +116,8 @@ categories:
   type: behavioral
   subtype: geolocation
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -108,6 +129,10 @@ categories:
   type: indirect_identifier
   subtype: device_id
   required_masking: true
+  tags:
+  - tracking
+  - online_identifier
+  - pii
   citations:
   - regulation: GDPR
     recital: '30'
@@ -121,6 +146,10 @@ categories:
   type: contextual_identifier
   subtype: hr_data
   required_masking: true
+  tags:
+  - pii
+  - hr_data
+  - employment_contracts
   citations:
   - regulation: GDPR
     article: '88'

@@ -1,4 +1,4 @@
-# 🌍 OpenPIIMap
+# OpenPIIMap
 
 **OpenPIIMap** is a global, open-source initiative that provides machine-readable definitions of **Personally Identifiable Information (PII)** and **Protected Health Information (PHI)** across countries, privacy frameworks, and industry verticals.
 
@@ -6,18 +6,18 @@ It helps privacy engineers, data scientists, and compliance teams understand and
 
 ---
 
-## ✨ Why OpenPIIMap?
+## Why OpenPIIMap?
 
 There is no publicly available, standardized, developer-friendly map of what qualifies as sensitive data across jurisdictions. OpenPIIMap solves that by offering:
 
-- ✅ YAML/JSON definitions of PII and PHI for 100+ regions
-- ✅ Legal citations, classifications, and regulatory context
-- ✅ A planned REST API and interactive web UI
-- ✅ Extensible schema to support policy-as-code, data governance, anonymization, and risk analysis
+- YAML/JSON definitions of PII and PHI for 100+ regions
+- Legal citations, classifications, and regulatory context
+- A planned REST API and interactive web UI
+- Extensible schema to support policy-as-code, data governance, anonymization, and risk analysis
 
 ---
 
-## 🌐 Coverage Index (All Frameworks)
+## Coverage Index (All Frameworks)
 
 See the full global coverage: [`coverage.json`](./coverage.json)
 
@@ -42,7 +42,7 @@ Frameworks supported:
 
 ---
 
-## 🧭 GDPR Coverage (Live)
+## GDPR Coverage (Live)
 
 We currently provide full YAML definitions for the following **EU and EEA** countries:
 
@@ -65,11 +65,11 @@ We currently provide full YAML definitions for the following **EU and EEA** coun
 | Iceland       | `data/gdpr/iceland.yaml`       |
 | Liechtenstein | `data/gdpr/liechtenstein.yaml` |
 
-📁 See the full GDPR index: [`data/gdpr/country-index.json`](./data/gdpr/country-index.json)
+See the full GDPR index: [`data/gdpr/country-index.json`](./data/gdpr/country-index.json)
 
 ---
 
-## 🗂 Project Structure
+## Project Structure
 
 ```
 openpiimap/
@@ -89,7 +89,7 @@ openpiimap/
 
 ---
 
-## 📘 YAML Example: GDPR – Germany
+## YAML Example: GDPR – Germany
 
 ```yaml
 country: Germany
@@ -111,7 +111,7 @@ categories:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 1. **Clone the repo**
 
@@ -136,7 +136,7 @@ categories:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome all contributors!
 
@@ -145,17 +145,46 @@ We welcome all contributors!
 - Help build the web UI or API backend
 - Translate definitions into other languages
 
-📄 See [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) to get started.
+See [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) to get started.
 
 ---
 
-## 📄 License
+## License
 
 MIT License © 2025 [Intelation](https://www.intelation.com) Built for the global privacy community.
 
 ---
 
-## 🔗 Project Website
+## Project Website
 
-🌐 Coming soon at [https://www.openpiimap.org](https://www.openpiimap.org)
+Coming soon at [https://www.openpiimap.org](https://www.openpiimap.org)
+---
 
+## Validation CLI (Scripts)
+
+Run all core checks using the following commands:
+
+```bash
+python scripts/openpiimap.py validate            # Validate all YAML files against schema
+python scripts/openpiimap.py lint                # Lint for field order and tag presence
+python scripts/openpiimap.py format              # Reorder fields for consistency
+python scripts/openpiimap.py generate-coverage   # Regenerate coverage.json
+python scripts/tag-all-yamls.py                  # Auto-fill tags where missing
+```
+
+---
+
+## GitHub Actions (CI)
+
+All YAML files are continuously validated on GitHub via:
+
+- Schema compliance checks
+- Field order and tag linter
+- coverage.json updates (optional)
+
+GitHub Action file: `.github/workflows/validate.yml`
+
+To enable:
+1. Commit your scripts and workflow YAML
+2. Push to GitHub
+3. All PRs and pushes will trigger validation

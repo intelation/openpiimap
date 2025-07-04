@@ -17,42 +17,44 @@ categories:
   type: direct_identifier
   subtype: personal_name
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
   category_tags:
   - core
   - identity
-  tags:
-  - pii
 - name: Email Address
   type: direct_identifier
   subtype: digital_contact
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
   category_tags:
   - core
   - contact
-  tags:
-  - pii
 - name: Phone Number
   type: direct_identifier
   subtype: telecom_contact
   required_masking: true
+  tags:
+  - pii
   citations:
   - regulation: GDPR
     article: 4(1)
   category_tags:
   - core
   - contact
-  tags:
-  - pii
 - name: IP Address
   type: indirect_identifier
   subtype: network_identifier
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     recital: '30'
@@ -62,12 +64,13 @@ categories:
   category_tags:
   - digital
   - behavioral
-  tags:
-  - tracking
 - name: Sozialversicherungsnummer (Social Insurance Number)
   type: national_identifier
   subtype: government_id
   required_masking: true
+  tags:
+  - pii
+  - national_id
   citations:
   - regulation: GDPR
     article: '87'
@@ -77,11 +80,14 @@ categories:
   category_tags:
   - identity
   - sensitive
-  tags: []
 - name: Health Data (clinical, diagnostics, prescriptions)
   type: special_category
   subtype: health
   required_masking: true
+  tags:
+  - phi
+  - sensitive
+  - tracking
   citations:
   - regulation: GDPR
     article: 9(1)
@@ -91,27 +97,25 @@ categories:
   category_tags:
   - health
   - sensitive
-  tags:
-  - phi
-  - sensitive
-  - tracking
 - name: Biometric Data (fingerprints, facial geometry)
   type: special_category
   subtype: biometric
   required_masking: true
+  tags:
+  - biometric
+  - sensitive
   citations:
   - regulation: GDPR
     article: 9(1)
   category_tags:
   - biometric
   - sensitive
-  tags:
-  - biometric
-  - sensitive
 - name: Location Data (workplace presence, GPS tracking)
   type: behavioral
   subtype: geolocation
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     article: 4(1)
@@ -119,11 +123,12 @@ categories:
   category_tags:
   - tracking
   - digital
-  tags: []
 - name: Cookie Identifiers / Online Tracking
   type: indirect_identifier
   subtype: device_id
   required_masking: true
+  tags:
+  - tracking
   citations:
   - regulation: GDPR
     recital: '30'
@@ -133,12 +138,13 @@ categories:
   category_tags:
   - tracking
   - digital
-  tags:
-  - tracking
 - name: Employment Data (HR files, evaluations, schedules)
   type: contextual_identifier
   subtype: hr_data
   required_masking: true
+  tags:
+  - pii
+  - hr_data
   citations:
   - regulation: GDPR
     article: '88'
@@ -148,4 +154,3 @@ categories:
   category_tags:
   - employment
   - sensitive
-  tags: []
