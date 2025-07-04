@@ -1,0 +1,114 @@
+Folder PATH listing
+Volume serial number is 369C-E6C6
+C:.
+|   .gitignore
+|   CODE_OF_CONDUCT.md
+|   coverage.json
+|   filelist.txt
+|   LICENSE
+|   README.md
+|   requirements.txt
+|   
++---.github
+|   \---workflows
+|           validate.yml
+|           
++---data
+|   |   coverage.json
+|   |   
+|   +---appi
+|   |       country-index.json
+|   |       japan.yaml
+|   |       
+|   +---cpra
+|   |       california.yaml
+|   |       country-index.json
+|   |       
+|   +---dpdpb
+|   |       india.yaml
+|   |       
+|   +---fadp
+|   |       country-index.json
+|   |       switzerland.yaml
+|   |       
+|   +---gdpr
+|   |       austria.yaml
+|   |       belgium.yaml
+|   |       country-index.json
+|   |       denmark.yaml
+|   |       finland.yaml
+|   |       france.yaml
+|   |       germany.yaml
+|   |       greece.yaml
+|   |       iceland.yaml
+|   |       ireland.yaml
+|   |       italy.yaml
+|   |       liechtenstein.yaml
+|   |       netherlands.yaml
+|   |       norway.yaml
+|   |       poland.yaml
+|   |       spain.yaml
+|   |       sweden.yaml
+|   |       
+|   +---hippa
+|   |       country-index.json
+|   |       usa.yaml
+|   |       
+|   +---lfpdppp
+|   |       country-index.json
+|   |       mexico.yaml
+|   |       
+|   +---lgpd
+|   |       brazil.yaml
+|   |       country-index.json
+|   |       
+|   +---ndpr
+|   |       country-index.json
+|   |       nigeria.yaml
+|   |       
+|   +---pdp
+|   |       country-index.json
+|   |       indonesia.yaml
+|   |       
+|   +---pdpa
+|   |       country-index.json
+|   |       singapore.yaml
+|   |       
+|   +---pipa
+|   |       country-index.json
+|   |       south-korea.yaml
+|   |       
+|   +---pipeda
+|   |       canada.yaml
+|   |       country-index.json
+|   |       
+|   +---pipl
+|   |       china.yaml
+|   |       country-index.json
+|   |       
+|   +---privacyact
+|   |       australia.yaml
+|   |       country-index.json
+|   |       
+|   +---uae-dpl
+|   |       country-index.json
+|   |       united-arab-emirates.yaml
+|   |       
+|   \---uk-gdpr
+|           country-index.json
+|           united-kingdom.yaml
+|           
++---docs
+|       CONTRIBUTING.md
+|       glossary.md
+|       how-to-add-country.md
+|       schema.md
+|       
+\---scripts
+        generate-coverage-json.py
+        lint-yamls.py
+        openpiimap.py
+        reformat-yamls.py
+        tag-all-yamls.py
+        validate-yamls.py
+        
