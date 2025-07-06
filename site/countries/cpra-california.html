@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>United States - California</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>United States - California (CPRA)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Alias</strong> (direct_identifier)</li>
+    
+      <li><strong>Postal Address</strong> (quasi_identifier)</li>
+    
+      <li><strong>Unique Personal Identifier (e.g., customer ID)</strong> (quasi_identifier)</li>
+    
+      <li><strong>Online Identifiers (IP address, cookies, device ID)</strong> (quasi_identifier)</li>
+    
+      <li><strong>Email Address</strong> (direct_identifier)</li>
+    
+      <li><strong>Account Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Social Security Number</strong> (direct_identifier)</li>
+    
+      <li><strong>Driver’s License or State ID Number</strong> (direct_identifier)</li>
+    
+      <li><strong>Passport Number</strong> (direct_identifier)</li>
+    
+      <li><strong>Financial Account, Debit, or Credit Card Number</strong> (direct_identifier)</li>
+    
+      <li><strong>Geolocation Data (precise)</strong> (special_category)</li>
+    
+      <li><strong>Biometric Information (e.g., retina scan, voiceprint)</strong> (special_category)</li>
+    
+      <li><strong>Health Information (non-HIPAA)</strong> (special_category)</li>
+    
+      <li><strong>Genetic Data</strong> (special_category)</li>
+    
+      <li><strong>Sexual Orientation or Sex Life</strong> (special_category)</li>
+    
+      <li><strong>Racial or Ethnic Origin</strong> (special_category)</li>
+    
+      <li><strong>Religious or Philosophical Beliefs</strong> (special_category)</li>
+    
+      <li><strong>Browsing History or Search History</strong> (behavioral)</li>
+    
+      <li><strong>Employment Information</strong> (quasi_identifier)</li>
+    
+      <li><strong>Education Information (non-public)</strong> (quasi_identifier)</li>
+    
+      <li><strong>Sensitive Personal Information Flag</strong> (meta)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "United States - California",
+  "framework": "CPRA",
+  "region": "North America",
+  "language": "en",
+  "version": "2023-01",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "California Privacy Protection Agency (CPPA)",
+  "notes": [
+    "The CPRA expands CCPA by defining Sensitive Personal Information and granting consumers enhanced control over their data.",
+    "Applicable to businesses that meet revenue, data volume, or sharing thresholds under Cal. Civ. Code §1798.140."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(A)"
+        }
+      ]
+    },
+    {
+      "name": "Alias",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(A)"
+        }
+      ]
+    },
+    {
+      "name": "Postal Address",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(A)"
+        }
+      ]
+    },
+    {
+      "name": "Unique Personal Identifier (e.g., customer ID)",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(A)"
+        }
+      ]
+    },
+    {
+      "name": "Online Identifiers (IP address, cookies, device ID)",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(A)"
+        }
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(A)"
+        }
+      ]
+    },
+    {
+      "name": "Account Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(A)"
+        }
+      ]
+    },
+    {
+      "name": "Social Security Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(B)"
+        }
+      ]
+    },
+    {
+      "name": "Driver’s License or State ID Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(B)"
+        }
+      ]
+    },
+    {
+      "name": "Passport Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(B)"
+        }
+      ]
+    },
+    {
+      "name": "Financial Account, Debit, or Credit Card Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(B)"
+        }
+      ]
+    },
+    {
+      "name": "Geolocation Data (precise)",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(ae)(1)(D)"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Information (e.g., retina scan, voiceprint)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "biometric"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(ae)(1)(E)"
+        }
+      ]
+    },
+    {
+      "name": "Health Information (non-HIPAA)",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(ae)(1)(C)"
+        }
+      ]
+    },
+    {
+      "name": "Genetic Data",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(ae)(1)(C)"
+        }
+      ]
+    },
+    {
+      "name": "Sexual Orientation or Sex Life",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(ae)(1)(F)"
+        }
+      ]
+    },
+    {
+      "name": "Racial or Ethnic Origin",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(ae)(1)(F)"
+        }
+      ]
+    },
+    {
+      "name": "Religious or Philosophical Beliefs",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(ae)(1)(F)"
+        }
+      ]
+    },
+    {
+      "name": "Browsing History or Search History",
+      "type": "behavioral",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(F)"
+        }
+      ]
+    },
+    {
+      "name": "Employment Information",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(I)"
+        }
+      ]
+    },
+    {
+      "name": "Education Information (non-public)",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(v)(1)(J)"
+        }
+      ]
+    },
+    {
+      "name": "Sensitive Personal Information Flag",
+      "type": "meta",
+      "required_masking": false,
+      "tags": [
+        "flag",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "CPRA",
+          "section": "Cal. Civ. Code §1798.140(ae)"
+        }
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>

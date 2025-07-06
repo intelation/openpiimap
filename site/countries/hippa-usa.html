@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>United States</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>United States (HIPAA)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Geographic Subdivisions Smaller Than State</strong> (quasi_identifier)</li>
+    
+      <li><strong>All Elements of Dates (except year) for Dates Related to Individual</strong> (quasi_identifier)</li>
+    
+      <li><strong>Telephone Numbers</strong> (direct_identifier)</li>
+    
+      <li><strong>Fax Numbers</strong> (direct_identifier)</li>
+    
+      <li><strong>Email Addresses</strong> (direct_identifier)</li>
+    
+      <li><strong>Social Security Numbers</strong> (direct_identifier)</li>
+    
+      <li><strong>Medical Record Numbers</strong> (direct_identifier)</li>
+    
+      <li><strong>Health Plan Beneficiary Numbers</strong> (direct_identifier)</li>
+    
+      <li><strong>Account Numbers</strong> (direct_identifier)</li>
+    
+      <li><strong>Certificate or License Numbers</strong> (quasi_identifier)</li>
+    
+      <li><strong>Vehicle Identifiers and Serial Numbers</strong> (quasi_identifier)</li>
+    
+      <li><strong>Device Identifiers and Serial Numbers</strong> (quasi_identifier)</li>
+    
+      <li><strong>Web URLs</strong> (direct_identifier)</li>
+    
+      <li><strong>IP Addresses</strong> (direct_identifier)</li>
+    
+      <li><strong>Biometric Identifiers (e.g., fingerprints, voiceprints)</strong> (special_category)</li>
+    
+      <li><strong>Full-Face Photographic Images and Comparable Images</strong> (special_category)</li>
+    
+      <li><strong>Any Other Unique Identifying Number, Characteristic, or Code</strong> (quasi_identifier)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "United States",
+  "framework": "HIPAA",
+  "region": "North America",
+  "language": "en",
+  "version": "2013-01",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "U.S. Department of Health and Human Services (HHS), Office for Civil Rights (OCR)",
+  "notes": [
+    "HIPAA governs the use and disclosure of protected health information (PHI) by covered entities and business associates.",
+    "De-identification standards are defined under 45 CFR §164.514, including the Safe Harbor and Expert Determination methods."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(A)"
+        }
+      ]
+    },
+    {
+      "name": "Geographic Subdivisions Smaller Than State",
+      "type": "quasi_identifier",
+      "subtype": "address",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(B)"
+        }
+      ]
+    },
+    {
+      "name": "All Elements of Dates (except year) for Dates Related to Individual",
+      "type": "quasi_identifier",
+      "subtype": "date",
+      "required_masking": true,
+      "tags": [
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(C)"
+        }
+      ]
+    },
+    {
+      "name": "Telephone Numbers",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(D)"
+        }
+      ]
+    },
+    {
+      "name": "Fax Numbers",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(D)"
+        }
+      ]
+    },
+    {
+      "name": "Email Addresses",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(E)"
+        }
+      ]
+    },
+    {
+      "name": "Social Security Numbers",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(F)"
+        }
+      ]
+    },
+    {
+      "name": "Medical Record Numbers",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(G)"
+        }
+      ]
+    },
+    {
+      "name": "Health Plan Beneficiary Numbers",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(H)"
+        }
+      ]
+    },
+    {
+      "name": "Account Numbers",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(I)"
+        }
+      ]
+    },
+    {
+      "name": "Certificate or License Numbers",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(J)"
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Identifiers and Serial Numbers",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(K)"
+        }
+      ]
+    },
+    {
+      "name": "Device Identifiers and Serial Numbers",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(L)"
+        }
+      ]
+    },
+    {
+      "name": "Web URLs",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(M)"
+        }
+      ]
+    },
+    {
+      "name": "IP Addresses",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(M)"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Identifiers (e.g., fingerprints, voiceprints)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "biometric"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(C)"
+        }
+      ]
+    },
+    {
+      "name": "Full-Face Photographic Images and Comparable Images",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "image"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(N)"
+        }
+      ]
+    },
+    {
+      "name": "Any Other Unique Identifying Number, Characteristic, or Code",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "HIPAA",
+          "section": "45 CFR §164.514(b)(2)(i)(O)"
+        }
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>

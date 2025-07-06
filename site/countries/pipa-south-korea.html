@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>South Korea</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>South Korea (PIPA)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Resident Registration Number (RRN)</strong> (direct_identifier)</li>
+    
+      <li><strong>Passport or National ID Number</strong> (direct_identifier)</li>
+    
+      <li><strong>Address</strong> (quasi_identifier)</li>
+    
+      <li><strong>Phone Number</strong> (direct_identifier)</li>
+    
+      <li><strong>Email Address</strong> (direct_identifier)</li>
+    
+      <li><strong>Biometric Data (e.g., fingerprints, facial image)</strong> (special_category)</li>
+    
+      <li><strong>Health and Medical Information</strong> (special_category)</li>
+    
+      <li><strong>Sexual Orientation or Sexual Life</strong> (special_category)</li>
+    
+      <li><strong>Criminal Record or History</strong> (special_category)</li>
+    
+      <li><strong>Political or Ideological Beliefs</strong> (special_category)</li>
+    
+      <li><strong>Genetic Information</strong> (special_category)</li>
+    
+      <li><strong>IP Address and Online Identifiers</strong> (quasi_identifier)</li>
+    
+      <li><strong>Employment Information</strong> (quasi_identifier)</li>
+    
+      <li><strong>Minor or Child Data (under 14)</strong> (special_category)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "South Korea",
+  "framework": "PIPA",
+  "region": "Asia",
+  "language": "ko",
+  "version": "2023-03",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "Personal Information Protection Commission (PIPC)",
+  "notes": [
+    "PIPA applies to both public and private entities and contains comprehensive rules for the collection, use, and transfer of personal and sensitive information.",
+    "Sensitive information under Article 23 includes ideology, health, genetic, sexual life, and criminal records, requiring separate and explicit consent.",
+    "Recent amendments introduced stronger cross-border restrictions and new data subject rights."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 2(1) – Definition of Personal Information"
+        }
+      ]
+    },
+    {
+      "name": "Resident Registration Number (RRN)",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 24"
+        }
+      ]
+    },
+    {
+      "name": "Passport or National ID Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 2(1)"
+        }
+      ]
+    },
+    {
+      "name": "Address",
+      "type": "quasi_identifier",
+      "subtype": "address",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 2(1)"
+        }
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 2(1)"
+        }
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 2(1)"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Data (e.g., fingerprints, facial image)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "biometric",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 23(1)"
+        }
+      ]
+    },
+    {
+      "name": "Health and Medical Information",
+      "type": "special_category",
+      "subtype": "medical",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 23(1)"
+        }
+      ]
+    },
+    {
+      "name": "Sexual Orientation or Sexual Life",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 23(1)"
+        }
+      ]
+    },
+    {
+      "name": "Criminal Record or History",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 23(1)"
+        }
+      ]
+    },
+    {
+      "name": "Political or Ideological Beliefs",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 23(1)"
+        }
+      ]
+    },
+    {
+      "name": "Genetic Information",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 23(1)"
+        }
+      ]
+    },
+    {
+      "name": "IP Address and Online Identifiers",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "tracking",
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 2(1)"
+        }
+      ]
+    },
+    {
+      "name": "Employment Information",
+      "type": "quasi_identifier",
+      "subtype": "employment",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 2(1)"
+        }
+      ]
+    },
+    {
+      "name": "Minor or Child Data (under 14)",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "child",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPA",
+          "article": "Article 39-3"
+        }
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sweden</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Sweden (GDPR)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Email Address</strong> (direct_identifier)</li>
+    
+      <li><strong>Phone Number</strong> (direct_identifier)</li>
+    
+      <li><strong>IP Address</strong> (indirect_identifier)</li>
+    
+      <li><strong>Personnummer (Swedish Personal Identity Number)</strong> (national_identifier)</li>
+    
+      <li><strong>Health Data</strong> (special_category)</li>
+    
+      <li><strong>Biometric Data (e.g., facial scans, iris recognition)</strong> (special_category)</li>
+    
+      <li><strong>Location Data (workplace entry logs, real-time GPS)</strong> (behavioral)</li>
+    
+      <li><strong>Cookie Identifiers / Behavioral Tracking</strong> (indirect_identifier)</li>
+    
+      <li><strong>Employment Records (reviews, scheduling, camera monitoring)</strong> (contextual_identifier)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "Sweden",
+  "framework": "GDPR",
+  "region": "EU",
+  "language": "sv",
+  "version": "2024-06",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "Integritetsskyddsmyndigheten (IMY) – Swedish Authority for Privacy Protection",
+  "notes": [
+    "Sweden enforces GDPR directly, with complementary provisions under the Swedish Data Protection Act (Dataskyddslagen 2018:218).",
+    "IMY is active in publishing guidance on data subject rights, employment surveillance, health data, and children’s privacy."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "subtype": "personal_name",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "identity"
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "subtype": "digital_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "subtype": "telecom_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "IP Address",
+      "type": "indirect_identifier",
+      "subtype": "network_identifier",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        },
+        {
+          "authority": "IMY",
+          "guideline": "Cookies and tracking technologies",
+          "url": "https://www.imy.se/vagledningar/cookies/"
+        }
+      ],
+      "category_tags": [
+        "digital",
+        "behavioral"
+      ]
+    },
+    {
+      "name": "Personnummer (Swedish Personal Identity Number)",
+      "type": "national_identifier",
+      "subtype": "government_id",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "national_id",
+        "government_id"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "87"
+        },
+        {
+          "national_law": "Dataskyddslagen 2018:218",
+          "chapter": "3 §",
+          "description": "Limits use of personnummer to cases where clearly justified"
+        }
+      ],
+      "category_tags": [
+        "identity",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Health Data",
+      "type": "special_category",
+      "subtype": "health",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        },
+        {
+          "authority": "IMY",
+          "guideline": "Health data and patient records",
+          "url": "https://www.imy.se/vagledningar/halsa/"
+        }
+      ],
+      "category_tags": [
+        "health",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Biometric Data (e.g., facial scans, iris recognition)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "biometric",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        }
+      ],
+      "category_tags": [
+        "biometric",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Location Data (workplace entry logs, real-time GPS)",
+      "type": "behavioral",
+      "subtype": "geolocation",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "tracking",
+        "digital"
+      ]
+    },
+    {
+      "name": "Cookie Identifiers / Behavioral Tracking",
+      "type": "indirect_identifier",
+      "subtype": "device_id",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        },
+        {
+          "authority": "IMY",
+          "guideline": "Cookies guidance",
+          "url": "https://www.imy.se/vagledningar/cookies/"
+        }
+      ],
+      "category_tags": [
+        "digital",
+        "tracking"
+      ]
+    },
+    {
+      "name": "Employment Records (reviews, scheduling, camera monitoring)",
+      "type": "contextual_identifier",
+      "subtype": "hr_data",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "hr_data",
+        "workplace_monitoring"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "88"
+        },
+        {
+          "authority": "IMY",
+          "guideline": "Employee monitoring and data processing",
+          "url": "https://www.imy.se/verksamhet/yrkesutovning/arbetsliv/"
+        }
+      ],
+      "category_tags": [
+        "employment",
+        "sensitive"
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>

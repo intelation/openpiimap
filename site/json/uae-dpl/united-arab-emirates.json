@@ -1,0 +1,224 @@
+{
+  "country": "United Arab Emirates",
+  "framework": "UAE Federal Data Protection Law (Law No. 45/2021)",
+  "region": "Middle East",
+  "language": "ar",
+  "version": "2022-01",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "UAE Data Office",
+  "notes": [
+    "Federal Decree-Law No. 45/2021 establishes the UAE’s first federal data protection regime, applicable to both onshore and offshore processing.",
+    "Sensitive personal data includes health, biometric, religious beliefs, ethnic origin, and criminal records (Article 4).",
+    "Requires Data Protection Impact Assessments (DPIAs) and regulates automated decision-making, consent, and cross-border transfers."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4 – Definition of Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "Address",
+      "type": "quasi_identifier",
+      "subtype": "address",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Emirates ID Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Information (e.g., fingerprints, facial scans)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "biometric"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4 – Sensitive Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "Health or Medical Data",
+      "type": "special_category",
+      "subtype": "medical",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Religious Beliefs",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Racial or Ethnic Origin",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Criminal Record or Judicial Data",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "criminal"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "IP Address and Device Identifiers",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "tracking",
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Location or Geolocation Data",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Behavioral or Profiling Data",
+      "type": "behavioral",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Child or Minor Data (under 18)",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "child",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "UAE DPL",
+          "article": "Article 4"
+        }
+      ]
+    }
+  ]
+}

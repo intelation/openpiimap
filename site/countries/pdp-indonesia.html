@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Indonesia</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Indonesia (PDP Law)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Address</strong> (quasi_identifier)</li>
+    
+      <li><strong>Phone Number</strong> (direct_identifier)</li>
+    
+      <li><strong>Email Address</strong> (direct_identifier)</li>
+    
+      <li><strong>National ID Number (e.g., NIK)</strong> (direct_identifier)</li>
+    
+      <li><strong>Financial Data (e.g., account, transactions)</strong> (special_category)</li>
+    
+      <li><strong>Health Information</strong> (special_category)</li>
+    
+      <li><strong>Biometric Data (e.g., fingerprints, facial data)</strong> (special_category)</li>
+    
+      <li><strong>Genetic Data</strong> (special_category)</li>
+    
+      <li><strong>Religion or Beliefs</strong> (special_category)</li>
+    
+      <li><strong>Political Views or Affiliations</strong> (special_category)</li>
+    
+      <li><strong>Criminal Record or Legal History</strong> (special_category)</li>
+    
+      <li><strong>Child or Minor Data (under 17)</strong> (special_category)</li>
+    
+      <li><strong>IP Address or Online Identifiers</strong> (quasi_identifier)</li>
+    
+      <li><strong>Geolocation Data</strong> (special_category)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "Indonesia",
+  "framework": "PDP Law",
+  "region": "Asia",
+  "language": "id",
+  "version": "2022-10",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "Personal Data Protection Supervisory Authority (under formation)",
+  "notes": [
+    "Indonesia’s PDP Law (Law No. 27 of 2022) provides a comprehensive framework for personal data protection, modeled in part after the GDPR.",
+    "It distinguishes between personal data and specific personal data (Article 3 & 4), with additional safeguards and consent requirements for the latter.",
+    "The law includes provisions on cross-border data transfers, profiling, automated processing, and children’s data."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 3 – Personal Data Definition"
+        }
+      ]
+    },
+    {
+      "name": "Address",
+      "type": "quasi_identifier",
+      "subtype": "address",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 3"
+        }
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 3"
+        }
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 3"
+        }
+      ]
+    },
+    {
+      "name": "National ID Number (e.g., NIK)",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 3"
+        }
+      ]
+    },
+    {
+      "name": "Financial Data (e.g., account, transactions)",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 4 – Specific Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "Health Information",
+      "type": "special_category",
+      "subtype": "medical",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Data (e.g., fingerprints, facial data)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "biometric"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Genetic Data",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Religion or Beliefs",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Political Views or Affiliations",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Criminal Record or Legal History",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "criminal"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Child or Minor Data (under 17)",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "child",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "IP Address or Online Identifiers",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "tracking",
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 3"
+        }
+      ]
+    },
+    {
+      "name": "Geolocation Data",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "PDP Law",
+          "article": "Article 4"
+        }
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>

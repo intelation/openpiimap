@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Liechtenstein</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Liechtenstein (GDPR)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Email Address</strong> (direct_identifier)</li>
+    
+      <li><strong>Phone Number</strong> (direct_identifier)</li>
+    
+      <li><strong>IP Address</strong> (indirect_identifier)</li>
+    
+      <li><strong>Personenkennzahl (National Personal Identification Number)</strong> (national_identifier)</li>
+    
+      <li><strong>Health Data (treatment history, diagnoses, prescriptions)</strong> (special_category)</li>
+    
+      <li><strong>Biometric Data (e.g., face scans, retina, voiceprint)</strong> (special_category)</li>
+    
+      <li><strong>Location Data (GPS, building access, transit usage)</strong> (behavioral)</li>
+    
+      <li><strong>Cookie Identifiers / Analytics Trackers</strong> (indirect_identifier)</li>
+    
+      <li><strong>Employment Data (salary, evaluations, digital time clocks)</strong> (contextual_identifier)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "Liechtenstein",
+  "framework": "GDPR",
+  "region": "EEA",
+  "language": "de",
+  "version": "2024-06",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "Datenschutzstelle (DSS) – Liechtenstein Data Protection Authority",
+  "notes": [
+    "Liechtenstein is a member of the EEA and directly implements GDPR via the national Data Protection Act (Datenschutzgesetz, DSG 2018).",
+    "The DSS enforces GDPR and provides additional national rules for public institutions, education, and sensitive data use."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "subtype": "personal_name",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "identity"
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "subtype": "digital_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "subtype": "telecom_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "IP Address",
+      "type": "indirect_identifier",
+      "subtype": "network_identifier",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        }
+      ],
+      "category_tags": [
+        "digital",
+        "behavioral"
+      ]
+    },
+    {
+      "name": "Personenkennzahl (National Personal Identification Number)",
+      "type": "national_identifier",
+      "subtype": "government_id",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "national_id",
+        "government_id"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "87"
+        },
+        {
+          "national_law": "Datenschutzgesetz (DSG 2018)",
+          "article": "6",
+          "description": "Restricts use of personal identifiers unless permitted by law"
+        }
+      ],
+      "category_tags": [
+        "identity",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Health Data (treatment history, diagnoses, prescriptions)",
+      "type": "special_category",
+      "subtype": "health",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        }
+      ],
+      "category_tags": [
+        "health",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Biometric Data (e.g., face scans, retina, voiceprint)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "biometric",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        }
+      ],
+      "category_tags": [
+        "biometric",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Location Data (GPS, building access, transit usage)",
+      "type": "behavioral",
+      "subtype": "geolocation",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "tracking",
+        "digital"
+      ]
+    },
+    {
+      "name": "Cookie Identifiers / Analytics Trackers",
+      "type": "indirect_identifier",
+      "subtype": "device_id",
+      "required_masking": true,
+      "tags": [
+        "tracking",
+        "online_identifier",
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        }
+      ],
+      "category_tags": [
+        "tracking",
+        "digital"
+      ]
+    },
+    {
+      "name": "Employment Data (salary, evaluations, digital time clocks)",
+      "type": "contextual_identifier",
+      "subtype": "hr_data",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "hr_data",
+        "workplace_monitoring"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "88"
+        },
+        {
+          "national_law": "Datenschutzgesetz (DSG 2018)",
+          "article": "7",
+          "description": "Permits processing of employee data only under clear legal basis"
+        }
+      ],
+      "category_tags": [
+        "employment",
+        "sensitive"
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>

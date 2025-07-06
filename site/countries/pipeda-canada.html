@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Canada</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Canada (PIPEDA)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Home Address</strong> (quasi_identifier)</li>
+    
+      <li><strong>Phone Number</strong> (direct_identifier)</li>
+    
+      <li><strong>Email Address</strong> (direct_identifier)</li>
+    
+      <li><strong>Social Insurance Number (SIN)</strong> (direct_identifier)</li>
+    
+      <li><strong>Financial Information (e.g., income, banking, credit)</strong> (special_category)</li>
+    
+      <li><strong>Purchase History or Transaction Records</strong> (behavioral)</li>
+    
+      <li><strong>Employment History or Evaluations</strong> (quasi_identifier)</li>
+    
+      <li><strong>Education Records</strong> (quasi_identifier)</li>
+    
+      <li><strong>Opinions or Personal Views (recorded)</strong> (special_category)</li>
+    
+      <li><strong>Biometric Information (e.g., fingerprints, face data)</strong> (special_category)</li>
+    
+      <li><strong>Health or Medical Information</strong> (special_category)</li>
+    
+      <li><strong>IP Address and Online Identifiers</strong> (quasi_identifier)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "Canada",
+  "framework": "PIPEDA",
+  "region": "North America",
+  "language": "en",
+  "version": "2018-11",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "Office of the Privacy Commissioner of Canada (OPC)",
+  "notes": [
+    "PIPEDA applies to private-sector organizations that collect, use, or disclose personal information in the course of commercial activity.",
+    "Personal information is defined broadly and includes any information about an identifiable individual.",
+    "Sensitive information (e.g. health, financial, biometric) requires higher protection and typically express consent."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "Section 2 – Definition of Personal Information"
+        }
+      ]
+    },
+    {
+      "name": "Home Address",
+      "type": "quasi_identifier",
+      "subtype": "address",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "Section 2"
+        }
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "Section 2"
+        }
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "Section 2"
+        }
+      ]
+    },
+    {
+      "name": "Social Insurance Number (SIN)",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "Section 2"
+        }
+      ]
+    },
+    {
+      "name": "Financial Information (e.g., income, banking, credit)",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "Section 2, Schedule 1 Principle 4.3.4 (sensitivity)"
+        }
+      ]
+    },
+    {
+      "name": "Purchase History or Transaction Records",
+      "type": "behavioral",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "Schedule 1 Principle 4.2.3"
+        }
+      ]
+    },
+    {
+      "name": "Employment History or Evaluations",
+      "type": "quasi_identifier",
+      "subtype": "employment",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "Section 2"
+        }
+      ]
+    },
+    {
+      "name": "Education Records",
+      "type": "quasi_identifier",
+      "subtype": "education",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "Section 2"
+        }
+      ]
+    },
+    {
+      "name": "Opinions or Personal Views (recorded)",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "Section 2"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Information (e.g., fingerprints, face data)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "biometric"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "Schedule 1 Principle 4.3.4"
+        }
+      ]
+    },
+    {
+      "name": "Health or Medical Information",
+      "type": "special_category",
+      "subtype": "medical",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "Schedule 1 Principle 4.3.4"
+        }
+      ]
+    },
+    {
+      "name": "IP Address and Online Identifiers",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPEDA",
+          "section": "OPC Interpretation (2013)"
+        }
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>

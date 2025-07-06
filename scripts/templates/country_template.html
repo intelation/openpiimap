@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ country }}</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>{{ country }} ({{ framework }})</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    {% for cat in categories %}
+      <li><strong>{{ cat.name }}</strong> ({{ cat.type }})</li>
+    {% endfor %}
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{{ json_data }}</pre>
+</body>
+</html>

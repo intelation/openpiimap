@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Iceland</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Iceland (GDPR)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Email Address</strong> (direct_identifier)</li>
+    
+      <li><strong>Phone Number</strong> (direct_identifier)</li>
+    
+      <li><strong>IP Address</strong> (indirect_identifier)</li>
+    
+      <li><strong>Kennitala (Icelandic National ID Number)</strong> (national_identifier)</li>
+    
+      <li><strong>Health Data (prescriptions, diagnoses, medical notes)</strong> (special_category)</li>
+    
+      <li><strong>Biometric Data (e.g., fingerprint scanners, retina scans)</strong> (special_category)</li>
+    
+      <li><strong>Location Data (GPS, public transit monitoring)</strong> (behavioral)</li>
+    
+      <li><strong>Cookie Identifiers / Device Tracking</strong> (indirect_identifier)</li>
+    
+      <li><strong>Employment Records (payroll, conduct reports, hours logged)</strong> (contextual_identifier)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "Iceland",
+  "framework": "GDPR",
+  "region": "EEA",
+  "language": "is",
+  "version": "2024-06",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "Persónuvernd – Icelandic Data Protection Authority",
+  "notes": [
+    "Iceland, as an EEA member, implements GDPR through Act No. 90/2018 on Data Protection and the Processing of Personal Data.",
+    "Persónuvernd issues localized interpretations of GDPR with emphasis on public records, biometric systems, and children's rights."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "subtype": "personal_name",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "identity"
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "subtype": "digital_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "subtype": "telecom_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "IP Address",
+      "type": "indirect_identifier",
+      "subtype": "network_identifier",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        }
+      ],
+      "category_tags": [
+        "digital",
+        "behavioral"
+      ]
+    },
+    {
+      "name": "Kennitala (Icelandic National ID Number)",
+      "type": "national_identifier",
+      "subtype": "government_id",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "national_id",
+        "government_id"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "87"
+        },
+        {
+          "national_law": "Act No. 90/2018",
+          "section": "11",
+          "description": "Processing of national identifiers like kennitala must be explicitly justified"
+        }
+      ],
+      "category_tags": [
+        "identity",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Health Data (prescriptions, diagnoses, medical notes)",
+      "type": "special_category",
+      "subtype": "health",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        },
+        {
+          "national_law": "Act No. 90/2018",
+          "section": "5"
+        }
+      ],
+      "category_tags": [
+        "health",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Biometric Data (e.g., fingerprint scanners, retina scans)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "biometric",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        }
+      ],
+      "category_tags": [
+        "biometric",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Location Data (GPS, public transit monitoring)",
+      "type": "behavioral",
+      "subtype": "geolocation",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "tracking",
+        "digital"
+      ]
+    },
+    {
+      "name": "Cookie Identifiers / Device Tracking",
+      "type": "indirect_identifier",
+      "subtype": "device_id",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        }
+      ],
+      "category_tags": [
+        "tracking",
+        "digital"
+      ]
+    },
+    {
+      "name": "Employment Records (payroll, conduct reports, hours logged)",
+      "type": "contextual_identifier",
+      "subtype": "hr_data",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "hr_data",
+        "workplace_monitoring"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "88"
+        },
+        {
+          "national_law": "Act No. 90/2018",
+          "section": "9",
+          "description": "Personal data in employment settings must be limited to what is necessary"
+        }
+      ],
+      "category_tags": [
+        "employment",
+        "sensitive"
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>

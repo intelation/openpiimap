@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Greece</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Greece (GDPR)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Email Address</strong> (direct_identifier)</li>
+    
+      <li><strong>Phone Number</strong> (direct_identifier)</li>
+    
+      <li><strong>IP Address</strong> (indirect_identifier)</li>
+    
+      <li><strong>Αριθμός Μητρώου Κοινωνικής Ασφάλισης (AMKA - Social Security Number)</strong> (national_identifier)</li>
+    
+      <li><strong>Health Data (diagnoses, prescriptions, medical visits)</strong> (special_category)</li>
+    
+      <li><strong>Biometric Data (e.g., facial recognition, fingerprints)</strong> (special_category)</li>
+    
+      <li><strong>Location Data (public transit cards, GPS tracking)</strong> (behavioral)</li>
+    
+      <li><strong>Cookie Identifiers / Analytics Tracking Tools</strong> (indirect_identifier)</li>
+    
+      <li><strong>Employment Records (contracts, evaluations, access logs)</strong> (contextual_identifier)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "Greece",
+  "framework": "GDPR",
+  "region": "EU",
+  "language": "el",
+  "version": "2024-06",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "Hellenic Data Protection Authority (HDPA) – Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα",
+  "notes": [
+    "Greece enforces GDPR through Law 4624/2019, which supplements and adapts the regulation to national law.",
+    "The HDPA actively publishes decisions and guidelines, particularly around biometric processing, video surveillance, and the public sector."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "subtype": "personal_name",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "identity"
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "subtype": "digital_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "subtype": "telecom_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "IP Address",
+      "type": "indirect_identifier",
+      "subtype": "network_identifier",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        },
+        {
+          "authority": "HDPA",
+          "guideline": "Cookies and electronic communications",
+          "url": "https://www.dpa.gr/en/individuals/internet/cookies"
+        }
+      ],
+      "category_tags": [
+        "digital",
+        "behavioral"
+      ]
+    },
+    {
+      "name": "Αριθμός Μητρώου Κοινωνικής Ασφάλισης (AMKA - Social Security Number)",
+      "type": "national_identifier",
+      "subtype": "government_id",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "national_id",
+        "government_id"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "87"
+        },
+        {
+          "national_law": "Law 4624/2019",
+          "article": "5",
+          "description": "National identifiers must be processed only under legal justification"
+        }
+      ],
+      "category_tags": [
+        "identity",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Health Data (diagnoses, prescriptions, medical visits)",
+      "type": "special_category",
+      "subtype": "health",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        },
+        {
+          "authority": "HDPA",
+          "guideline": "Health data and confidentiality",
+          "url": "https://www.dpa.gr/el/personal-data-protection/health"
+        }
+      ],
+      "category_tags": [
+        "health",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Biometric Data (e.g., facial recognition, fingerprints)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "biometric",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        },
+        {
+          "authority": "HDPA",
+          "decision": "No. 28/2019",
+          "description": "Fingerprint collection in the workplace was deemed excessive"
+        }
+      ],
+      "category_tags": [
+        "biometric",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Location Data (public transit cards, GPS tracking)",
+      "type": "behavioral",
+      "subtype": "geolocation",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "tracking",
+        "digital"
+      ]
+    },
+    {
+      "name": "Cookie Identifiers / Analytics Tracking Tools",
+      "type": "indirect_identifier",
+      "subtype": "device_id",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        },
+        {
+          "authority": "HDPA",
+          "guideline": "Cookies and consent",
+          "url": "https://www.dpa.gr/en/individuals/internet/cookies"
+        }
+      ],
+      "category_tags": [
+        "tracking",
+        "digital"
+      ]
+    },
+    {
+      "name": "Employment Records (contracts, evaluations, access logs)",
+      "type": "contextual_identifier",
+      "subtype": "hr_data",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "hr_data",
+        "workplace_monitoring"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "88"
+        },
+        {
+          "national_law": "Law 4624/2019",
+          "article": "27",
+          "description": "Allows lawful processing of employee data under defined conditions"
+        }
+      ],
+      "category_tags": [
+        "employment",
+        "sensitive"
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>

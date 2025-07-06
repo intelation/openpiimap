@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Japan</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Japan (APPI)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Address</strong> (quasi_identifier)</li>
+    
+      <li><strong>Phone Number</strong> (direct_identifier)</li>
+    
+      <li><strong>Email Address</strong> (direct_identifier)</li>
+    
+      <li><strong>Government-issued Identifier (e.g., My Number)</strong> (direct_identifier)</li>
+    
+      <li><strong>Financial Information (bank account, credit card)</strong> (special_category)</li>
+    
+      <li><strong>Medical or Health Information</strong> (special_category)</li>
+    
+      <li><strong>Biometric Data (e.g., fingerprint, facial image)</strong> (special_category)</li>
+    
+      <li><strong>Race or Ethnic Origin</strong> (special_category)</li>
+    
+      <li><strong>Religious Beliefs or Political Opinions</strong> (special_category)</li>
+    
+      <li><strong>Criminal Record or History</strong> (special_category)</li>
+    
+      <li><strong>IP Address or Online Identifiers</strong> (quasi_identifier)</li>
+    
+      <li><strong>Employee Information</strong> (quasi_identifier)</li>
+    
+      <li><strong>Minor Information (under age of majority)</strong> (special_category)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "Japan",
+  "framework": "APPI",
+  "region": "Asia",
+  "language": "ja",
+  "version": "2022-04",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "Personal Information Protection Commission (PPC)",
+  "notes": [
+    "Japan’s APPI regulates personal information handled by businesses and includes rules for sensitive data, data transfers, and anonymized processing.",
+    "Special care-required personal information includes race, religion, medical history, and criminal records (Article 2(3)).",
+    "Revised in 2022 to expand individual rights and cross-border transfer rules."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "Article 2(1) – Definition of Personal Information"
+        }
+      ]
+    },
+    {
+      "name": "Address",
+      "type": "quasi_identifier",
+      "subtype": "address",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "Article 2(1)"
+        }
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "Article 2(1)"
+        }
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "Article 2(1)"
+        }
+      ]
+    },
+    {
+      "name": "Government-issued Identifier (e.g., My Number)",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "Article 2(1)"
+        }
+      ]
+    },
+    {
+      "name": "Financial Information (bank account, credit card)",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "PPC Guidelines (2022)"
+        }
+      ]
+    },
+    {
+      "name": "Medical or Health Information",
+      "type": "special_category",
+      "subtype": "medical",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "Article 2(3) – Special Care-Required Information"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Data (e.g., fingerprint, facial image)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "biometric",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "Article 2(3)"
+        }
+      ]
+    },
+    {
+      "name": "Race or Ethnic Origin",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "Article 2(3)"
+        }
+      ]
+    },
+    {
+      "name": "Religious Beliefs or Political Opinions",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "Article 2(3)"
+        }
+      ]
+    },
+    {
+      "name": "Criminal Record or History",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "Article 2(3)"
+        }
+      ]
+    },
+    {
+      "name": "IP Address or Online Identifiers",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "tracking",
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "PPC Interpretation (2022)"
+        }
+      ]
+    },
+    {
+      "name": "Employee Information",
+      "type": "quasi_identifier",
+      "subtype": "employment",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "Article 2(1)"
+        }
+      ]
+    },
+    {
+      "name": "Minor Information (under age of majority)",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "child",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "APPI",
+          "article": "PPC Interpretation (2022)"
+        }
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>

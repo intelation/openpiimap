@@ -1,0 +1,290 @@
+{
+  "country": "Germany",
+  "framework": "GDPR",
+  "region": "EU",
+  "language": "de",
+  "version": "2024-06",
+  "status": "published",
+  "last_updated": "2025-06-26",
+  "source_verified": true,
+  "authority": "BfDI (Federal Commissioner for Data Protection and Freedom of Information)",
+  "notes": [
+    "Germany implements GDPR alongside the Bundesdatenschutzgesetz (BDSG).",
+    "This file reflects general GDPR coverage and BDSG-sensitive fields where applicable."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "subtype": "personal_name",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)",
+          "description": "Personal data includes any identifiable information"
+        },
+        {
+          "regulation": "BDSG",
+          "article": "Section 26",
+          "description": "Employee data requires special protection"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "identity"
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "subtype": "digital_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "subtype": "telecom_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "IP Address",
+      "type": "indirect_identifier",
+      "subtype": "network_identifier",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30",
+          "description": "Online identifiers including IP addresses can identify users"
+        }
+      ],
+      "category_tags": [
+        "digital",
+        "behavioral"
+      ]
+    },
+    {
+      "name": "National ID Number (Personalausweisnummer)",
+      "type": "national_identifier",
+      "subtype": "government_id",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "national_id",
+        "government_id"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "87"
+        },
+        {
+          "regulation": "BDSG",
+          "article": "Section 20"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "identity"
+      ]
+    },
+    {
+      "name": "Biometric Data (e.g., facial recognition, fingerprints)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "biometric",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "biometric",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Health Data (diagnoses, medical history)",
+      "type": "special_category",
+      "subtype": "health",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "health",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Sexual Orientation",
+      "type": "special_category",
+      "subtype": "personal_attributes",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        }
+      ],
+      "category_tags": [
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Location Data (real-time GPS)",
+      "type": "behavioral",
+      "subtype": "geolocation",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)",
+          "description": "Location data may contribute to identifiability"
+        }
+      ],
+      "category_tags": [
+        "digital",
+        "behavioral"
+      ]
+    },
+    {
+      "name": "Cookie Identifier / Device Fingerprint",
+      "type": "indirect_identifier",
+      "subtype": "device_id",
+      "required_masking": true,
+      "tags": [
+        "tracking",
+        "online_identifier",
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        }
+      ],
+      "category_tags": [
+        "digital",
+        "tracking"
+      ]
+    },
+    {
+      "name": "Employment Data (salary, performance reviews)",
+      "type": "contextual_identifier",
+      "subtype": "hr_data",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "hr_data",
+        "compensation"
+      ],
+      "citations": [
+        {
+          "regulation": "BDSG",
+          "article": "Section 26",
+          "description": "Personal data in employment context"
+        }
+      ],
+      "category_tags": [
+        "employment",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Financial Account Number (IBAN)",
+      "type": "financial_identifier",
+      "subtype": "bank_account",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "financial",
+        "bank_account"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "finance",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Insurance Number (Krankenversicherung)",
+      "type": "national_identifier",
+      "subtype": "insurance_id",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "insurance",
+        "health_id"
+      ],
+      "citations": [
+        {
+          "regulation": "BDSG",
+          "article": "Section 22"
+        }
+      ],
+      "category_tags": [
+        "health",
+        "finance"
+      ]
+    }
+  ]
+}

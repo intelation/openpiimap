@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Brazil</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Brazil (LGPD)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Home Address</strong> (quasi_identifier)</li>
+    
+      <li><strong>Phone Number</strong> (direct_identifier)</li>
+    
+      <li><strong>Email Address</strong> (direct_identifier)</li>
+    
+      <li><strong>CPF (Cadastro de Pessoas Físicas)</strong> (direct_identifier)</li>
+    
+      <li><strong>RG (Registro Geral – National ID)</strong> (direct_identifier)</li>
+    
+      <li><strong>Financial Information (e.g., banking, income)</strong> (special_category)</li>
+    
+      <li><strong>Health Data</strong> (special_category)</li>
+    
+      <li><strong>Biometric Data (e.g., fingerprint, face)</strong> (special_category)</li>
+    
+      <li><strong>Racial or Ethnic Origin</strong> (special_category)</li>
+    
+      <li><strong>Religious Belief</strong> (special_category)</li>
+    
+      <li><strong>Political Opinion</strong> (special_category)</li>
+    
+      <li><strong>Sexual Orientation</strong> (special_category)</li>
+    
+      <li><strong>Browsing Behavior or Access Logs</strong> (behavioral)</li>
+    
+      <li><strong>Geolocation Data</strong> (special_category)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "Brazil",
+  "framework": "LGPD",
+  "region": "South America",
+  "language": "pt",
+  "version": "2018-08",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "ANPD (Autoridade Nacional de Proteção de Dados)",
+  "notes": [
+    "The LGPD applies to any processing of personal data carried out in Brazil or related to individuals located in Brazil.",
+    "Sensitive personal data is explicitly defined under Article 5, II and includes health, biometric, racial, and political information.",
+    "The law closely aligns with GDPR principles but applies to both online and offline data processing."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, I"
+        }
+      ]
+    },
+    {
+      "name": "Home Address",
+      "type": "quasi_identifier",
+      "subtype": "address",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, I"
+        }
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, I"
+        }
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, I"
+        }
+      ]
+    },
+    {
+      "name": "CPF (Cadastro de Pessoas Físicas)",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, I"
+        }
+      ]
+    },
+    {
+      "name": "RG (Registro Geral – National ID)",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, I"
+        }
+      ]
+    },
+    {
+      "name": "Financial Information (e.g., banking, income)",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, II"
+        }
+      ]
+    },
+    {
+      "name": "Health Data",
+      "type": "special_category",
+      "subtype": "medical",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, II"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Data (e.g., fingerprint, face)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "biometric"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, II"
+        }
+      ]
+    },
+    {
+      "name": "Racial or Ethnic Origin",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, II"
+        }
+      ]
+    },
+    {
+      "name": "Religious Belief",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, II"
+        }
+      ]
+    },
+    {
+      "name": "Political Opinion",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, II"
+        }
+      ]
+    },
+    {
+      "name": "Sexual Orientation",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, II"
+        }
+      ]
+    },
+    {
+      "name": "Browsing Behavior or Access Logs",
+      "type": "behavioral",
+      "required_masking": true,
+      "tags": [
+        "tracking",
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, I"
+        }
+      ]
+    },
+    {
+      "name": "Geolocation Data",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "LGPD",
+          "article": "Article 5, I"
+        }
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>

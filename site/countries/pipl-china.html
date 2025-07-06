@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>China</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>China (PIPL)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Contact Information (Phone, Email)</strong> (direct_identifier)</li>
+    
+      <li><strong>National ID Number (e.g., Resident Identity Card)</strong> (direct_identifier)</li>
+    
+      <li><strong>Home Address</strong> (quasi_identifier)</li>
+    
+      <li><strong>Network Identifiers (IP Address, Device ID)</strong> (quasi_identifier)</li>
+    
+      <li><strong>Location Data (precise)</strong> (special_category)</li>
+    
+      <li><strong>Biometric Information (e.g., facial features, voiceprints)</strong> (special_category)</li>
+    
+      <li><strong>Religious Beliefs</strong> (special_category)</li>
+    
+      <li><strong>Health and Medical Records</strong> (special_category)</li>
+    
+      <li><strong>Financial Information</strong> (special_category)</li>
+    
+      <li><strong>Personal Information of Minors Under 14</strong> (special_category)</li>
+    
+      <li><strong>Online Behavior and Profiling</strong> (behavioral)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "China",
+  "framework": "PIPL",
+  "region": "Asia",
+  "language": "zh",
+  "version": "2021-11",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "Cyberspace Administration of China (CAC)",
+  "notes": [
+    "PIPL defines personal information broadly and imposes stricter rules for processing sensitive personal information, including biometric, religious, health, and children's data.",
+    "Cross-border transfers are highly regulated, requiring security assessments and contractual safeguards.",
+    "Personal information processing must follow principles of legality, necessity, and transparency under Article 5."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPL",
+          "article": "Article 4 – Definition of Personal Information"
+        }
+      ]
+    },
+    {
+      "name": "Contact Information (Phone, Email)",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "National ID Number (e.g., Resident Identity Card)",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Home Address",
+      "type": "quasi_identifier",
+      "subtype": "address",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Network Identifiers (IP Address, Device ID)",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPL",
+          "article": "Article 4"
+        }
+      ]
+    },
+    {
+      "name": "Location Data (precise)",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPL",
+          "article": "Article 28 – Definition of Sensitive Personal Information"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Information (e.g., facial features, voiceprints)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "biometric"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPL",
+          "article": "Article 28"
+        }
+      ]
+    },
+    {
+      "name": "Religious Beliefs",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPL",
+          "article": "Article 28"
+        }
+      ]
+    },
+    {
+      "name": "Health and Medical Records",
+      "type": "special_category",
+      "subtype": "medical",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "phi"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPL",
+          "article": "Article 28"
+        }
+      ]
+    },
+    {
+      "name": "Financial Information",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPL",
+          "article": "Article 28"
+        }
+      ]
+    },
+    {
+      "name": "Personal Information of Minors Under 14",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "child"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPL",
+          "article": "Article 31"
+        }
+      ]
+    },
+    {
+      "name": "Online Behavior and Profiling",
+      "type": "behavioral",
+      "required_masking": true,
+      "tags": [
+        "tracking",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PIPL",
+          "article": "Article 28"
+        }
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Switzerland</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Switzerland (FADP)</h1>
+  <h3>PII Categories:</h3>
+  <ul>
+    
+      <li><strong>Full Name</strong> (direct_identifier)</li>
+    
+      <li><strong>Address</strong> (quasi_identifier)</li>
+    
+      <li><strong>Phone Number</strong> (direct_identifier)</li>
+    
+      <li><strong>Email Address</strong> (direct_identifier)</li>
+    
+      <li><strong>Swiss National ID or AVS Number</strong> (direct_identifier)</li>
+    
+      <li><strong>Health Information</strong> (special_category)</li>
+    
+      <li><strong>Biometric Data (e.g., iris scan, facial image)</strong> (special_category)</li>
+    
+      <li><strong>Genetic Data</strong> (special_category)</li>
+    
+      <li><strong>Racial or Ethnic Origin</strong> (special_category)</li>
+    
+      <li><strong>Political Opinions or Activities</strong> (special_category)</li>
+    
+      <li><strong>Religious or Philosophical Beliefs</strong> (special_category)</li>
+    
+      <li><strong>Behavioral Data and Profiling</strong> (behavioral)</li>
+    
+      <li><strong>Online Identifiers (IP address, cookie ID)</strong> (quasi_identifier)</li>
+    
+  </ul>
+  <h3>Raw JSON:</h3>
+  <pre>{
+  "country": "Switzerland",
+  "framework": "FADP",
+  "region": "Europe",
+  "language": "de",
+  "version": "2023-09",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "Federal Data Protection and Information Commissioner (FDPIC)",
+  "notes": [
+    "The revised FADP came into effect on September 1, 2023, harmonizing with GDPR principles while maintaining Swiss legal specifics.",
+    "Sensitive personal data is explicitly defined and includes health, religion, biometric, political views, and racial origin.",
+    "Profiling and cross-border data transfers are regulated under stricter conditions."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(a) – Definition of Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "Address",
+      "type": "quasi_identifier",
+      "subtype": "address",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(a)"
+        }
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(a)"
+        }
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(a)"
+        }
+      ]
+    },
+    {
+      "name": "Swiss National ID or AVS Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(a)"
+        }
+      ]
+    },
+    {
+      "name": "Health Information",
+      "type": "special_category",
+      "subtype": "medical",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(c) – Sensitive Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Data (e.g., iris scan, facial image)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "biometric",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(c)"
+        }
+      ]
+    },
+    {
+      "name": "Genetic Data",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(c)"
+        }
+      ]
+    },
+    {
+      "name": "Racial or Ethnic Origin",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(c)"
+        }
+      ]
+    },
+    {
+      "name": "Political Opinions or Activities",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(c)"
+        }
+      ]
+    },
+    {
+      "name": "Religious or Philosophical Beliefs",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(c)"
+        }
+      ]
+    },
+    {
+      "name": "Behavioral Data and Profiling",
+      "type": "behavioral",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(f) – Definition of Profiling"
+        }
+      ]
+    },
+    {
+      "name": "Online Identifiers (IP address, cookie ID)",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "FADP",
+          "article": "Article 5(a)"
+        }
+      ]
+    }
+  ]
+}</pre>
+</body>
+</html>
