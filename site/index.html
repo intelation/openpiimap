@@ -16,93 +16,101 @@
     <link href="assets/css/main.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">
-                <i class="bi bi-shield-check me-2"></i>
-                OpenPIIMap
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">
-                            <i class="bi bi-house me-1"></i>Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="compare.html">
-                            <i class="bi bi-arrows-angle-contract me-1"></i>Compare
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.html">
-                            <i class="bi bi-graph-up me-1"></i>Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="api.html">
-                            <i class="bi bi-code-square me-1"></i>API
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="integration.html">
-                            <i class="bi bi-puzzle me-1"></i>Integration
-                        </a>
-                    </li>
-                </ul>
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-shield-lock-fill me-2"></i>
+                    OpenPIIMap
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">
+                                <i class="bi bi-house-fill me-1"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#countries">
+                                <i class="bi bi-globe me-1"></i>Countries
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="map.html">
+                                <i class="bi bi-map me-1"></i>World Map
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="compare.html">
+                                <i class="bi bi-arrow-left-right me-1"></i>Compare
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="bi bi-graph-up me-1"></i>Analytics
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="api.html">
+                                <i class="bi bi-code-slash me-1"></i>API
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="integration.html">
+                                <i class="bi bi-puzzle me-1"></i>Integration
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/intelation/openpiimap" target="_blank">
+                                <i class="bi bi-github me-1"></i>GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section bg-gradient text-white py-5">
+    <!-- Hero Banner -->
+    <section class="hero-banner py-5" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-light) 100%); color: white;">
         <div class="container">
-            <div class="row align-items-center min-vh-75">
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4">
-                        Navigate Global Privacy Laws with Confidence
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">
+                        Global Privacy Law Navigator
                     </h1>
                     <p class="lead mb-4">
-                        Comprehensive database of PII/PHI definitions across 30+ countries and major privacy frameworks including GDPR, CPRA, LGPD, and more.
+                        Comprehensive database of PII/PHI definitions across 30+ countries and major privacy frameworks. 
+                        Compare regulations, understand compliance requirements, and navigate the complex landscape of global data protection laws.
                     </p>
                     <div class="d-flex flex-wrap gap-3">
                         <a href="#countries" class="btn btn-light btn-lg">
                             <i class="bi bi-globe me-2"></i>Explore Countries
                         </a>
-                        <a href="compare.html" class="btn btn-outline-light btn-lg">
-                            <i class="bi bi-arrows-angle-contract me-2"></i>Compare Laws
+                        <a href="https://github.com/intelation/openpiimap" target="_blank" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-github me-2"></i>View on GitHub
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center">
-                    <div class="hero-stats">
-                        <div class="row g-4">
+                <div class="col-lg-4 text-center">
+                    <div class="hero-stats mt-4 mt-lg-0">
+                        <div class="row g-3">
                             <div class="col-6">
                                 <div class="stat-card">
-                                    <h3 class="stat-number" data-count="32">0</h3>
+                                    <h3 class="stat-number" data-count="32">32</h3>
                                     <p class="stat-label">Countries</p>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="stat-card">
-                                    <h3 class="stat-number" data-count="17">0</h3>
+                                    <h3 class="stat-number" data-count="17">17</h3>
                                     <p class="stat-label">Frameworks</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="stat-card">
-                                    <h3 class="stat-number" data-count="500">0</h3>
-                                    <p class="stat-label">PII Categories</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="stat-card">
-                                    <h3 class="stat-number" data-count="99">0</h3>
-                                    <p class="stat-label">Coverage %</p>
                                 </div>
                             </div>
                         </div>
