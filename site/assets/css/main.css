@@ -83,6 +83,12 @@ body {
   z-index: 1000;
 }
 
+.site-header .navbar-brand {
+  color: white !important;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
 .site-header .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 500;
@@ -94,6 +100,42 @@ body {
   color: white !important;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius);
+}
+
+.site-header .navbar-nav .nav-link.active {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius);
+}
+
+/* Dropdown menu styling */
+.site-header .dropdown-menu {
+  background-color: white;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-lg);
+  min-width: 200px;
+}
+
+.site-header .dropdown-item {
+  color: var(--gray-700);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.site-header .dropdown-item:hover {
+  background-color: var(--gray-100);
+  color: var(--primary-blue);
+}
+
+.site-header .dropdown-divider {
+  border-color: var(--gray-200);
+  margin: 0.5rem 0;
+}
+
+.site-header .nav-link.dropdown-toggle::after {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* ===== HERO SECTION ===== */
