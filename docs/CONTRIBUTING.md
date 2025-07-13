@@ -31,7 +31,7 @@ We welcome contributions from developers, privacy professionals, legal experts, 
 /data/                → YAMLs by framework (e.g., gdpr/, hipaa/)
 /scripts/             → Validation, lint, and coverage tools
 /api/                 → WIP REST API
-/ui/frontend/         → WIP React web explorer
+/frontend/            → Static website frontend
 /docs/                → This file, schema specs, roadmap
 .github/              → GitHub Actions, issue templates
 ````

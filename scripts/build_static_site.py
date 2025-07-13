@@ -61,6 +61,14 @@ for framework in os.listdir(DATA_DIR):
         html_content = template.render(
             country=data.get("country", base_name),
             framework=data.get("framework", framework),
+            region=data.get("region", ""),
+            language=data.get("language", ""),
+            version=data.get("version", ""),
+            status=data.get("status", ""),
+            last_updated=data.get("last_updated", ""),
+            source_verified=data.get("source_verified", False),
+            authority=data.get("authority", ""),
+            notes=data.get("notes", []),
             categories=data.get("categories", []),
             json_data=json.dumps(data, indent=2, ensure_ascii=False, default=make_json_safe)
         )

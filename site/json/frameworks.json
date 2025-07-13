@@ -1,0 +1,189 @@
+[
+  {
+    "id": "gdpr",
+    "name": "General Data Protection Regulation",
+    "abbreviation": "GDPR",
+    "region": "Europe",
+    "countries": ["Germany", "France", "Austria", "Belgium", "Denmark", "Finland", "Greece", "Iceland", "Ireland", "Italy", "Liechtenstein", "Netherlands", "Norway", "Poland", "Spain", "Sweden"],
+    "effective_date": "2018-05-25",
+    "description": "Comprehensive data protection regulation for the European Union and European Economic Area.",
+    "type": "comprehensive",
+    "key_principles": ["Lawfulness", "Fairness", "Transparency", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Integrity and confidentiality", "Accountability"]
+  },
+  {
+    "id": "uk-gdpr",
+    "name": "UK General Data Protection Regulation",
+    "abbreviation": "UK GDPR",
+    "region": "Europe",
+    "countries": ["United Kingdom"],
+    "effective_date": "2021-01-01",
+    "description": "UK's version of GDPR post-Brexit, largely similar to EU GDPR.",
+    "type": "comprehensive",
+    "key_principles": ["Lawfulness", "Fairness", "Transparency", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Integrity and confidentiality", "Accountability"]
+  },
+  {
+    "id": "lgpd",
+    "name": "Lei Geral de Proteção de Dados",
+    "abbreviation": "LGPD",
+    "region": "Latin America",
+    "countries": ["Brazil"],
+    "effective_date": "2020-09-18",
+    "description": "Brazil's comprehensive data protection law, inspired by GDPR.",
+    "type": "comprehensive",
+    "key_principles": ["Purpose", "Adequacy", "Necessity", "Free access", "Data quality", "Transparency", "Security", "Prevention", "Non-discrimination", "Accountability"]
+  },
+  {
+    "id": "cpra",
+    "name": "California Privacy Rights Act",
+    "abbreviation": "CPRA",
+    "region": "North America",
+    "countries": ["California"],
+    "effective_date": "2023-01-01",
+    "description": "Enhanced version of CCPA with additional privacy rights and protections.",
+    "type": "comprehensive",
+    "key_principles": ["Consumer rights", "Business transparency", "Data minimization", "Purpose limitation", "Sensitive personal information protection"]
+  },
+  {
+    "id": "pipeda",
+    "name": "Personal Information Protection and Electronic Documents Act",
+    "abbreviation": "PIPEDA",
+    "region": "North America",
+    "countries": ["Canada"],
+    "effective_date": "2001-01-01",
+    "description": "Canada's federal privacy law for private sector organizations.",
+    "type": "comprehensive",
+    "key_principles": ["Accountability", "Identifying purposes", "Consent", "Limiting collection", "Limiting use, disclosure, and retention", "Accuracy", "Safeguards", "Openness", "Individual access", "Challenging compliance"]
+  },
+  {
+    "id": "hipaa",
+    "name": "Health Insurance Portability and Accountability Act",
+    "abbreviation": "HIPAA",
+    "region": "North America",
+    "countries": ["United States"],
+    "effective_date": "1996-08-21",
+    "description": "US federal law protecting sensitive patient health information.",
+    "type": "sector-specific",
+    "key_principles": ["Access", "Portability", "Accountability", "Security", "Privacy"]
+  },
+  {
+    "id": "appi",
+    "name": "Act on Protection of Personal Information",
+    "abbreviation": "APPI",
+    "region": "Asia Pacific",
+    "countries": ["Japan"],
+    "effective_date": "2005-04-01",
+    "description": "Japan's comprehensive personal information protection law.",
+    "type": "comprehensive",
+    "key_principles": ["Proper acquisition", "Purpose specification", "Use limitation", "Accuracy maintenance", "Safety management", "Transparency"]
+  },
+  {
+    "id": "pdpa",
+    "name": "Personal Data Protection Act",
+    "abbreviation": "PDPA",
+    "region": "Asia Pacific",
+    "countries": ["Singapore"],
+    "effective_date": "2014-07-02",
+    "description": "Singapore's comprehensive data protection law.",
+    "type": "comprehensive",
+    "key_principles": ["Consent", "Purpose limitation", "Notification", "Access and correction", "Accuracy", "Protection", "Retention limitation", "Transfer limitation", "Accountability"]
+  },
+  {
+    "id": "pipa",
+    "name": "Personal Information Protection Act",
+    "abbreviation": "PIPA",
+    "region": "Asia Pacific",
+    "countries": ["South Korea"],
+    "effective_date": "2011-09-30",
+    "description": "South Korea's personal information protection law.",
+    "type": "comprehensive",
+    "key_principles": ["Consent", "Purpose limitation", "Data minimization", "Accuracy", "Retention limitation", "Security", "Transparency"]
+  },
+  {
+    "id": "pipl",
+    "name": "Personal Information Protection Law",
+    "abbreviation": "PIPL",
+    "region": "Asia Pacific",
+    "countries": ["China"],
+    "effective_date": "2021-11-01",
+    "description": "China's comprehensive personal information protection law.",
+    "type": "comprehensive",
+    "key_principles": ["Lawfulness", "Legitimacy", "Necessity", "Good faith", "Proportionality", "Transparency", "Purpose limitation", "Data minimization"]
+  },
+  {
+    "id": "privacy-act",
+    "name": "Privacy Act",
+    "abbreviation": "Privacy Act",
+    "region": "Asia Pacific",
+    "countries": ["Australia"],
+    "effective_date": "1988-12-01",
+    "description": "Australia's privacy law governing the handling of personal information.",
+    "type": "comprehensive",
+    "key_principles": ["Open and transparent management", "Anonymity and pseudonymity", "Collection", "Dealing with unsolicited information", "Notification", "Use and disclosure", "Direct marketing", "Cross-border disclosure", "Government identifiers", "Data quality", "Security", "Access and correction", "Correction requests"]
+  },
+  {
+    "id": "fadp",
+    "name": "Federal Act on Data Protection",
+    "abbreviation": "FADP",
+    "region": "Europe",
+    "countries": ["Switzerland"],
+    "effective_date": "2023-09-01",
+    "description": "Switzerland's revised data protection law, aligned with GDPR principles.",
+    "type": "comprehensive",
+    "key_principles": ["Lawfulness", "Good faith", "Proportionality", "Purpose limitation", "Data minimization", "Accuracy", "Transparency", "Security"]
+  },
+  {
+    "id": "lfpdppp",
+    "name": "Ley Federal de Protección de Datos Personales en Posesión de los Particulares",
+    "abbreviation": "LFPDPPP",
+    "region": "Latin America",
+    "countries": ["Mexico"],
+    "effective_date": "2010-07-05",
+    "description": "Mexico's federal law for the protection of personal data held by private parties.",
+    "type": "comprehensive",
+    "key_principles": ["Lawfulness", "Consent", "Information", "Quality", "Purpose", "Loyalty", "Proportionality", "Accountability"]
+  },
+  {
+    "id": "ndpr",
+    "name": "Nigeria Data Protection Regulation",
+    "abbreviation": "NDPR",
+    "region": "Africa",
+    "countries": ["Nigeria"],
+    "effective_date": "2019-01-25",
+    "description": "Nigeria's comprehensive data protection regulation.",
+    "type": "comprehensive",
+    "key_principles": ["Lawfulness", "Fairness", "Specific legitimate purposes", "Proportionality", "Accuracy", "Storage limitation", "Security", "Accountability"]
+  },
+  {
+    "id": "pdp",
+    "name": "Personal Data Protection Law",
+    "abbreviation": "PDP",
+    "region": "Asia Pacific",
+    "countries": ["Indonesia"],
+    "effective_date": "2022-10-17",
+    "description": "Indonesia's comprehensive personal data protection law.",
+    "type": "comprehensive",
+    "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Accountability", "Transparency", "Accessibility", "Proportionality", "Data controller responsibility"]
+  },
+  {
+    "id": "dpdpb",
+    "name": "Digital Personal Data Protection Bill",
+    "abbreviation": "DPDPB",
+    "region": "Asia Pacific",
+    "countries": ["India"],
+    "effective_date": "2023-08-11",
+    "description": "India's comprehensive digital personal data protection law.",
+    "type": "comprehensive",
+    "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Reasonable security safeguards", "Accountability"]
+  },
+  {
+    "id": "uae-dpl",
+    "name": "UAE Data Protection Law",
+    "abbreviation": "UAE DPL",
+    "region": "Middle East",
+    "countries": ["United Arab Emirates"],
+    "effective_date": "2022-01-02",
+    "description": "United Arab Emirates federal data protection law.",
+    "type": "comprehensive",
+    "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Security", "Accountability", "Transparency"]
+  }
+]

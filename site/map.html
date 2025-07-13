@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Map - OpenPIIMap</title>
+    <meta name="description" content="Interactive world map showing privacy law coverage across countries and frameworks.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .map-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            min-width: 200px;
+        }
+        
+        .legend {
+            background: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            margin-right: 0.5rem;
+            border: 1px solid rgba(0,0,0,0.2);
+        }
+        
+        .country-tooltip {
+            background: white;
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-lg);
+            padding: 1rem;
+            font-family: var(--font-family-base);
+        }
+        
+        .coverage-stats {
+            position: sticky;
+            top: 90px;
+            z-index: 999;
+        }
+        
+        .framework-filter-btn {
+            margin: 0.2rem;
+            border-radius: 20px;
+        }
+        
+        .framework-filter-btn.active {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: white;
+        }
+        
+        /* Custom marker colors */
+        .marker-gdpr { background-color: #3b82f6; }
+        .marker-hipaa { background-color: #10b981; }
+        .marker-cpra { background-color: #f59e0b; }
+        .marker-lgpd { background-color: #ef4444; }
+        .marker-other { background-color: #6b7280; }
+        .marker-multiple { 
+            background: linear-gradient(45deg, #3b82f6, #10b981, #f59e0b, #ef4444);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-shield-lock-fill me-2"></i>
+                    OpenPIIMap
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="bi bi-house-fill me-1"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#countries">
+                                <i class="bi bi-globe me-1"></i>Countries
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="map.html">
+                                <i class="bi bi-map me-1"></i>World Map
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="compare.html">
+                                <i class="bi bi-arrow-left-right me-1"></i>Compare
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="bi bi-graph-up me-1"></i>Analytics
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="api.html">
+                                <i class="bi bi-code-slash me-1"></i>API
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-book me-1"></i>Guides
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="integration.html">Integration Guide</a></li>
+                                <li><a class="dropdown-item" href="api.html">API Documentation</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="index.html#frameworks">Privacy Frameworks</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/intelation/openpiimap" target="_blank">
+                                <i class="bi bi-github me-1"></i>GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-4" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-light) 100%); color: white;">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-2">Privacy Law Coverage Map</h1>
+            <p class="lead mb-0">
+                Interactive visualization of global privacy framework coverage and PII definitions.
+            </p>
+        </div>
+    </section>
+
+    <!-- Coverage Statistics -->
+    <section class="coverage-stats bg-white border-bottom">
+        <div class="container py-3">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="row text-center">
+                        <div class="col-3">
+                            <div class="stat-number text-primary h4 mb-0" id="totalCountries">0</div>
+                            <small class="text-muted">Countries</small>
+                        </div>
+                        <div class="col-3">
+                            <div class="stat-number text-primary h4 mb-0" id="totalFrameworks">0</div>
+                            <small class="text-muted">Frameworks</small>
+                        </div>
+                        <div class="col-3">
+                            <div class="stat-number text-primary h4 mb-0" id="totalCategories">0</div>
+                            <small class="text-muted">PII Categories</small>
+                        </div>
+                        <div class="col-3">
+                            <div class="stat-number text-primary h4 mb-0" id="coveragePercent">0%</div>
+                            <small class="text-muted">Global Coverage</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button type="button" class="btn btn-outline-primary" onclick="resetMapView()">
+                            <i class="bi bi-arrow-clockwise me-1"></i>Reset View
+                        </button>
+                        <button type="button" class="btn btn-outline-primary" onclick="toggleClustering()">
+                            <i class="bi bi-collection me-1"></i>Toggle Clustering
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="container-fluid my-4">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="position-relative">
+                    <!-- Map -->
+                    <div id="map"></div>
+                    
+                    <!-- Map Controls -->
+                    <div class="map-controls">
+                        <h6 class="mb-3">
+                            <i class="bi bi-funnel me-2"></i>Filter by Framework
+                        </h6>
+                        <div class="framework-filters">
+                            <button class="btn btn-sm btn-outline-primary framework-filter-btn active" 
+                                    data-framework="all" onclick="filterByFramework('all', this)">
+                                All
+                            </button>
+                            <button class="btn btn-sm btn-outline-primary framework-filter-btn" 
+                                    data-framework="gdpr" onclick="filterByFramework('gdpr', this)">
+                                GDPR
+                            </button>
+                            <button class="btn btn-sm btn-outline-primary framework-filter-btn" 
+                                    data-framework="hipaa" onclick="filterByFramework('hipaa', this)">
+                                HIPAA
+                            </button>
+                            <button class="btn btn-sm btn-outline-primary framework-filter-btn" 
+                                    data-framework="cpra" onclick="filterByFramework('cpra', this)">
+                                CPRA
+                            </button>
+                            <button class="btn btn-sm btn-outline-primary framework-filter-btn" 
+                                    data-framework="lgpd" onclick="filterByFramework('lgpd', this)">
+                                LGPD
+                            </button>
+                            <button class="btn btn-sm btn-outline-primary framework-filter-btn" 
+                                    data-framework="other" onclick="filterByFramework('other', this)">
+                                Other
+                            </button>
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="showLabels" checked>
+                            <label class="form-check-label" for="showLabels">
+                                Show country labels
+                            </label>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="showStats" checked>
+                            <label class="form-check-label" for="showStats">
+                                Show statistics
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3">
+                <!-- Legend -->
+                <div class="legend mb-4">
+                    <h6 class="mb-3">
+                        <i class="bi bi-palette me-2"></i>Framework Legend
+                    </h6>
+                    <div class="legend-item">
+                        <div class="legend-color marker-gdpr"></div>
+                        <span>GDPR (EU/EEA)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color marker-hipaa"></div>
+                        <span>HIPAA (US Health)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color marker-cpra"></div>
+                        <span>CPRA (California)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color marker-lgpd"></div>
+                        <span>LGPD (Brazil)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color marker-other"></div>
+                        <span>Other Frameworks</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color marker-multiple"></div>
+                        <span>Multiple Frameworks</span>
+                    </div>
+                </div>
+                
+                <!-- Country Info Panel -->
+                <div class="card" id="countryInfoPanel" style="display: none;">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0" id="countryInfoTitle">Country Information</h6>
+                        <button type="button" class="btn-close btn-sm" onclick="hideCountryInfo()"></button>
+                    </div>
+                    <div class="card-body" id="countryInfoBody">
+                        <!-- Country info will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- Regional Summary -->
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="mb-0">
+                            <i class="bi bi-bar-chart me-2"></i>Regional Coverage
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div id="regionalSummary">
+                            <!-- Regional data will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Leaflet MarkerCluster -->
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+    
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Map variables
+        let map;
+        let markers = [];
+        let markerClusterGroup;
+        let currentFilter = 'all';
+        let showClustering = true;
+        
+        // Country coordinates - simplified dataset
+        const countryCoordinates = {
+            'Germany': [51.1657, 10.4515],
+            'France': [46.6034, 1.8883],
+            'Italy': [41.8719, 12.5674],
+            'Spain': [40.4637, -3.7492],
+            'Netherlands': [52.1326, 5.2913],
+            'Belgium': [50.5039, 4.4699],
+            'Austria': [47.5162, 14.5501],
+            'Ireland': [53.1424, -7.6921],
+            'Sweden': [60.1282, 18.6435],
+            'Denmark': [56.2639, 9.5018],
+            'Finland': [61.9241, 25.7482],
+            'Poland': [51.9194, 19.1451],
+            'Norway': [60.4720, 8.4689],
+            'Iceland': [64.9631, -19.0208],
+            'Greece': [39.0742, 21.8243],
+            'Liechtenstein': [47.1660, 9.5554],
+            'United Kingdom': [55.3781, -3.4360],
+            'California, USA': [36.7783, -119.4179],
+            'USA (Health)': [39.8283, -98.5795],
+            'Canada': [56.1304, -106.3468],
+            'Brazil': [-14.2350, -51.9253],
+            'Mexico': [23.6345, -102.5528],
+            'India': [20.5937, 78.9629],
+            'Singapore': [1.3521, 103.8198],
+            'South Korea': [35.9078, 127.7669],
+            'Japan': [36.2048, 138.2529],
+            'China': [35.8617, 104.1954],
+            'Indonesia': [-0.7893, 113.9213],
+            'Australia': [-25.2744, 133.7751],
+            'Nigeria': [9.0820, 8.6753],
+            'UAE': [23.4241, 53.8478],
+            'Switzerland': [46.8182, 8.2275]
+        };
+        
+        // Initialize map
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMap();
+            loadCountryData();
+            updateStatistics();
+            generateRegionalSummary();
+        });
+        
+        function initializeMap() {
+            // Initialize Leaflet map
+            map = L.map('map').setView([20, 0], 2);
+            
+            // Add tile layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 18
+            }).addTo(map);
+            
+            // Initialize marker cluster group
+            markerClusterGroup = L.markerClusterGroup({
+                chunkedLoading: true,
+                maxClusterRadius: 50
+            });
+            
+            map.addLayer(markerClusterGroup);
+            
+            // Set map bounds to show all countries
+            map.setMaxBounds([[-90, -180], [90, 180]]);
+        }
+        
+        function loadCountryData() {
+            const countries = window.OpenPIIMap?.countries || [];
+            
+            countries.forEach(country => {
+                const coords = countryCoordinates[country.name];
+                if (coords) {
+                    createCountryMarker(country, coords);
+                }
+            });
+            
+            // Add all markers to cluster group
+            if (showClustering) {
+                markerClusterGroup.addLayers(markers);
+            } else {
+                markers.forEach(marker => map.addLayer(marker));
+            }
+        }
+        
+        function createCountryMarker(country, coords) {
+            const frameworkClass = getFrameworkMarkerClass(country.framework);
+            
+            // Create custom icon
+            const icon = L.divIcon({
+                className: 'custom-marker',
+                html: `<div class="marker-icon ${frameworkClass}" style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
+                iconSize: [20, 20],
+                iconAnchor: [10, 10]
+            });
+            
+            // Create marker
+            const marker = L.marker(coords, { icon: icon });
+            
+            // Add popup
+            const popupContent = createPopupContent(country);
+            marker.bindPopup(popupContent, {
+                className: 'country-tooltip',
+                maxWidth: 300
+            });
+            
+            // Add click event
+            marker.on('click', () => showCountryInfo(country));
+            
+            // Store country data with marker
+            marker.countryData = country;
+            
+            markers.push(marker);
+        }
+        
+        function createPopupContent(country) {
+            return `
+                <div class="p-2">
+                    <h6 class="mb-2">${country.name}</h6>
+                    <div class="mb-2">
+                        <span class="framework-badge ${getFrameworkClass(country.framework)}">
+                            ${country.framework}
+                        </span>
+                    </div>
+                    <div class="small text-muted mb-2">
+                        <i class="bi bi-geo-alt-fill me-1"></i>${country.region}<br>
+                        <i class="bi bi-list-check me-1"></i>${country.categories} PII Categories
+                    </div>
+                    <div class="d-flex gap-1">
+                        <a href="countries/${country.file}" class="btn btn-primary btn-sm">
+                            <i class="bi bi-eye me-1"></i>View Details
+                        </a>
+                        <button class="btn btn-outline-primary btn-sm" onclick="showCountryInfo(${JSON.stringify(country).replace(/"/g, '&quot;')})">
+                            <i class="bi bi-info-circle me-1"></i>Info
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function getFrameworkMarkerClass(framework) {
+            const classes = {
+                'GDPR': 'marker-gdpr',
+                'UK GDPR': 'marker-gdpr',
+                'HIPAA': 'marker-hipaa',
+                'CPRA': 'marker-cpra',
+                'LGPD': 'marker-lgpd'
+            };
+            return classes[framework] || 'marker-other';
+        }
+        
+        function getFrameworkClass(framework) {
+            const classes = {
+                'GDPR': 'framework-gdpr',
+                'UK GDPR': 'framework-gdpr',
+                'HIPAA': 'framework-hipaa',
+                'CPRA': 'framework-cpra'
+            };
+            return classes[framework] || 'framework-default';
+        }
+        
+        function filterByFramework(framework, buttonElement) {
+            currentFilter = framework;
+            
+            // Update button states
+            document.querySelectorAll('.framework-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            buttonElement.classList.add('active');
+            
+            // Clear current markers
+            if (showClustering) {
+                markerClusterGroup.clearLayers();
+            } else {
+                markers.forEach(marker => map.removeLayer(marker));
+            }
+            
+            // Filter markers
+            const filteredMarkers = markers.filter(marker => {
+                if (framework === 'all') return true;
+                
+                const countryFramework = marker.countryData.framework.toLowerCase();
+                if (framework === 'gdpr') {
+                    return countryFramework.includes('gdpr');
+                } else if (framework === 'other') {
+                    return !['gdpr', 'hipaa', 'cpra', 'lgpd'].some(f => countryFramework.includes(f));
+                }
+                return countryFramework.includes(framework);
+            });
+            
+            // Add filtered markers back
+            if (showClustering) {
+                markerClusterGroup.addLayers(filteredMarkers);
+            } else {
+                filteredMarkers.forEach(marker => map.addLayer(marker));
+            }
+            
+            updateStatistics();
+        }
+        
+        function resetMapView() {
+            map.setView([20, 0], 2);
+            hideCountryInfo();
+        }
+        
+        function toggleClustering() {
+            showClustering = !showClustering;
+            
+            // Clear all markers
+            markerClusterGroup.clearLayers();
+            markers.forEach(marker => map.removeLayer(marker));
+            
+            // Re-apply current filter
+            const currentButton = document.querySelector('.framework-filter-btn.active');
+            filterByFramework(currentFilter, currentButton);
+        }
+        
+        function showCountryInfo(country) {
+            const panel = document.getElementById('countryInfoPanel');
+            const title = document.getElementById('countryInfoTitle');
+            const body = document.getElementById('countryInfoBody');
+            
+            title.textContent = country.name;
+            body.innerHTML = `
+                <div class="mb-3">
+                    <span class="framework-badge ${getFrameworkClass(country.framework)}">
+                        ${country.framework}
+                    </span>
+                </div>
+                
+                <dl class="row mb-0">
+                    <dt class="col-5">Region:</dt>
+                    <dd class="col-7">${country.region}</dd>
+                    
+                    <dt class="col-5">Categories:</dt>
+                    <dd class="col-7">${country.categories}</dd>
+                    
+                    <dt class="col-5">Framework:</dt>
+                    <dd class="col-7">${country.framework}</dd>
+                </dl>
+                
+                <hr>
+                
+                <div class="d-grid gap-2">
+                    <a href="countries/${country.file}" class="btn btn-primary btn-sm">
+                        <i class="bi bi-eye me-1"></i>View Full Details
+                    </a>
+                    <a href="compare.html?countries=${encodeURIComponent(country.name)}" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-arrow-left-right me-1"></i>Add to Comparison
+                    </a>
+                </div>
+            `;
+            
+            panel.style.display = 'block';
+        }
+        
+        function hideCountryInfo() {
+            document.getElementById('countryInfoPanel').style.display = 'none';
+        }
+        
+        function updateStatistics() {
+            const countries = window.OpenPIIMap?.countries || [];
+            
+            // Filter countries based on current filter
+            let filteredCountries = countries;
+            if (currentFilter !== 'all') {
+                filteredCountries = countries.filter(country => {
+                    const framework = country.framework.toLowerCase();
+                    if (currentFilter === 'gdpr') {
+                        return framework.includes('gdpr');
+                    } else if (currentFilter === 'other') {
+                        return !['gdpr', 'hipaa', 'cpra', 'lgpd'].some(f => framework.includes(f));
+                    }
+                    return framework.includes(currentFilter);
+                });
+            }
+            
+            const totalCountries = filteredCountries.length;
+            const totalFrameworks = new Set(filteredCountries.map(c => c.framework)).size;
+            const totalCategories = filteredCountries.reduce((sum, c) => sum + c.categories, 0);
+            const coveragePercent = Math.round((totalCountries / 195) * 100); // Approximate world countries
+            
+            document.getElementById('totalCountries').textContent = totalCountries;
+            document.getElementById('totalFrameworks').textContent = totalFrameworks;
+            document.getElementById('totalCategories').textContent = totalCategories;
+            document.getElementById('coveragePercent').textContent = `${coveragePercent}%`;
+        }
+        
+        function generateRegionalSummary() {
+            const countries = window.OpenPIIMap?.countries || [];
+            const regions = {};
+            
+            countries.forEach(country => {
+                if (!regions[country.region]) {
+                    regions[country.region] = {
+                        count: 0,
+                        frameworks: new Set()
+                    };
+                }
+                regions[country.region].count++;
+                regions[country.region].frameworks.add(country.framework);
+            });
+            
+            const summaryHtml = Object.entries(regions)
+                .sort(([,a], [,b]) => b.count - a.count)
+                .map(([region, data]) => `
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                            <div class="fw-semibold">${region}</div>
+                            <small class="text-muted">${data.frameworks.size} frameworks</small>
+                        </div>
+                        <span class="badge bg-primary">${data.count}</span>
+                    </div>
+                `).join('');
+            
+            document.getElementById('regionalSummary').innerHTML = summaryHtml;
+        }
+        
+        // Event listeners for checkboxes
+        document.getElementById('showLabels').addEventListener('change', function() {
+            // Toggle country labels (could be implemented with additional markers)
+            console.log('Toggle labels:', this.checked);
+        });
+        
+        document.getElementById('showStats').addEventListener('change', function() {
+            const statsSection = document.querySelector('.coverage-stats');
+            statsSection.style.display = this.checked ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>

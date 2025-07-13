@@ -1,0 +1,5 @@
+/* Legacy CSS file - moved to assets/css/main.css for better organization */
+/* This file is kept for backward compatibility but should not be used */
+
+/* Redirect users to use the new CSS structure */
+@import url('./css/main.css');

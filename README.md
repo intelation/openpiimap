@@ -76,7 +76,7 @@ openpiimap/
 ├── data/                 # YAML definitions of PII/PHI by regulation and region
 │   └── gdpr/             # GDPR country-specific YAMLs
 ├── api/                  # FastAPI-based API for programmatic access (WIP)
-├── ui/frontend/          # React UI for browsing definitions (WIP)
+├── frontend/             # Static website for browsing definitions (WIP)
 ├── examples/             # Sample use cases and before/after anonymization
 ├── docs/                 # Format guides, contributor instructions
 ├── .github/              # Issue and PR templates

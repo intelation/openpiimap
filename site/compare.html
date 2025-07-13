@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Countries - OpenPIIMap</title>
+    <meta name="description" content="Compare privacy law definitions across different countries and frameworks.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <style>
+        .comparison-container {
+            overflow-x: auto;
+        }
+        .comparison-table {
+            min-width: 800px;
+        }
+        .country-column {
+            min-width: 250px;
+            border-right: 2px solid var(--gray-200);
+        }
+        .category-row {
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .category-name {
+            position: sticky;
+            left: 0;
+            background: white;
+            z-index: 10;
+            border-right: 2px solid var(--gray-200);
+            min-width: 200px;
+        }
+        .comparison-card {
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .comparison-card.selected {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .empty-selection {
+            border: 2px dashed var(--gray-300);
+            background: var(--gray-50);
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-shield-lock-fill me-2"></i>
+                    OpenPIIMap
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="bi bi-house-fill me-1"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#countries">
+                                <i class="bi bi-globe me-1"></i>Countries
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="map.html">
+                                <i class="bi bi-map me-1"></i>World Map
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="compare.html">
+                                <i class="bi bi-arrow-left-right me-1"></i>Compare
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="bi bi-graph-up me-1"></i>Analytics
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="api.html">
+                                <i class="bi bi-code-slash me-1"></i>API
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-book me-1"></i>Guides
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="integration.html">Integration Guide</a></li>
+                                <li><a class="dropdown-item" href="api.html">API Documentation</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="index.html#frameworks">Privacy Frameworks</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/intelation/openpiimap" target="_blank">
+                                <i class="bi bi-github me-1"></i>GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Compare Privacy Frameworks</h1>
+            <p class="lead">
+                Side-by-side comparison of PII definitions across different countries and privacy frameworks.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Country Selection -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h3 class="mb-4">Select Countries to Compare</h3>
+                
+                <!-- Quick Filters -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <label for="frameworkFilter" class="form-label">Filter by Framework</label>
+                        <select id="frameworkFilter" class="form-select">
+                            <option value="">All Frameworks</option>
+                            <option value="gdpr">GDPR</option>
+                            <option value="hipaa">HIPAA</option>
+                            <option value="cpra">CPRA</option>
+                            <option value="lgpd">LGPD</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="regionFilter" class="form-label">Filter by Region</label>
+                        <select id="regionFilter" class="form-select">
+                            <option value="">All Regions</option>
+                            <option value="europe">Europe</option>
+                            <option value="north-america">North America</option>
+                            <option value="asia-pacific">Asia Pacific</option>
+                            <option value="latin-america">Latin America</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="searchInput" class="form-label">Search Countries</label>
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search countries...">
+                    </div>
+                </div>
+                
+                <!-- Country Selection Grid -->
+                <div id="countryGrid" class="row g-3">
+                    <!-- Countries will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Selected Countries for Comparison -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4>Selected for Comparison (<span id="selectedCount">0</span>/4)</h4>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="clearSelection()">
+                            <i class="bi bi-trash me-1"></i>Clear All
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="startComparison()" disabled id="compareBtn">
+                            <i class="bi bi-bar-chart me-1"></i>Compare
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="row g-3" id="selectedCountries">
+                    <div class="col-md-3">
+                        <div class="empty-selection rounded">
+                            <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
+                            <small class="text-muted">Select a country</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="empty-selection rounded">
+                            <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
+                            <small class="text-muted">Select a country</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="empty-selection rounded">
+                            <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
+                            <small class="text-muted">Select a country</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="empty-selection rounded">
+                            <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
+                            <small class="text-muted">Select a country</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Results -->
+        <div id="comparisonResults" style="display: none;">
+            <hr class="my-5">
+            
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3>Comparison Results</h3>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="exportComparison()">
+                        <i class="bi bi-download me-1"></i>Export
+                    </button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="shareComparison()">
+                        <i class="bi bi-share me-1"></i>Share
+                    </button>
+                </div>
+            </div>
+
+            <!-- Comparison Summary -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="bi bi-graph-up me-2"></i>Comparison Summary
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="summaryStats" class="row text-center">
+                                <!-- Summary stats will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">
+                        <i class="bi bi-table me-2"></i>Detailed Comparison
+                    </h5>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <input type="radio" class="btn-check" name="comparisonView" id="allCategories" checked>
+                        <label class="btn btn-outline-primary" for="allCategories">All Categories</label>
+                        <input type="radio" class="btn-check" name="comparisonView" id="commonCategories">
+                        <label class="btn btn-outline-primary" for="commonCategories">Common Only</label>
+                        <input type="radio" class="btn-check" name="comparisonView" id="differencesOnly">
+                        <label class="btn btn-outline-primary" for="differencesOnly">Differences Only</label>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="comparison-container">
+                        <table class="table table-hover comparison-table mb-0" id="comparisonTable">
+                            <!-- Comparison table will be populated here -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Analysis -->
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">
+                                <i class="bi bi-pie-chart me-2"></i>Category Distribution
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="categoryChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">
+                                <i class="bi bi-shield-check me-2"></i>Masking Requirements
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="maskingChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Comparison tool functionality
+        const selectedCountries = new Map();
+        const maxSelections = 4;
+        let countryData = [];
+
+        // Initialize the comparison tool
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCountryData();
+            setupEventListeners();
+            checkURLParams();
+        });
+
+        function loadCountryData() {
+            // Use the countries array from main.js
+            countryData = window.OpenPIIMap?.countries || [];
+            renderCountryGrid(countryData);
+        }
+
+        function setupEventListeners() {
+            const frameworkFilter = document.getElementById('frameworkFilter');
+            const regionFilter = document.getElementById('regionFilter');
+            const searchInput = document.getElementById('searchInput');
+
+            frameworkFilter.addEventListener('change', filterCountries);
+            regionFilter.addEventListener('change', filterCountries);
+            searchInput.addEventListener('input', debounce(filterCountries, 300));
+
+            // Comparison view toggles
+            document.querySelectorAll('input[name="comparisonView"]').forEach(radio => {
+                radio.addEventListener('change', updateComparisonView);
+            });
+        }
+
+        function checkURLParams() {
+            const params = new URLSearchParams(window.location.search);
+            const countries = params.get('countries');
+            if (countries) {
+                const countryNames = countries.split(',').map(name => decodeURIComponent(name.trim()));
+                countryNames.forEach(name => {
+                    const country = countryData.find(c => c.name === name);
+                    if (country && selectedCountries.size < maxSelections) {
+                        selectCountry(country);
+                    }
+                });
+            }
+        }
+
+        function renderCountryGrid(countries) {
+            const grid = document.getElementById('countryGrid');
+            grid.innerHTML = countries.map(country => `
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card comparison-card h-100" onclick="toggleCountrySelection('${country.name}')">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h6 class="card-title mb-0">${country.name}</h6>
+                                <i class="bi bi-plus-circle text-muted selection-icon"></i>
+                            </div>
+                            <div class="mb-2">
+                                <span class="framework-badge ${getFrameworkClass(country.framework)}">
+                                    ${country.framework}
+                                </span>
+                            </div>
+                            <small class="text-muted">
+                                <i class="bi bi-geo-alt-fill me-1"></i>${country.region}<br>
+                                <i class="bi bi-list-check me-1"></i>${country.categories} categories
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCountrySelection(countryName) {
+            const country = countryData.find(c => c.name === countryName);
+            if (!country) return;
+
+            if (selectedCountries.has(countryName)) {
+                deselectCountry(countryName);
+            } else if (selectedCountries.size < maxSelections) {
+                selectCountry(country);
+            } else {
+                showToast('Maximum 4 countries can be selected for comparison', 'warning');
+            }
+        }
+
+        function selectCountry(country) {
+            selectedCountries.set(country.name, country);
+            updateSelectionDisplay();
+            updateCountryGrid();
+        }
+
+        function deselectCountry(countryName) {
+            selectedCountries.delete(countryName);
+            updateSelectionDisplay();
+            updateCountryGrid();
+        }
+
+        function updateSelectionDisplay() {
+            const selectedContainer = document.getElementById('selectedCountries');
+            const selectedCount = document.getElementById('selectedCount');
+            const compareBtn = document.getElementById('compareBtn');
+            
+            selectedCount.textContent = selectedCountries.size;
+            compareBtn.disabled = selectedCountries.size < 2;
+
+            const slots = selectedContainer.children;
+            Array.from(slots).forEach((slot, index) => {
+                const countries = Array.from(selectedCountries.values());
+                if (index < countries.length) {
+                    const country = countries[index];
+                    slot.innerHTML = `
+                        <div class="card comparison-card selected h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h6 class="card-title mb-0">${country.name}</h6>
+                                    <button class="btn btn-sm btn-outline-danger" onclick="deselectCountry('${country.name}')">
+                                        <i class="bi bi-x"></i>
+                                    </button>
+                                </div>
+                                <span class="framework-badge ${getFrameworkClass(country.framework)}">
+                                    ${country.framework}
+                                </span>
+                                <div class="mt-2">
+                                    <small class="text-muted">
+                                        <i class="bi bi-geo-alt-fill me-1"></i>${country.region}<br>
+                                        <i class="bi bi-list-check me-1"></i>${country.categories} categories
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    slot.innerHTML = `
+                        <div class="empty-selection rounded">
+                            <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
+                            <small class="text-muted">Select a country</small>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        function updateCountryGrid() {
+            const cards = document.querySelectorAll('.comparison-card');
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent;
+                const icon = card.querySelector('.selection-icon');
+                
+                if (selectedCountries.has(title)) {
+                    card.classList.add('selected');
+                    icon.className = 'bi bi-check-circle-fill text-success selection-icon';
+                } else {
+                    card.classList.remove('selected');
+                    icon.className = 'bi bi-plus-circle text-muted selection-icon';
+                }
+            });
+        }
+
+        function clearSelection() {
+            selectedCountries.clear();
+            updateSelectionDisplay();
+            updateCountryGrid();
+            document.getElementById('comparisonResults').style.display = 'none';
+        }
+
+        function filterCountries() {
+            const frameworkValue = document.getElementById('frameworkFilter').value.toLowerCase();
+            const regionValue = document.getElementById('regionFilter').value.toLowerCase();
+            const searchValue = document.getElementById('searchInput').value.toLowerCase();
+
+            const filtered = countryData.filter(country => {
+                const matchesFramework = !frameworkValue || country.framework.toLowerCase().includes(frameworkValue);
+                const matchesRegion = !regionValue || country.region.toLowerCase().replace(/\s+/g, '-') === regionValue;
+                const matchesSearch = !searchValue || 
+                    country.name.toLowerCase().includes(searchValue) ||
+                    country.framework.toLowerCase().includes(searchValue);
+
+                return matchesFramework && matchesRegion && matchesSearch;
+            });
+
+            renderCountryGrid(filtered);
+        }
+
+        async function startComparison() {
+            if (selectedCountries.size < 2) return;
+
+            document.getElementById('comparisonResults').style.display = 'block';
+            
+            // Load detailed data for selected countries
+            const detailedData = await loadDetailedData(Array.from(selectedCountries.values()));
+            
+            // Generate comparison
+            generateComparisonSummary(detailedData);
+            generateComparisonTable(detailedData);
+            generateCharts(detailedData);
+
+            // Smooth scroll to results
+            document.getElementById('comparisonResults').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        async function loadDetailedData(countries) {
+            // In a real implementation, this would fetch the actual JSON data
+            // For now, we'll simulate the data structure
+            const detailedData = countries.map(country => ({
+                ...country,
+                categories: generateMockCategories(country),
+                citations: generateMockCitations(country)
+            }));
+
+            return detailedData;
+        }
+
+        function generateMockCategories(country) {
+            // Mock category data based on framework
+            const baseCategories = [
+                { name: "Full Name", type: "direct_identifier", required_masking: true },
+                { name: "Email Address", type: "direct_identifier", required_masking: true },
+                { name: "Phone Number", type: "direct_identifier", required_masking: true },
+                { name: "IP Address", type: "indirect_identifier", required_masking: false },
+                { name: "National ID", type: "national_identifier", required_masking: true },
+                { name: "Health Data", type: "special_category", required_masking: true },
+                { name: "Financial Data", type: "financial_identifier", required_masking: true },
+                { name: "Location Data", type: "behavioral", required_masking: false }
+            ];
+
+            // Vary categories based on framework
+            if (country.framework === 'HIPAA') {
+                return [
+                    ...baseCategories,
+                    { name: "Medical Record Number", type: "special_category", required_masking: true },
+                    { name: "Health Plan ID", type: "special_category", required_masking: true }
+                ];
+            } else if (country.framework === 'GDPR') {
+                return [
+                    ...baseCategories,
+                    { name: "Biometric Data", type: "special_category", required_masking: true },
+                    { name: "Sexual Orientation", type: "special_category", required_masking: true }
+                ];
+            }
+
+            return baseCategories.slice(0, country.categories);
+        }
+
+        function generateMockCitations(country) {
+            const citations = {
+                'GDPR': ['Article 4(1)', 'Article 9', 'Article 6'],
+                'HIPAA': ['45 CFR 164.514', '45 CFR 164.502'],
+                'CPRA': ['Section 1798.140', 'Section 1798.110'],
+                'default': ['N/A']
+            };
+
+            return citations[country.framework] || citations['default'];
+        }
+
+        function generateComparisonSummary(data) {
+            const summaryContainer = document.getElementById('summaryStats');
+            
+            // Calculate summary statistics
+            const totalCategories = data.reduce((sum, country) => sum + country.categories.length, 0);
+            const avgCategories = Math.round(totalCategories / data.length);
+            const commonCategories = findCommonCategories(data);
+            const uniqueFrameworks = new Set(data.map(c => c.framework)).size;
+
+            summaryContainer.innerHTML = `
+                <div class="col-md-3">
+                    <div class="stat-number text-primary">${data.length}</div>
+                    <div class="stat-label">Countries Compared</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-number text-primary">${avgCategories}</div>
+                    <div class="stat-label">Avg. Categories</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-number text-primary">${commonCategories.length}</div>
+                    <div class="stat-label">Common Categories</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-number text-primary">${uniqueFrameworks}</div>
+                    <div class="stat-label">Frameworks</div>
+                </div>
+            `;
+        }
+
+        function generateComparisonTable(data) {
+            const table = document.getElementById('comparisonTable');
+            const allCategories = getAllUniqueCategories(data);
+
+            let headerHtml = `
+                <thead class="table-light">
+                    <tr>
+                        <th class="category-name">PII Category</th>
+                        ${data.map(country => `
+                            <th class="country-column text-center">
+                                <div>${country.name}</div>
+                                <small class="text-muted">${country.framework}</small>
+                            </th>
+                        `).join('')}
+                    </tr>
+                </thead>
+            `;
+
+            let bodyHtml = '<tbody>';
+            allCategories.forEach(category => {
+                bodyHtml += `
+                    <tr class="category-row">
+                        <td class="category-name fw-semibold">${category}</td>
+                        ${data.map(country => {
+                            const categoryData = country.categories.find(c => c.name === category);
+                            if (categoryData) {
+                                return `
+                                    <td class="country-column text-center">
+                                        <span class="badge bg-primary mb-1">${categoryData.type.replace('_', ' ')}</span><br>
+                                        ${categoryData.required_masking ? 
+                                            '<i class="bi bi-shield-check text-success" title="Masking Required"></i>' : 
+                                            '<i class="bi bi-shield text-muted" title="Masking Optional"></i>'
+                                        }
+                                    </td>
+                                `;
+                            } else {
+                                return `
+                                    <td class="country-column text-center text-muted">
+                                        <i class="bi bi-dash"></i>
+                                    </td>
+                                `;
+                            }
+                        }).join('')}
+                    </tr>
+                `;
+            });
+            bodyHtml += '</tbody>';
+
+            table.innerHTML = headerHtml + bodyHtml;
+        }
+
+        function findCommonCategories(data) {
+            if (data.length === 0) return [];
+            
+            const firstCountryCategories = data[0].categories.map(c => c.name);
+            return firstCountryCategories.filter(category => 
+                data.every(country => 
+                    country.categories.some(c => c.name === category)
+                )
+            );
+        }
+
+        function getAllUniqueCategories(data) {
+            const categories = new Set();
+            data.forEach(country => {
+                country.categories.forEach(cat => categories.add(cat.name));
+            });
+            return Array.from(categories).sort();
+        }
+
+        function updateComparisonView() {
+            const view = document.querySelector('input[name="comparisonView"]:checked').id;
+            const rows = document.querySelectorAll('.category-row');
+            
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('.country-column:not(.category-name)');
+                const hasData = Array.from(cells).some(cell => !cell.textContent.includes('—'));
+                const allHaveData = Array.from(cells).every(cell => !cell.textContent.includes('—'));
+                
+                switch(view) {
+                    case 'allCategories':
+                        row.style.display = '';
+                        break;
+                    case 'commonCategories':
+                        row.style.display = allHaveData ? '' : 'none';
+                        break;
+                    case 'differencesOnly':
+                        row.style.display = hasData && !allHaveData ? '' : 'none';
+                        break;
+                }
+            });
+        }
+
+        function generateCharts(data) {
+            generateCategoryChart(data);
+            generateMaskingChart(data);
+        }
+
+        function generateCategoryChart(data) {
+            const ctx = document.getElementById('categoryChart').getContext('2d');
+            
+            // Count categories by type
+            const typeCount = {};
+            data.forEach(country => {
+                country.categories.forEach(cat => {
+                    typeCount[cat.type] = (typeCount[cat.type] || 0) + 1;
+                });
+            });
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(typeCount).map(type => type.replace('_', ' ')),
+                    datasets: [{
+                        data: Object.values(typeCount),
+                        backgroundColor: [
+                            '#3b82f6', '#ef4444', '#10b981', '#f59e0b',
+                            '#8b5cf6', '#ec4899', '#14b8a6', '#f97316'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateMaskingChart(data) {
+            const ctx = document.getElementById('maskingChart').getContext('2d');
+            
+            const chartData = data.map(country => {
+                const total = country.categories.length;
+                const required = country.categories.filter(c => c.required_masking).length;
+                return {
+                    country: country.name,
+                    required: required,
+                    optional: total - required
+                };
+            });
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chartData.map(d => d.country),
+                    datasets: [
+                        {
+                            label: 'Required Masking',
+                            data: chartData.map(d => d.required),
+                            backgroundColor: '#ef4444'
+                        },
+                        {
+                            label: 'Optional Masking',
+                            data: chartData.map(d => d.optional),
+                            backgroundColor: '#94a3b8'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { stacked: true },
+                        y: { stacked: true }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        function exportComparison() {
+            const data = Array.from(selectedCountries.values());
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'privacy-comparison.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('Comparison exported successfully');
+        }
+
+        function shareComparison() {
+            const countries = Array.from(selectedCountries.keys()).join(',');
+            const url = `${window.location.origin}${window.location.pathname}?countries=${encodeURIComponent(countries)}`;
+            navigator.clipboard.writeText(url);
+            showToast('Comparison URL copied to clipboard');
+        }
+
+        // Utility functions
+        function getFrameworkClass(framework) {
+            const frameworkColors = {
+                'GDPR': 'framework-gdpr',
+                'UK GDPR': 'framework-gdpr',
+                'HIPAA': 'framework-hipaa',
+                'CPRA': 'framework-cpra',
+                'default': 'framework-default'
+            };
+            return frameworkColors[framework] || frameworkColors.default;
+        }
+
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        function showToast(message, type = 'success') {
+            const iconClass = type === 'success' ? 'bi-check-circle-fill text-success' : 'bi-exclamation-triangle-fill text-warning';
+            const toast = document.createElement('div');
+            toast.className = 'position-fixed top-0 end-0 p-3';
+            toast.style.zIndex = '1100';
+            toast.innerHTML = `
+                <div class="toast show" role="alert">
+                    <div class="toast-header">
+                        <i class="${iconClass} me-2"></i>
+                        <strong class="me-auto">Notification</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body">${message}</div>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                document.body.removeChild(toast);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

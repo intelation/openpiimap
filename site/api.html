@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation - OpenPIIMap</title>
+    <meta name="description" content="Comprehensive API documentation for integrating OpenPIIMap data into your applications.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Prism.js CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    
+    <style>
+        .api-sidebar {
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+        }
+        
+        .api-content {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+        }
+        
+        .endpoint-card {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .endpoint-header {
+            background: var(--gray-50);
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .endpoint-method {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+        
+        .method-get { background: #dcfce7; color: #166534; }
+        .method-post { background: #dbeafe; color: #1e40af; }
+        .method-put { background: #fed7aa; color: #ea580c; }
+        .method-delete { background: #fecaca; color: #dc2626; }
+        
+        .endpoint-url {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-left: 1rem;
+        }
+        
+        .endpoint-body {
+            padding: 1.5rem;
+        }
+        
+        .parameter-table th {
+            background: var(--gray-50);
+            font-weight: 600;
+        }
+        
+        .parameter-type {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--blue-600);
+        }
+        
+        .parameter-required {
+            color: var(--red-600);
+            font-weight: 600;
+        }
+        
+        .response-tabs .nav-link {
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+        }
+        
+        .try-it-section {
+            background: var(--gray-50);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .auth-badge {
+            background: var(--yellow-100);
+            color: var(--yellow-800);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .sdk-card {
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--border-radius-lg);
+            transition: all 0.3s ease;
+        }
+        
+        .sdk-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .code-preview {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .api-nav-link {
+            color: var(--gray-600);
+            text-decoration: none;
+            padding: 0.5rem 0;
+            display: block;
+            font-size: 0.875rem;
+            border-left: 3px solid transparent;
+            padding-left: 1rem;
+            margin-left: -1rem;
+        }
+        
+        .api-nav-link:hover {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        .api-nav-link.active {
+            color: var(--primary-blue);
+            border-left-color: var(--primary-blue);
+            font-weight: 600;
+        }
+        
+        .api-nav-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .api-nav-title {
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .rate-limit-info {
+            background: var(--blue-50);
+            border-left: 4px solid var(--blue-500);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .interactive-explorer {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+        }
+        
+        .explorer-header {
+            background: var(--dark-blue);
+            color: white;
+            padding: 1rem 1.5rem;
+        }
+        
+        .explorer-body {
+            padding: 1.5rem;
+        }
+        
+        .test-request-btn {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--blue-600) 100%);
+            border: none;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .test-request-btn:hover {
+            background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-700) 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-shield-lock-fill me-2"></i>
+                    OpenPIIMap
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="bi bi-house-fill me-1"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#countries">
+                                <i class="bi bi-globe me-1"></i>Countries
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="map.html">
+                                <i class="bi bi-map me-1"></i>World Map
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="compare.html">
+                                <i class="bi bi-arrow-left-right me-1"></i>Compare
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="bi bi-graph-up me-1"></i>Analytics
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="api.html">
+                                <i class="bi bi-code-slash me-1"></i>API
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/intelation/openpiimap" target="_blank">
+                                <i class="bi bi-github me-1"></i>GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-4" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-light) 100%); color: white;">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-2">API Documentation</h1>
+            <p class="lead mb-0">
+                Integrate OpenPIIMap data into your applications with our comprehensive REST API.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <div class="api-sidebar">
+                    <div class="api-nav-section">
+                        <div class="api-nav-title">Getting Started</div>
+                        <a href="#overview" class="api-nav-link active">Overview</a>
+                        <a href="#authentication" class="api-nav-link">Authentication</a>
+                        <a href="#rate-limits" class="api-nav-link">Rate Limits</a>
+                        <a href="#errors" class="api-nav-link">Error Handling</a>
+                    </div>
+                    
+                    <div class="api-nav-section">
+                        <div class="api-nav-title">Endpoints</div>
+                        <a href="#get-countries" class="api-nav-link">Get Countries</a>
+                        <a href="#get-country" class="api-nav-link">Get Country Details</a>
+                        <a href="#get-frameworks" class="api-nav-link">Get Frameworks</a>
+                        <a href="#search-categories" class="api-nav-link">Search Categories</a>
+                        <a href="#compare-countries" class="api-nav-link">Compare Countries</a>
+                    </div>
+                    
+                    <div class="api-nav-section">
+                        <div class="api-nav-title">SDKs & Tools</div>
+                        <a href="#sdks" class="api-nav-link">Official SDKs</a>
+                        <a href="#postman" class="api-nav-link">Postman Collection</a>
+                        <a href="#openapi" class="api-nav-link">OpenAPI Spec</a>
+                    </div>
+                    
+                    <div class="api-nav-section">
+                        <div class="api-nav-title">Resources</div>
+                        <a href="#examples" class="api-nav-link">Code Examples</a>
+                        <a href="#webhooks" class="api-nav-link">Webhooks</a>
+                        <a href="#changelog" class="api-nav-link">Changelog</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="col-lg-9">
+                <div class="api-content">
+                    <!-- Overview Section -->
+                    <section id="overview">
+                        <h2 class="mb-4">API Overview</h2>
+                        <p class="lead">
+                            The OpenPIIMap API provides programmatic access to our comprehensive database of global privacy laws and PII/PHI category definitions.
+                        </p>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h5>Base URL</h5>
+                                <code class="d-block p-3 bg-light rounded">https://api.openpiimap.org/v1</code>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Response Format</h5>
+                                <code class="d-block p-3 bg-light rounded">application/json</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <strong>Beta API:</strong> This API is currently in beta. Breaking changes may occur with advance notice.
+                        </div>
+                    </section>
+
+                    <!-- Authentication -->
+                    <section id="authentication" class="mt-5">
+                        <h2 class="mb-4">Authentication</h2>
+                        <p>The OpenPIIMap API uses API keys for authentication. Include your API key in the <code>Authorization</code> header:</p>
+                        
+                        <pre><code class="language-bash">curl -H "Authorization: Bearer YOUR_API_KEY" \
+  https://api.openpiimap.org/v1/countries</code></pre>
+
+                        <div class="rate-limit-info">
+                            <h6><i class="bi bi-key me-2"></i>Getting an API Key</h6>
+                            <p class="mb-0">
+                                API keys are currently free for non-commercial use. 
+                                <a href="mailto:api@openpiimap.org">Contact us</a> to request access.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Rate Limits -->
+                    <section id="rate-limits" class="mt-5">
+                        <h2 class="mb-4">Rate Limits</h2>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Plan</th>
+                                        <th>Requests per Minute</th>
+                                        <th>Daily Limit</th>
+                                        <th>Burst Limit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="badge bg-success">Free</span></td>
+                                        <td>60</td>
+                                        <td>1,000</td>
+                                        <td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-primary">Pro</span></td>
+                                        <td>300</td>
+                                        <td>10,000</td>
+                                        <td>50</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-warning">Enterprise</span></td>
+                                        <td>1,000</td>
+                                        <td>100,000</td>
+                                        <td>200</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <h6>Rate Limit Headers</h6>
+                        <p>All API responses include rate limit information in headers:</p>
+                        <pre><code class="language-http">X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 59
+X-RateLimit-Reset: 1640995200</code></pre>
+                    </section>
+
+                    <!-- Error Handling -->
+                    <section id="errors" class="mt-5">
+                        <h2 class="mb-4">Error Handling</h2>
+                        <p>The API uses conventional HTTP response codes and returns error details in JSON format:</p>
+                        
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Status Code</th>
+                                        <th>Meaning</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>200</code></td>
+                                        <td>OK</td>
+                                        <td>Request succeeded</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>400</code></td>
+                                        <td>Bad Request</td>
+                                        <td>Invalid request parameters</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>401</code></td>
+                                        <td>Unauthorized</td>
+                                        <td>Invalid or missing API key</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>404</code></td>
+                                        <td>Not Found</td>
+                                        <td>Resource does not exist</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>429</code></td>
+                                        <td>Too Many Requests</td>
+                                        <td>Rate limit exceeded</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>500</code></td>
+                                        <td>Internal Server Error</td>
+                                        <td>Server error</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <h6>Error Response Format</h6>
+                        <pre><code class="language-json">{
+  "error": {
+    "code": "INVALID_PARAMETER",
+    "message": "The 'country' parameter is required",
+    "details": {
+      "parameter": "country",
+      "provided": null,
+      "expected": "string"
+    }
+  }
+}</code></pre>
+                    </section>
+
+                    <!-- Endpoints -->
+                    <section id="get-countries" class="mt-5">
+                        <h2 class="mb-4">API Endpoints</h2>
+                        
+                        <!-- Get Countries -->
+                        <div class="endpoint-card">
+                            <div class="endpoint-header">
+                                <div class="d-flex align-items-center">
+                                    <span class="endpoint-method method-get">GET</span>
+                                    <span class="endpoint-url">/countries</span>
+                                    <span class="auth-badge ms-auto">API Key Required</span>
+                                </div>
+                            </div>
+                            <div class="endpoint-body">
+                                <p>Retrieve a list of all countries with privacy framework coverage.</p>
+                                
+                                <h6>Query Parameters</h6>
+                                <div class="table-responsive">
+                                    <table class="table parameter-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Parameter</th>
+                                                <th>Type</th>
+                                                <th>Required</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>framework</code></td>
+                                                <td><span class="parameter-type">string</span></td>
+                                                <td>No</td>
+                                                <td>Filter by framework (e.g., "GDPR", "LGPD")</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>region</code></td>
+                                                <td><span class="parameter-type">string</span></td>
+                                                <td>No</td>
+                                                <td>Filter by region (e.g., "Europe", "North America")</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>limit</code></td>
+                                                <td><span class="parameter-type">integer</span></td>
+                                                <td>No</td>
+                                                <td>Maximum number of results (default: 50, max: 100)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>offset</code></td>
+                                                <td><span class="parameter-type">integer</span></td>
+                                                <td>No</td>
+                                                <td>Number of results to skip (default: 0)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <!-- Response Tabs -->
+                                <ul class="nav nav-tabs response-tabs mt-3" role="tablist">
+                                    <li class="nav-item">
+                                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#countries-200" type="button">200 Success</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#countries-400" type="button">400 Error</button>
+                                    </li>
+                                </ul>
+                                
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="countries-200">
+                                        <div class="code-preview">
+                                            <pre><code class="language-json">{
+  "data": [
+    {
+      "id": "germany",
+      "name": "Germany",
+      "framework": "GDPR",
+      "region": "Europe",
+      "categories_count": 42,
+      "last_updated": "2024-01-15T10:30:00Z",
+      "url": "/countries/germany"
+    },
+    {
+      "id": "brazil",
+      "name": "Brazil", 
+      "framework": "LGPD",
+      "region": "Latin America",
+      "categories_count": 38,
+      "last_updated": "2024-01-10T14:20:00Z",
+      "url": "/countries/brazil"
+    }
+  ],
+  "pagination": {
+    "total": 32,
+    "limit": 50,
+    "offset": 0,
+    "has_more": false
+  }
+}</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="countries-400">
+                                        <div class="code-preview">
+                                            <pre><code class="language-json">{
+  "error": {
+    "code": "INVALID_PARAMETER",
+    "message": "Invalid framework specified",
+    "details": {
+      "parameter": "framework",
+      "provided": "invalid-framework",
+      "valid_values": ["GDPR", "LGPD", "CCPA", "HIPAA", ...]
+    }
+  }
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Interactive Explorer -->
+                                <div class="try-it-section">
+                                    <h6><i class="bi bi-play-circle me-2"></i>Try it out</h6>
+                                    <div class="interactive-explorer">
+                                        <div class="explorer-header">
+                                            <div class="d-flex align-items-center">
+                                                <span class="me-2">GET</span>
+                                                <code>https://api.openpiimap.org/v1/countries</code>
+                                            </div>
+                                        </div>
+                                        <div class="explorer-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Framework</label>
+                                                    <select class="form-select" id="testFramework">
+                                                        <option value="">All</option>
+                                                        <option value="GDPR">GDPR</option>
+                                                        <option value="LGPD">LGPD</option>
+                                                        <option value="CCPA">CCPA</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Region</label>
+                                                    <select class="form-select" id="testRegion">
+                                                        <option value="">All</option>
+                                                        <option value="Europe">Europe</option>
+                                                        <option value="North America">North America</option>
+                                                        <option value="Latin America">Latin America</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button class="btn test-request-btn mt-3" onclick="testRequest('countries')">
+                                                <i class="bi bi-play-fill me-2"></i>Send Request
+                                            </button>
+                                            <div id="testResponse" class="mt-3" style="display: none;">
+                                                <h6>Response:</h6>
+                                                <pre><code id="responseCode" class="language-json"></code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Get Country Details -->
+                    <section id="get-country" class="mt-4">
+                        <div class="endpoint-card">
+                            <div class="endpoint-header">
+                                <div class="d-flex align-items-center">
+                                    <span class="endpoint-method method-get">GET</span>
+                                    <span class="endpoint-url">/countries/{countryId}</span>
+                                    <span class="auth-badge ms-auto">API Key Required</span>
+                                </div>
+                            </div>
+                            <div class="endpoint-body">
+                                <p>Get detailed information about a specific country's privacy framework and PII categories.</p>
+                                
+                                <h6>Path Parameters</h6>
+                                <div class="table-responsive">
+                                    <table class="table parameter-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Parameter</th>
+                                                <th>Type</th>
+                                                <th>Required</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>countryId</code></td>
+                                                <td><span class="parameter-type">string</span></td>
+                                                <td><span class="parameter-required">Yes</span></td>
+                                                <td>Country identifier (e.g., "germany", "brazil")</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h6>Response Example</h6>
+                                <div class="code-preview">
+                                    <pre><code class="language-json">{
+  "data": {
+    "id": "germany",
+    "name": "Germany",
+    "framework": "GDPR",
+    "region": "Europe",
+    "effective_date": "2018-05-25",
+    "authority": "Federal Commissioner for Data Protection and Freedom of Information",
+    "categories": [
+      {
+        "id": "full_name",
+        "name": "Full Name",
+        "type": "direct_identifier",
+        "requires_masking": true,
+        "special_category": false,
+        "legal_basis": ["Art. 6(1)(a)", "Art. 6(1)(b)"],
+        "description": "Complete personal name including first and last name"
+      }
+    ],
+    "legal_references": [
+      {
+        "article": "Art. 4(1)",
+        "title": "Definitions",
+        "url": "https://gdpr.eu/article-4-definitions/"
+      }
+    ],
+    "penalties": {
+      "administrative_fines": "Up to €20 million or 4% of annual turnover",
+      "criminal_penalties": "Up to 3 years imprisonment"
+    }
+  }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- SDKs Section -->
+                    <section id="sdks" class="mt-5">
+                        <h2 class="mb-4">Official SDKs</h2>
+                        <p>We provide official SDKs for popular programming languages to make integration easier.</p>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="sdk-card">
+                                    <i class="bi bi-code-square display-4 text-primary mb-3"></i>
+                                    <h5>JavaScript/Node.js</h5>
+                                    <p class="text-muted mb-3">Full-featured SDK with TypeScript support</p>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-primary btn-sm" onclick="showSDKExample('javascript')">
+                                            View Examples
+                                        </button>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-download me-1"></i>npm install
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="sdk-card">
+                                    <i class="bi bi-file-code display-4 text-success mb-3"></i>
+                                    <h5>Python</h5>
+                                    <p class="text-muted mb-3">Pythonic interface with async support</p>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-success btn-sm" onclick="showSDKExample('python')">
+                                            View Examples
+                                        </button>
+                                        <a href="#" class="btn btn-outline-success btn-sm">
+                                            <i class="bi bi-download me-1"></i>pip install
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="sdk-card">
+                                    <i class="bi bi-braces display-4 text-warning mb-3"></i>
+                                    <h5>Go</h5>
+                                    <p class="text-muted mb-3">Lightweight SDK with excellent performance</p>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-warning btn-sm" onclick="showSDKExample('go')">
+                                            View Examples
+                                        </button>
+                                        <a href="#" class="btn btn-outline-warning btn-sm">
+                                            <i class="bi bi-download me-1"></i>go get
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- SDK Examples Modal/Section -->
+                        <div id="sdkExamples" class="mt-4" style="display: none;">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="mb-0" id="sdkExampleTitle">SDK Examples</h6>
+                                    <button class="btn-close" onclick="hideSDKExamples()"></button>
+                                </div>
+                                <div class="card-body">
+                                    <div id="sdkExampleContent">
+                                        <!-- Content will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Examples Section -->
+                    <section id="examples" class="mt-5">
+                        <h2 class="mb-4">Integration Examples</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Data Privacy Compliance Check</h5>
+                                <pre><code class="language-javascript">// Check if email requires masking in Germany
+const response = await openpii.getCountry('germany');
+const emailCategory = response.categories.find(
+  cat => cat.name === 'Email Address'
+);
+
+if (emailCategory.requires_masking) {
+  // Apply masking: john.doe@example.com → j***.***@example.com
+  const maskedEmail = maskEmail(userEmail);
+}</code></pre>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <h5>Cross-Border Data Transfer</h5>
+                                <pre><code class="language-python"># Compare privacy requirements between countries
+from openpiimap import Client
+
+client = Client(api_key="your_key")
+comparison = client.compare_countries(["germany", "brazil"])
+
+for category in comparison.differences:
+    print(f"{category.name}: DE={category.germany.requires_masking}, 
+          BR={category.brazil.requires_masking}")</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Webhooks -->
+                    <section id="webhooks" class="mt-5">
+                        <h2 class="mb-4">Webhooks</h2>
+                        <p>Subscribe to real-time updates when privacy frameworks or category definitions change.</p>
+                        
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Event Type</th>
+                                        <th>Description</th>
+                                        <th>Payload</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>country.updated</code></td>
+                                        <td>A country's framework data was updated</td>
+                                        <td>Country object with changes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>framework.added</code></td>
+                                        <td>A new framework was added</td>
+                                        <td>Framework details</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>category.modified</code></td>
+                                        <td>A PII category definition changed</td>
+                                        <td>Category before/after comparison</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <h6>Webhook Configuration</h6>
+                        <pre><code class="language-bash">curl -X POST https://api.openpiimap.org/v1/webhooks \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://yourapp.com/webhooks/openpiimap",
+    "events": ["country.updated", "category.modified"],
+    "secret": "your_webhook_secret"
+  }'</code></pre>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Prism.js -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    
+    <script>
+        // API Documentation JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeAPINav();
+            setupSmoothScrolling();
+            highlightCodeBlocks();
+        });
+        
+        function initializeAPINav() {
+            // Update active nav link based on scroll position
+            window.addEventListener('scroll', updateActiveNavLink);
+            
+            // Handle nav link clicks
+            document.querySelectorAll('.api-nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+        
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.api-nav-link');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 100) {
+                    currentSection = section.id;
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        function setupSmoothScrolling() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+        
+        function highlightCodeBlocks() {
+            // Initialize Prism.js for syntax highlighting
+            if (typeof Prism !== 'undefined') {
+                Prism.highlightAll();
+            }
+        }
+        
+        function testRequest(endpoint) {
+            const testResponse = document.getElementById('testResponse');
+            const responseCode = document.getElementById('responseCode');
+            
+            // Show loading state
+            testResponse.style.display = 'block';
+            responseCode.textContent = 'Loading...';
+            
+            // Simulate API request
+            setTimeout(() => {
+                const mockResponse = {
+                    data: [
+                        {
+                            id: "germany",
+                            name: "Germany",
+                            framework: "GDPR",
+                            region: "Europe",
+                            categories_count: 42,
+                            last_updated: "2024-01-15T10:30:00Z",
+                            url: "/countries/germany"
+                        },
+                        {
+                            id: "france",
+                            name: "France",
+                            framework: "GDPR", 
+                            region: "Europe",
+                            categories_count: 39,
+                            last_updated: "2024-01-12T09:15:00Z",
+                            url: "/countries/france"
+                        }
+                    ],
+                    pagination: {
+                        total: 18,
+                        limit: 50,
+                        offset: 0,
+                        has_more: false
+                    }
+                };
+                
+                responseCode.textContent = JSON.stringify(mockResponse, null, 2);
+                if (typeof Prism !== 'undefined') {
+                    Prism.highlightElement(responseCode);
+                }
+            }, 1000);
+        }
+        
+        function showSDKExample(language) {
+            const sdkExamples = document.getElementById('sdkExamples');
+            const title = document.getElementById('sdkExampleTitle');
+            const content = document.getElementById('sdkExampleContent');
+            
+            const examples = {
+                javascript: {
+                    title: 'JavaScript SDK Examples',
+                    content: `
+<h6>Installation</h6>
+<pre><code class="language-bash">npm install openpiimap</code></pre>
+
+<h6>Basic Usage</h6>
+<pre><code class="language-javascript">import { OpenPIIMapClient } from 'openpiimap';
+
+const client = new OpenPIIMapClient({
+  apiKey: 'your_api_key'
+});
+
+// Get all countries
+const countries = await client.getCountries();
+
+// Get specific country details
+const germany = await client.getCountry('germany');
+
+// Search for categories
+const results = await client.searchCategories({
+  query: 'email',
+  framework: 'GDPR'
+});
+
+// Compare countries
+const comparison = await client.compareCountries(['germany', 'france']);</code></pre>
+
+<h6>Error Handling</h6>
+<pre><code class="language-javascript">try {
+  const country = await client.getCountry('invalid-country');
+} catch (error) {
+  if (error.code === 'NOT_FOUND') {
+    console.log('Country not found');
+  }
+}</code></pre>`
+                },
+                python: {
+                    title: 'Python SDK Examples',
+                    content: `
+<h6>Installation</h6>
+<pre><code class="language-bash">pip install openpiimap</code></pre>
+
+<h6>Basic Usage</h6>
+<pre><code class="language-python">from openpiimap import Client
+
+client = Client(api_key="your_api_key")
+
+# Get all countries
+countries = client.get_countries()
+
+# Get specific country details
+germany = client.get_country("germany")
+
+# Search for categories
+results = client.search_categories(
+    query="email",
+    framework="GDPR"
+)
+
+# Compare countries
+comparison = client.compare_countries(["germany", "france"])</code></pre>
+
+<h6>Async Support</h6>
+<pre><code class="language-python">import asyncio
+from openpiimap import AsyncClient
+
+async def main():
+    async with AsyncClient(api_key="your_api_key") as client:
+        countries = await client.get_countries()
+        print(f"Found {len(countries)} countries")
+
+asyncio.run(main())</code></pre>`
+                },
+                go: {
+                    title: 'Go SDK Examples',
+                    content: `
+<h6>Installation</h6>
+<pre><code class="language-bash">go get github.com/openpiimap/go-sdk</code></pre>
+
+<h6>Basic Usage</h6>
+<pre><code class="language-go">package main
+
+import (
+    "context"
+    "fmt"
+    "github.com/openpiimap/go-sdk"
+)
+
+func main() {
+    client := openpiimap.NewClient("your_api_key")
+    
+    // Get all countries
+    countries, err := client.GetCountries(context.Background())
+    if err != nil {
+        panic(err)
+    }
+    
+    // Get specific country
+    germany, err := client.GetCountry(context.Background(), "germany")
+    if err != nil {
+        panic(err)
+    }
+    
+    fmt.Printf("Germany has %d categories\\n", len(germany.Categories))
+}</code></pre>
+
+<h6>With Custom HTTP Client</h6>
+<pre><code class="language-go">import (
+    "net/http"
+    "time"
+)
+
+httpClient := &http.Client{
+    Timeout: 30 * time.Second,
+}
+
+client := openpiimap.NewClientWithHTTP("your_api_key", httpClient)</code></pre>`
+                }
+            };
+            
+            const example = examples[language];
+            if (example) {
+                title.textContent = example.title;
+                content.innerHTML = example.content;
+                sdkExamples.style.display = 'block';
+                
+                // Re-highlight code blocks
+                if (typeof Prism !== 'undefined') {
+                    Prism.highlightAllUnder(content);
+                }
+                
+                // Scroll to examples
+                sdkExamples.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        function hideSDKExamples() {
+            document.getElementById('sdkExamples').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integration Guide - OpenPIIMap</title>
+    <meta name="description" content="Complete guide for integrating OpenPIIMap into your privacy compliance systems and applications.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Prism.js CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    
+    <style>
+        .integration-hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .guide-section {
+            padding: 3rem 0;
+        }
+        
+        .guide-card {
+            border: none;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius-lg);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .guide-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--blue-600) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .integration-type {
+            border-left: 4px solid var(--primary-blue);
+            background: var(--gray-50);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .code-example {
+            background: #1e1e1e;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .implementation-step {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--primary-blue);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .use-case-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .use-case-card:hover {
+            border-color: var(--primary-blue);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .architecture-diagram {
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .diagram-box {
+            background: var(--gray-50);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin: 0.5rem;
+            display: inline-block;
+            min-width: 120px;
+        }
+        
+        .diagram-arrow {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin: 0 1rem;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 0.75rem 0;
+        }
+        
+        .checklist-icon {
+            color: var(--success);
+            margin-right: 0.75rem;
+            margin-top: 0.125rem;
+        }
+        
+        .warning-box {
+            background: var(--yellow-50);
+            border: 1px solid var(--yellow-200);
+            border-left: 4px solid var(--yellow-500);
+            padding: 1rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 1rem 0;
+        }
+        
+        .best-practice {
+            background: var(--green-50);
+            border: 1px solid var(--green-200);
+            border-left: 4px solid var(--green-500);
+            padding: 1rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 1rem 0;
+        }
+        
+        .sample-config {
+            background: var(--blue-50);
+            border: 1px solid var(--blue-200);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        
+        .nav-pills .nav-link.active {
+            background: var(--primary-blue);
+        }
+        
+        .integration-nav {
+            position: sticky;
+            top: 100px;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            height: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-shield-lock-fill me-2"></i>
+                    OpenPIIMap
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="bi bi-house-fill me-1"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#countries">
+                                <i class="bi bi-globe me-1"></i>Countries
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="map.html">
+                                <i class="bi bi-map me-1"></i>World Map
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="compare.html">
+                                <i class="bi bi-arrow-left-right me-1"></i>Compare
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="bi bi-graph-up me-1"></i>Analytics
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="api.html">
+                                <i class="bi bi-code-slash me-1"></i>API
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-book me-1"></i>Guides
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item active" href="integration.html">Integration Guide</a></li>
+                                <li><a class="dropdown-item" href="api.html">API Documentation</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="https://github.com/intelation/openpiimap" target="_blank">GitHub</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="integration-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">Integration Guide</h1>
+                    <p class="lead mb-4">
+                        Complete guide for integrating OpenPIIMap into your privacy compliance systems, 
+                        data processing pipelines, and security applications.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#quick-start" class="btn btn-light btn-lg">
+                            <i class="bi bi-rocket-takeoff me-2"></i>Quick Start
+                        </a>
+                        <a href="#use-cases" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-lightbulb me-2"></i>Use Cases
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="architecture-diagram">
+                        <div class="diagram-box">Your App</div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box">OpenPIIMap</div>
+                        <div style="margin-top: 1rem;">
+                            <small class="text-muted">Real-time privacy compliance</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Navigation -->
+            <div class="col-lg-3">
+                <div class="integration-nav">
+                    <h6 class="mb-3">Table of Contents</h6>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#quick-start">Quick Start</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#integration-types">Integration Types</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#use-cases">Use Cases</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#implementation">Implementation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#architecture">Architecture</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#best-practices">Best Practices</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#deployment">Deployment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#monitoring">Monitoring</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="col-lg-9">
+                <!-- Quick Start -->
+                <section id="quick-start" class="guide-section">
+                    <h2 class="mb-4">Quick Start</h2>
+                    <p class="lead">Get started with OpenPIIMap integration in under 10 minutes.</p>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card guide-card">
+                                <div class="card-body text-center">
+                                    <div class="guide-icon mx-auto">
+                                        <i class="bi bi-key"></i>
+                                    </div>
+                                    <h5>1. Get API Key</h5>
+                                    <p class="text-muted">Register for free API access and get your authentication key.</p>
+                                    <a href="mailto:api@openpiimap.org" class="btn btn-primary btn-sm">Request Access</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="card guide-card">
+                                <div class="card-body text-center">
+                                    <div class="guide-icon mx-auto">
+                                        <i class="bi bi-download"></i>
+                                    </div>
+                                    <h5>2. Install SDK</h5>
+                                    <p class="text-muted">Choose your preferred language and install the official SDK.</p>
+                                    <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-outline-primary" onclick="showInstallCommand('npm')">npm</button>
+                                        <button class="btn btn-outline-primary" onclick="showInstallCommand('pip')">pip</button>
+                                        <button class="btn btn-outline-primary" onclick="showInstallCommand('go')">go</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="card guide-card">
+                                <div class="card-body text-center">
+                                    <div class="guide-icon mx-auto">
+                                        <i class="bi bi-code-slash"></i>
+                                    </div>
+                                    <h5>3. Start Coding</h5>
+                                    <p class="text-muted">Begin integrating privacy compliance into your application.</p>
+                                    <a href="#implementation" class="btn btn-primary btn-sm">View Examples</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="installCommand" class="code-example mt-4" style="display: none;">
+                        <pre><code id="installCode" class="language-bash"># Install command will appear here</code></pre>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h6><i class="bi bi-exclamation-triangle me-2"></i>Important</h6>
+                        <p class="mb-0">
+                            The API is currently in beta. While we maintain backward compatibility, 
+                            consider this when planning production deployments.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Integration Types -->
+                <section id="integration-types" class="guide-section">
+                    <h2 class="mb-4">Integration Types</h2>
+                    <p>Choose the integration approach that best fits your architecture and requirements.</p>
+                    
+                    <div class="integration-type">
+                        <h4><i class="bi bi-cloud me-2"></i>REST API Integration</h4>
+                        <p>Direct HTTP API calls for maximum flexibility and language agnostic integration.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Best For:</h6>
+                                <ul>
+                                    <li>Custom applications</li>
+                                    <li>Microservices architecture</li>
+                                    <li>Server-side processing</li>
+                                    <li>Cross-platform compatibility</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Features:</h6>
+                                <ul>
+                                    <li>Real-time data access</li>
+                                    <li>Comprehensive filtering</li>
+                                    <li>JSON response format</li>
+                                    <li>Rate limiting & caching</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-bash">curl -H "Authorization: Bearer YOUR_API_KEY" \
+  "https://api.openpiimap.org/v1/countries/germany"</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="integration-type">
+                        <h4><i class="bi bi-box me-2"></i>SDK Integration</h4>
+                        <p>Language-specific SDKs with built-in error handling, caching, and retry logic.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Available SDKs:</h6>
+                                <ul>
+                                    <li>JavaScript/TypeScript (Node.js & Browser)</li>
+                                    <li>Python (sync & async)</li>
+                                    <li>Go (lightweight & fast)</li>
+                                    <li>Java (coming soon)</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>SDK Features:</h6>
+                                <ul>
+                                    <li>Automatic retries</li>
+                                    <li>Built-in caching</li>
+                                    <li>Type safety (TypeScript)</li>
+                                    <li>Error handling</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="integration-type">
+                        <h4><i class="bi bi-download me-2"></i>Data Export Integration</h4>
+                        <p>Download and host the data locally for offline processing and maximum performance.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Export Formats:</h6>
+                                <ul>
+                                    <li>JSON (structured data)</li>
+                                    <li>CSV (tabular format)</li>
+                                    <li>YAML (human readable)</li>
+                                    <li>SQLite (queryable database)</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Update Methods:</h6>
+                                <ul>
+                                    <li>Manual downloads</li>
+                                    <li>Scheduled updates</li>
+                                    <li>Webhook notifications</li>
+                                    <li>Git synchronization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Use Cases -->
+                <section id="use-cases" class="guide-section">
+                    <h2 class="mb-4">Common Use Cases</h2>
+                    <p>Real-world scenarios where OpenPIIMap integration adds value to your systems.</p>
+                    
+                    <div class="use-case-card">
+                        <h4><i class="bi bi-shield-check me-2 text-primary"></i>Data Masking & Anonymization</h4>
+                        <p>Automatically determine which fields require masking based on jurisdiction and data type.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-python">def mask_user_data(user_data, country_code):
+    country_info = openpii.get_country(country_code)
+    
+    for field, value in user_data.items():
+        category = find_pii_category(field, country_info.categories)
+        if category and category.requires_masking:
+            user_data[field] = apply_masking(value, category.masking_type)
+    
+    return user_data</code></pre>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Reduce manual compliance work by 85%</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Ensure consistent masking across jurisdictions</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Automatically adapt to regulatory changes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="use-case-card">
+                        <h4><i class="bi bi-globe me-2 text-success"></i>Cross-Border Data Transfer Compliance</h4>
+                        <p>Compare privacy requirements between countries before transferring data internationally.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-javascript">async function validateDataTransfer(fromCountry, toCountry, dataFields) {
+  const comparison = await openpii.compareCountries([fromCountry, toCountry]);
+  
+  const violations = [];
+  for (const field of dataFields) {
+    const sourceReqs = comparison[fromCountry].getRequirements(field);
+    const destReqs = comparison[toCountry].getRequirements(field);
+    
+    if (destReqs.isMoreRestrictive(sourceReqs)) {
+      violations.push({
+        field,
+        issue: 'Destination has stricter requirements',
+        recommendation: destReqs.getRecommendation()
+      });
+    }
+  }
+  
+  return { isCompliant: violations.length === 0, violations };
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="use-case-card">
+                        <h4><i class="bi bi-search me-2 text-warning"></i>Privacy Impact Assessment Automation</h4>
+                        <p>Generate comprehensive privacy assessments by analyzing data categories against regulatory frameworks.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-go">func GeneratePrivacyAssessment(countries []string, dataTypes []string) *Assessment {
+    assessment := &Assessment{}
+    
+    for _, country := range countries {
+        countryData, _ := client.GetCountry(country)
+        
+        for _, dataType := range dataTypes {
+            category := findCategory(dataType, countryData.Categories)
+            if category != nil {
+                assessment.AddRisk(RiskAssessment{
+                    Country:       country,
+                    DataType:      dataType,
+                    RiskLevel:     calculateRisk(category),
+                    Requirements:  category.LegalBasis,
+                    Recommendations: generateRecommendations(category),
+                })
+            }
+        }
+    }
+    
+    return assessment
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="use-case-card">
+                        <h4><i class="bi bi-bell me-2 text-info"></i>Compliance Monitoring & Alerting</h4>
+                        <p>Monitor regulatory changes and receive alerts when privacy requirements are updated.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-python">@webhook_handler('/openpii-updates')
+def handle_regulatory_update(payload):
+    update = payload['data']
+    
+    if update['type'] == 'category.modified':
+        affected_systems = find_systems_using_category(update['category_id'])
+        
+        for system in affected_systems:
+            create_compliance_task(
+                system=system,
+                category=update['category_id'],
+                changes=update['changes'],
+                priority='high' if update['breaking_change'] else 'medium'
+            )
+            
+        notify_compliance_team(update)</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Implementation -->
+                <section id="implementation" class="guide-section">
+                    <h2 class="mb-4">Step-by-Step Implementation</h2>
+                    <p>Detailed walkthrough for implementing OpenPIIMap in your application.</p>
+                    
+                    <div class="implementation-step">
+                        <div class="step-number">1</div>
+                        <h5>Environment Setup</h5>
+                        <p>Configure your development environment and install dependencies.</p>
+                        
+                        <div class="sample-config">
+# .env file
+OPENPIIMAP_API_KEY=your_api_key_here
+OPENPIIMAP_BASE_URL=https://api.openpiimap.org/v1
+OPENPIIMAP_CACHE_TTL=3600
+OPENPIIMAP_RETRY_ATTEMPTS=3
+                        </div>
+                    </div>
+                    
+                    <div class="implementation-step">
+                        <div class="step-number">2</div>
+                        <h5>Initialize Client</h5>
+                        <p>Set up the OpenPIIMap client with proper configuration and error handling.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-python">import os
+from openpiimap import Client, Config
+
+# Configure client
+config = Config(
+    api_key=os.getenv('OPENPIIMAP_API_KEY'),
+    base_url=os.getenv('OPENPIIMAP_BASE_URL'),
+    cache_ttl=int(os.getenv('OPENPIIMAP_CACHE_TTL', 3600)),
+    retry_attempts=int(os.getenv('OPENPIIMAP_RETRY_ATTEMPTS', 3)),
+    timeout=30
+)
+
+# Initialize client
+client = Client(config)
+
+# Test connection
+try:
+    countries = client.get_countries(limit=1)
+    print(f"✅ Connected successfully. Found {len(countries)} countries.")
+except Exception as e:
+    print(f"❌ Connection failed: {e}")
+    sys.exit(1)</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="implementation-step">
+                        <div class="step-number">3</div>
+                        <h5>Implement Core Functions</h5>
+                        <p>Create reusable functions for common privacy compliance operations.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-python">class PrivacyComplianceEngine:
+    def __init__(self, client):
+        self.client = client
+        self.cache = {}
+    
+    def get_masking_requirements(self, country_code, data_fields):
+        """Get masking requirements for specific fields in a country"""
+        if country_code not in self.cache:
+            self.cache[country_code] = self.client.get_country(country_code)
+        
+        country_data = self.cache[country_code]
+        requirements = {}
+        
+        for field in data_fields:
+            category = self._find_category(field, country_data.categories)
+            if category:
+                requirements[field] = {
+                    'requires_masking': category.requires_masking,
+                    'masking_method': category.masking_method,
+                    'legal_basis': category.legal_basis,
+                    'special_category': category.special_category
+                }
+        
+        return requirements
+    
+    def _find_category(self, field_name, categories):
+        """Find matching PII category for a field"""
+        # Implementation for category matching logic
+        pass</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="implementation-step">
+                        <div class="step-number">4</div>
+                        <h5>Add Caching & Performance Optimization</h5>
+                        <p>Implement caching strategies to minimize API calls and improve performance.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-javascript">class OpenPIIMapCache {
+    constructor(client, options = {}) {
+        this.client = client;
+        this.cache = new Map();
+        this.ttl = options.ttl || 3600000; // 1 hour
+        this.maxSize = options.maxSize || 1000;
+    }
+    
+    async getCountry(countryId) {
+        const cacheKey = `country:${countryId}`;
+        const cached = this.cache.get(cacheKey);
+        
+        if (cached && Date.now() - cached.timestamp < this.ttl) {
+            return cached.data;
+        }
+        
+        const data = await this.client.getCountry(countryId);
+        this.cache.set(cacheKey, {
+            data,
+            timestamp: Date.now()
+        });
+        
+        // Cleanup old entries
+        if (this.cache.size > this.maxSize) {
+            this.cleanup();
+        }
+        
+        return data;
+    }
+    
+    cleanup() {
+        const now = Date.now();
+        for (const [key, value] of this.cache.entries()) {
+            if (now - value.timestamp > this.ttl) {
+                this.cache.delete(key);
+            }
+        }
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="implementation-step">
+                        <div class="step-number">5</div>
+                        <h5>Error Handling & Resilience</h5>
+                        <p>Implement robust error handling and fallback mechanisms.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-go">func (c *Client) GetCountryWithRetry(countryID string) (*Country, error) {
+    var lastErr error
+    
+    for attempt := 0; attempt < c.maxRetries; attempt++ {
+        country, err := c.GetCountry(countryID)
+        if err == nil {
+            return country, nil
+        }
+        
+        lastErr = err
+        
+        // Check if error is retryable
+        if !isRetryableError(err) {
+            return nil, err
+        }
+        
+        // Exponential backoff
+        waitTime := time.Duration(math.Pow(2, float64(attempt))) * time.Second
+        time.Sleep(waitTime)
+        
+        log.Printf("Retry attempt %d/%d for country %s", attempt+1, c.maxRetries, countryID)
+    }
+    
+    return nil, fmt.Errorf("failed after %d attempts: %w", c.maxRetries, lastErr)
+}
+
+func isRetryableError(err error) bool {
+    // Check for network errors, timeouts, 5xx status codes
+    var netErr net.Error
+    if errors.As(err, &netErr) && netErr.Timeout() {
+        return true
+    }
+    
+    var httpErr *HTTPError
+    if errors.As(err, &httpErr) {
+        return httpErr.StatusCode >= 500
+    }
+    
+    return false
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Architecture -->
+                <section id="architecture" class="guide-section">
+                    <h2 class="mb-4">Integration Architecture</h2>
+                    <p>Recommended architectural patterns for different deployment scenarios.</p>
+                    
+                    <div class="architecture-diagram">
+                        <h5>Microservices Architecture</h5>
+                        <div style="margin: 2rem 0;">
+                            <div class="diagram-box">Frontend App</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-box">API Gateway</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-box">Privacy Service</div>
+                            <br><br>
+                            <div style="margin-top: 1rem;">
+                                <div class="diagram-box">OpenPIIMap API</div>
+                                <div class="diagram-arrow">↑</div>
+                            </div>
+                        </div>
+                        <p class="text-muted">Dedicated privacy service handles all compliance logic</p>
+                    </div>
+                    
+                    <div class="best-practice">
+                        <h6><i class="bi bi-lightbulb me-2"></i>Architecture Best Practice</h6>
+                        <p class="mb-0">
+                            Create a dedicated privacy compliance service that centralizes all OpenPIIMap 
+                            interactions. This provides consistency, easier maintenance, and better caching.
+                        </p>
+                    </div>
+                    
+                    <h5 class="mt-4">Implementation Patterns</h5>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6><i class="bi bi-diagram-3 me-2"></i>Synchronous Pattern</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>Real-time compliance checks during data processing.</p>
+                                    <ul class="small">
+                                        <li>Immediate validation</li>
+                                        <li>Higher latency</li>
+                                        <li>Real-time accuracy</li>
+                                        <li>Network dependent</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6><i class="bi bi-arrow-repeat me-2"></i>Asynchronous Pattern</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>Queue-based processing with eventual compliance.</p>
+                                    <ul class="small">
+                                        <li>Better performance</li>
+                                        <li>Eventual consistency</li>
+                                        <li>Offline capability</li>
+                                        <li>Batch processing</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Best Practices -->
+                <section id="best-practices" class="guide-section">
+                    <h2 class="mb-4">Best Practices</h2>
+                    
+                    <div class="best-practice">
+                        <h6><i class="bi bi-shield-check me-2"></i>Security Best Practices</h6>
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Store API keys in environment variables or secure vaults</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Use HTTPS for all API communications</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Implement rate limiting on your side to respect API limits</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Log API interactions for audit purposes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="best-practice">
+                        <h6><i class="bi bi-speedometer2 me-2"></i>Performance Best Practices</h6>
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Cache country data locally with appropriate TTL</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Use batch API calls when processing multiple countries</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Implement connection pooling for high-volume applications</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Consider offline-first architecture for critical applications</span>
+                        </div>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h6><i class="bi bi-exclamation-triangle me-2"></i>Common Pitfalls</h6>
+                        <ul class="mb-0">
+                            <li>Not handling API rate limits properly</li>
+                            <li>Caching data too long without checking for updates</li>
+                            <li>Ignoring network timeouts and error handling</li>
+                            <li>Hard-coding country codes instead of using dynamic lookup</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Deployment -->
+                <section id="deployment" class="guide-section">
+                    <h2 class="mb-4">Deployment Considerations</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Environment Configuration</h5>
+                            <div class="sample-config">
+# Production environment
+OPENPIIMAP_API_KEY=prod_key_here
+OPENPIIMAP_CACHE_TTL=7200
+OPENPIIMAP_RETRY_ATTEMPTS=5
+OPENPIIMAP_TIMEOUT=60
+
+# Development environment  
+OPENPIIMAP_API_KEY=dev_key_here
+OPENPIIMAP_CACHE_TTL=300
+OPENPIIMAP_RETRY_ATTEMPTS=2
+OPENPIIMAP_TIMEOUT=30
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h5>Health Checks</h5>
+                            <div class="code-example">
+                                <pre><code class="language-python">@app.route('/health/openpiimap')
+def health_check():
+    try:
+        # Quick API test
+        client.get_countries(limit=1)
+        return {
+            'status': 'healthy',
+            'timestamp': datetime.utcnow().isoformat(),
+            'api_accessible': True
+        }
+    except Exception as e:
+        return {
+            'status': 'unhealthy',
+            'error': str(e),
+            'api_accessible': False
+        }, 503</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Monitoring -->
+                <section id="monitoring" class="guide-section">
+                    <h2 class="mb-4">Monitoring & Observability</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card guide-card">
+                                <div class="card-body">
+                                    <h6><i class="bi bi-graph-up me-2"></i>Key Metrics</h6>
+                                    <ul class="small">
+                                        <li>API response times</li>
+                                        <li>Cache hit/miss rates</li>
+                                        <li>Error rates by endpoint</li>
+                                        <li>Rate limit utilization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="card guide-card">
+                                <div class="card-body">
+                                    <h6><i class="bi bi-bell me-2"></i>Alerts</h6>
+                                    <ul class="small">
+                                        <li>API downtime</li>
+                                        <li>High error rates</li>
+                                        <li>Cache failures</li>
+                                        <li>Rate limit exceeded</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="card guide-card">
+                                <div class="card-body">
+                                    <h6><i class="bi bi-journal-text me-2"></i>Logging</h6>
+                                    <ul class="small">
+                                        <li>API request/response</li>
+                                        <li>Cache operations</li>
+                                        <li>Error details</li>
+                                        <li>Performance metrics</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="code-example mt-4">
+                        <pre><code class="language-python"># Example logging configuration
+import logging
+import time
+
+class OpenPIIMapMiddleware:
+    def __init__(self, client):
+        self.client = client
+        self.logger = logging.getLogger('openpiimap')
+    
+    def get_country(self, country_id):
+        start_time = time.time()
+        try:
+            result = self.client.get_country(country_id)
+            duration = time.time() - start_time
+            
+            self.logger.info(
+                'API call successful',
+                extra={
+                    'endpoint': f'/countries/{country_id}',
+                    'duration_ms': duration * 1000,
+                    'cache_hit': hasattr(result, '_from_cache')
+                }
+            )
+            return result
+            
+        except Exception as e:
+            duration = time.time() - start_time
+            self.logger.error(
+                'API call failed',
+                extra={
+                    'endpoint': f'/countries/{country_id}',
+                    'duration_ms': duration * 1000,
+                    'error': str(e),
+                    'error_type': type(e).__name__
+                }
+            )
+            raise</code></pre>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Prism.js -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    
+    <script>
+        // Integration guide JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeNavigation();
+            setupSmoothScrolling();
+            highlightCodeBlocks();
+        });
+        
+        function initializeNavigation() {
+            // Update active nav link based on scroll position
+            window.addEventListener('scroll', updateActiveNavLink);
+            
+            // Handle nav link clicks
+            document.querySelectorAll('.nav-pills .nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+        
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-pills .nav-link');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 100) {
+                    currentSection = section.id;
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        function setupSmoothScrolling() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+        
+        function highlightCodeBlocks() {
+            // Initialize Prism.js for syntax highlighting
+            if (typeof Prism !== 'undefined') {
+                Prism.highlightAll();
+            }
+        }
+        
+        function showInstallCommand(packageManager) {
+            const installCommand = document.getElementById('installCommand');
+            const installCode = document.getElementById('installCode');
+            
+            const commands = {
+                npm: 'npm install @openpiimap/sdk',
+                pip: 'pip install openpiimap',
+                go: 'go get github.com/openpiimap/go-sdk'
+            };
+            
+            installCode.textContent = commands[packageManager];
+            installCommand.style.display = 'block';
+            
+            if (typeof Prism !== 'undefined') {
+                Prism.highlightElement(installCode);
+            }
+            
+            // Scroll to the command
+            installCommand.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
