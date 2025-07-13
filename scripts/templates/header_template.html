@@ -1,0 +1,54 @@
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% if in_country_page %}../{% endif %}index.html">
+                <i class="bi bi-shield-lock-fill me-2"></i>
+                OpenPIIMap
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link{% if active_page == 'home' %} active{% endif %}" href="{% if in_country_page %}../{% endif %}index.html">
+                            <i class="bi bi-house-fill me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% if in_country_page %}../{% endif %}index.html#countries">
+                            <i class="bi bi-globe me-1"></i>Countries
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{% if active_page == 'map' %} active{% endif %}" href="{% if in_country_page %}../{% endif %}map.html">
+                            <i class="bi bi-map me-1"></i>World Map
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{% if active_page == 'compare' %} active{% endif %}" href="{% if in_country_page %}../{% endif %}compare.html">
+                            <i class="bi bi-arrow-left-right me-1"></i>Compare
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{% if active_page == 'dashboard' %} active{% endif %}" href="{% if in_country_page %}../{% endif %}dashboard.html">
+                            <i class="bi bi-graph-up me-1"></i>Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{% if active_page == 'integration' %} active{% endif %}" href="{% if in_country_page %}../{% endif %}integration.html">
+                            <i class="bi bi-book me-1"></i>Integration
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/intelation/openpiimap" target="_blank">
+                            <i class="bi bi-github me-1"></i>GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

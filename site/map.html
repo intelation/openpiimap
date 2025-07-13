@@ -19,7 +19,7 @@
     
     <style>
         #map {
-            height: 600px;
+            height: 75vh; /* Increased height for full-width view */
             width: 100%;
             border-radius: var(--border-radius-lg);
             box-shadow: var(--box-shadow-lg);
@@ -34,20 +34,81 @@
             padding: 1rem;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            min-width: 200px;
+            min-width: 220px;
+            max-height: 70vh;
+            overflow-y: auto;
         }
         
-        .legend {
-            background: white;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
+        .floating-info-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            max-width: 350px;
+            max-height: 50vh;
+            overflow-y: auto;
         }
         
-        .legend-item {
+        .legend-compact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+        
+        .legend-item-small {
             display: flex;
             align-items: center;
-            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+        
+        .legend-item-small .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+        
+        .framework-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+        
+        .framework-filters .btn {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+        }
+        
+        /* Legend colors */
+        .marker-gdpr { background-color: #3b82f6; }
+        .marker-hipaa { background-color: #10b981; }
+        .marker-cpra { background-color: #f59e0b; }
+        .marker-lgpd { background-color: #8b5cf6; }
+        .marker-other { background-color: #6b7280; }
+        .marker-multiple { background-color: #ef4444; }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .map-controls {
+                position: relative;
+                width: 100%;
+                margin-bottom: 1rem;
+                top: 0;
+                right: 0;
+            }
+            
+            .floating-info-panel {
+                position: relative;
+                bottom: 0;
+                left: 0;
+                max-width: 100%;
+                margin-top: 1rem;
+            }
+            
+            #map {
+                height: 60vh;
+            }
         }
         
         .legend-color {
@@ -98,70 +159,59 @@
 <body>
     <!-- Header -->
     <header class="site-header">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <i class="bi bi-shield-lock-fill me-2"></i>
-                    OpenPIIMap
-                </a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">
-                                <i class="bi bi-house-fill me-1"></i>Home
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html#countries">
-                                <i class="bi bi-globe me-1"></i>Countries
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="map.html">
-                                <i class="bi bi-map me-1"></i>World Map
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="compare.html">
-                                <i class="bi bi-arrow-left-right me-1"></i>Compare
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="dashboard.html">
-                                <i class="bi bi-graph-up me-1"></i>Analytics
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="api.html">
-                                <i class="bi bi-code-slash me-1"></i>API
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-book me-1"></i>Guides
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="integration.html">Integration Guide</a></li>
-                                <li><a class="dropdown-item" href="api.html">API Documentation</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="index.html#frameworks">Privacy Frameworks</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://github.com/intelation/openpiimap" target="_blank">
-                                <i class="bi bi-github me-1"></i>GitHub
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-shield-lock-fill me-2"></i>
+                OpenPIIMap
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house-fill me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#countries">
+                            <i class="bi bi-globe me-1"></i>Countries
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="map.html">
+                            <i class="bi bi-map me-1"></i>World Map
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="compare.html">
+                            <i class="bi bi-arrow-left-right me-1"></i>Compare
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            <i class="bi bi-graph-up me-1"></i>Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="integration.html">
+                            <i class="bi bi-book me-1"></i>Integration
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/intelation/openpiimap" target="_blank">
+                            <i class="bi bi-github me-1"></i>GitHub
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 
     <!-- Hero Section -->
     <section class="py-4" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-light) 100%); color: white;">
@@ -214,7 +264,7 @@
     <!-- Map Section -->
     <div class="container-fluid my-4">
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-12">
                 <div class="position-relative">
                     <!-- Map -->
                     <div id="map"></div>
@@ -253,76 +303,60 @@
                         
                         <hr>
                         
+                        <!-- Legend -->
+                        <h6 class="mb-2">
+                            <i class="bi bi-palette me-2"></i>Legend
+                        </h6>
+                        <div class="legend-compact mb-3">
+                            <div class="legend-item-small">
+                                <div class="legend-color marker-gdpr"></div>
+                                <span>GDPR</span>
+                            </div>
+                            <div class="legend-item-small">
+                                <div class="legend-color marker-hipaa"></div>
+                                <span>HIPAA</span>
+                            </div>
+                            <div class="legend-item-small">
+                                <div class="legend-color marker-cpra"></div>
+                                <span>CPRA</span>
+                            </div>
+                            <div class="legend-item-small">
+                                <div class="legend-color marker-lgpd"></div>
+                                <span>LGPD</span>
+                            </div>
+                            <div class="legend-item-small">
+                                <div class="legend-color marker-other"></div>
+                                <span>Other</span>
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="showLabels" checked>
                             <label class="form-check-label" for="showLabels">
-                                Show country labels
+                                Country labels
                             </label>
                         </div>
                         
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="showStats" checked>
                             <label class="form-check-label" for="showStats">
-                                Show statistics
+                                Statistics
                             </label>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-3">
-                <!-- Legend -->
-                <div class="legend mb-4">
-                    <h6 class="mb-3">
-                        <i class="bi bi-palette me-2"></i>Framework Legend
-                    </h6>
-                    <div class="legend-item">
-                        <div class="legend-color marker-gdpr"></div>
-                        <span>GDPR (EU/EEA)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color marker-hipaa"></div>
-                        <span>HIPAA (US Health)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color marker-cpra"></div>
-                        <span>CPRA (California)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color marker-lgpd"></div>
-                        <span>LGPD (Brazil)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color marker-other"></div>
-                        <span>Other Frameworks</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color marker-multiple"></div>
-                        <span>Multiple Frameworks</span>
-                    </div>
-                </div>
-                
-                <!-- Country Info Panel -->
-                <div class="card" id="countryInfoPanel" style="display: none;">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0" id="countryInfoTitle">Country Information</h6>
-                        <button type="button" class="btn-close btn-sm" onclick="hideCountryInfo()"></button>
-                    </div>
-                    <div class="card-body" id="countryInfoBody">
-                        <!-- Country info will be populated here -->
-                    </div>
-                </div>
-                
-                <!-- Regional Summary -->
-                <div class="card">
-                    <div class="card-header">
-                        <h6 class="mb-0">
-                            <i class="bi bi-bar-chart me-2"></i>Regional Coverage
-                        </h6>
-                    </div>
-                    <div class="card-body">
-                        <div id="regionalSummary">
-                            <!-- Regional data will be populated here -->
+                    
+                    <!-- Country Info Panel (Floating) -->
+                    <div class="floating-info-panel" id="countryInfoPanel" style="display: none;">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="mb-0" id="countryInfoTitle">Country Information</h6>
+                                <button type="button" class="btn-close btn-sm" onclick="hideCountryInfo()"></button>
+                            </div>
+                            <div class="card-body" id="countryInfoBody">
+                                <!-- Country info will be populated here -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -388,10 +422,43 @@
         // Initialize map
         document.addEventListener('DOMContentLoaded', function() {
             initializeMap();
-            loadCountryData();
-            updateStatistics();
-            generateRegionalSummary();
+            
+            // Wait a bit for main.js to load data, then initialize
+            setTimeout(() => {
+                loadCountryData();
+                updateStatistics();
+                // generateRegionalSummary(); // Removed - no sidebar
+            }, 100);
         });
+        
+        // Also expose the initialization function for main.js to call
+        window.initializeMapPage = function(countriesData) {
+            if (countriesData && countriesData.length > 0) {
+                // Clear existing markers
+                markers.forEach(marker => map.removeLayer(marker));
+                markers = [];
+                markerClusterGroup.clearLayers();
+                
+                // Add new data
+                countriesData.forEach(country => {
+                    const coords = countryCoordinates[country.name];
+                    if (coords) {
+                        createCountryMarker(country, coords);
+                    }
+                });
+                
+                // Add all markers to cluster group
+                if (showClustering) {
+                    markerClusterGroup.addLayers(markers);
+                } else {
+                    markers.forEach(marker => map.addLayer(marker));
+                }
+                
+                updateStatistics();
+                // generateRegionalSummary(); // Removed - no sidebar
+                console.log(`Map updated with ${countriesData.length} countries`);
+            }
+        };
         
         function initializeMap() {
             // Initialize Leaflet map
@@ -416,7 +483,22 @@
         }
         
         function loadCountryData() {
-            const countries = window.OpenPIIMap?.countries || [];
+            // Wait for main.js to load data, or use fallback
+            let countries = [];
+            
+            if (window.OpenPIIMap && window.OpenPIIMap.app && window.OpenPIIMap.app.dataManager) {
+                countries = window.OpenPIIMap.app.dataManager.countries;
+            } else if (window.OpenPIIMap?.countries) {
+                countries = window.OpenPIIMap.countries;
+            } else {
+                // Fallback data if main.js hasn't loaded yet
+                countries = window.countries || [];
+            }
+            
+            if (countries.length === 0) {
+                console.warn('No country data available for map');
+                return;
+            }
             
             countries.forEach(country => {
                 const coords = countryCoordinates[country.name];
@@ -424,6 +506,8 @@
                     createCountryMarker(country, coords);
                 }
             });
+            
+            console.log(`Loaded ${countries.length} countries on map`);
             
             // Add all markers to cluster group
             if (showClustering) {
@@ -609,7 +693,21 @@
         }
         
         function updateStatistics() {
-            const countries = window.OpenPIIMap?.countries || [];
+            // Get countries from multiple possible sources
+            let countries = [];
+            
+            if (window.OpenPIIMap && window.OpenPIIMap.app && window.OpenPIIMap.app.dataManager) {
+                countries = window.OpenPIIMap.app.dataManager.countries;
+            } else if (window.OpenPIIMap?.countries) {
+                countries = window.OpenPIIMap.countries;
+            } else {
+                countries = window.countries || [];
+            }
+            
+            if (countries.length === 0) {
+                console.warn('No countries data available for statistics');
+                return;
+            }
             
             // Filter countries based on current filter
             let filteredCountries = countries;
@@ -637,7 +735,26 @@
         }
         
         function generateRegionalSummary() {
-            const countries = window.OpenPIIMap?.countries || [];
+            // Regional summary removed - sidebar eliminated for full-width map
+            console.log('Regional summary disabled - full-width map mode');
+            return;
+            
+            // Get countries from multiple possible sources
+            let countries = [];
+            
+            if (window.OpenPIIMap && window.OpenPIIMap.app && window.OpenPIIMap.app.dataManager) {
+                countries = window.OpenPIIMap.app.dataManager.countries;
+            } else if (window.OpenPIIMap?.countries) {
+                countries = window.OpenPIIMap.countries;
+            } else {
+                countries = window.countries || [];
+            }
+            
+            if (countries.length === 0) {
+                console.warn('No countries data available for regional summary');
+                return;
+            }
+            
             const regions = {};
             
             countries.forEach(country => {
@@ -663,7 +780,8 @@
                     </div>
                 `).join('');
             
-            document.getElementById('regionalSummary').innerHTML = summaryHtml;
+            // Element no longer exists - commented out
+            // document.getElementById('regionalSummary').innerHTML = summaryHtml;
         }
         
         // Event listeners for checkboxes

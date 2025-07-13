@@ -1064,8 +1064,11 @@ class OpenPIIMapApp {
     
     initializeMap() {
         // Map-specific initialization
-        if (typeof window.initializeMap === 'function') {
-            window.initializeMap(this.dataManager.countries);
+        if (typeof window.initializeMapPage === 'function') {
+            window.initializeMapPage(this.dataManager.countries);
+        } else {
+            // Set global data for map page to use
+            window.OpenPIIMap.countries = this.dataManager.countries;
         }
     }
     

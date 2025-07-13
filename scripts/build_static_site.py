@@ -1,4 +1,3 @@
-
 import os
 import yaml
 import json
@@ -18,6 +17,11 @@ def make_json_safe(obj):
     if isinstance(obj, (date, datetime)):
         return obj.isoformat()
     return obj
+
+def render_header_template(active_page="", in_country_page=False):
+    """Render header template with optional active page and country page flag"""
+    header_template = env.get_template("header_template.html")
+    return header_template.render(active_page=active_page, in_country_page=in_country_page)
 
 def ensure_dirs():
     os.makedirs(JSON_DIR, exist_ok=True)
@@ -58,6 +62,10 @@ for framework in os.listdir(DATA_DIR):
         # Write HTML
         html_filename = f"{framework}-{base_name}.html"
         html_path = os.path.join(HTML_DIR, html_filename)
+        
+        # Render header for country pages (with country page flag)
+        header_html = render_header_template(in_country_page=True)
+        
         html_content = template.render(
             country=data.get("country", base_name),
             framework=data.get("framework", framework),
@@ -70,7 +78,8 @@ for framework in os.listdir(DATA_DIR):
             authority=data.get("authority", ""),
             notes=data.get("notes", []),
             categories=data.get("categories", []),
-            json_data=json.dumps(data, indent=2, ensure_ascii=False, default=make_json_safe)
+            json_data=json.dumps(data, indent=2, ensure_ascii=False, default=make_json_safe),
+            header=header_html
         )
         with open(html_path, "w", encoding="utf-8") as f:
             f.write(html_content)
