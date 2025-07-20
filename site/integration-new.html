@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integration Guide - OpenPIIMap</title>
+    <meta name="description" content="Complete guide for integrating OpenPIIMap data into your applications using static JSON files.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Prism.js CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    
+    <style>
+        .integration-hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .guide-section {
+            padding: 3rem 0;
+        }
+        
+        .guide-card {
+            border: none;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius-lg);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .guide-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--blue-600) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .integration-type {
+            border-left: 4px solid var(--primary-blue);
+            background: var(--gray-50);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .code-example {
+            background: #1e1e1e;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .implementation-step {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--primary-blue);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .use-case-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .use-case-card:hover {
+            border-color: var(--primary-blue);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .architecture-diagram {
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .diagram-box {
+            background: var(--gray-50);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin: 0.5rem;
+            display: inline-block;
+            min-width: 120px;
+        }
+        
+        .diagram-arrow {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin: 0 1rem;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 0.75rem 0;
+        }
+        
+        .checklist-icon {
+            color: var(--success);
+            margin-right: 0.75rem;
+            margin-top: 0.125rem;
+        }
+        
+        .best-practice {
+            background: var(--green-50);
+            border: 1px solid var(--green-200);
+            border-left: 4px solid var(--green-500);
+            padding: 1rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 1rem 0;
+        }
+        
+        .nav-pills .nav-link.active {
+            background: var(--primary-blue);
+        }
+        
+        .integration-nav {
+            position: sticky;
+            top: 100px;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            height: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-shield-lock-fill me-2"></i>
+                    OpenPIIMap
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="bi bi-house-fill me-1"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#countries">
+                                <i class="bi bi-globe me-1"></i>Countries
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="map.html">
+                                <i class="bi bi-map me-1"></i>World Map
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="compare.html">
+                                <i class="bi bi-arrow-left-right me-1"></i>Compare
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="bi bi-graph-up me-1"></i>Analytics
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-book me-1"></i>Guides
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item active" href="integration.html">Integration Guide</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="https://github.com/intelation/openpiimap" target="_blank">GitHub</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="integration-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">Integration Guide</h1>
+                    <p class="lead mb-4">
+                        Learn how to integrate OpenPIIMap data into your applications using our static JSON files and downloadable datasets.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#quick-start" class="btn btn-light btn-lg">
+                            <i class="bi bi-rocket-takeoff me-2"></i>Quick Start
+                        </a>
+                        <a href="#use-cases" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-lightbulb me-2"></i>Use Cases
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="architecture-diagram">
+                        <div class="diagram-box">Your App</div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box">JSON Files</div>
+                        <div style="margin-top: 1rem;">
+                            <small class="text-muted">Static data integration</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Navigation -->
+            <div class="col-lg-3">
+                <div class="integration-nav">
+                    <h6 class="mb-3">Table of Contents</h6>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#quick-start">Quick Start</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#data-structure">Data Structure</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#use-cases">Use Cases</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#implementation">Implementation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#best-practices">Best Practices</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="col-lg-9">
+                <!-- Quick Start -->
+                <section id="quick-start" class="guide-section">
+                    <h2 class="mb-4">Quick Start</h2>
+                    <p class="lead">Get started with OpenPIIMap data integration in under 5 minutes.</p>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card guide-card">
+                                <div class="card-body text-center">
+                                    <div class="guide-icon mx-auto">
+                                        <i class="bi bi-download"></i>
+                                    </div>
+                                    <h5>1. Access JSON Files</h5>
+                                    <p class="text-muted">Use our static JSON endpoints or clone the repository.</p>
+                                    <a href="json/countries.json" class="btn btn-primary btn-sm" target="_blank">View Countries</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="card guide-card">
+                                <div class="card-body text-center">
+                                    <div class="guide-icon mx-auto">
+                                        <i class="bi bi-code-slash"></i>
+                                    </div>
+                                    <h5>2. Fetch Data</h5>
+                                    <p class="text-muted">Use simple HTTP requests to access privacy law data.</p>
+                                    <a href="#implementation" class="btn btn-primary btn-sm">View Examples</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="card guide-card">
+                                <div class="card-body text-center">
+                                    <div class="guide-icon mx-auto">
+                                        <i class="bi bi-gear"></i>
+                                    </div>
+                                    <h5>3. Integrate</h5>
+                                    <p class="text-muted">Process the data in your compliance workflows.</p>
+                                    <a href="#use-cases" class="btn btn-primary btn-sm">See Use Cases</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="best-practice">
+                        <h6><i class="bi bi-lightbulb me-2"></i>Tip</h6>
+                        <p class="mb-0">
+                            OpenPIIMap operates as a static site with JSON data files. No authentication required - simply fetch the data you need.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Data Structure -->
+                <section id="data-structure" class="guide-section">
+                    <h2 class="mb-4">Data Structure</h2>
+                    <p>Understanding the JSON data structure for effective integration.</p>
+                    
+                    <div class="integration-type">
+                        <h4><i class="bi bi-file-earmark-code me-2"></i>Countries Data</h4>
+                        <p>Access detailed information about privacy laws by country.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-javascript">// Fetch countries data
+fetch('/json/countries.json')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.germany); // Access Germany's GDPR data
+  });</code></pre>
+                        </div>
+                        
+                        <h6>Data Structure:</h6>
+                        <div class="code-example">
+                            <pre><code class="language-json">{
+  "germany": {
+    "name": "Germany",
+    "framework": "GDPR",
+    "categories": [
+      {
+        "name": "Personal Identifiers",
+        "examples": ["Full Name", "Email Address", "Phone Number"]
+      }
+    ],
+    "rights": ["Access", "Rectification", "Erasure"],
+    "penalties": {
+      "administrative_fines": "Up to €20M or 4% of global turnover"
+    }
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="integration-type">
+                        <h4><i class="bi bi-diagram-3 me-2"></i>Frameworks Data</h4>
+                        <p>Get framework-specific information across multiple jurisdictions.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-javascript">// Fetch frameworks data
+fetch('/json/frameworks.json')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.gdpr); // Access GDPR framework details
+  });</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Use Cases -->
+                <section id="use-cases" class="guide-section">
+                    <h2 class="mb-4">Common Use Cases</h2>
+                    <p>Real-world scenarios where OpenPIIMap data integration adds value to your systems.</p>
+                    
+                    <div class="use-case-card">
+                        <h4><i class="bi bi-shield-check me-2 text-primary"></i>Compliance Checking</h4>
+                        <p>Automatically verify if your data handling practices comply with local privacy laws.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-javascript">async function checkCompliance(userLocation, dataTypes) {
+  const countries = await fetch('/json/countries.json').then(r => r.json());
+  const countryLaw = countries[userLocation.toLowerCase()];
+  
+  if (!countryLaw) return { compliant: false, reason: 'Unknown jurisdiction' };
+  
+  const violations = dataTypes.filter(type => 
+    countryLaw.categories.some(cat => 
+      cat.examples.includes(type) && cat.restrictions
+    )
+  );
+  
+  return {
+    compliant: violations.length === 0,
+    framework: countryLaw.framework,
+    violations: violations
+  };
+}</code></pre>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Automate compliance verification</span>
+                        </div>
+                        <div class="checklist-item">
+                            <i class="bi bi-check-circle checklist-icon"></i>
+                            <span>Support multiple jurisdictions</span>
+                        </div>
+                    </div>
+                    
+                    <div class="use-case-card">
+                        <h4><i class="bi bi-eye-slash me-2 text-primary"></i>Data Masking Rules</h4>
+                        <p>Apply appropriate data masking based on jurisdiction and data sensitivity.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-javascript">async function getMaskingRules(country) {
+  const countries = await fetch('/json/countries.json').then(r => r.json());
+  const law = countries[country.toLowerCase()];
+  
+  return law?.categories.map(category => ({
+    category: category.name,
+    fields: category.examples,
+    maskingRequired: category.sensitive || false,
+    retentionPeriod: category.retention || 'indefinite'
+  })) || [];
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="use-case-card">
+                        <h4><i class="bi bi-person-check me-2 text-primary"></i>User Rights Management</h4>
+                        <p>Implement user rights based on their jurisdiction's privacy laws.</p>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-javascript">async function getUserRights(userCountry) {
+  const countries = await fetch('/json/countries.json').then(r => r.json());
+  const law = countries[userCountry.toLowerCase()];
+  
+  return law?.rights || ['Access']; // Default to basic access right
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Implementation -->
+                <section id="implementation" class="guide-section">
+                    <h2 class="mb-4">Implementation Examples</h2>
+                    <p>Step-by-step implementation guides for different programming languages.</p>
+                    
+                    <div class="implementation-step">
+                        <div class="step-number">1</div>
+                        <h5>JavaScript/Node.js Implementation</h5>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-javascript">class OpenPIIMapClient {
+  constructor(baseUrl = 'https://openpiimap.org') {
+    this.baseUrl = baseUrl;
+    this.cache = new Map();
+  }
+  
+  async getCountries() {
+    if (this.cache.has('countries')) {
+      return this.cache.get('countries');
+    }
+    
+    const response = await fetch(`${this.baseUrl}/json/countries.json`);
+    const data = await response.json();
+    this.cache.set('countries', data);
+    return data;
+  }
+  
+  async getCountryLaw(country) {
+    const countries = await this.getCountries();
+    return countries[country.toLowerCase()] || null;
+  }
+  
+  async getFrameworks() {
+    if (this.cache.has('frameworks')) {
+      return this.cache.get('frameworks');
+    }
+    
+    const response = await fetch(`${this.baseUrl}/json/frameworks.json`);
+    const data = await response.json();
+    this.cache.set('frameworks', data);
+    return data;
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="implementation-step">
+                        <div class="step-number">2</div>
+                        <h5>Python Implementation</h5>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-python">import requests
+import json
+from typing import Dict, Optional
+
+class OpenPIIMapClient:
+    def __init__(self, base_url: str = "https://openpiimap.org"):
+        self.base_url = base_url
+        self.cache = {}
+    
+    def get_countries(self) -> Dict:
+        if 'countries' not in self.cache:
+            response = requests.get(f"{self.base_url}/json/countries.json")
+            response.raise_for_status()
+            self.cache['countries'] = response.json()
+        return self.cache['countries']
+    
+    def get_country_law(self, country: str) -> Optional[Dict]:
+        countries = self.get_countries()
+        return countries.get(country.lower())
+    
+    def get_frameworks(self) -> Dict:
+        if 'frameworks' not in self.cache:
+            response = requests.get(f"{self.base_url}/json/frameworks.json")
+            response.raise_for_status()
+            self.cache['frameworks'] = response.json()
+        return self.cache['frameworks']</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="implementation-step">
+                        <div class="step-number">3</div>
+                        <h5>Usage Example</h5>
+                        
+                        <div class="code-example">
+                            <pre><code class="language-javascript">// Initialize client
+const client = new OpenPIIMapClient();
+
+// Check if email processing is compliant in Germany
+async function checkEmailCompliance() {
+  const germanyLaw = await client.getCountryLaw('germany');
+  
+  if (germanyLaw) {
+    console.log(`Framework: ${germanyLaw.framework}`);
+    console.log(`User Rights: ${germanyLaw.rights.join(', ')}`);
+    
+    // Check if email is considered PII
+    const emailCategory = germanyLaw.categories.find(cat => 
+      cat.examples.includes('Email Address')
+    );
+    
+    if (emailCategory) {
+      console.log(`Email is PII under: ${emailCategory.name}`);
+    }
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Best Practices -->
+                <section id="best-practices" class="guide-section">
+                    <h2 class="mb-4">Best Practices</h2>
+                    <p>Guidelines for effective and efficient integration of OpenPIIMap data.</p>
+                    
+                    <div class="best-practice">
+                        <h5><i class="bi bi-lightning me-2"></i>Performance</h5>
+                        <ul class="mb-0">
+                            <li>Cache JSON responses to avoid repeated downloads</li>
+                            <li>Use conditional requests with ETags when available</li>
+                            <li>Consider downloading and hosting data locally for high-volume applications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="best-practice">
+                        <h5><i class="bi bi-arrow-clockwise me-2"></i>Data Freshness</h5>
+                        <ul class="mb-0">
+                            <li>Check for updates periodically as privacy laws evolve</li>
+                            <li>Subscribe to GitHub repository notifications for changes</li>
+                            <li>Implement graceful fallbacks for missing jurisdictions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="best-practice">
+                        <h5><i class="bi bi-shield-check me-2"></i>Error Handling</h5>
+                        <ul class="mb-0">
+                            <li>Handle network failures gracefully with cached data</li>
+                            <li>Validate data structure before processing</li>
+                            <li>Log compliance decisions for audit trails</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h5>OpenPIIMap</h5>
+                    <p class="text-muted">
+                        An open-source initiative mapping Personally Identifiable Information (PII) 
+                        definitions across global privacy regulations.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="https://github.com/intelation/openpiimap" target="_blank" class="btn btn-outline-light">
+                        <i class="bi bi-github me-2"></i>GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Prism.js -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active navigation link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.guide-section');
+            const navLinks = document.querySelectorAll('.integration-nav .nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

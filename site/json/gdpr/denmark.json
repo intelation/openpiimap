@@ -1,0 +1,238 @@
+{
+  "country": "Denmark",
+  "framework": "GDPR",
+  "region": "EU",
+  "language": "da",
+  "version": "2024-06",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "Datatilsynet – The Danish Data Protection Agency",
+  "notes": [
+    "Denmark enforces GDPR alongside the Danish Data Protection Act (Databeskyttelsesloven, Act No. 502 of 2018).",
+    "The Datatilsynet provides detailed guidance on video surveillance, health records, employee monitoring, and children's data in educational settings."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "subtype": "personal_name",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "identity"
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "subtype": "digital_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "subtype": "telecom_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "IP Address",
+      "type": "indirect_identifier",
+      "subtype": "network_identifier",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        },
+        {
+          "authority": "Datatilsynet",
+          "guideline": "Cookies og tracking",
+          "url": "https://www.datatilsynet.dk/emner/internet-og-cookies/cookies"
+        }
+      ],
+      "category_tags": [
+        "digital",
+        "behavioral"
+      ]
+    },
+    {
+      "name": "CPR Number (Det Centrale Personregister)",
+      "type": "national_identifier",
+      "subtype": "government_id",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "national_id",
+        "government_id"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "87"
+        },
+        {
+          "national_law": "Databeskyttelsesloven",
+          "section": "11",
+          "description": "Restricts use of the CPR number to cases permitted by law"
+        }
+      ],
+      "category_tags": [
+        "identity",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Health Data (patient records, medications, diagnoses)",
+      "type": "special_category",
+      "subtype": "health",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        },
+        {
+          "authority": "Datatilsynet",
+          "guideline": "Behandling af helbredsoplysninger",
+          "url": "https://www.datatilsynet.dk/emner/helbred-og-sundhedsoplysninger"
+        }
+      ],
+      "category_tags": [
+        "health",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Biometric Data (fingerprint scanners, facial recognition)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "biometric",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        }
+      ],
+      "category_tags": [
+        "biometric",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Location Data (employee GPS, transport logs)",
+      "type": "behavioral",
+      "subtype": "geolocation",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "tracking",
+        "digital"
+      ]
+    },
+    {
+      "name": "Cookie Identifiers / Device Tracking",
+      "type": "indirect_identifier",
+      "subtype": "device_id",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        },
+        {
+          "authority": "Datatilsynet",
+          "guideline": "Brug af cookies",
+          "url": "https://www.datatilsynet.dk/emner/internet-og-cookies/cookies"
+        }
+      ],
+      "category_tags": [
+        "tracking",
+        "digital"
+      ]
+    },
+    {
+      "name": "Employment Data (payroll, camera surveillance, evaluations)",
+      "type": "contextual_identifier",
+      "subtype": "hr_data",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "hr_data",
+        "workplace_monitoring"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "88"
+        },
+        {
+          "authority": "Datatilsynet",
+          "guideline": "Behandling af medarbejderoplysninger",
+          "url": "https://www.datatilsynet.dk/emner/arbejdsplads"
+        }
+      ],
+      "category_tags": [
+        "employment",
+        "sensitive"
+      ]
+    }
+  ]
+}

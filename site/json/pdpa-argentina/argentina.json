@@ -1,0 +1,439 @@
+{
+  "country": "Argentina",
+  "framework": "PDPA Argentina",
+  "region": "Latin America",
+  "language": "es",
+  "version": "2024-12",
+  "status": "published",
+  "last_updated": "2025-07-20",
+  "source_verified": true,
+  "authority": "AAIP (Agencia de Acceso a la Información Pública)",
+  "notes": [
+    "Argentina's Personal Data Protection Act (Law 25.326) was amended significantly in 2021",
+    "Includes specific provisions for cross-border data transfers and digital rights",
+    "Enforcement includes administrative fines up to ARS 100 million",
+    "Strong influence from European GDPR principles while maintaining local requirements"
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "subtype": "personal_name",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 2",
+          "description": "Personal data includes any information that allows identification of a person"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "identity"
+      ]
+    },
+    {
+      "name": "National Identity Number (DNI)",
+      "type": "direct_identifier",
+      "subtype": "government_id",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 2",
+          "description": "Government identification numbers are personal data"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "identity",
+        "government"
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "subtype": "digital_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 2"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "subtype": "telecom_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 2"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "Home Address",
+      "type": "direct_identifier",
+      "subtype": "physical_location",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 2"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "location"
+      ]
+    },
+    {
+      "name": "Date of Birth",
+      "type": "direct_identifier",
+      "subtype": "temporal_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 2"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "temporal"
+      ]
+    },
+    {
+      "name": "Bank Account Number",
+      "type": "direct_identifier",
+      "subtype": "financial_account",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "financial"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 7",
+          "description": "Financial data requires enhanced protection"
+        }
+      ],
+      "category_tags": [
+        "financial",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Credit Card Number",
+      "type": "direct_identifier",
+      "subtype": "financial_instrument",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "financial"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 7"
+        }
+      ],
+      "category_tags": [
+        "financial",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Tax Identification Number (CUIT/CUIL)",
+      "type": "direct_identifier",
+      "subtype": "tax_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "financial"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 2",
+          "description": "Tax identification numbers are personal data"
+        }
+      ],
+      "category_tags": [
+        "financial",
+        "government"
+      ]
+    },
+    {
+      "name": "Social Security Number",
+      "type": "direct_identifier",
+      "subtype": "social_security",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 7",
+          "description": "Social security data requires special protection"
+        }
+      ],
+      "category_tags": [
+        "social",
+        "government",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Health Insurance Number",
+      "type": "direct_identifier",
+      "subtype": "healthcare_id",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "health"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 7",
+          "description": "Health-related identifiers require enhanced protection"
+        }
+      ],
+      "category_tags": [
+        "health",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Medical Record Number",
+      "type": "direct_identifier",
+      "subtype": "healthcare_record",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "health",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 7",
+          "description": "Medical data requires special protection"
+        }
+      ],
+      "category_tags": [
+        "health",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Biometric Data",
+      "type": "direct_identifier",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "biometric",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 7",
+          "description": "Biometric data requires explicit consent and enhanced protection"
+        }
+      ],
+      "category_tags": [
+        "biometric",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "IP Address",
+      "type": "quasi_identifier",
+      "subtype": "network_identifier",
+      "required_masking": false,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 2",
+          "description": "May be personal data depending on context"
+        }
+      ],
+      "category_tags": [
+        "technical",
+        "network"
+      ]
+    },
+    {
+      "name": "Employment Information",
+      "type": "direct_identifier",
+      "subtype": "employment_data",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 2"
+        }
+      ],
+      "category_tags": [
+        "employment",
+        "professional"
+      ]
+    },
+    {
+      "name": "Educational Records",
+      "type": "direct_identifier",
+      "subtype": "educational_data",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 2"
+        }
+      ],
+      "category_tags": [
+        "education",
+        "professional"
+      ]
+    },
+    {
+      "name": "Vehicle Registration",
+      "type": "direct_identifier",
+      "subtype": "vehicle_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 2"
+        }
+      ],
+      "category_tags": [
+        "transport",
+        "assets"
+      ]
+    },
+    {
+      "name": "Digital Signature",
+      "type": "direct_identifier",
+      "subtype": "digital_identity",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "digital"
+      ],
+      "citations": [
+        {
+          "regulation": "PDPA Argentina",
+          "article": "Article 2"
+        }
+      ],
+      "category_tags": [
+        "digital",
+        "identity"
+      ]
+    }
+  ],
+  "legal_references": [
+    {
+      "title": "Personal Data Protection Act",
+      "citation": "Law 25.326",
+      "url": "https://www.argentina.gob.ar/normativa/nacional/ley-25326-64790",
+      "date_enacted": "2000-10-04",
+      "last_amended": "2021-06-15"
+    },
+    {
+      "title": "Data Protection Regulation",
+      "citation": "Decree 1558/2001",
+      "url": "https://www.argentina.gob.ar/normativa/nacional/decreto-1558-2001-69624",
+      "date_enacted": "2001-11-29"
+    }
+  ],
+  "authority_info": {
+    "name": "Agencia de Acceso a la Información Pública (AAIP)",
+    "website": "https://www.argentina.gob.ar/aaip",
+    "contact": "info@aaip.gob.ar",
+    "powers": [
+      "Investigation and enforcement",
+      "Administrative sanctions",
+      "Cross-border transfer oversight",
+      "Data subject complaint resolution"
+    ]
+  },
+  "penalties": {
+    "administrative_fines": "Up to ARS 100,000,000",
+    "criminal_sanctions": "Possible imprisonment for serious violations",
+    "other": "Business license suspension, public registry of violations"
+  },
+  "data_subject_rights": [
+    "Access to personal data",
+    "Rectification of inaccurate data",
+    "Erasure of data",
+    "Data portability",
+    "Objection to processing",
+    "Restriction of processing"
+  ],
+  "cross_border_transfers": {
+    "adequacy_required": true,
+    "adequacy_countries": [
+      "European Union member states",
+      "United Kingdom",
+      "Switzerland"
+    ],
+    "safeguards_required": true,
+    "bcr_recognized": true
+  },
+  "compliance_requirements": {
+    "data_protection_officer": "Required for certain high-risk processing",
+    "privacy_impact_assessment": "Required for high-risk processing",
+    "breach_notification": "72 hours to authority, without undue delay to data subjects",
+    "consent_requirements": "Explicit consent required for sensitive data",
+    "lawful_basis_required": true
+  }
+}

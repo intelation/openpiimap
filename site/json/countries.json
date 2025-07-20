@@ -1,0 +1,274 @@
+[
+  {
+    "id": "germany",
+    "name": "Germany",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 42,
+    "lastUpdated": "2024-01-15T10:30:00Z"
+  },
+  {
+    "id": "france",
+    "name": "France",
+    "framework": "GDPR", 
+    "region": "Europe",
+    "categories": 39,
+    "lastUpdated": "2024-01-12T09:15:00Z"
+  },
+  {
+    "id": "austria",
+    "name": "Austria",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 38,
+    "lastUpdated": "2024-01-10T14:20:00Z"
+  },
+  {
+    "id": "belgium",
+    "name": "Belgium",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 40,
+    "lastUpdated": "2024-01-08T11:45:00Z"
+  },
+  {
+    "id": "denmark",
+    "name": "Denmark",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 37,
+    "lastUpdated": "2024-01-05T16:30:00Z"
+  },
+  {
+    "id": "finland",
+    "name": "Finland",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 36,
+    "lastUpdated": "2023-12-28T13:15:00Z"
+  },
+  {
+    "id": "greece",
+    "name": "Greece",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 35,
+    "lastUpdated": "2023-12-20T10:00:00Z"
+  },
+  {
+    "id": "iceland",
+    "name": "Iceland",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 34,
+    "lastUpdated": "2023-12-15T09:30:00Z"
+  },
+  {
+    "id": "ireland",
+    "name": "Ireland",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 41,
+    "lastUpdated": "2024-01-03T12:00:00Z"
+  },
+  {
+    "id": "italy",
+    "name": "Italy",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 43,
+    "lastUpdated": "2024-01-07T15:45:00Z"
+  },
+  {
+    "id": "liechtenstein",
+    "name": "Liechtenstein",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 32,
+    "lastUpdated": "2023-11-30T14:20:00Z"
+  },
+  {
+    "id": "netherlands",
+    "name": "Netherlands",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 44,
+    "lastUpdated": "2024-01-11T08:15:00Z"
+  },
+  {
+    "id": "norway",
+    "name": "Norway",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 38,
+    "lastUpdated": "2023-12-22T11:30:00Z"
+  },
+  {
+    "id": "poland",
+    "name": "Poland",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 37,
+    "lastUpdated": "2023-12-18T13:45:00Z"
+  },
+  {
+    "id": "spain",
+    "name": "Spain",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 41,
+    "lastUpdated": "2024-01-09T16:00:00Z"
+  },
+  {
+    "id": "sweden",
+    "name": "Sweden",
+    "framework": "GDPR",
+    "region": "Europe",
+    "categories": 39,
+    "lastUpdated": "2024-01-04T10:30:00Z"
+  },
+  {
+    "id": "united-kingdom",
+    "name": "United Kingdom",
+    "framework": "UK GDPR",
+    "region": "Europe",
+    "categories": 42,
+    "lastUpdated": "2024-01-13T09:00:00Z"
+  },
+  {
+    "id": "switzerland",
+    "name": "Switzerland",
+    "framework": "FADP",
+    "region": "Europe",
+    "categories": 31,
+    "lastUpdated": "2023-12-12T14:15:00Z"
+  },
+  {
+    "id": "brazil",
+    "name": "Brazil",
+    "framework": "LGPD",
+    "region": "Latin America",
+    "categories": 35,
+    "lastUpdated": "2024-01-06T12:30:00Z"
+  },
+  {
+    "id": "mexico",
+    "name": "Mexico",
+    "framework": "LFPDPPP",
+    "region": "Latin America",
+    "categories": 28,
+    "lastUpdated": "2023-11-25T15:00:00Z"
+  },
+  {
+    "id": "california",
+    "name": "California",
+    "framework": "CPRA",
+    "region": "North America",
+    "categories": 33,
+    "lastUpdated": "2024-01-14T11:45:00Z"
+  },
+  {
+    "id": "canada",
+    "name": "Canada",
+    "framework": "PIPEDA",
+    "region": "North America",
+    "categories": 29,
+    "lastUpdated": "2023-12-08T10:15:00Z"
+  },
+  {
+    "id": "usa",
+    "name": "United States",
+    "framework": "HIPAA",
+    "region": "North America",
+    "categories": 18,
+    "lastUpdated": "2023-10-15T13:30:00Z"
+  },
+  {
+    "id": "japan",
+    "name": "Japan",
+    "framework": "APPI",
+    "region": "Asia Pacific",
+    "categories": 24,
+    "lastUpdated": "2023-11-18T16:45:00Z"
+  },
+  {
+    "id": "singapore",
+    "name": "Singapore",
+    "framework": "PDPA",
+    "region": "Asia Pacific",
+    "categories": 27,
+    "lastUpdated": "2023-12-03T09:20:00Z"
+  },
+  {
+    "id": "south-korea",
+    "name": "South Korea",
+    "framework": "PIPA",
+    "region": "Asia Pacific",
+    "categories": 31,
+    "lastUpdated": "2023-11-28T14:00:00Z"
+  },
+  {
+    "id": "china",
+    "name": "China",
+    "framework": "PIPL",
+    "region": "Asia Pacific",
+    "categories": 26,
+    "lastUpdated": "2023-12-01T11:30:00Z"
+  },
+  {
+    "id": "australia",
+    "name": "Australia",
+    "framework": "Privacy Act",
+    "region": "Asia Pacific",
+    "categories": 22,
+    "lastUpdated": "2023-10-22T15:15:00Z"
+  },
+  {
+    "id": "indonesia",
+    "name": "Indonesia",
+    "framework": "PDP",
+    "region": "Asia Pacific",
+    "categories": 20,
+    "lastUpdated": "2023-09-30T12:00:00Z"
+  },
+  {
+    "id": "india",
+    "name": "India",
+    "framework": "DPDPB",
+    "region": "Asia Pacific",
+    "categories": 25,
+    "lastUpdated": "2023-11-10T13:45:00Z"
+  },
+  {
+    "id": "nigeria",
+    "name": "Nigeria",
+    "framework": "NDPR",
+    "region": "Africa",
+    "categories": 19,
+    "lastUpdated": "2023-08-15T10:30:00Z"
+  },
+  {
+    "id": "united-arab-emirates",
+    "name": "United Arab Emirates",
+    "framework": "UAE DPL",
+    "region": "Middle East",
+    "categories": 21,
+    "lastUpdated": "2023-09-12T14:20:00Z"
+  },
+  {
+    "id": "argentina",
+    "name": "Argentina",
+    "framework": "PDPA Argentina",
+    "region": "Latin America",
+    "categories": 18,
+    "lastUpdated": "2025-07-20T12:00:00Z"
+  },
+  {
+    "id": "thailand",
+    "name": "Thailand", 
+    "framework": "PDPA Thailand",
+    "region": "Asia Pacific",
+    "categories": 20,
+    "lastUpdated": "2025-07-20T12:00:00Z"
+  }
+]

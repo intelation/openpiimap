@@ -1,0 +1,316 @@
+{
+  "country": "Thailand",
+  "framework": "Personal Data Protection Act (PDPA) 2019",
+  "authority": "Personal Data Protection Committee (PDPC)",
+  "authority_url": "https://www.pdpc.go.th/",
+  "enforcement_date": "2022-06-01",
+  "summary": "Thailand's Personal Data Protection Act 2019 establishes comprehensive data protection rules based on GDPR principles, adapted for the Thai legal and cultural context. The law protects personal data of individuals in Thailand and regulates cross-border data transfers.",
+  "last_updated": "2025-07-20",
+  "data_subject_rights": [
+    {
+      "name": "Right to Access",
+      "description": "Data subjects can request access to their personal data and information about processing",
+      "thai_term": "สิทธิในการเข้าถึงข้อมูล"
+    },
+    {
+      "name": "Right to Rectification",
+      "description": "Right to correct inaccurate or incomplete personal data",
+      "thai_term": "สิทธิในการแก้ไขข้อมูล"
+    },
+    {
+      "name": "Right to Erasure",
+      "description": "Right to delete personal data under certain circumstances",
+      "thai_term": "สิทธิในการลบข้อมูล"
+    },
+    {
+      "name": "Right to Restrict Processing",
+      "description": "Right to limit how personal data is processed",
+      "thai_term": "สิทธิในการจำกัดการประมวลผล"
+    },
+    {
+      "name": "Right to Data Portability",
+      "description": "Right to receive personal data in a structured, machine-readable format",
+      "thai_term": "สิทธิในการโอนย้ายข้อมูล"
+    },
+    {
+      "name": "Right to Object",
+      "description": "Right to object to processing for direct marketing and legitimate interests",
+      "thai_term": "สิทธิในการคัดค้าน"
+    },
+    {
+      "name": "Right to Withdraw Consent",
+      "description": "Right to withdraw consent for processing at any time",
+      "thai_term": "สิทธิในการถอนความยินยอม"
+    }
+  ],
+  "cross_border_transfers": {
+    "adequacy_countries": [],
+    "transfer_mechanisms": [
+      "Adequacy decision by PDPC",
+      "Standard contractual clauses",
+      "Binding corporate rules",
+      "Explicit consent",
+      "Contract necessity",
+      "Public interest"
+    ],
+    "prohibited_countries": [],
+    "special_requirements": [
+      "PDPC notification required for certain transfers",
+      "Local representative may be required",
+      "Government approval needed for sensitive data transfers"
+    ]
+  },
+  "penalties": {
+    "administrative_fines": [
+      {
+        "type": "Criminal penalties",
+        "max_amount": "5,000,000 THB",
+        "max_amount_usd": "~$140,000"
+      },
+      {
+        "type": "Administrative penalties",
+        "max_amount": "5,000,000 THB",
+        "max_amount_usd": "~$140,000"
+      },
+      {
+        "type": "Imprisonment",
+        "max_duration": "1 year"
+      }
+    ],
+    "other_consequences": [
+      "Business license suspension",
+      "Order to cease processing",
+      "Mandatory data protection impact assessment"
+    ]
+  },
+  "pii_categories": [
+    {
+      "category": "Thai National ID Number",
+      "description": "13-digit national identification number issued to Thai citizens",
+      "thai_term": "เลขประจำตัวประชาชน",
+      "examples": [
+        "1-1234-56789-12-3"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Passport Number",
+      "description": "Thai passport identification number",
+      "thai_term": "หมายเลขหนังสือเดินทาง",
+      "examples": [
+        "AB1234567"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Taxpayer Identification Number",
+      "description": "Tax identification number for individuals and businesses",
+      "thai_term": "หมายเลขประจำตัวผู้เสียภาษี",
+      "examples": [
+        "0-1234-56789-12-3"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Social Security Number",
+      "description": "Social security identification number",
+      "thai_term": "หมายเลขประกันสังคม",
+      "examples": [
+        "1-2345-6789-123"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Bank Account Number",
+      "description": "Thai bank account numbers and financial identifiers",
+      "thai_term": "หมายเลขบัญชีธนาคาร",
+      "examples": [
+        "123-4-56789-0"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Credit Card Number",
+      "description": "Credit and debit card numbers",
+      "thai_term": "หมายเลขบัตรเครดิต",
+      "examples": [
+        "4111-1111-1111-1111"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Driver's License Number",
+      "description": "Thai driver's license identification number",
+      "thai_term": "หมายเลขใบขับขี่",
+      "examples": [
+        "12345678"
+      ],
+      "sensitivity": "medium",
+      "special_protections": false
+    },
+    {
+      "category": "Vehicle Registration Number",
+      "description": "Vehicle license plate and registration numbers",
+      "thai_term": "หมายเลขทะเบียนรถ",
+      "examples": [
+        "กข 1234 กรุงเทพมหานคร"
+      ],
+      "sensitivity": "medium",
+      "special_protections": false
+    },
+    {
+      "category": "Health Insurance Number",
+      "description": "National health insurance and medical scheme numbers",
+      "thai_term": "หมายเลขประกันสุขภาพ",
+      "examples": [
+        "30-12345-67890"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Medical Record Number",
+      "description": "Hospital and clinic patient identification numbers",
+      "thai_term": "หมายเลขเวชระเบียน",
+      "examples": [
+        "HN123456"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Biometric Data",
+      "description": "Fingerprints, facial recognition, iris scans, voice prints",
+      "thai_term": "ข้อมูลไบโอเมตริกซ์",
+      "examples": [
+        "Fingerprint templates",
+        "Facial recognition data"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "DNA Information",
+      "description": "Genetic information and DNA profiles",
+      "thai_term": "ข้อมูลดีเอ็นเอ",
+      "examples": [
+        "Genetic markers",
+        "DNA sequences"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Educational Records",
+      "description": "Student ID numbers, academic records, transcripts",
+      "thai_term": "ระเบียนการศึกษา",
+      "examples": [
+        "Student ID: 601234567",
+        "Academic transcripts"
+      ],
+      "sensitivity": "medium",
+      "special_protections": false
+    },
+    {
+      "category": "Employment Records",
+      "description": "Employee ID, payroll information, performance evaluations",
+      "thai_term": "ระเบียนการจ้างงาน",
+      "examples": [
+        "Employee ID: EMP001234",
+        "Salary information"
+      ],
+      "sensitivity": "medium",
+      "special_protections": false
+    },
+    {
+      "category": "Religious Information",
+      "description": "Religious beliefs and affiliations",
+      "thai_term": "ข้อมูลทางศาสนา",
+      "examples": [
+        "Buddhist",
+        "Christian",
+        "Muslim"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Political Opinions",
+      "description": "Political views, party membership, voting records",
+      "thai_term": "ความคิดเห็นทางการเมือง",
+      "examples": [
+        "Party membership",
+        "Political donations"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Racial/Ethnic Origin",
+      "description": "Information about ethnic background and racial identity",
+      "thai_term": "เชื้อชาติและกำเนิดเผ่าพันธุ์",
+      "examples": [
+        "Thai",
+        "Chinese-Thai",
+        "Malay-Thai"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Sexual Orientation",
+      "description": "Information about sexual orientation and gender identity",
+      "thai_term": "แนวโน้มทางเพศ",
+      "examples": [
+        "Sexual orientation",
+        "Gender identity"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Criminal Records",
+      "description": "Criminal history, court records, police reports",
+      "thai_term": "ประวัติอาชญากรรม",
+      "examples": [
+        "Criminal convictions",
+        "Police reports"
+      ],
+      "sensitivity": "high",
+      "special_protections": true
+    },
+    {
+      "category": "Location Data",
+      "description": "GPS coordinates, geolocation, tracking information",
+      "thai_term": "ข้อมูลตำแหน่งที่ตั้ง",
+      "examples": [
+        "GPS coordinates",
+        "Location history"
+      ],
+      "sensitivity": "medium",
+      "special_protections": false
+    }
+  ],
+  "legal_basis": [
+    "Consent of the data subject",
+    "Contract performance",
+    "Legal obligation compliance",
+    "Vital interests protection",
+    "Public task performance",
+    "Legitimate interests (with balancing test)"
+  ],
+  "special_notes": [
+    "Thailand PDPA includes specific provisions for government data processing",
+    "Buddhist cultural considerations in data protection practices",
+    "Royal family data receives special constitutional protection",
+    "Mandatory data breach notification within 72 hours to PDPC",
+    "Data Protection Officer appointment required for certain organizations",
+    "Privacy impact assessments required for high-risk processing"
+  ]
+}

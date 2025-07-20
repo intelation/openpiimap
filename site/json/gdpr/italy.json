@@ -1,0 +1,244 @@
+{
+  "country": "Italy",
+  "framework": "GDPR",
+  "region": "EU",
+  "language": "it",
+  "version": "2024-06",
+  "status": "published",
+  "last_updated": "2025-06-30",
+  "source_verified": true,
+  "authority": "Garante per la Protezione dei Dati Personali (Italian DPA)",
+  "notes": [
+    "Italy implements GDPR alongside Legislative Decree No. 196/2003, also known as the Codice in materia di protezione dei dati personali (Data Protection Code), as amended by Legislative Decree No. 101/2018.",
+    "The Garante provides extensive interpretation of special categories, workplace surveillance, and biometric data."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "subtype": "personal_name",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "identity"
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "subtype": "digital_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "subtype": "telecom_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)"
+        }
+      ],
+      "category_tags": [
+        "core",
+        "contact"
+      ]
+    },
+    {
+      "name": "IP Address",
+      "type": "indirect_identifier",
+      "subtype": "network_identifier",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        },
+        {
+          "authority": "Garante",
+          "guideline": "Cookies and other tracking tools",
+          "url": "https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/9677876"
+        }
+      ],
+      "category_tags": [
+        "digital",
+        "behavioral"
+      ]
+    },
+    {
+      "name": "Codice Fiscale (Tax ID Code)",
+      "type": "national_identifier",
+      "subtype": "government_id",
+      "required_masking": true,
+      "tags": [
+        "pii",
+        "national_id",
+        "tax_id"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "87"
+        },
+        {
+          "national_law": "Legislative Decree 196/2003",
+          "article": "2-sexies",
+          "description": "Restricts processing of tax and ID codes to lawful purposes"
+        }
+      ],
+      "category_tags": [
+        "identity",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Health Data (clinical records, prescriptions, disability status)",
+      "type": "special_category",
+      "subtype": "health",
+      "required_masking": true,
+      "tags": [
+        "phi",
+        "sensitive",
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        },
+        {
+          "national_law": "Legislative Decree 196/2003",
+          "article": "2-septies"
+        }
+      ],
+      "category_tags": [
+        "health",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Biometric Data (e.g., facial scans, fingerprints)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "biometric",
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "9(1)"
+        },
+        {
+          "authority": "Garante",
+          "guideline": "Biometric data and identification systems",
+          "url": "https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/4535524"
+        }
+      ],
+      "category_tags": [
+        "biometric",
+        "sensitive"
+      ]
+    },
+    {
+      "name": "Location Data (GPS, cell tower triangulation)",
+      "type": "behavioral",
+      "subtype": "geolocation",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "4(1)",
+          "description": "Location can enable indirect identification"
+        }
+      ],
+      "category_tags": [
+        "tracking",
+        "digital"
+      ]
+    },
+    {
+      "name": "Cookie Identifiers / Device Fingerprints",
+      "type": "indirect_identifier",
+      "subtype": "device_id",
+      "required_masking": true,
+      "tags": [
+        "tracking",
+        "online_identifier",
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "recital": "30"
+        },
+        {
+          "authority": "Garante",
+          "guideline": "Cookies and other tracking tools",
+          "url": "https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/9677876"
+        }
+      ],
+      "category_tags": [
+        "tracking",
+        "digital"
+      ]
+    },
+    {
+      "name": "Employment Data (contract terms, disciplinary actions)",
+      "type": "contextual_identifier",
+      "subtype": "hr_data",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "GDPR",
+          "article": "88"
+        },
+        {
+          "national_law": "Legislative Decree 196/2003",
+          "article": "113",
+          "description": "Governs workplace monitoring and personnel data use"
+        }
+      ],
+      "category_tags": [
+        "employment",
+        "sensitive"
+      ]
+    }
+  ]
+}

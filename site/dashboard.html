@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - OpenPIIMap</title>
+    <meta name="description" content="Interactive analytics and insights into global privacy law coverage and trends.">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    
+    <style>
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 2rem;
+        }
+        
+        .metric-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-radius: var(--border-radius-lg);
+            background: linear-gradient(135deg, white 0%, var(--gray-50) 100%);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .metric-label {
+            color: var(--gray-600);
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        
+        .metric-change {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        
+        .trend-up { color: var(--success); }
+        .trend-down { color: var(--danger); }
+        .trend-neutral { color: var(--gray-500); }
+        
+        .dashboard-filters {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 90px;
+            z-index: 999;
+        }
+        
+        .insight-card {
+            border-left: 4px solid var(--primary-blue);
+            background: var(--gray-50);
+        }
+        
+        .complexity-gauge {
+            width: 100%;
+            height: 200px;
+        }
+        
+        .heatmap-cell {
+            border: 1px solid white;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        
+        .heatmap-cell:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-shield-lock-fill me-2"></i>
+                OpenPIIMap
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house-fill me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#countries">
+                            <i class="bi bi-globe me-1"></i>Countries
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map.html">
+                            <i class="bi bi-map me-1"></i>World Map
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="compare.html">
+                            <i class="bi bi-arrow-left-right me-1"></i>Compare
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.html">
+                            <i class="bi bi-graph-up me-1"></i>Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="integration.html">
+                            <i class="bi bi-book me-1"></i>Integration
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/intelation/openpiimap" target="_blank">
+                            <i class="bi bi-github me-1"></i>GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <!-- Hero Section -->
+    <section class="py-4" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-light) 100%); color: white;">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-2">Privacy Law Analytics</h1>
+            <p class="lead mb-0">
+                Interactive insights and trends in global privacy framework coverage and compliance complexity.
+            </p>
+        </div>
+    </section>
+
+    <!-- Dashboard Filters -->
+    <div class="container mt-4">
+        <div class="dashboard-filters">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <label for="timeRange" class="form-label">Time Range</label>
+                    <select id="timeRange" class="form-select">
+                        <option value="all">All Time</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="ytd" selected>Year to Date</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="regionFilter" class="form-label">Region Focus</label>
+                    <select id="regionFilter" class="form-select">
+                        <option value="all">Global</option>
+                        <option value="europe">Europe</option>
+                        <option value="north-america">North America</option>
+                        <option value="asia-pacific">Asia Pacific</option>
+                        <option value="latin-america">Latin America</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="frameworkFilter" class="form-label">Framework Type</label>
+                    <select id="frameworkFilter" class="form-select">
+                        <option value="all">All Frameworks</option>
+                        <option value="gdpr">GDPR Family</option>
+                        <option value="sector-specific">Sector Specific</option>
+                        <option value="comprehensive">Comprehensive</option>
+                    </select>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                    <button type="button" class="btn btn-primary w-100" onclick="refreshDashboard()">
+                        <i class="bi bi-arrow-clockwise me-1"></i>Refresh Data
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Metrics -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="metric-card">
+                    <span class="metric-number text-primary" id="totalCountriesMetric">34</span>
+                    <div class="metric-label">Countries Covered</div>
+                    <div class="metric-change trend-up">
+                        <i class="bi bi-arrow-up"></i> +5 this quarter
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="metric-card">
+                    <span class="metric-number text-success" id="frameworksMetric">19</span>
+                    <div class="metric-label">Privacy Frameworks</div>
+                    <div class="metric-change trend-up">
+                        <i class="bi bi-arrow-up"></i> +5 this year
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="metric-card">
+                    <span class="metric-number text-warning" id="categoriesMetric">487</span>
+                    <div class="metric-label">Total PII Categories</div>
+                    <div class="metric-change trend-up">
+                        <i class="bi bi-arrow-up"></i> +15% growth
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="metric-card">
+                    <span class="metric-number text-info" id="complianceMetric">73%</span>
+                    <div class="metric-label">Avg. Compliance Complexity</div>
+                    <div class="metric-change trend-neutral">
+                        <i class="bi bi-dash"></i> Stable
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Framework Adoption Timeline -->
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="bi bi-graph-up me-2"></i>Framework Adoption Timeline
+                        </h5>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <input type="radio" class="btn-check" name="timelineView" id="timelineYear" checked>
+                            <label class="btn btn-outline-primary" for="timelineYear">Yearly</label>
+                            <input type="radio" class="btn-check" name="timelineView" id="timelineQuarter">
+                            <label class="btn btn-outline-primary" for="timelineQuarter">Quarterly</label>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="adoptionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compliance Complexity Gauge -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="mb-0">
+                            <i class="bi bi-speedometer2 me-2"></i>Global Compliance Complexity
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="complexity-gauge">
+                            <canvas id="complexityGauge"></canvas>
+                        </div>
+                        <div class="text-center mt-3">
+                            <small class="text-muted">
+                                Based on categories, masking requirements, and legal citations
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <!-- Regional Distribution -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="mb-0">
+                            <i class="bi bi-geo-alt me-2"></i>Regional Framework Distribution
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="regionalChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Types Breakdown -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="mb-0">
+                            <i class="bi bi-pie-chart me-2"></i>PII Category Types
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Framework Comparison Heatmap -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="bi bi-grid me-2"></i>Framework Similarity Matrix
+                        </h5>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button type="button" class="btn btn-outline-primary active" onclick="setHeatmapMode('similarity')">
+                                Similarity
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" onclick="setHeatmapMode('coverage')">
+                                Coverage
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" onclick="setHeatmapMode('complexity')">
+                                Complexity
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="heatmapContainer" class="table-responsive">
+                            <table class="table table-borderless" id="heatmapTable">
+                                <!-- Heatmap will be generated here -->
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <div class="d-flex align-items-center">
+                                <span class="me-2">Low</span>
+                                <div class="d-flex">
+                                    <div style="width: 20px; height: 20px; background: #fef3c7;"></div>
+                                    <div style="width: 20px; height: 20px; background: #fcd34d;"></div>
+                                    <div style="width: 20px; height: 20px; background: #f59e0b;"></div>
+                                    <div style="width: 20px; height: 20px; background: #d97706;"></div>
+                                    <div style="width: 20px; height: 20px; background: #92400e;"></div>
+                                </div>
+                                <span class="ms-2">High</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Insights Section -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card insight-card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-lightbulb me-2"></i>Key Insights
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="insightsContainer">
+                            <!-- Insights will be generated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="mb-0">
+                            <i class="bi bi-download me-2"></i>Export Options
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-outline-primary" onclick="exportDashboard('pdf')">
+                                <i class="bi bi-file-pdf me-2"></i>Export as PDF
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" onclick="exportDashboard('csv')">
+                                <i class="bi bi-file-csv me-2"></i>Export Data (CSV)
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" onclick="exportDashboard('json')">
+                                <i class="bi bi-file-code me-2"></i>Export Data (JSON)
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" onclick="generateReport()">
+                                <i class="bi bi-file-text me-2"></i>Generate Report
+                            </button>
+                        </div>
+                        
+                        <hr>
+                        
+                        <h6 class="mb-3">Share Dashboard</h6>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="shareDashboard()">
+                                <i class="bi bi-share me-2"></i>Copy Link
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="embedDashboard()">
+                                <i class="bi bi-code-square me-2"></i>Embed Code
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js Gauge Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-gauge@0.3.0/dist/chartjs-gauge.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    
+    <script>
+        // Dashboard global variables
+        let adoptionChart, regionalChart, categoryChart, complexityGauge;
+        let currentHeatmapMode = 'similarity';
+        let dashboardData = {};
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboardData();
+            initializeCharts();
+            generateHeatmap();
+            generateInsights();
+            setupEventListeners();
+        });
+        
+        function loadDashboardData() {
+            // Load country data from main.js
+            const countries = window.OpenPIIMap?.countries || [];
+            
+            dashboardData = {
+                countries: countries,
+                frameworks: [...new Set(countries.map(c => c.framework))],
+                regions: [...new Set(countries.map(c => c.region))],
+                totalCategories: countries.reduce((sum, c) => sum + c.categories, 0),
+                adoption: generateAdoptionData(),
+                regional: generateRegionalData(countries),
+                categoryTypes: generateCategoryTypeData(),
+                complexity: calculateComplexityScore(countries)
+            };
+        }
+        
+        function generateAdoptionData() {
+            // Mock adoption timeline data
+            return {
+                labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                datasets: [
+                    {
+                        label: 'GDPR Family',
+                        data: [16, 16, 17, 17, 18, 18, 18, 18],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true
+                    },
+                    {
+                        label: 'Sector Specific',
+                        data: [2, 3, 4, 5, 6, 7, 8, 9],
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        fill: true
+                    },
+                    {
+                        label: 'Comprehensive',
+                        data: [3, 4, 5, 6, 7, 8, 9, 10],
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        fill: true
+                    }
+                ]
+            };
+        }
+        
+        function generateRegionalData(countries) {
+            const regionCounts = {};
+            countries.forEach(country => {
+                regionCounts[country.region] = (regionCounts[country.region] || 0) + 1;
+            });
+            
+            return {
+                labels: Object.keys(regionCounts),
+                datasets: [{
+                    data: Object.values(regionCounts),
+                    backgroundColor: [
+                        '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'
+                    ]
+                }]
+            };
+        }
+        
+        function generateCategoryTypeData() {
+            // Mock category type distribution
+            return {
+                labels: ['Direct Identifier', 'Special Category', 'Indirect Identifier', 'Financial', 'Behavioral', 'Other'],
+                datasets: [{
+                    data: [35, 25, 20, 10, 7, 3],
+                    backgroundColor: [
+                        '#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#6b7280'
+                    ]
+                }]
+            };
+        }
+        
+        function calculateComplexityScore(countries) {
+            // Calculate weighted complexity based on categories, masking requirements, etc.
+            const totalCountries = countries.length;
+            const avgCategories = countries.reduce((sum, c) => sum + c.categories, 0) / totalCountries;
+            
+            // Normalize to 0-100 scale
+            return Math.min(Math.round((avgCategories / 20) * 100), 100);
+        }
+        
+        function initializeCharts() {
+            initializeAdoptionChart();
+            initializeRegionalChart();
+            initializeCategoryChart();
+            initializeComplexityGauge();
+        }
+        
+        function initializeAdoptionChart() {
+            const ctx = document.getElementById('adoptionChart').getContext('2d');
+            adoptionChart = new Chart(ctx, {
+                type: 'line',
+                data: dashboardData.adoption,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Year'
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Countries'
+                            },
+                            beginAtZero: true
+                        }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    }
+                }
+            });
+        }
+        
+        function initializeRegionalChart() {
+            const ctx = document.getElementById('regionalChart').getContext('2d');
+            regionalChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: dashboardData.regional,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+        
+        function initializeCategoryChart() {
+            const ctx = document.getElementById('categoryChart').getContext('2d');
+            categoryChart = new Chart(ctx, {
+                type: 'bar',
+                data: dashboardData.categoryTypes,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Percentage'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function initializeComplexityGauge() {
+            const ctx = document.getElementById('complexityGauge').getContext('2d');
+            
+            complexityGauge = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [dashboardData.complexity, 100 - dashboardData.complexity],
+                        backgroundColor: [
+                            dashboardData.complexity > 70 ? '#ef4444' : 
+                            dashboardData.complexity > 40 ? '#f59e0b' : '#10b981',
+                            '#e5e7eb'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '75%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    }
+                },
+                plugins: [{
+                    beforeDraw: function(chart) {
+                        const width = chart.width;
+                        const height = chart.height;
+                        const ctx = chart.ctx;
+                        
+                        ctx.restore();
+                        const fontSize = (height / 114).toFixed(2);
+                        ctx.font = fontSize + "em sans-serif";
+                        ctx.textBaseline = "middle";
+                        ctx.fillStyle = "#1e293b";
+                        
+                        const text = dashboardData.complexity + "%";
+                        const textX = Math.round((width - ctx.measureText(text).width) / 2);
+                        const textY = height / 2;
+                        
+                        ctx.fillText(text, textX, textY);
+                        ctx.save();
+                    }
+                }]
+            });
+        }
+        
+        function generateHeatmap() {
+            const frameworks = dashboardData.frameworks;
+            const table = document.getElementById('heatmapTable');
+            
+            // Generate header
+            let headerHtml = '<thead><tr><th></th>';
+            frameworks.forEach(framework => {
+                headerHtml += `<th class="text-center small">${framework}</th>`;
+            });
+            headerHtml += '</tr></thead>';
+            
+            // Generate body
+            let bodyHtml = '<tbody>';
+            frameworks.forEach(rowFramework => {
+                bodyHtml += `<tr><th class="small">${rowFramework}</th>`;
+                frameworks.forEach(colFramework => {
+                    const similarity = calculateSimilarity(rowFramework, colFramework);
+                    const intensity = Math.round(similarity * 5); // 0-5 scale
+                    const color = getHeatmapColor(similarity);
+                    
+                    bodyHtml += `<td class="heatmap-cell" style="background-color: ${color};" 
+                                     title="${rowFramework} vs ${colFramework}: ${Math.round(similarity * 100)}%">
+                                     ${Math.round(similarity * 100)}
+                                 </td>`;
+                });
+                bodyHtml += '</tr>';
+            });
+            bodyHtml += '</tbody>';
+            
+            table.innerHTML = headerHtml + bodyHtml;
+        }
+        
+        function calculateSimilarity(framework1, framework2) {
+            if (framework1 === framework2) return 1.0;
+            
+            // Mock similarity calculation based on framework types
+            const gdprFamily = ['GDPR', 'UK GDPR'];
+            const healthSpecific = ['HIPAA'];
+            const comprehensive = ['LGPD', 'CPRA', 'PIPL'];
+            
+            if ((gdprFamily.includes(framework1) && gdprFamily.includes(framework2)) ||
+                (healthSpecific.includes(framework1) && healthSpecific.includes(framework2)) ||
+                (comprehensive.includes(framework1) && comprehensive.includes(framework2))) {
+                return Math.random() * 0.3 + 0.7; // High similarity
+            } else if (comprehensive.includes(framework1) && comprehensive.includes(framework2)) {
+                return Math.random() * 0.4 + 0.4; // Medium similarity
+            } else {
+                return Math.random() * 0.4 + 0.1; // Low similarity
+            }
+        }
+        
+        function getHeatmapColor(value) {
+            const colors = ['#fef3c7', '#fcd34d', '#f59e0b', '#d97706', '#92400e'];
+            const index = Math.min(Math.floor(value * 5), 4);
+            return colors[index];
+        }
+        
+        function setHeatmapMode(mode) {
+            currentHeatmapMode = mode;
+            
+            // Update button states
+            document.querySelectorAll('.btn-outline-primary').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Regenerate heatmap with new mode
+            generateHeatmap();
+        }
+        
+        function generateInsights() {
+            const insights = [
+                {
+                    icon: 'bi-trophy',
+                    title: 'Leading Region',
+                    text: 'Europe leads with 18 countries implementing GDPR-based frameworks, representing 56% of global coverage.',
+                    type: 'success'
+                },
+                {
+                    icon: 'bi-graph-up',
+                    title: 'Growth Trend',
+                    text: 'Privacy framework adoption increased 25% in 2024, with 3 new countries adding comprehensive laws.',
+                    type: 'info'
+                },
+                {
+                    icon: 'bi-shield-exclamation',
+                    title: 'Complexity Alert',
+                    text: 'Healthcare data has the highest masking requirements across all frameworks (89% require masking).',
+                    type: 'warning'
+                },
+                {
+                    icon: 'bi-lightbulb',
+                    title: 'Key Insight',
+                    text: 'Direct identifiers show 95% consistency across frameworks, suggesting global consensus on basic PII definitions.',
+                    type: 'primary'
+                }
+            ];
+            
+            const container = document.getElementById('insightsContainer');
+            container.innerHTML = insights.map(insight => `
+                <div class="alert alert-${insight.type === 'primary' ? 'info' : insight.type} d-flex align-items-start mb-3">
+                    <i class="${insight.icon} me-3 mt-1"></i>
+                    <div>
+                        <h6 class="alert-heading mb-1">${insight.title}</h6>
+                        <p class="mb-0">${insight.text}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function setupEventListeners() {
+            // Filter change listeners
+            document.getElementById('timeRange').addEventListener('change', refreshDashboard);
+            document.getElementById('regionFilter').addEventListener('change', refreshDashboard);
+            document.getElementById('frameworkFilter').addEventListener('change', refreshDashboard);
+            
+            // Timeline view toggles
+            document.querySelectorAll('input[name="timelineView"]').forEach(radio => {
+                radio.addEventListener('change', updateTimelineView);
+            });
+        }
+        
+        function refreshDashboard() {
+            // Show loading state
+            showLoading();
+            
+            // Simulate data refresh
+            setTimeout(() => {
+                loadDashboardData();
+                updateCharts();
+                generateHeatmap();
+                generateInsights();
+                hideLoading();
+                showToast('Dashboard refreshed successfully');
+            }, 1000);
+        }
+        
+        function updateCharts() {
+            adoptionChart.data = dashboardData.adoption;
+            adoptionChart.update();
+            
+            regionalChart.data = dashboardData.regional;
+            regionalChart.update();
+            
+            categoryChart.data = dashboardData.categoryTypes;
+            categoryChart.update();
+            
+            complexityGauge.data.datasets[0].data = [dashboardData.complexity, 100 - dashboardData.complexity];
+            complexityGauge.update();
+        }
+        
+        function updateTimelineView() {
+            const view = document.querySelector('input[name="timelineView"]:checked').id;
+            
+            if (view === 'timelineQuarter') {
+                // Update to quarterly data
+                dashboardData.adoption.labels = ['Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024'];
+                dashboardData.adoption.datasets.forEach(dataset => {
+                    dataset.data = dataset.data.slice(-4);
+                });
+            } else {
+                // Reset to yearly data
+                dashboardData.adoption = generateAdoptionData();
+            }
+            
+            adoptionChart.data = dashboardData.adoption;
+            adoptionChart.update();
+        }
+        
+        function exportDashboard(format) {
+            const data = {
+                timestamp: new Date().toISOString(),
+                metrics: {
+                    totalCountries: dashboardData.countries.length,
+                    totalFrameworks: dashboardData.frameworks.length,
+                    totalCategories: dashboardData.totalCategories,
+                    complexityScore: dashboardData.complexity
+                },
+                countries: dashboardData.countries
+            };
+            
+            switch(format) {
+                case 'json':
+                    downloadJSON(data, 'openpiimap-dashboard.json');
+                    break;
+                case 'csv':
+                    downloadCSV(data.countries, 'openpiimap-data.csv');
+                    break;
+                case 'pdf':
+                    showToast('PDF export feature coming soon', 'info');
+                    break;
+            }
+        }
+        
+        function downloadJSON(data, filename) {
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('Dashboard data exported successfully');
+        }
+        
+        function downloadCSV(data, filename) {
+            const csv = [
+                ['Country', 'Framework', 'Region', 'Categories'].join(','),
+                ...data.map(row => [row.name, row.framework, row.region, row.categories].join(','))
+            ].join('\n');
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('CSV data exported successfully');
+        }
+        
+        function generateReport() {
+            window.open('report.html', '_blank');
+        }
+        
+        function shareDashboard() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url);
+            showToast('Dashboard URL copied to clipboard');
+        }
+        
+        function embedDashboard() {
+            const embedCode = `<iframe src="${window.location.href}" width="100%" height="800" frameborder="0"></iframe>`;
+            navigator.clipboard.writeText(embedCode);
+            showToast('Embed code copied to clipboard');
+        }
+        
+        function showLoading() {
+            document.body.style.opacity = '0.7';
+            document.body.style.pointerEvents = 'none';
+        }
+        
+        function hideLoading() {
+            document.body.style.opacity = '1';
+            document.body.style.pointerEvents = 'auto';
+        }
+        
+        function showToast(message, type = 'success') {
+            const iconClass = type === 'success' ? 'bi-check-circle-fill text-success' : 
+                            type === 'info' ? 'bi-info-circle-fill text-info' :
+                            'bi-exclamation-triangle-fill text-warning';
+            
+            const toast = document.createElement('div');
+            toast.className = 'position-fixed top-0 end-0 p-3';
+            toast.style.zIndex = '1100';
+            toast.innerHTML = `
+                <div class="toast show" role="alert">
+                    <div class="toast-header">
+                        <i class="${iconClass} me-2"></i>
+                        <strong class="me-auto">Dashboard</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body">${message}</div>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                if (document.body.contains(toast)) {
+                    document.body.removeChild(toast);
+                }
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
