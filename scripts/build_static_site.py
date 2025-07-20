@@ -4,6 +4,20 @@ import json
 from datetime import date, datetime
 from jinja2 import Environment, FileSystemLoader
 
+"""
+OpenPIIMap Static Site Builder
+
+This script generates country pages and JSON data files while preserving
+any custom homepage that exists. It will:
+
+1. Generate HTML pages for each country/framework YAML file
+2. Convert YAML data to JSON format
+3. Preserve existing custom homepage (if Bootstrap-based)
+4. Only generate basic homepage if none exists
+
+Usage: python scripts/build_static_site.py
+"""
+
 # Paths
 DATA_DIR = "./data"
 SITE_DIR = "./site"
@@ -86,13 +100,27 @@ for framework in os.listdir(DATA_DIR):
 
         generated_pages.append(html_filename)
 
-# 2. Generate index.html
-html_links = ""
-for file in sorted(generated_pages):
-    label = file.replace(".html", "").replace("-", " ").title()
-    html_links += f'  <li><a href="countries/{file}">{label}</a></li>\n'
+# 2. Handle index.html - preserve custom homepage if it exists
+if os.path.exists(INDEX_PATH):
+    # Check if it's our custom Bootstrap homepage
+    with open(INDEX_PATH, "r", encoding="utf-8") as f:
+        index_content = f.read()
+    
+    if "Bootstrap" in index_content and "Global Privacy Law Navigator" in index_content:
+        print("✅ Preserving custom Bootstrap homepage")
+        print(f"   Generated {len(generated_pages)} country pages")
+        print(f"   Updated JSON data files")
+    else:
+        print("⚠️  Found basic index.html, keeping it as-is")
+else:
+    # Generate basic index.html only if none exists
+    print("⚠️  No index.html found, generating basic version")
+    html_links = ""
+    for file in sorted(generated_pages):
+        label = file.replace(".html", "").replace("-", " ").title()
+        html_links += f'  <li><a href="countries/{file}">{label}</a></li>\n'
 
-index_html = """<!DOCTYPE html>
+    index_html = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -109,7 +137,7 @@ index_html = """<!DOCTYPE html>
 </html>
 """
 
-with open(INDEX_PATH, "w", encoding="utf-8") as f:
-    f.write(index_html)
+    with open(INDEX_PATH, "w", encoding="utf-8") as f:
+        f.write(index_html)
 
 print("✅ Static site successfully generated in 'site/'")

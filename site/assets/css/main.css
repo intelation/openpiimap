@@ -266,6 +266,21 @@ body {
     color: #047857;
 }
 
+.framework-lgpd {
+    background-color: #fce7f3;
+    color: #be185d;
+}
+
+.framework-pdpa-argentina {
+    background-color: #e0f2fe;
+    color: #0277bd;
+}
+
+.framework-pdpa-thailand {
+    background-color: #fff3e0;
+    color: #ef6c00;
+}
+
 .framework-default {
     background-color: var(--gray-100);
     color: var(--gray-700);

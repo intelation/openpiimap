@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenPIIMap - Global Privacy Law Navigator</title>
     <meta name="description" content="Navigate global privacy laws and PII/PHI definitions across different countries and frameworks.">
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -24,11 +24,11 @@
                 <i class="bi bi-shield-lock-fill me-2"></i>
                 OpenPIIMap
             </a>
-            
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -81,7 +81,7 @@
                         Global Privacy Law Navigator
                     </h1>
                     <p class="lead mb-4">
-                        Comprehensive database of PII/PHI definitions across 30+ countries and major privacy frameworks. 
+                        Comprehensive database of PII/PHI definitions across 34 countries and major privacy frameworks.
                         Compare regulations, understand compliance requirements, and navigate the complex landscape of global data protection laws.
                     </p>
                     <div class="d-flex flex-wrap gap-3">
@@ -98,13 +98,13 @@
                         <div class="row g-3">
                             <div class="col-6">
                                 <div class="stat-card">
-                                    <h3 class="stat-number" data-count="32">32</h3>
+                                    <h3 class="stat-number" data-count="34">34</h3>
                                     <p class="stat-label">Countries</p>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="stat-card">
-                                    <h3 class="stat-number" data-count="17">17</h3>
+                                    <h3 class="stat-number" data-count="19">19</h3>
                                     <p class="stat-label">Frameworks</p>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@
                         </div>
                         <h4>Comprehensive Coverage</h4>
                         <p class="text-muted">
-                            Detailed PII/PHI definitions from major privacy frameworks across 30+ countries
+                            Detailed PII/PHI definitions from major privacy frameworks across 34 countries
                         </p>
                     </div>
                 </div>
@@ -175,7 +175,7 @@
                     </p>
                 </div>
             </div>
-            
+
             <!-- Search and Filter -->
             <div class="row mb-4">
                 <div class="col-lg-6 mx-auto">
@@ -184,7 +184,7 @@
                             <span class="input-group-text">
                                 <i class="bi bi-search"></i>
                             </span>
-                            <input type="text" id="countrySearch" class="form-control form-control-lg" 
+                            <input type="text" id="countrySearch" class="form-control form-control-lg"
                                    placeholder="Search countries...">
                         </div>
                     </div>
@@ -210,6 +210,22 @@
                         <button class="btn btn-outline-primary me-2 mb-2" data-framework="appi">
                             APPI
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Toggle -->
+            <div class="row mb-4">
+                <div class="col-lg-8 mx-auto">
+                    <div class="view-toggle text-center">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-secondary active" id="cardViewBtn">
+                                <i class="bi bi-grid-3x3-gap-fill me-1"></i>Cards
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" id="listViewBtn">
+                                <i class="bi bi-list-ul me-1"></i>List
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -270,7 +286,7 @@
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="social-links">
-                        <a href="#" class="text-light me-3">
+                        <a href="https://github.com/intelation/openpiimap" target="_blank" class="text-light me-3">
                             <i class="bi bi-github"></i>
                         </a>
                         <a href="#" class="text-light me-3">

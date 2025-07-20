@@ -185,5 +185,27 @@
     "description": "United Arab Emirates federal data protection law.",
     "type": "comprehensive",
     "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Security", "Accountability", "Transparency"]
+  },
+  {
+    "id": "pdpa-argentina",
+    "name": "Personal Data Protection Act (Argentina)",
+    "abbreviation": "PDPA Argentina",
+    "region": "Latin America",
+    "countries": ["Argentina"],
+    "effective_date": "2000-11-03",
+    "description": "Argentina's comprehensive personal data protection law with 2018 amendments.",
+    "type": "comprehensive",
+    "key_principles": ["Lawfulness", "Purpose limitation", "Proportionality", "Quality", "Previous information", "Security", "Confidentiality", "Consent"]
+  },
+  {
+    "id": "pdpa-thailand",
+    "name": "Personal Data Protection Act (Thailand)",
+    "abbreviation": "PDPA Thailand",
+    "region": "Asia Pacific", 
+    "countries": ["Thailand"],
+    "effective_date": "2022-06-01",
+    "description": "Thailand's Personal Data Protection Act 2019 based on GDPR principles, adapted for Thai context.",
+    "type": "comprehensive",
+    "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Security", "Accountability", "Transparency"]
   }
 ]

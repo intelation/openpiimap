@@ -24,6 +24,8 @@ const countries = [
     { name: "Canada", framework: "PIPEDA", region: "North America", file: "pipeda-canada.html", categories: 10 },
     { name: "Brazil", framework: "LGPD", region: "Latin America", file: "lgpd-brazil.html", categories: 14 },
     { name: "Mexico", framework: "LFPDPPP", region: "Latin America", file: "lfpdppp-mexico.html", categories: 11 },
+    { name: "Argentina", framework: "PDPA Argentina", region: "Latin America", file: "pdpa-argentina-argentina.html", categories: 18 },
+    { name: "Thailand", framework: "PDPA Thailand", region: "Asia Pacific", file: "pdpa-thailand-thailand.html", categories: 20 },
     { name: "India", framework: "DPDPB", region: "Asia Pacific", file: "dpdpb-india.html", categories: 13 },
     { name: "Singapore", framework: "PDPA", region: "Asia Pacific", file: "pdpa-singapore.html", categories: 9 },
     { name: "South Korea", framework: "PIPA", region: "Asia Pacific", file: "pipa-south-korea.html", categories: 16 },
@@ -42,6 +44,9 @@ const frameworkColors = {
     'UK GDPR': 'framework-gdpr',
     'HIPAA': 'framework-hipaa',
     'CPRA': 'framework-cpra',
+    'LGPD': 'framework-lgpd',
+    'PDPA Argentina': 'framework-pdpa-argentina',
+    'PDPA Thailand': 'framework-pdpa-thailand',
     'default': 'framework-default'
 };
 

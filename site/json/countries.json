@@ -254,5 +254,21 @@
     "region": "Middle East",
     "categories": 21,
     "lastUpdated": "2023-09-12T14:20:00Z"
+  },
+  {
+    "id": "argentina",
+    "name": "Argentina",
+    "framework": "PDPA Argentina",
+    "region": "Latin America",
+    "categories": 18,
+    "lastUpdated": "2025-07-20T12:00:00Z"
+  },
+  {
+    "id": "thailand",
+    "name": "Thailand", 
+    "framework": "PDPA Thailand",
+    "region": "Asia Pacific",
+    "categories": 20,
+    "lastUpdated": "2025-07-20T12:00:00Z"
   }
 ]

@@ -1,0 +1,21 @@
+{
+  "framework": "PDPA Argentina",
+  "description": "Personal Data Protection Act of Argentina - Comprehensive privacy law with GDPR-inspired provisions",
+  "countries": [
+    {
+      "country": "Argentina",
+      "file": "argentina.yaml",
+      "status": "published",
+      "last_updated": "2025-07-20"
+    }
+  ],
+  "total_countries": 1,
+  "region_focus": "Latin America",
+  "enforcement_authority": "AAIP",
+  "key_features": [
+    "Cross-border transfer restrictions",
+    "Enhanced protection for sensitive data",
+    "Strong data subject rights",
+    "Administrative sanctions up to ARS 100M"
+  ]
+}
