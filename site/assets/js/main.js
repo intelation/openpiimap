@@ -360,9 +360,9 @@ class OfflineManager {
                 this.serviceWorker = await navigator.serviceWorker.register('./sw.js');
                 console.log('Service Worker registered successfully');
                 
-                // Listen for updates
+                // Listen for updates - Silent auto-update
                 this.serviceWorker.addEventListener('updatefound', () => {
-                    this.showUpdateNotification();
+                    this.handleSilentUpdate();
                 });
                 
                 // Listen for messages from service worker
@@ -489,18 +489,25 @@ class OfflineManager {
         }
     }
     
-    showUpdateNotification() {
-        this.showToast(
-            'A new version is available. Refresh to update.',
-            'info',
-            {
-                persistent: true,
-                action: {
-                    text: 'Refresh',
-                    callback: () => window.location.reload()
+    handleSilentUpdate() {
+        // Silent update - automatically refresh when new version is ready
+        console.log('OpenPIIMap: New version detected, preparing silent update...');
+        const newWorker = this.serviceWorker.installing;
+        
+        if (newWorker) {
+            newWorker.addEventListener('statechange', () => {
+                console.log('Service Worker state changed to:', newWorker.state);
+                if (newWorker.state === 'activated') {
+                    console.log('OpenPIIMap: New version activated. Refreshing page...');
+                    // Small delay to ensure service worker is fully activated
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
                 }
-            }
-        );
+            });
+        } else {
+            console.log('OpenPIIMap: No installing worker found');
+        }
     }
     
     showToast(message, type = 'info', options = {}) {
