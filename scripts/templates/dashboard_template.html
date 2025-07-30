@@ -96,60 +96,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="site-header">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="bi bi-shield-lock-fill me-2"></i>
-                OpenPIIMap
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="bi bi-house-fill me-1"></i>Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#countries">
-                            <i class="bi bi-globe me-1"></i>Countries
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="map.html">
-                            <i class="bi bi-map me-1"></i>World Map
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="compare.html">
-                            <i class="bi bi-arrow-left-right me-1"></i>Compare
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="dashboard.html">
-                            <i class="bi bi-graph-up me-1"></i>Analytics
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="integration.html">
-                            <i class="bi bi-book me-1"></i>Integration
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/intelation/openpiimap" target="_blank">
-                            <i class="bi bi-github me-1"></i>GitHub
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+    {{ header }}
 
     <!-- Page Header -->
     <div class="bg-primary text-white py-5">
@@ -160,7 +107,7 @@
                         <i class="bi bi-graph-up me-3"></i>Analytics Dashboard
                     </h1>
                     <p class="lead mb-0">
-                        Interactive insights into global privacy law coverage, trends, and compliance complexity across 34 countries and 19 privacy frameworks.
+                        Interactive insights into global privacy law coverage, trends, and compliance complexity across {{ countries_count }} countries and {{ frameworks_count }} privacy frameworks.
                     </p>
                 </div>
                 <div class="col-lg-4">
@@ -169,13 +116,13 @@
                             <div class="row g-2">
                                 <div class="col-6">
                                     <div class="stat-mini">
-                                        <div class="stat-number">20</div>
+                                        <div class="stat-number">{{ categories_count }}</div>
                                         <div class="stat-label">PII Categories</div>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="stat-mini">
-                                        <div class="stat-number">11</div>
+                                        <div class="stat-number">{{ regions_count }}</div>
                                         <div class="stat-label">Regions</div>
                                     </div>
                                 </div>
@@ -192,34 +139,34 @@
         <div class="row g-4">
             <div class="col-lg-3 col-md-6">
                 <div class="metric-card">
-                    <span class="metric-number text-primary" id="totalCountriesMetric">34</span>
+                    <span class="metric-number text-primary" id="totalCountriesMetric">{{ countries_count }}</span>
                     <div class="metric-label">Countries Covered</div>
                     <div class="metric-change trend-up">
-                        <i class="bi bi-arrow-up"></i> 2 added recently
+                        <i class="bi bi-arrow-up"></i> {{ countries_added_recent }} added recently
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="metric-card">
-                    <span class="metric-number text-success" id="frameworksMetric">19</span>
+                    <span class="metric-number text-success" id="frameworksMetric">{{ frameworks_count }}</span>
                     <div class="metric-label">Privacy Frameworks</div>
                     <div class="metric-change trend-up">
-                        <i class="bi bi-arrow-up"></i> 2 added recently
+                        <i class="bi bi-arrow-up"></i> {{ frameworks_added_recent }} added recently
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="metric-card">
-                    <span class="metric-number text-warning" id="categoriesMetric">20</span>
+                    <span class="metric-number text-warning" id="categoriesMetric">{{ categories_count }}</span>
                     <div class="metric-label">Total PII Categories</div>
                     <div class="metric-change trend-up">
-                        <i class="bi bi-arrow-up"></i> 38 added recently
+                        <i class="bi bi-arrow-up"></i> {{ categories_added_recent }} added recently
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="metric-card">
-                    <span class="metric-number text-info" id="avgCategoriesMetric">1</span>
+                    <span class="metric-number text-info" id="avgCategoriesMetric">{{ avg_categories_per_country }}</span>
                     <div class="metric-label">Avg Categories/Country</div>
                     <div class="metric-change trend-neutral">
                         <i class="bi bi-dash"></i> Comprehensive coverage
@@ -369,19 +316,19 @@
                             <div class="col-md-4">
                                 <div class="insight-item">
                                     <h6 class="text-primary">Most Comprehensive Framework</h6>
-                                    <p class="mb-0">Personal Data Protection Act (PDPA) 2019 averages 20 PII categories per country</p>
+                                    <p class="mb-0">{{ most_comprehensive_framework }} averages {{ most_comprehensive_avg }} PII categories per country</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="insight-item">
                                     <h6 class="text-success">Best Regional Coverage</h6>
-                                    <p class="mb-0">EU with 13 countries covered</p>
+                                    <p class="mb-0">{{ best_covered_region }} with {{ best_region_count }} countries covered</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="insight-item">
                                     <h6 class="text-warning">Latest Addition</h6>
-                                    <p class="mb-0">Thailand (PDPA Thailand) added with 20 categories</p>
+                                    <p class="mb-0">{{ latest_country }} ({{ latest_framework }}) added with {{ latest_categories }} categories</p>
                                 </div>
                             </div>
                         </div>
@@ -401,7 +348,7 @@
                         <span class="fw-semibold">OpenPIIMap</span>
                     </div>
                     <p class="text-muted small mb-0 mt-1">
-                        Analytics Dashboard - Updated 2025-07-30
+                        Analytics Dashboard - Updated {{ last_updated }}
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">
@@ -431,9 +378,9 @@
     <script>
         // Dashboard analytics data (populated from template)
         const dashboardData = {
-            countries: [{"categories": 0, "file": "appi-japan.html", "framework": "APPI", "last_updated": "2025-06-30", "name": "Japan", "region": "Asia"}, {"categories": 0, "file": "cpra-california.html", "framework": "CPRA", "last_updated": "2025-06-30", "name": "United States - California", "region": "North America"}, {"categories": 0, "file": "dpdpb-india.html", "framework": "DPDPB", "last_updated": "2025-06-30", "name": "India", "region": "Asia"}, {"categories": 0, "file": "fadp-switzerland.html", "framework": "FADP", "last_updated": "2025-06-30", "name": "Switzerland", "region": "Europe"}, {"categories": 0, "file": "gdpr-austria.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Austria", "region": "EU"}, {"categories": 0, "file": "gdpr-belgium.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Belgium", "region": "EU"}, {"categories": 0, "file": "gdpr-denmark.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Denmark", "region": "EU"}, {"categories": 0, "file": "gdpr-finland.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Finland", "region": "EU"}, {"categories": 0, "file": "gdpr-france.html", "framework": "GDPR", "last_updated": "2025-06-26", "name": "France", "region": "EU"}, {"categories": 0, "file": "gdpr-germany.html", "framework": "GDPR", "last_updated": "2025-06-26", "name": "Germany", "region": "EU"}, {"categories": 0, "file": "gdpr-greece.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Greece", "region": "EU"}, {"categories": 0, "file": "gdpr-iceland.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Iceland", "region": "EEA"}, {"categories": 0, "file": "gdpr-ireland.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Ireland", "region": "EU"}, {"categories": 0, "file": "gdpr-italy.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Italy", "region": "EU"}, {"categories": 0, "file": "gdpr-liechtenstein.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Liechtenstein", "region": "EEA"}, {"categories": 0, "file": "gdpr-netherlands.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Netherlands", "region": "EU"}, {"categories": 0, "file": "gdpr-norway.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Norway", "region": "EEA"}, {"categories": 0, "file": "gdpr-poland.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Poland", "region": "EU"}, {"categories": 0, "file": "gdpr-spain.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Spain", "region": "EU"}, {"categories": 0, "file": "gdpr-sweden.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Sweden", "region": "EU"}, {"categories": 0, "file": "hippa-usa.html", "framework": "HIPAA", "last_updated": "2025-06-30", "name": "United States", "region": "North America"}, {"categories": 0, "file": "lfpdppp-mexico.html", "framework": "LFPDPPP", "last_updated": "2025-06-30", "name": "Mexico", "region": "North America"}, {"categories": 0, "file": "lgpd-brazil.html", "framework": "LGPD", "last_updated": "2025-06-30", "name": "Brazil", "region": "South America"}, {"categories": 0, "file": "ndpr-nigeria.html", "framework": "NDPR", "last_updated": "2025-06-30", "name": "Nigeria", "region": "Africa"}, {"categories": 0, "file": "pdp-indonesia.html", "framework": "PDP Law", "last_updated": "2025-06-30", "name": "Indonesia", "region": "Asia"}, {"categories": 0, "file": "pdpa-singapore.html", "framework": "PDPA", "last_updated": "2025-06-30", "name": "Singapore", "region": "Asia"}, {"categories": 0, "file": "pdpa-argentina-argentina.html", "framework": "PDPA Argentina", "last_updated": "2025-07-20", "name": "Argentina", "region": "Latin America"}, {"categories": 20, "file": "pdpa-thailand-thailand.html", "framework": "Personal Data Protection Act (PDPA) 2019", "last_updated": "2025-07-20", "name": "Thailand", "region": "Other"}, {"categories": 0, "file": "pipa-south-korea.html", "framework": "PIPA", "last_updated": "2025-06-30", "name": "South Korea", "region": "Asia"}, {"categories": 0, "file": "pipeda-canada.html", "framework": "PIPEDA", "last_updated": "2025-06-30", "name": "Canada", "region": "North America"}, {"categories": 0, "file": "pipl-china.html", "framework": "PIPL", "last_updated": "2025-06-30", "name": "China", "region": "Asia"}, {"categories": 0, "file": "privacyact-australia.html", "framework": "Privacy Act", "last_updated": "2025-06-30", "name": "Australia", "region": "Oceania"}, {"categories": 0, "file": "uae-dpl-united-arab-emirates.html", "framework": "UAE Federal Data Protection Law (Law No. 45/2021)", "last_updated": "2025-06-30", "name": "United Arab Emirates", "region": "Middle East"}, {"categories": 0, "file": "uk-gdpr-united-kingdom.html", "framework": "UK GDPR + DPA 2018", "last_updated": "2025-06-30", "name": "United Kingdom", "region": "Europe"}],
-            frameworks: [{"abbreviation": "GDPR", "countries": ["Germany", "France", "Austria", "Belgium", "Denmark", "Finland", "Greece", "Iceland", "Ireland", "Italy", "Liechtenstein", "Netherlands", "Norway", "Poland", "Spain", "Sweden"], "description": "Comprehensive data protection regulation for the European Union and European Economic Area.", "effective_date": "2018-05-25", "id": "gdpr", "key_principles": ["Lawfulness", "Fairness", "Transparency", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Integrity and confidentiality", "Accountability"], "name": "General Data Protection Regulation", "region": "Europe", "type": "comprehensive"}, {"abbreviation": "UK GDPR", "countries": ["United Kingdom"], "description": "UK\u0027s version of GDPR post-Brexit, largely similar to EU GDPR.", "effective_date": "2021-01-01", "id": "uk-gdpr", "key_principles": ["Lawfulness", "Fairness", "Transparency", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Integrity and confidentiality", "Accountability"], "name": "UK General Data Protection Regulation", "region": "Europe", "type": "comprehensive"}, {"abbreviation": "LGPD", "countries": ["Brazil"], "description": "Brazil\u0027s comprehensive data protection law, inspired by GDPR.", "effective_date": "2020-09-18", "id": "lgpd", "key_principles": ["Purpose", "Adequacy", "Necessity", "Free access", "Data quality", "Transparency", "Security", "Prevention", "Non-discrimination", "Accountability"], "name": "Lei Geral de Prote\u00e7\u00e3o de Dados", "region": "Latin America", "type": "comprehensive"}, {"abbreviation": "CPRA", "countries": ["California"], "description": "Enhanced version of CCPA with additional privacy rights and protections.", "effective_date": "2023-01-01", "id": "cpra", "key_principles": ["Consumer rights", "Business transparency", "Data minimization", "Purpose limitation", "Sensitive personal information protection"], "name": "California Privacy Rights Act", "region": "North America", "type": "comprehensive"}, {"abbreviation": "PIPEDA", "countries": ["Canada"], "description": "Canada\u0027s federal privacy law for private sector organizations.", "effective_date": "2001-01-01", "id": "pipeda", "key_principles": ["Accountability", "Identifying purposes", "Consent", "Limiting collection", "Limiting use, disclosure, and retention", "Accuracy", "Safeguards", "Openness", "Individual access", "Challenging compliance"], "name": "Personal Information Protection and Electronic Documents Act", "region": "North America", "type": "comprehensive"}, {"abbreviation": "HIPAA", "countries": ["United States"], "description": "US federal law protecting sensitive patient health information.", "effective_date": "1996-08-21", "id": "hipaa", "key_principles": ["Access", "Portability", "Accountability", "Security", "Privacy"], "name": "Health Insurance Portability and Accountability Act", "region": "North America", "type": "sector-specific"}, {"abbreviation": "APPI", "countries": ["Japan"], "description": "Japan\u0027s comprehensive personal information protection law.", "effective_date": "2005-04-01", "id": "appi", "key_principles": ["Proper acquisition", "Purpose specification", "Use limitation", "Accuracy maintenance", "Safety management", "Transparency"], "name": "Act on Protection of Personal Information", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "PDPA", "countries": ["Singapore"], "description": "Singapore\u0027s comprehensive data protection law.", "effective_date": "2014-07-02", "id": "pdpa", "key_principles": ["Consent", "Purpose limitation", "Notification", "Access and correction", "Accuracy", "Protection", "Retention limitation", "Transfer limitation", "Accountability"], "name": "Personal Data Protection Act", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "PIPA", "countries": ["South Korea"], "description": "South Korea\u0027s personal information protection law.", "effective_date": "2011-09-30", "id": "pipa", "key_principles": ["Consent", "Purpose limitation", "Data minimization", "Accuracy", "Retention limitation", "Security", "Transparency"], "name": "Personal Information Protection Act", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "PIPL", "countries": ["China"], "description": "China\u0027s comprehensive personal information protection law.", "effective_date": "2021-11-01", "id": "pipl", "key_principles": ["Lawfulness", "Legitimacy", "Necessity", "Good faith", "Proportionality", "Transparency", "Purpose limitation", "Data minimization"], "name": "Personal Information Protection Law", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "Privacy Act", "countries": ["Australia"], "description": "Australia\u0027s privacy law governing the handling of personal information.", "effective_date": "1988-12-01", "id": "privacy-act", "key_principles": ["Open and transparent management", "Anonymity and pseudonymity", "Collection", "Dealing with unsolicited information", "Notification", "Use and disclosure", "Direct marketing", "Cross-border disclosure", "Government identifiers", "Data quality", "Security", "Access and correction", "Correction requests"], "name": "Privacy Act", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "FADP", "countries": ["Switzerland"], "description": "Switzerland\u0027s revised data protection law, aligned with GDPR principles.", "effective_date": "2023-09-01", "id": "fadp", "key_principles": ["Lawfulness", "Good faith", "Proportionality", "Purpose limitation", "Data minimization", "Accuracy", "Transparency", "Security"], "name": "Federal Act on Data Protection", "region": "Europe", "type": "comprehensive"}, {"abbreviation": "LFPDPPP", "countries": ["Mexico"], "description": "Mexico\u0027s federal law for the protection of personal data held by private parties.", "effective_date": "2010-07-05", "id": "lfpdppp", "key_principles": ["Lawfulness", "Consent", "Information", "Quality", "Purpose", "Loyalty", "Proportionality", "Accountability"], "name": "Ley Federal de Protecci\u00f3n de Datos Personales en Posesi\u00f3n de los Particulares", "region": "Latin America", "type": "comprehensive"}, {"abbreviation": "NDPR", "countries": ["Nigeria"], "description": "Nigeria\u0027s comprehensive data protection regulation.", "effective_date": "2019-01-25", "id": "ndpr", "key_principles": ["Lawfulness", "Fairness", "Specific legitimate purposes", "Proportionality", "Accuracy", "Storage limitation", "Security", "Accountability"], "name": "Nigeria Data Protection Regulation", "region": "Africa", "type": "comprehensive"}, {"abbreviation": "PDP", "countries": ["Indonesia"], "description": "Indonesia\u0027s comprehensive personal data protection law.", "effective_date": "2022-10-17", "id": "pdp", "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Accountability", "Transparency", "Accessibility", "Proportionality", "Data controller responsibility"], "name": "Personal Data Protection Law", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "DPDPB", "countries": ["India"], "description": "India\u0027s comprehensive digital personal data protection law.", "effective_date": "2023-08-11", "id": "dpdpb", "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Reasonable security safeguards", "Accountability"], "name": "Digital Personal Data Protection Bill", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "UAE DPL", "countries": ["United Arab Emirates"], "description": "United Arab Emirates federal data protection law.", "effective_date": "2022-01-02", "id": "uae-dpl", "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Security", "Accountability", "Transparency"], "name": "UAE Data Protection Law", "region": "Middle East", "type": "comprehensive"}, {"abbreviation": "PDPA Argentina", "countries": ["Argentina"], "description": "Argentina\u0027s comprehensive personal data protection law with 2018 amendments.", "effective_date": "2000-11-03", "id": "pdpa-argentina", "key_principles": ["Lawfulness", "Purpose limitation", "Proportionality", "Quality", "Previous information", "Security", "Confidentiality", "Consent"], "name": "Personal Data Protection Act (Argentina)", "region": "Latin America", "type": "comprehensive"}, {"abbreviation": "PDPA Thailand", "countries": ["Thailand"], "description": "Thailand\u0027s Personal Data Protection Act 2019 based on GDPR principles, adapted for Thai context.", "effective_date": "2022-06-01", "id": "pdpa-thailand", "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Security", "Accountability", "Transparency"], "name": "Personal Data Protection Act (Thailand)", "region": "Asia Pacific", "type": "comprehensive"}],
-            regions: {"Africa": 1, "Asia": 6, "EEA": 3, "EU": 13, "Europe": 2, "Latin America": 1, "Middle East": 1, "North America": 4, "Oceania": 1, "Other": 1, "South America": 1}
+            countries: {{ countries_data | tojson }},
+            frameworks: {{ frameworks_data | tojson }},
+            regions: {{ regions_data | tojson }}
         };
 
         // Initialize charts when page loads
@@ -541,7 +488,7 @@
                     labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
                     datasets: [{
                         label: 'Countries Added',
-                        data: [8, 12, 18, 22, 26, 28, 32, 34],
+                        data: [8, 12, 18, 22, 26, 28, 32, {{ countries_count }}],
                         borderColor: '#3b82f6',
                         backgroundColor: 'rgba(59, 130, 246, 0.1)',
                         fill: true,
