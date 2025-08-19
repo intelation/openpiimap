@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compare Countries - OpenPIIMap</title>
     <meta name="description" content="Compare privacy law definitions across different countries and frameworks.">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -18,16 +23,20 @@
         .comparison-container {
             overflow-x: auto;
         }
+
         .comparison-table {
             min-width: 800px;
         }
+
         .country-column {
             min-width: 250px;
             border-right: 2px solid var(--gray-200);
         }
+
         .category-row {
             border-bottom: 1px solid var(--gray-100);
         }
+
         .category-name {
             position: sticky;
             left: 0;
@@ -36,14 +45,17 @@
             border-right: 2px solid var(--gray-200);
             min-width: 200px;
         }
+
         .comparison-card {
             border: 2px solid transparent;
             transition: all 0.3s ease;
         }
+
         .comparison-card.selected {
             border-color: var(--primary-blue);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
+
         .empty-selection {
             border: 2px dashed var(--gray-300);
             background: var(--gray-50);
@@ -55,62 +67,63 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="site-header">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="bi bi-shield-lock-fill me-2"></i>
-                OpenPIIMap
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="bi bi-house-fill me-1"></i>Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#countries">
-                            <i class="bi bi-globe me-1"></i>Countries
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="map.html">
-                            <i class="bi bi-map me-1"></i>World Map
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="compare.html">
-                            <i class="bi bi-arrow-left-right me-1"></i>Compare
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.html">
-                            <i class="bi bi-graph-up me-1"></i>Analytics
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="integration.html">
-                            <i class="bi bi-book me-1"></i>Integration
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/intelation/openpiimap" target="_blank">
-                            <i class="bi bi-github me-1"></i>GitHub
-                        </a>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-shield-lock-fill me-2"></i>
+                    OpenPIIMap
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="bi bi-house-fill me-1"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#countries">
+                                <i class="bi bi-globe me-1"></i>Countries
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="map.html">
+                                <i class="bi bi-map me-1"></i>World Map
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="compare.html">
+                                <i class="bi bi-arrow-left-right me-1"></i>Compare
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="bi bi-graph-up me-1"></i>Analytics
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="integration.html">
+                                <i class="bi bi-book me-1"></i>Integration
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/intelation/openpiimap" target="_blank">
+                                <i class="bi bi-github me-1"></i>GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -121,6 +134,50 @@
             </p>
         </div>
     </section>
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4>Selected for Comparison (<span id="selectedCount">0</span>/4)</h4>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="clearSelection()">
+                        <i class="bi bi-trash me-1"></i>Clear All
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="startComparison()" disabled
+                        id="compareBtn">
+                        <i class="bi bi-bar-chart me-1"></i>Compare
+                    </button>
+                </div>
+            </div>
+
+            <div class="row g-3" id="selectedCountries">
+                <div class="col-md-3">
+                    <div class="empty-selection rounded">
+                        <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
+                        <small class="text-muted">Select a country</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="empty-selection rounded">
+                        <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
+                        <small class="text-muted">Select a country</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="empty-selection rounded">
+                        <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
+                        <small class="text-muted">Select a country</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="empty-selection rounded">
+                        <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
+                        <small class="text-muted">Select a country</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Main Content -->
     <div class="container my-5">
@@ -128,7 +185,7 @@
         <div class="row mb-5">
             <div class="col-12">
                 <h3 class="mb-4">Select Countries to Compare</h3>
-                
+
                 <!-- Quick Filters -->
                 <div class="row mb-4">
                     <div class="col-md-4">
@@ -158,7 +215,7 @@
                         <input type="text" id="searchInput" class="form-control" placeholder="Search countries...">
                     </div>
                 </div>
-                
+
                 <!-- Country Selection Grid -->
                 <div id="countryGrid" class="row g-3">
                     <!-- Countries will be populated by JavaScript -->
@@ -167,53 +224,11 @@
         </div>
 
         <!-- Selected Countries for Comparison -->
-        <div class="row mb-5">
-            <div class="col-12">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4>Selected for Comparison (<span id="selectedCount">0</span>/4)</h4>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="clearSelection()">
-                            <i class="bi bi-trash me-1"></i>Clear All
-                        </button>
-                        <button type="button" class="btn btn-primary btn-sm" onclick="startComparison()" disabled id="compareBtn">
-                            <i class="bi bi-bar-chart me-1"></i>Compare
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="row g-3" id="selectedCountries">
-                    <div class="col-md-3">
-                        <div class="empty-selection rounded">
-                            <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
-                            <small class="text-muted">Select a country</small>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="empty-selection rounded">
-                            <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
-                            <small class="text-muted">Select a country</small>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="empty-selection rounded">
-                            <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
-                            <small class="text-muted">Select a country</small>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="empty-selection rounded">
-                            <i class="bi bi-plus-circle text-muted mb-2" style="font-size: 2rem;"></i>
-                            <small class="text-muted">Select a country</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Comparison Results -->
         <div id="comparisonResults" style="display: none;">
             <hr class="my-5">
-            
+
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3>Comparison Results</h3>
                 <div class="btn-group" role="group">
@@ -311,7 +326,7 @@
         let countryData = [];
 
         // Initialize the comparison tool
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             loadCountryData();
             setupEventListeners();
             checkURLParams();
@@ -406,7 +421,7 @@
             const selectedContainer = document.getElementById('selectedCountries');
             const selectedCount = document.getElementById('selectedCount');
             const compareBtn = document.getElementById('compareBtn');
-            
+
             selectedCount.textContent = selectedCountries.size;
             compareBtn.disabled = selectedCountries.size < 2;
 
@@ -452,7 +467,7 @@
             cards.forEach(card => {
                 const title = card.querySelector('.card-title').textContent;
                 const icon = card.querySelector('.selection-icon');
-                
+
                 if (selectedCountries.has(title)) {
                     card.classList.add('selected');
                     icon.className = 'bi bi-check-circle-fill text-success selection-icon';
@@ -478,7 +493,7 @@
             const filtered = countryData.filter(country => {
                 const matchesFramework = !frameworkValue || country.framework.toLowerCase().includes(frameworkValue);
                 const matchesRegion = !regionValue || country.region.toLowerCase().replace(/\s+/g, '-') === regionValue;
-                const matchesSearch = !searchValue || 
+                const matchesSearch = !searchValue ||
                     country.name.toLowerCase().includes(searchValue) ||
                     country.framework.toLowerCase().includes(searchValue);
 
@@ -492,10 +507,10 @@
             if (selectedCountries.size < 2) return;
 
             document.getElementById('comparisonResults').style.display = 'block';
-            
+
             // Load detailed data for selected countries
             const detailedData = await loadDetailedData(Array.from(selectedCountries.values()));
-            
+
             // Generate comparison
             generateComparisonSummary(detailedData);
             generateComparisonTable(detailedData);
@@ -564,7 +579,7 @@
 
         function generateComparisonSummary(data) {
             const summaryContainer = document.getElementById('summaryStats');
-            
+
             // Calculate summary statistics
             const totalCategories = data.reduce((sum, country) => sum + country.categories.length, 0);
             const avgCategories = Math.round(totalCategories / data.length);
@@ -615,25 +630,25 @@
                     <tr class="category-row">
                         <td class="category-name fw-semibold">${category}</td>
                         ${data.map(country => {
-                            const categoryData = country.categories.find(c => c.name === category);
-                            if (categoryData) {
-                                return `
+                    const categoryData = country.categories.find(c => c.name === category);
+                    if (categoryData) {
+                        return `
                                     <td class="country-column text-center">
                                         <span class="badge bg-primary mb-1">${categoryData.type.replace('_', ' ')}</span><br>
-                                        ${categoryData.required_masking ? 
-                                            '<i class="bi bi-shield-check text-success" title="Masking Required"></i>' : 
-                                            '<i class="bi bi-shield text-muted" title="Masking Optional"></i>'
-                                        }
+                                        ${categoryData.required_masking ?
+                                '<i class="bi bi-shield-check text-success" title="Masking Required"></i>' :
+                                '<i class="bi bi-shield text-muted" title="Masking Optional"></i>'
+                            }
                                     </td>
                                 `;
-                            } else {
-                                return `
+                    } else {
+                        return `
                                     <td class="country-column text-center text-muted">
                                         <i class="bi bi-dash"></i>
                                     </td>
                                 `;
-                            }
-                        }).join('')}
+                    }
+                }).join('')}
                     </tr>
                 `;
             });
@@ -644,10 +659,10 @@
 
         function findCommonCategories(data) {
             if (data.length === 0) return [];
-            
+
             const firstCountryCategories = data[0].categories.map(c => c.name);
-            return firstCountryCategories.filter(category => 
-                data.every(country => 
+            return firstCountryCategories.filter(category =>
+                data.every(country =>
                     country.categories.some(c => c.name === category)
                 )
             );
@@ -664,13 +679,13 @@
         function updateComparisonView() {
             const view = document.querySelector('input[name="comparisonView"]:checked').id;
             const rows = document.querySelectorAll('.category-row');
-            
+
             rows.forEach(row => {
                 const cells = row.querySelectorAll('.country-column:not(.category-name)');
                 const hasData = Array.from(cells).some(cell => !cell.textContent.includes('—'));
                 const allHaveData = Array.from(cells).every(cell => !cell.textContent.includes('—'));
-                
-                switch(view) {
+
+                switch (view) {
                     case 'allCategories':
                         row.style.display = '';
                         break;
@@ -691,7 +706,7 @@
 
         function generateCategoryChart(data) {
             const ctx = document.getElementById('categoryChart').getContext('2d');
-            
+
             // Count categories by type
             const typeCount = {};
             data.forEach(country => {
@@ -726,7 +741,7 @@
 
         function generateMaskingChart(data) {
             const ctx = document.getElementById('maskingChart').getContext('2d');
-            
+
             const chartData = data.map(country => {
                 const total = country.categories.length;
                 const required = country.categories.filter(c => c.required_masking).length;
@@ -831,11 +846,43 @@
                 </div>
             `;
             document.body.appendChild(toast);
-            
+
             setTimeout(() => {
                 document.body.removeChild(toast);
             }, 3000);
         }
     </script>
+   <!-- Footer -->
+  
+     <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-shield-check me-2"></i>
+                        <span class="fw-semibold">OpenPIIMap</span>
+                    </div>
+                    <p class="text-muted small mb-0 mt-1"style="color: white !important;">
+                        Global Privacy Law Navigator
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="https://github.com/intelation/openpiimap" target="_blank" class="text-light me-3">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="https://x.com/IntelationApp" class="text-light me-3">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/intelation1/" class="text-light">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

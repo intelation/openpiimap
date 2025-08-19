@@ -1,0 +1,95 @@
+{
+  "country": "Bahamas",
+  "framework": "Data Protection (Privacy of Personal Data) Act",
+  "region": "North America",
+  "language": "en",
+  "version": 2003,
+  "status": "published",
+  "last_updated": "2025-08-14",
+  "source_verified": true,
+  "authority": "Office of the Data Protection Commissioner",
+  "notes": [
+    "The Bahamas Data Protection Act protects personal information and regulates its handling.",
+    "It is based on 8 data protection principles."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "subtype": "personal_name",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "Data Protection Act",
+          "principle": 1,
+          "description": "Personal data should be collected fairly and lawfully."
+        }
+      ]
+    },
+    {
+      "name": "Email Address",
+      "type": "direct_identifier",
+      "subtype": "digital_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "Data Protection Act",
+          "principle": 1
+        }
+      ]
+    },
+    {
+      "name": "Phone Number",
+      "type": "direct_identifier",
+      "subtype": "telecom_contact",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "Data Protection Act",
+          "principle": 1
+        }
+      ]
+    },
+    {
+      "name": "Financial Information",
+      "type": "special_category",
+      "subtype": "financial",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Data Protection Act",
+          "principle": 1,
+          "description": "Financial data is considered sensitive and must be handled with care."
+        }
+      ]
+    },
+    {
+      "name": "Location Data (GPS tracking)",
+      "type": "behavioral",
+      "subtype": "geolocation",
+      "required_masking": true,
+      "tags": [
+        "tracking"
+      ],
+      "citations": [
+        {
+          "regulation": "Data Protection Act",
+          "principle": 1,
+          "description": "Considered personal data."
+        }
+      ]
+    }
+  ]
+}

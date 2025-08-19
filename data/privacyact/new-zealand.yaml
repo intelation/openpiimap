@@ -1,0 +1,93 @@
+country: New Zealand
+framework: Privacy Act 2020
+region: Asia-Pacific
+language: en
+version: 2020-07
+status: published
+last_updated: 2025-08-14
+source_verified: true
+authority: Office of the Privacy Commissioner
+notes:
+- New Zealand's Privacy Act 2020 is the main law governing personal data.
+- It is based on 13 information privacy principles (IPPs) that cover the collection,
+  holding, use, and disclosure of personal information.
+categories:
+- name: Full Name
+  type: direct_identifier
+  subtype: personal_name
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: Privacy Act 2020
+    principle: 1
+    description: Personal information must be collected for a lawful purpose.
+- name: Email Address
+  type: direct_identifier
+  subtype: digital_contact
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: Privacy Act 2020
+    principle: 1
+- name: Phone Number
+  type: direct_identifier
+  subtype: telecom_contact
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: Privacy Act 2020
+    principle: 1
+- name: Health Information
+  type: special_category
+  subtype: health
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: Privacy Act 2020
+    principle: 1
+    description: Health data is sensitive and requires careful handling under IPPs.
+- name: Biometric Data (e.g., fingerprints)
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: Privacy Act 2020
+    principle: 1
+    description: Considered sensitive personal information.
+- name: Location Data (GPS tracking)
+  type: behavioral
+  subtype: geolocation
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: Privacy Act 2020
+    principle: 1
+    description: Considered personal information.
+- name: IP Address / Online Identifiers
+  type: indirect_identifier
+  subtype: network_identifier
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: Privacy Act 2020
+    principle: 1
+    description: Can be used to identify an individual.
+- name: National Health Index (NHI) Number
+  type: national_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - national_id
+  citations:
+  - regulation: Privacy Act 2020
+    principle: 1
+    description: The NHI is a unique identifier for New Zealand health services.

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - OpenPIIMap</title>
+    <meta name="description" content="Interactive analytics and insights into global privacy law coverage and trends.">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    
+    <style>
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 2rem;
+        }
+        
+        .metric-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-radius: var(--border-radius-lg);
+            background: linear-gradient(135deg, white 0%, var(--gray-50) 100%);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .metric-label {
+            color: var(--gray-600);
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        
+        .metric-change {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        
+        .trend-up { color: var(--success); }
+        .trend-down { color: var(--danger); }
+        .trend-neutral { color: var(--gray-500); }
+        
+        .dashboard-filters {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 90px;
+            z-index: 999;
+        }
+        
+        .insight-card {
+            border-left: 4px solid var(--primary-blue);
+            background: var(--gray-50);
+        }
+        
+        .complexity-gauge {
+            width: 100%;
+            height: 200px;
+        }
+        
+        .heatmap-cell {
+            border: 1px solid white;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        
+        .heatmap-cell:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    {{ header }}
+
+    <!-- Page Header -->
+    <div class="bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">
+                        <i class="bi bi-graph-up me-3"></i>Analytics Dashboard
+                    </h1>
+                    <p class="lead mb-0">
+                        Interactive insights into global privacy law coverage, trends, and compliance complexity across {{ countries_count }} countries and {{ frameworks_count }} privacy frameworks.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-center text-lg-end">
+                        <div class="dashboard-stats">
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <div class="stat-mini">
+                                        <div class="stat-number">{{ categories_count }}</div>
+                                        <div class="stat-label">PII Categories</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-mini">
+                                        <div class="stat-number">{{ regions_count }}</div>
+                                        <div class="stat-label">Regions</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Metrics -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="metric-card">
+                    <span class="metric-number text-primary" id="totalCountriesMetric">{{ countries_count }}</span>
+                    <div class="metric-label">Countries Covered</div>
+                    <div class="metric-change trend-up">
+                        <i class="bi bi-arrow-up"></i> {{ countries_added_recent }} added recently
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="metric-card">
+                    <span class="metric-number text-success" id="frameworksMetric">{{ frameworks_count }}</span>
+                    <div class="metric-label">Privacy Frameworks</div>
+                    <div class="metric-change trend-up">
+                        <i class="bi bi-arrow-up"></i> {{ frameworks_added_recent }} added recently
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="metric-card">
+                    <span class="metric-number text-warning" id="categoriesMetric">{{ categories_count }}</span>
+                    <div class="metric-label">Total PII Categories</div>
+                    <div class="metric-change trend-up">
+                        <i class="bi bi-arrow-up"></i> {{ categories_added_recent }} added recently
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="metric-card">
+                    <span class="metric-number text-info" id="avgCategoriesMetric">{{ avg_categories_per_country }}</span>
+                    <div class="metric-label">Avg Categories/Country</div>
+                    <div class="metric-change trend-neutral">
+                        <i class="bi bi-dash"></i> Comprehensive coverage
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Filters -->
+    <div class="container">
+        <div class="dashboard-filters">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h5 class="mb-3 mb-lg-0">
+                        <i class="bi bi-funnel me-2"></i>Filter & Analyze
+                    </h5>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <select class="form-select" id="regionFilter">
+                                <option value="">All Regions</option>
+                                <option value="Europe">Europe</option>
+                                <option value="North America">North America</option>
+                                <option value="Asia Pacific">Asia Pacific</option>
+                                <option value="Latin America">Latin America</option>
+                                <option value="Africa">Africa</option>
+                                <option value="Middle East">Middle East</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select" id="frameworkFilter">
+                                <option value="">All Frameworks</option>
+                                <option value="GDPR">GDPR</option>
+                                <option value="CPRA">CPRA</option>
+                                <option value="LGPD">LGPD</option>
+                                <option value="PDPA">PDPA</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts and Visualizations -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <!-- Framework Distribution Chart -->
+            <div class="col-lg-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-pie-chart me-2"></i>Framework Distribution
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="frameworkChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regional Coverage Chart -->
+            <div class="col-lg-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-bar-chart me-2"></i>Regional Coverage
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="regionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complexity Heatmap -->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-grid me-2"></i>PII Categories Complexity Heatmap
+                        </h5>
+                        <small class="text-muted">Countries by number of PII categories defined</small>
+                    </div>
+                    <div class="card-body">
+                        <div id="complexityHeatmap" class="d-flex flex-wrap gap-1"></div>
+                        <div class="mt-3">
+                            <small class="text-muted">
+                                <span class="me-3">
+                                    <div style="width: 20px; height: 20px; background: #fef3c7; display: inline-block; margin-right: 5px;"></div>
+                                    Low (1-10)
+                                </span>
+                                <span class="me-3">
+                                    <div style="width: 20px; height: 20px; background: #fcd34d; display: inline-block; margin-right: 5px;"></div>
+                                    Medium (11-15)
+                                </span>
+                                <span class="me-3">
+                                    <div style="width: 20px; height: 20px; background: #f59e0b; display: inline-block; margin-right: 5px;"></div>
+                                    High (16-20)
+                                </span>
+                                <span>
+                                    <div style="width: 20px; height: 20px; background: #d97706; display: inline-block; margin-right: 5px;"></div>
+                                    Very High (21+)
+                                </span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Growth Timeline -->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-graph-up-arrow me-2"></i>Coverage Growth Timeline
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="timelineChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Insights -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card insight-card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-lightbulb me-2"></i>Key Insights
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="insight-item">
+                                    <h6 class="text-primary">Most Comprehensive Framework</h6>
+                                    <p class="mb-0">{{ most_comprehensive_framework }} averages {{ most_comprehensive_avg }} PII categories per country</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="insight-item">
+                                    <h6 class="text-success">Best Regional Coverage</h6>
+                                    <p class="mb-0">{{ best_covered_region }} with {{ best_region_count }} countries covered</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="insight-item">
+                                    <h6 class="text-warning">Latest Addition</h6>
+                                    <p class="mb-0">{{ latest_country }} ({{ latest_framework }}) added with {{ latest_categories }} categories</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-shield-check me-2"></i>
+                        <span class="fw-semibold">OpenPIIMap</span>
+                    </div>
+                    <p class="text-muted small mb-0 mt-1">
+                        Analytics Dashboard - Updated {{ last_updated }}
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="https://github.com/intelation/openpiimap" target="_blank" class="text-light me-3">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="#" class="text-light me-3">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="text-light">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Dashboard analytics data (populated from template)
+        const dashboardData = {
+            countries: {{ countries_data | tojson }},
+            frameworks: {{ frameworks_data | tojson }},
+            regions: {{ regions_data | tojson }}
+        };
+
+        // Initialize charts when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFrameworkChart();
+            initializeRegionChart();
+            initializeComplexityHeatmap();
+            initializeTimelineChart();
+        });
+
+        function initializeFrameworkChart() {
+            const ctx = document.getElementById('frameworkChart').getContext('2d');
+            const frameworkCounts = {};
+            
+            dashboardData.countries.forEach(country => {
+                const fw = country.framework;
+                frameworkCounts[fw] = (frameworkCounts[fw] || 0) + 1;
+            });
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(frameworkCounts),
+                    datasets: [{
+                        data: Object.values(frameworkCounts),
+                        backgroundColor: [
+                            '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444',
+                            '#06b6d4', '#84cc16', '#f97316', '#ec4899', '#6b7280'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        function initializeRegionChart() {
+            const ctx = document.getElementById('regionChart').getContext('2d');
+            const regionCounts = {};
+            
+            dashboardData.countries.forEach(country => {
+                const region = country.region;
+                regionCounts[region] = (regionCounts[region] || 0) + 1;
+            });
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(regionCounts),
+                    datasets: [{
+                        label: 'Countries',
+                        data: Object.values(regionCounts),
+                        backgroundColor: '#3b82f6'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function initializeComplexityHeatmap() {
+            const container = document.getElementById('complexityHeatmap');
+            const colors = ['#fef3c7', '#fcd34d', '#f59e0b', '#d97706', '#92400e'];
+            
+            dashboardData.countries.forEach(country => {
+                const categories = country.categories || 0;
+                let colorIndex = Math.floor(categories / 5);
+                if (colorIndex >= colors.length) colorIndex = colors.length - 1;
+                
+                const cell = document.createElement('div');
+                cell.className = 'heatmap-cell';
+                cell.style.backgroundColor = colors[colorIndex];
+                cell.style.width = '60px';
+                cell.style.height = '40px';
+                cell.style.display = 'flex';
+                cell.style.alignItems = 'center';
+                cell.style.justifyContent = 'center';
+                cell.textContent = categories;
+                cell.title = `${country.name}: ${categories} categories`;
+                
+                container.appendChild(cell);
+            });
+        }
+
+        function initializeTimelineChart() {
+            const ctx = document.getElementById('timelineChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                    datasets: [{
+                        label: 'Countries Added',
+                        data: [8, 12, 18, 22, 26, 28, 32, {{ countries_count }}],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Auto-update function placeholder
+        function refreshDashboard() {
+            // This could fetch updated data and refresh charts
+            console.log('Dashboard refresh triggered');
+        }
+
+        // Update dashboard every 5 minutes
+        setInterval(refreshDashboard, 5 * 60 * 1000);
+    </script>
+</body>
+</html>

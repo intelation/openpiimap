@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analytics Dashboard - OpenPIIMap</title>
     <meta name="description" content="Interactive analytics and insights into global privacy law coverage and trends.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -92,6 +94,7 @@
         .heatmap-cell:hover {
             opacity: 0.8;
         }
+        
     </style>
 </head>
 <body>
@@ -151,52 +154,37 @@
     </nav>
 </header>
 
-    <!-- Hero Section -->
-    <section class="py-4" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-light) 100%); color: white;">
+    <!-- Page Header -->
+    <div class="bg-primary text-white py-5">
         <div class="container">
-            <h1 class="display-5 fw-bold mb-2">Privacy Law Analytics</h1>
-            <p class="lead mb-0">
-                Interactive insights and trends in global privacy framework coverage and compliance complexity.
-            </p>
-        </div>
-    </section>
-
-    <!-- Dashboard Filters -->
-    <div class="container mt-4">
-        <div class="dashboard-filters">
             <div class="row align-items-center">
-                <div class="col-md-3">
-                    <label for="timeRange" class="form-label">Time Range</label>
-                    <select id="timeRange" class="form-select">
-                        <option value="all">All Time</option>
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                        <option value="ytd" selected>Year to Date</option>
-                    </select>
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">
+                        <i class="bi bi-graph-up me-3"></i>Analytics Dashboard
+                    </h1>
+                    <p class="lead mb-0">
+                        Interactive insights into global privacy law coverage, trends, and compliance complexity across 34 countries and 19 privacy frameworks.
+                    </p>
                 </div>
-                <div class="col-md-3">
-                    <label for="regionFilter" class="form-label">Region Focus</label>
-                    <select id="regionFilter" class="form-select">
-                        <option value="all">Global</option>
-                        <option value="europe">Europe</option>
-                        <option value="north-america">North America</option>
-                        <option value="asia-pacific">Asia Pacific</option>
-                        <option value="latin-america">Latin America</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label for="frameworkFilter" class="form-label">Framework Type</label>
-                    <select id="frameworkFilter" class="form-select">
-                        <option value="all">All Frameworks</option>
-                        <option value="gdpr">GDPR Family</option>
-                        <option value="sector-specific">Sector Specific</option>
-                        <option value="comprehensive">Comprehensive</option>
-                    </select>
-                </div>
-                <div class="col-md-3 d-flex align-items-end">
-                    <button type="button" class="btn btn-primary w-100" onclick="refreshDashboard()">
-                        <i class="bi bi-arrow-clockwise me-1"></i>Refresh Data
-                    </button>
+                <div class="col-lg-4">
+                    <div class="text-center text-lg-end">
+                        <div class="dashboard-stats">
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <div class="stat-mini">
+                                        <div class="stat-number">20</div>
+                                        <div class="stat-label">PII Categories</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-mini">
+                                        <div class="stat-number">11</div>
+                                        <div class="stat-label">Regions</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -210,7 +198,7 @@
                     <span class="metric-number text-primary" id="totalCountriesMetric">34</span>
                     <div class="metric-label">Countries Covered</div>
                     <div class="metric-change trend-up">
-                        <i class="bi bi-arrow-up"></i> +5 this quarter
+                        <i class="bi bi-arrow-up"></i> 2 added recently
                     </div>
                 </div>
             </div>
@@ -219,149 +207,185 @@
                     <span class="metric-number text-success" id="frameworksMetric">19</span>
                     <div class="metric-label">Privacy Frameworks</div>
                     <div class="metric-change trend-up">
-                        <i class="bi bi-arrow-up"></i> +5 this year
+                        <i class="bi bi-arrow-up"></i> 2 added recently
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="metric-card">
-                    <span class="metric-number text-warning" id="categoriesMetric">487</span>
+                    <span class="metric-number text-warning" id="categoriesMetric">20</span>
                     <div class="metric-label">Total PII Categories</div>
                     <div class="metric-change trend-up">
-                        <i class="bi bi-arrow-up"></i> +15% growth
+                        <i class="bi bi-arrow-up"></i> 38 added recently
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="metric-card">
-                    <span class="metric-number text-info" id="complianceMetric">73%</span>
-                    <div class="metric-label">Avg. Compliance Complexity</div>
+                    <span class="metric-number text-info" id="avgCategoriesMetric">1</span>
+                    <div class="metric-label">Avg Categories/Country</div>
                     <div class="metric-change trend-neutral">
-                        <i class="bi bi-dash"></i> Stable
+                        <i class="bi bi-dash"></i> Comprehensive coverage
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Charts Section -->
-    <div class="container my-5">
-        <div class="row">
-            <!-- Framework Adoption Timeline -->
-            <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">
-                            <i class="bi bi-graph-up me-2"></i>Framework Adoption Timeline
-                        </h5>
-                        <div class="btn-group btn-group-sm" role="group">
-                            <input type="radio" class="btn-check" name="timelineView" id="timelineYear" checked>
-                            <label class="btn btn-outline-primary" for="timelineYear">Yearly</label>
-                            <input type="radio" class="btn-check" name="timelineView" id="timelineQuarter">
-                            <label class="btn btn-outline-primary" for="timelineQuarter">Quarterly</label>
+    <!-- Dashboard Filters -->
+    <div class="container">
+        <div class="dashboard-filters">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h5 class="mb-3 mb-lg-0">
+                        <i class="bi bi-funnel me-2"></i>Filter & Analyze
+                    </h5>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <select class="form-select" id="regionFilter">
+                                <option value="">All Regions</option>
+                                <option value="Europe">Europe</option>
+                                <option value="North America">North America</option>
+                                <option value="Asia Pacific">Asia Pacific</option>
+                                <option value="Latin America">Latin America</option>
+                                <option value="Africa">Africa</option>
+                                <option value="Middle East">Middle East</option>
+                            </select>
                         </div>
+                        <div class="col-md-6">
+                            <select class="form-select" id="frameworkFilter">
+                                <option value="">All Frameworks</option>
+                                <option value="GDPR">GDPR</option>
+                                <option value="CPRA">CPRA</option>
+                                <option value="LGPD">LGPD</option>
+                                <option value="PDPA">PDPA</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts and Visualizations -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <!-- Framework Distribution Chart -->
+            <div class="col-lg-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-pie-chart me-2"></i>Framework Distribution
+                        </h5>
                     </div>
                     <div class="card-body">
                         <div class="chart-container">
-                            <canvas id="adoptionChart"></canvas>
+                            <canvas id="frameworkChart"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Compliance Complexity Gauge -->
-            <div class="col-lg-4">
-                <div class="card">
+            <!-- Regional Coverage Chart -->
+            <div class="col-lg-6">
+                <div class="card h-100">
                     <div class="card-header">
-                        <h6 class="mb-0">
-                            <i class="bi bi-speedometer2 me-2"></i>Global Compliance Complexity
-                        </h6>
+                        <h5 class="mb-0">
+                            <i class="bi bi-bar-chart me-2"></i>Regional Coverage
+                        </h5>
                     </div>
                     <div class="card-body">
-                        <div class="complexity-gauge">
-                            <canvas id="complexityGauge"></canvas>
+                        <div class="chart-container">
+                            <canvas id="regionChart"></canvas>
                         </div>
-                        <div class="text-center mt-3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complexity Heatmap -->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-grid me-2"></i>PII Categories Complexity Heatmap
+                        </h5>
+                        <small class="text-muted">Countries by number of PII categories defined</small>
+                    </div>
+                    <div class="card-body">
+                        <div id="complexityHeatmap" class="d-flex flex-wrap gap-1"></div>
+                        <div class="mt-3">
                             <small class="text-muted">
-                                Based on categories, masking requirements, and legal citations
+                                <span class="me-3">
+                                    <div style="width: 20px; height: 20px; background: #fef3c7; display: inline-block; margin-right: 5px;"></div>
+                                    Low (1-10)
+                                </span>
+                                <span class="me-3">
+                                    <div style="width: 20px; height: 20px; background: #fcd34d; display: inline-block; margin-right: 5px;"></div>
+                                    Medium (11-15)
+                                </span>
+                                <span class="me-3">
+                                    <div style="width: 20px; height: 20px; background: #f59e0b; display: inline-block; margin-right: 5px;"></div>
+                                    High (16-20)
+                                </span>
+                                <span>
+                                    <div style="width: 20px; height: 20px; background: #d97706; display: inline-block; margin-right: 5px;"></div>
+                                    Very High (21+)
+                                </span>
                             </small>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row mt-4">
-            <!-- Regional Distribution -->
-            <div class="col-lg-6">
+            <!-- Growth Timeline -->
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h6 class="mb-0">
-                            <i class="bi bi-geo-alt me-2"></i>Regional Framework Distribution
-                        </h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="regionalChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Category Types Breakdown -->
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h6 class="mb-0">
-                            <i class="bi bi-pie-chart me-2"></i>PII Category Types
-                        </h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="categoryChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Framework Comparison Heatmap -->
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">
-                            <i class="bi bi-grid me-2"></i>Framework Similarity Matrix
+                            <i class="bi bi-graph-up-arrow me-2"></i>Coverage Growth Timeline
                         </h5>
-                        <div class="btn-group btn-group-sm" role="group">
-                            <button type="button" class="btn btn-outline-primary active" onclick="setHeatmapMode('similarity')">
-                                Similarity
-                            </button>
-                            <button type="button" class="btn btn-outline-primary" onclick="setHeatmapMode('coverage')">
-                                Coverage
-                            </button>
-                            <button type="button" class="btn btn-outline-primary" onclick="setHeatmapMode('complexity')">
-                                Complexity
-                            </button>
-                        </div>
                     </div>
                     <div class="card-body">
-                        <div id="heatmapContainer" class="table-responsive">
-                            <table class="table table-borderless" id="heatmapTable">
-                                <!-- Heatmap will be generated here -->
-                            </table>
+                        <div class="chart-container">
+                            <canvas id="timelineChart"></canvas>
                         </div>
-                        <div class="d-flex justify-content-center mt-3">
-                            <div class="d-flex align-items-center">
-                                <span class="me-2">Low</span>
-                                <div class="d-flex">
-                                    <div style="width: 20px; height: 20px; background: #fef3c7;"></div>
-                                    <div style="width: 20px; height: 20px; background: #fcd34d;"></div>
-                                    <div style="width: 20px; height: 20px; background: #f59e0b;"></div>
-                                    <div style="width: 20px; height: 20px; background: #d97706;"></div>
-                                    <div style="width: 20px; height: 20px; background: #92400e;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Insights -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card insight-card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-lightbulb me-2"></i>Key Insights
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="insight-item">
+                                    <h6 class="text-primary">Most Comprehensive Framework</h6>
+                                    <p class="mb-0">Personal Data Protection Act (PDPA) 2019 averages 20 PII categories per country</p>
                                 </div>
-                                <span class="ms-2">High</span>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="insight-item">
+                                    <h6 class="text-success">Best Regional Coverage</h6>
+                                    <p class="mb-0">EU with 13 countries covered</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="insight-item">
+                                    <h6 class="text-warning">Latest Addition</h6>
+                                    <p class="mb-0">Thailand (PDPA Thailand) added with 20 categories</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -370,595 +394,244 @@
         </div>
     </div>
 
-    <!-- Insights Section -->
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="card insight-card">
-                    <div class="card-header">
-                        <h5 class="mb-0">
-                            <i class="bi bi-lightbulb me-2"></i>Key Insights
-                        </h5>
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-shield-check me-2"></i>
+                        <span class="fw-semibold">OpenPIIMap</span>
                     </div>
-                    <div class="card-body">
-                        <div id="insightsContainer">
-                            <!-- Insights will be generated here -->
-                        </div>
-                    </div>
+                    <p class="text-muted small mb-0 mt-1">
+                        Analytics Dashboard - Updated 2025-07-30
+                    </p>
                 </div>
-            </div>
-            
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h6 class="mb-0">
-                            <i class="bi bi-download me-2"></i>Export Options
-                        </h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-outline-primary" onclick="exportDashboard('pdf')">
-                                <i class="bi bi-file-pdf me-2"></i>Export as PDF
-                            </button>
-                            <button type="button" class="btn btn-outline-primary" onclick="exportDashboard('csv')">
-                                <i class="bi bi-file-csv me-2"></i>Export Data (CSV)
-                            </button>
-                            <button type="button" class="btn btn-outline-primary" onclick="exportDashboard('json')">
-                                <i class="bi bi-file-code me-2"></i>Export Data (JSON)
-                            </button>
-                            <button type="button" class="btn btn-outline-primary" onclick="generateReport()">
-                                <i class="bi bi-file-text me-2"></i>Generate Report
-                            </button>
-                        </div>
-                        
-                        <hr>
-                        
-                        <h6 class="mb-3">Share Dashboard</h6>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="shareDashboard()">
-                                <i class="bi bi-share me-2"></i>Copy Link
-                            </button>
-                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="embedDashboard()">
-                                <i class="bi bi-code-square me-2"></i>Embed Code
-                            </button>
-                        </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="https://github.com/intelation/openpiimap" target="_blank" class="text-light me-3">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="#" class="text-light me-3">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="text-light">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Chart.js Gauge Plugin -->
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-gauge@0.3.0/dist/chartjs-gauge.min.js"></script>
-    <!-- Custom JS -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Main JS -->
     <script src="assets/js/main.js"></script>
-    
+
     <script>
-        // Dashboard global variables
-        let adoptionChart, regionalChart, categoryChart, complexityGauge;
-        let currentHeatmapMode = 'similarity';
-        let dashboardData = {};
-        
-        // Initialize dashboard
+        // Dashboard analytics data (populated from template)
+        const dashboardData = {
+            countries: [{"categories": 0, "file": "appi-japan.html", "framework": "APPI", "last_updated": "2025-06-30", "name": "Japan", "region": "Asia"}, {"categories": 0, "file": "cpra-california.html", "framework": "CPRA", "last_updated": "2025-06-30", "name": "United States - California", "region": "North America"}, {"categories": 0, "file": "dpdpb-india.html", "framework": "DPDPB", "last_updated": "2025-06-30", "name": "India", "region": "Asia"}, {"categories": 0, "file": "fadp-switzerland.html", "framework": "FADP", "last_updated": "2025-06-30", "name": "Switzerland", "region": "Europe"}, {"categories": 0, "file": "gdpr-austria.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Austria", "region": "EU"}, {"categories": 0, "file": "gdpr-belgium.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Belgium", "region": "EU"}, {"categories": 0, "file": "gdpr-denmark.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Denmark", "region": "EU"}, {"categories": 0, "file": "gdpr-finland.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Finland", "region": "EU"}, {"categories": 0, "file": "gdpr-france.html", "framework": "GDPR", "last_updated": "2025-06-26", "name": "France", "region": "EU"}, {"categories": 0, "file": "gdpr-germany.html", "framework": "GDPR", "last_updated": "2025-06-26", "name": "Germany", "region": "EU"}, {"categories": 0, "file": "gdpr-greece.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Greece", "region": "EU"}, {"categories": 0, "file": "gdpr-iceland.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Iceland", "region": "EEA"}, {"categories": 0, "file": "gdpr-ireland.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Ireland", "region": "EU"}, {"categories": 0, "file": "gdpr-italy.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Italy", "region": "EU"}, {"categories": 0, "file": "gdpr-liechtenstein.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Liechtenstein", "region": "EEA"}, {"categories": 0, "file": "gdpr-netherlands.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Netherlands", "region": "EU"}, {"categories": 0, "file": "gdpr-norway.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Norway", "region": "EEA"}, {"categories": 0, "file": "gdpr-poland.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Poland", "region": "EU"}, {"categories": 0, "file": "gdpr-spain.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Spain", "region": "EU"}, {"categories": 0, "file": "gdpr-sweden.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Sweden", "region": "EU"}, {"categories": 0, "file": "hippa-usa.html", "framework": "HIPAA", "last_updated": "2025-06-30", "name": "United States", "region": "North America"}, {"categories": 0, "file": "lfpdppp-mexico.html", "framework": "LFPDPPP", "last_updated": "2025-06-30", "name": "Mexico", "region": "North America"}, {"categories": 0, "file": "lgpd-brazil.html", "framework": "LGPD", "last_updated": "2025-06-30", "name": "Brazil", "region": "South America"}, {"categories": 0, "file": "ndpr-nigeria.html", "framework": "NDPR", "last_updated": "2025-06-30", "name": "Nigeria", "region": "Africa"}, {"categories": 0, "file": "pdp-indonesia.html", "framework": "PDP Law", "last_updated": "2025-06-30", "name": "Indonesia", "region": "Asia"}, {"categories": 0, "file": "pdpa-singapore.html", "framework": "PDPA", "last_updated": "2025-06-30", "name": "Singapore", "region": "Asia"}, {"categories": 0, "file": "pdpa-argentina-argentina.html", "framework": "PDPA Argentina", "last_updated": "2025-07-20", "name": "Argentina", "region": "Latin America"}, {"categories": 20, "file": "pdpa-thailand-thailand.html", "framework": "Personal Data Protection Act (PDPA) 2019", "last_updated": "2025-07-20", "name": "Thailand", "region": "Other"}, {"categories": 0, "file": "pipa-south-korea.html", "framework": "PIPA", "last_updated": "2025-06-30", "name": "South Korea", "region": "Asia"}, {"categories": 0, "file": "pipeda-canada.html", "framework": "PIPEDA", "last_updated": "2025-06-30", "name": "Canada", "region": "North America"}, {"categories": 0, "file": "pipl-china.html", "framework": "PIPL", "last_updated": "2025-06-30", "name": "China", "region": "Asia"}, {"categories": 0, "file": "privacyact-australia.html", "framework": "Privacy Act", "last_updated": "2025-06-30", "name": "Australia", "region": "Oceania"}, {"categories": 0, "file": "uae-dpl-united-arab-emirates.html", "framework": "UAE Federal Data Protection Law (Law No. 45/2021)", "last_updated": "2025-06-30", "name": "United Arab Emirates", "region": "Middle East"}, {"categories": 0, "file": "uk-gdpr-united-kingdom.html", "framework": "UK GDPR + DPA 2018", "last_updated": "2025-06-30", "name": "United Kingdom", "region": "Europe"}],
+            frameworks: [{"abbreviation": "GDPR", "countries": ["Germany", "France", "Austria", "Belgium", "Denmark", "Finland", "Greece", "Iceland", "Ireland", "Italy", "Liechtenstein", "Netherlands", "Norway", "Poland", "Spain", "Sweden"], "description": "Comprehensive data protection regulation for the European Union and European Economic Area.", "effective_date": "2018-05-25", "id": "gdpr", "key_principles": ["Lawfulness", "Fairness", "Transparency", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Integrity and confidentiality", "Accountability"], "name": "General Data Protection Regulation", "region": "Europe", "type": "comprehensive"}, {"abbreviation": "UK GDPR", "countries": ["United Kingdom"], "description": "UK\u0027s version of GDPR post-Brexit, largely similar to EU GDPR.", "effective_date": "2021-01-01", "id": "uk-gdpr", "key_principles": ["Lawfulness", "Fairness", "Transparency", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Integrity and confidentiality", "Accountability"], "name": "UK General Data Protection Regulation", "region": "Europe", "type": "comprehensive"}, {"abbreviation": "LGPD", "countries": ["Brazil"], "description": "Brazil\u0027s comprehensive data protection law, inspired by GDPR.", "effective_date": "2020-09-18", "id": "lgpd", "key_principles": ["Purpose", "Adequacy", "Necessity", "Free access", "Data quality", "Transparency", "Security", "Prevention", "Non-discrimination", "Accountability"], "name": "Lei Geral de Prote\u00e7\u00e3o de Dados", "region": "Latin America", "type": "comprehensive"}, {"abbreviation": "CPRA", "countries": ["California"], "description": "Enhanced version of CCPA with additional privacy rights and protections.", "effective_date": "2023-01-01", "id": "cpra", "key_principles": ["Consumer rights", "Business transparency", "Data minimization", "Purpose limitation", "Sensitive personal information protection"], "name": "California Privacy Rights Act", "region": "North America", "type": "comprehensive"}, {"abbreviation": "PIPEDA", "countries": ["Canada"], "description": "Canada\u0027s federal privacy law for private sector organizations.", "effective_date": "2001-01-01", "id": "pipeda", "key_principles": ["Accountability", "Identifying purposes", "Consent", "Limiting collection", "Limiting use, disclosure, and retention", "Accuracy", "Safeguards", "Openness", "Individual access", "Challenging compliance"], "name": "Personal Information Protection and Electronic Documents Act", "region": "North America", "type": "comprehensive"}, {"abbreviation": "HIPAA", "countries": ["United States"], "description": "US federal law protecting sensitive patient health information.", "effective_date": "1996-08-21", "id": "hipaa", "key_principles": ["Access", "Portability", "Accountability", "Security", "Privacy"], "name": "Health Insurance Portability and Accountability Act", "region": "North America", "type": "sector-specific"}, {"abbreviation": "APPI", "countries": ["Japan"], "description": "Japan\u0027s comprehensive personal information protection law.", "effective_date": "2005-04-01", "id": "appi", "key_principles": ["Proper acquisition", "Purpose specification", "Use limitation", "Accuracy maintenance", "Safety management", "Transparency"], "name": "Act on Protection of Personal Information", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "PDPA", "countries": ["Singapore"], "description": "Singapore\u0027s comprehensive data protection law.", "effective_date": "2014-07-02", "id": "pdpa", "key_principles": ["Consent", "Purpose limitation", "Notification", "Access and correction", "Accuracy", "Protection", "Retention limitation", "Transfer limitation", "Accountability"], "name": "Personal Data Protection Act", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "PIPA", "countries": ["South Korea"], "description": "South Korea\u0027s personal information protection law.", "effective_date": "2011-09-30", "id": "pipa", "key_principles": ["Consent", "Purpose limitation", "Data minimization", "Accuracy", "Retention limitation", "Security", "Transparency"], "name": "Personal Information Protection Act", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "PIPL", "countries": ["China"], "description": "China\u0027s comprehensive personal information protection law.", "effective_date": "2021-11-01", "id": "pipl", "key_principles": ["Lawfulness", "Legitimacy", "Necessity", "Good faith", "Proportionality", "Transparency", "Purpose limitation", "Data minimization"], "name": "Personal Information Protection Law", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "Privacy Act", "countries": ["Australia"], "description": "Australia\u0027s privacy law governing the handling of personal information.", "effective_date": "1988-12-01", "id": "privacy-act", "key_principles": ["Open and transparent management", "Anonymity and pseudonymity", "Collection", "Dealing with unsolicited information", "Notification", "Use and disclosure", "Direct marketing", "Cross-border disclosure", "Government identifiers", "Data quality", "Security", "Access and correction", "Correction requests"], "name": "Privacy Act", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "FADP", "countries": ["Switzerland"], "description": "Switzerland\u0027s revised data protection law, aligned with GDPR principles.", "effective_date": "2023-09-01", "id": "fadp", "key_principles": ["Lawfulness", "Good faith", "Proportionality", "Purpose limitation", "Data minimization", "Accuracy", "Transparency", "Security"], "name": "Federal Act on Data Protection", "region": "Europe", "type": "comprehensive"}, {"abbreviation": "LFPDPPP", "countries": ["Mexico"], "description": "Mexico\u0027s federal law for the protection of personal data held by private parties.", "effective_date": "2010-07-05", "id": "lfpdppp", "key_principles": ["Lawfulness", "Consent", "Information", "Quality", "Purpose", "Loyalty", "Proportionality", "Accountability"], "name": "Ley Federal de Protecci\u00f3n de Datos Personales en Posesi\u00f3n de los Particulares", "region": "Latin America", "type": "comprehensive"}, {"abbreviation": "NDPR", "countries": ["Nigeria"], "description": "Nigeria\u0027s comprehensive data protection regulation.", "effective_date": "2019-01-25", "id": "ndpr", "key_principles": ["Lawfulness", "Fairness", "Specific legitimate purposes", "Proportionality", "Accuracy", "Storage limitation", "Security", "Accountability"], "name": "Nigeria Data Protection Regulation", "region": "Africa", "type": "comprehensive"}, {"abbreviation": "PDP", "countries": ["Indonesia"], "description": "Indonesia\u0027s comprehensive personal data protection law.", "effective_date": "2022-10-17", "id": "pdp", "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Accountability", "Transparency", "Accessibility", "Proportionality", "Data controller responsibility"], "name": "Personal Data Protection Law", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "DPDPB", "countries": ["India"], "description": "India\u0027s comprehensive digital personal data protection law.", "effective_date": "2023-08-11", "id": "dpdpb", "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Reasonable security safeguards", "Accountability"], "name": "Digital Personal Data Protection Bill", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "UAE DPL", "countries": ["United Arab Emirates"], "description": "United Arab Emirates federal data protection law.", "effective_date": "2022-01-02", "id": "uae-dpl", "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Security", "Accountability", "Transparency"], "name": "UAE Data Protection Law", "region": "Middle East", "type": "comprehensive"}, {"abbreviation": "PDPA Argentina", "countries": ["Argentina"], "description": "Argentina\u0027s comprehensive personal data protection law with 2018 amendments.", "effective_date": "2000-11-03", "id": "pdpa-argentina", "key_principles": ["Lawfulness", "Purpose limitation", "Proportionality", "Quality", "Previous information", "Security", "Confidentiality", "Consent"], "name": "Personal Data Protection Act (Argentina)", "region": "Latin America", "type": "comprehensive"}, {"abbreviation": "PDPA Thailand", "countries": ["Thailand"], "description": "Thailand\u0027s Personal Data Protection Act 2019 based on GDPR principles, adapted for Thai context.", "effective_date": "2022-06-01", "id": "pdpa-thailand", "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Security", "Accountability", "Transparency"], "name": "Personal Data Protection Act (Thailand)", "region": "Asia Pacific", "type": "comprehensive"}],
+            regions: {"Africa": 1, "Asia": 6, "EEA": 3, "EU": 13, "Europe": 2, "Latin America": 1, "Middle East": 1, "North America": 4, "Oceania": 1, "Other": 1, "South America": 1}
+        };
+
+        // Initialize charts when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            loadDashboardData();
-            initializeCharts();
-            generateHeatmap();
-            generateInsights();
-            setupEventListeners();
+            initializeFrameworkChart();
+            initializeRegionChart();
+            initializeComplexityHeatmap();
+            initializeTimelineChart();
         });
-        
-        function loadDashboardData() {
-            // Load country data from main.js
-            const countries = window.OpenPIIMap?.countries || [];
+
+        function initializeFrameworkChart() {
+            const ctx = document.getElementById('frameworkChart').getContext('2d');
+            const frameworkCounts = {};
             
-            dashboardData = {
-                countries: countries,
-                frameworks: [...new Set(countries.map(c => c.framework))],
-                regions: [...new Set(countries.map(c => c.region))],
-                totalCategories: countries.reduce((sum, c) => sum + c.categories, 0),
-                adoption: generateAdoptionData(),
-                regional: generateRegionalData(countries),
-                categoryTypes: generateCategoryTypeData(),
-                complexity: calculateComplexityScore(countries)
-            };
-        }
-        
-        function generateAdoptionData() {
-            // Mock adoption timeline data
-            return {
-                labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
-                datasets: [
-                    {
-                        label: 'GDPR Family',
-                        data: [16, 16, 17, 17, 18, 18, 18, 18],
-                        borderColor: '#3b82f6',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                        fill: true
-                    },
-                    {
-                        label: 'Sector Specific',
-                        data: [2, 3, 4, 5, 6, 7, 8, 9],
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        fill: true
-                    },
-                    {
-                        label: 'Comprehensive',
-                        data: [3, 4, 5, 6, 7, 8, 9, 10],
-                        borderColor: '#f59e0b',
-                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                        fill: true
-                    }
-                ]
-            };
-        }
-        
-        function generateRegionalData(countries) {
-            const regionCounts = {};
-            countries.forEach(country => {
-                regionCounts[country.region] = (regionCounts[country.region] || 0) + 1;
+            dashboardData.countries.forEach(country => {
+                const fw = country.framework;
+                frameworkCounts[fw] = (frameworkCounts[fw] || 0) + 1;
             });
-            
-            return {
-                labels: Object.keys(regionCounts),
-                datasets: [{
-                    data: Object.values(regionCounts),
-                    backgroundColor: [
-                        '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'
-                    ]
-                }]
-            };
-        }
-        
-        function generateCategoryTypeData() {
-            // Mock category type distribution
-            return {
-                labels: ['Direct Identifier', 'Special Category', 'Indirect Identifier', 'Financial', 'Behavioral', 'Other'],
-                datasets: [{
-                    data: [35, 25, 20, 10, 7, 3],
-                    backgroundColor: [
-                        '#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#6b7280'
-                    ]
-                }]
-            };
-        }
-        
-        function calculateComplexityScore(countries) {
-            // Calculate weighted complexity based on categories, masking requirements, etc.
-            const totalCountries = countries.length;
-            const avgCategories = countries.reduce((sum, c) => sum + c.categories, 0) / totalCountries;
-            
-            // Normalize to 0-100 scale
-            return Math.min(Math.round((avgCategories / 20) * 100), 100);
-        }
-        
-        function initializeCharts() {
-            initializeAdoptionChart();
-            initializeRegionalChart();
-            initializeCategoryChart();
-            initializeComplexityGauge();
-        }
-        
-        function initializeAdoptionChart() {
-            const ctx = document.getElementById('adoptionChart').getContext('2d');
-            adoptionChart = new Chart(ctx, {
-                type: 'line',
-                data: dashboardData.adoption,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        },
-                        tooltip: {
-                            mode: 'index',
-                            intersect: false
-                        }
-                    },
-                    scales: {
-                        x: {
-                            display: true,
-                            title: {
-                                display: true,
-                                text: 'Year'
-                            }
-                        },
-                        y: {
-                            display: true,
-                            title: {
-                                display: true,
-                                text: 'Number of Countries'
-                            },
-                            beginAtZero: true
-                        }
-                    },
-                    interaction: {
-                        mode: 'nearest',
-                        axis: 'x',
-                        intersect: false
-                    }
-                }
-            });
-        }
-        
-        function initializeRegionalChart() {
-            const ctx = document.getElementById('regionalChart').getContext('2d');
-            regionalChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: dashboardData.regional,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
-        }
-        
-        function initializeCategoryChart() {
-            const ctx = document.getElementById('categoryChart').getContext('2d');
-            categoryChart = new Chart(ctx, {
-                type: 'bar',
-                data: dashboardData.categoryTypes,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Percentage'
-                            }
-                        }
-                    }
-                }
-            });
-        }
-        
-        function initializeComplexityGauge() {
-            const ctx = document.getElementById('complexityGauge').getContext('2d');
-            
-            complexityGauge = new Chart(ctx, {
+
+            new Chart(ctx, {
                 type: 'doughnut',
                 data: {
+                    labels: Object.keys(frameworkCounts),
                     datasets: [{
-                        data: [dashboardData.complexity, 100 - dashboardData.complexity],
+                        data: Object.values(frameworkCounts),
                         backgroundColor: [
-                            dashboardData.complexity > 70 ? '#ef4444' : 
-                            dashboardData.complexity > 40 ? '#f59e0b' : '#10b981',
-                            '#e5e7eb'
-                        ],
-                        borderWidth: 0
+                            '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444',
+                            '#06b6d4', '#84cc16', '#f97316', '#ec4899', '#6b7280'
+                        ]
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    cutout: '75%',
                     plugins: {
                         legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            enabled: false
+                            position: 'bottom'
                         }
                     }
+                }
+            });
+        }
+
+        function initializeRegionChart() {
+            const ctx = document.getElementById('regionChart').getContext('2d');
+            const regionCounts = {};
+            
+            dashboardData.countries.forEach(country => {
+                const region = country.region;
+                regionCounts[region] = (regionCounts[region] || 0) + 1;
+            });
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(regionCounts),
+                    datasets: [{
+                        label: 'Countries',
+                        data: Object.values(regionCounts),
+                        backgroundColor: '#3b82f6'
+                    }]
                 },
-                plugins: [{
-                    beforeDraw: function(chart) {
-                        const width = chart.width;
-                        const height = chart.height;
-                        const ctx = chart.ctx;
-                        
-                        ctx.restore();
-                        const fontSize = (height / 114).toFixed(2);
-                        ctx.font = fontSize + "em sans-serif";
-                        ctx.textBaseline = "middle";
-                        ctx.fillStyle = "#1e293b";
-                        
-                        const text = dashboardData.complexity + "%";
-                        const textX = Math.round((width - ctx.measureText(text).width) / 2);
-                        const textY = height / 2;
-                        
-                        ctx.fillText(text, textX, textY);
-                        ctx.save();
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
-                }]
+                }
             });
         }
-        
-        function generateHeatmap() {
-            const frameworks = dashboardData.frameworks;
-            const table = document.getElementById('heatmapTable');
-            
-            // Generate header
-            let headerHtml = '<thead><tr><th></th>';
-            frameworks.forEach(framework => {
-                headerHtml += `<th class="text-center small">${framework}</th>`;
-            });
-            headerHtml += '</tr></thead>';
-            
-            // Generate body
-            let bodyHtml = '<tbody>';
-            frameworks.forEach(rowFramework => {
-                bodyHtml += `<tr><th class="small">${rowFramework}</th>`;
-                frameworks.forEach(colFramework => {
-                    const similarity = calculateSimilarity(rowFramework, colFramework);
-                    const intensity = Math.round(similarity * 5); // 0-5 scale
-                    const color = getHeatmapColor(similarity);
-                    
-                    bodyHtml += `<td class="heatmap-cell" style="background-color: ${color};" 
-                                     title="${rowFramework} vs ${colFramework}: ${Math.round(similarity * 100)}%">
-                                     ${Math.round(similarity * 100)}
-                                 </td>`;
-                });
-                bodyHtml += '</tr>';
-            });
-            bodyHtml += '</tbody>';
-            
-            table.innerHTML = headerHtml + bodyHtml;
-        }
-        
-        function calculateSimilarity(framework1, framework2) {
-            if (framework1 === framework2) return 1.0;
-            
-            // Mock similarity calculation based on framework types
-            const gdprFamily = ['GDPR', 'UK GDPR'];
-            const healthSpecific = ['HIPAA'];
-            const comprehensive = ['LGPD', 'CPRA', 'PIPL'];
-            
-            if ((gdprFamily.includes(framework1) && gdprFamily.includes(framework2)) ||
-                (healthSpecific.includes(framework1) && healthSpecific.includes(framework2)) ||
-                (comprehensive.includes(framework1) && comprehensive.includes(framework2))) {
-                return Math.random() * 0.3 + 0.7; // High similarity
-            } else if (comprehensive.includes(framework1) && comprehensive.includes(framework2)) {
-                return Math.random() * 0.4 + 0.4; // Medium similarity
-            } else {
-                return Math.random() * 0.4 + 0.1; // Low similarity
-            }
-        }
-        
-        function getHeatmapColor(value) {
+
+        function initializeComplexityHeatmap() {
+            const container = document.getElementById('complexityHeatmap');
             const colors = ['#fef3c7', '#fcd34d', '#f59e0b', '#d97706', '#92400e'];
-            const index = Math.min(Math.floor(value * 5), 4);
-            return colors[index];
-        }
-        
-        function setHeatmapMode(mode) {
-            currentHeatmapMode = mode;
             
-            // Update button states
-            document.querySelectorAll('.btn-outline-primary').forEach(btn => {
-                btn.classList.remove('active');
+            dashboardData.countries.forEach(country => {
+                const categories = country.categories || 0;
+                let colorIndex = Math.floor(categories / 5);
+                if (colorIndex >= colors.length) colorIndex = colors.length - 1;
+                
+                const cell = document.createElement('div');
+                cell.className = 'heatmap-cell';
+                cell.style.backgroundColor = colors[colorIndex];
+                cell.style.width = '60px';
+                cell.style.height = '40px';
+                cell.style.display = 'flex';
+                cell.style.alignItems = 'center';
+                cell.style.justifyContent = 'center';
+                cell.textContent = categories;
+                cell.title = `${country.name}: ${categories} categories`;
+                
+                container.appendChild(cell);
             });
-            event.target.classList.add('active');
-            
-            // Regenerate heatmap with new mode
-            generateHeatmap();
         }
-        
-        function generateInsights() {
-            const insights = [
-                {
-                    icon: 'bi-trophy',
-                    title: 'Leading Region',
-                    text: 'Europe leads with 18 countries implementing GDPR-based frameworks, representing 56% of global coverage.',
-                    type: 'success'
+
+        function initializeTimelineChart() {
+            const ctx = document.getElementById('timelineChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                    datasets: [{
+                        label: 'Countries Added',
+                        data: [8, 12, 18, 22, 26, 28, 32, 34],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
                 },
-                {
-                    icon: 'bi-graph-up',
-                    title: 'Growth Trend',
-                    text: 'Privacy framework adoption increased 25% in 2024, with 3 new countries adding comprehensive laws.',
-                    type: 'info'
-                },
-                {
-                    icon: 'bi-shield-exclamation',
-                    title: 'Complexity Alert',
-                    text: 'Healthcare data has the highest masking requirements across all frameworks (89% require masking).',
-                    type: 'warning'
-                },
-                {
-                    icon: 'bi-lightbulb',
-                    title: 'Key Insight',
-                    text: 'Direct identifiers show 95% consistency across frameworks, suggesting global consensus on basic PII definitions.',
-                    type: 'primary'
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
-            ];
-            
-            const container = document.getElementById('insightsContainer');
-            container.innerHTML = insights.map(insight => `
-                <div class="alert alert-${insight.type === 'primary' ? 'info' : insight.type} d-flex align-items-start mb-3">
-                    <i class="${insight.icon} me-3 mt-1"></i>
-                    <div>
-                        <h6 class="alert-heading mb-1">${insight.title}</h6>
-                        <p class="mb-0">${insight.text}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
-        function setupEventListeners() {
-            // Filter change listeners
-            document.getElementById('timeRange').addEventListener('change', refreshDashboard);
-            document.getElementById('regionFilter').addEventListener('change', refreshDashboard);
-            document.getElementById('frameworkFilter').addEventListener('change', refreshDashboard);
-            
-            // Timeline view toggles
-            document.querySelectorAll('input[name="timelineView"]').forEach(radio => {
-                radio.addEventListener('change', updateTimelineView);
             });
         }
-        
+
+        // Auto-update function placeholder
         function refreshDashboard() {
-            // Show loading state
-            showLoading();
-            
-            // Simulate data refresh
-            setTimeout(() => {
-                loadDashboardData();
-                updateCharts();
-                generateHeatmap();
-                generateInsights();
-                hideLoading();
-                showToast('Dashboard refreshed successfully');
-            }, 1000);
+            // This could fetch updated data and refresh charts
+            console.log('Dashboard refresh triggered');
         }
-        
-        function updateCharts() {
-            adoptionChart.data = dashboardData.adoption;
-            adoptionChart.update();
-            
-            regionalChart.data = dashboardData.regional;
-            regionalChart.update();
-            
-            categoryChart.data = dashboardData.categoryTypes;
-            categoryChart.update();
-            
-            complexityGauge.data.datasets[0].data = [dashboardData.complexity, 100 - dashboardData.complexity];
-            complexityGauge.update();
-        }
-        
-        function updateTimelineView() {
-            const view = document.querySelector('input[name="timelineView"]:checked').id;
-            
-            if (view === 'timelineQuarter') {
-                // Update to quarterly data
-                dashboardData.adoption.labels = ['Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024'];
-                dashboardData.adoption.datasets.forEach(dataset => {
-                    dataset.data = dataset.data.slice(-4);
-                });
-            } else {
-                // Reset to yearly data
-                dashboardData.adoption = generateAdoptionData();
-            }
-            
-            adoptionChart.data = dashboardData.adoption;
-            adoptionChart.update();
-        }
-        
-        function exportDashboard(format) {
-            const data = {
-                timestamp: new Date().toISOString(),
-                metrics: {
-                    totalCountries: dashboardData.countries.length,
-                    totalFrameworks: dashboardData.frameworks.length,
-                    totalCategories: dashboardData.totalCategories,
-                    complexityScore: dashboardData.complexity
-                },
-                countries: dashboardData.countries
-            };
-            
-            switch(format) {
-                case 'json':
-                    downloadJSON(data, 'openpiimap-dashboard.json');
-                    break;
-                case 'csv':
-                    downloadCSV(data.countries, 'openpiimap-data.csv');
-                    break;
-                case 'pdf':
-                    showToast('PDF export feature coming soon', 'info');
-                    break;
-            }
-        }
-        
-        function downloadJSON(data, filename) {
-            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            showToast('Dashboard data exported successfully');
-        }
-        
-        function downloadCSV(data, filename) {
-            const csv = [
-                ['Country', 'Framework', 'Region', 'Categories'].join(','),
-                ...data.map(row => [row.name, row.framework, row.region, row.categories].join(','))
-            ].join('\n');
-            
-            const blob = new Blob([csv], { type: 'text/csv' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            showToast('CSV data exported successfully');
-        }
-        
-        function generateReport() {
-            window.open('report.html', '_blank');
-        }
-        
-        function shareDashboard() {
-            const url = window.location.href;
-            navigator.clipboard.writeText(url);
-            showToast('Dashboard URL copied to clipboard');
-        }
-        
-        function embedDashboard() {
-            const embedCode = `<iframe src="${window.location.href}" width="100%" height="800" frameborder="0"></iframe>`;
-            navigator.clipboard.writeText(embedCode);
-            showToast('Embed code copied to clipboard');
-        }
-        
-        function showLoading() {
-            document.body.style.opacity = '0.7';
-            document.body.style.pointerEvents = 'none';
-        }
-        
-        function hideLoading() {
-            document.body.style.opacity = '1';
-            document.body.style.pointerEvents = 'auto';
-        }
-        
-        function showToast(message, type = 'success') {
-            const iconClass = type === 'success' ? 'bi-check-circle-fill text-success' : 
-                            type === 'info' ? 'bi-info-circle-fill text-info' :
-                            'bi-exclamation-triangle-fill text-warning';
-            
-            const toast = document.createElement('div');
-            toast.className = 'position-fixed top-0 end-0 p-3';
-            toast.style.zIndex = '1100';
-            toast.innerHTML = `
-                <div class="toast show" role="alert">
-                    <div class="toast-header">
-                        <i class="${iconClass} me-2"></i>
-                        <strong class="me-auto">Dashboard</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-                    </div>
-                    <div class="toast-body">${message}</div>
-                </div>
-            `;
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-                if (document.body.contains(toast)) {
-                    document.body.removeChild(toast);
-                }
-            }, 3000);
-        }
+
+        // Update dashboard every 5 minutes
+        setInterval(refreshDashboard, 5 * 60 * 1000);
     </script>
+    <!-- Footer -->
+  
+     <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-shield-check me-2"></i>
+                        <span class="fw-semibold">OpenPIIMap</span>
+                    </div>
+                    <p class="text-muted small mb-0 mt-1"style="color: white !important;">
+                        Global Privacy Law Navigator
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="https://github.com/intelation/openpiimap" target="_blank" class="text-light me-3">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="https://x.com/IntelationApp" class="text-light me-3">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/intelation1/" class="text-light">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // to update static value from 0 to upto digit
+
+
+function animateStatNumber(element, target, duration = 1200, suffix = '') {
+    let start = 0;
+    let startTime = null;
+    target = parseInt(target, 10);
+
+    function animate(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const value = Math.floor(progress * (target - start) + start);
+        element.textContent = value + suffix;
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            element.textContent = target + suffix;
+        }
+    }
+    requestAnimationFrame(animate);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    animateStatNumber(document.getElementById('totalCountriesMetric'), 35);
+    animateStatNumber(document.getElementById('frameworksMetric'), 20);
+    animateStatNumber(document.getElementById('categoriesMetric'), 487);
+    animateStatNumber(document.getElementById('complianceMetric'), 73, 1200, '%');
+});
+</script>
 </body>
 </html>
