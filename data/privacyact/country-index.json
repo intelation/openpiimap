@@ -1,13 +1,25 @@
 {
   "framework": "Privacy Act",
-  "region": "Oceania",
-  "last_updated": "2025-06-30",
+  "region": "Asia-Pacific",
+  "last_updated": "2025-08-14",
   "countries": [
     {
       "name": "Australia",
       "slug": "australia",
-      "path": "data/privacyact/australia.yaml",
+      "path": "data/privacy-act/australia.yaml",
       "status": "complete"
+    },
+    {
+      "name": "New Zealand",
+      "slug": "new-zealand",
+      "path": "data/privacy-act/new-zealand.yaml",
+      "status": "pending"
+    },
+    {
+      "name": "Bahamas",
+      "slug": "bahamas",
+      "path": "data/privacy-act/bahamas.yaml",
+      "status": "pending"
     }
   ]
 }

@@ -35,7 +35,10 @@ const countries = [
     { name: "Australia", framework: "Privacy Act", region: "Asia Pacific", file: "privacyact-australia.html", categories: 7 },
     { name: "Nigeria", framework: "NDPR", region: "Other", file: "ndpr-nigeria.html", categories: 11 },
     { name: "UAE", framework: "UAE DPL", region: "Other", file: "uae-dpl-united-arab-emirates.html", categories: 9 },
-    { name: "Switzerland", framework: "FADP", region: "Europe", file: "fadp-switzerland.html", categories: 10 }
+    { name: "Switzerland", framework: "FADP", region: "Europe", file: "fadp-switzerland.html", categories: 10 },
+    { name: "South Africa", framework: "POPIA", region: "Africa", file: "popia-south-africa.html", categories: 12 },
+{ name: "New Zealand", framework: "Privacy Act", region: "Asia Pacific", file: "privacyact-new-zealand.html", categories: 8 },
+{ name: "Bahamas", framework: "Privacy Act", region: "North America", file: "privacyact-bahamas.html", categories: 5 }
 ];
 
 // Framework color mapping
@@ -47,7 +50,10 @@ const frameworkColors = {
     'LGPD': 'framework-lgpd',
     'PDPA Argentina': 'framework-pdpa-argentina',
     'PDPA Thailand': 'framework-pdpa-thailand',
-    'default': 'framework-default'
+    'default': 'framework-default',
+    'POPIA': 'framework-popia',
+    
+
 };
 
 // Global state

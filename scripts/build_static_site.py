@@ -25,6 +25,8 @@ JSON_DIR = os.path.join(SITE_DIR, "json")
 HTML_DIR = os.path.join(SITE_DIR, "countries")
 TEMPLATE_DIR = "scripts/templates"
 INDEX_PATH = os.path.join(SITE_DIR, "index.html")
+MAP_TEMPLATE_PATH = os.path.join(TEMPLATE_DIR, "map_template.html")
+MAP_OUTPUT_PATH = os.path.join(SITE_DIR, "map.html")
 
 # Helpers
 def make_json_safe(obj):
@@ -161,14 +163,47 @@ def ensure_dirs():
 # Setup environment
 ensure_dirs()
 env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
-template = env.get_template("country_template.html")
 
+# --- Data Collection ---
+# Find the list of countries, frameworks, and PII categories
+countries_list = set()
+frameworks_list = set()
+pii_categories = set()
+
+for framework_dir in os.listdir(DATA_DIR):
+    framework_path = os.path.join(DATA_DIR, framework_dir)
+    if os.path.isdir(framework_path):
+        frameworks_list.add(framework_dir)
+
+        for filename in os.listdir(framework_path):
+            if filename.endswith(".yaml"):
+                country_name = filename.replace(".yaml", "")
+                countries_list.add(country_name)
+
+                # Extract PII categories from YAML
+                yaml_path = os.path.join(framework_path, filename)
+                with open(yaml_path, "r", encoding="utf-8") as f:
+                    data = yaml.safe_load(f)
+                    if data and "categories" in data:
+                        for category in data["categories"]:
+                            if "name" in category:
+                                pii_categories.add(category["name"])
+
+country_count = len(countries_list)
+framework_count = len(frameworks_list)
+pii_category_count = len(pii_categories)
+
+print(f"Total countries found: {country_count}")
+print(f"Total frameworks found: {framework_count}")
+print(f"Total PII categories found: {pii_category_count}")
+
+# --- Generate Country Pages and JSON Files ---
+country_template = env.get_template("country_template.html")
 # Track generated pages and collect data
 generated_pages = []
 countries_data = []
 frameworks_data = []
 
-# 1. Convert YAML to JSON and generate country HTML pages
 for framework in os.listdir(DATA_DIR):
     framework_path = os.path.join(DATA_DIR, framework)
     if not os.path.isdir(framework_path):
@@ -205,11 +240,10 @@ for framework in os.listdir(DATA_DIR):
         # Write HTML
         html_filename = f"{framework}-{base_name}.html"
         html_path = os.path.join(HTML_DIR, html_filename)
-        
-        # Render header for country pages (with country page flag)
+
         header_html = render_header_template(in_country_page=True)
-        
-        html_content = template.render(
+
+        html_content = country_template.render(
             country=data.get("country", base_name),
             framework=data.get("framework", framework),
             region=data.get("region", ""),
@@ -229,20 +263,23 @@ for framework in os.listdir(DATA_DIR):
 
         generated_pages.append(html_filename)
 
-# 2. Handle index.html - preserve custom homepage if it exists
+# --- Generate Index.html ---
 if os.path.exists(INDEX_PATH):
-    # Check if it's our custom Bootstrap homepage
-    with open(INDEX_PATH, "r", encoding="utf-8") as f:
-        index_content = f.read()
-    
-    if "Bootstrap" in index_content and "Global Privacy Law Navigator" in index_content:
-        print("✅ Preserving custom Bootstrap homepage")
-        print(f"   Generated {len(generated_pages)} country pages")
-        print(f"   Updated JSON data files")
-    else:
-        print("⚠️  Found basic index.html, keeping it as-is")
+    homepage_template = env.get_template("index_template.html")
+
+    homepage_html = homepage_template.render(
+        country_count=country_count,
+        framework_count=framework_count
+    )
+
+    with open(INDEX_PATH, "w", encoding="utf-8") as f:
+        f.write(homepage_html)
+
+    print("✅ Preserving custom Bootstrap homepage and updating counts")
+    print(f"   Generated {len(generated_pages)} country pages")
+    print(f"   Updated JSON data files")
+
 else:
-    # Generate basic index.html only if none exists
     print("⚠️  No index.html found, generating basic version")
     html_links = ""
     for file in sorted(generated_pages):
@@ -252,23 +289,40 @@ else:
     index_html = """<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>OpenPIIMap - Country Explorer</title>
-  <link rel="stylesheet" href="assets/style.css" />
+    <meta charset="UTF-8">
+    <title>OpenPIIMap - Country Explorer</title>
+    <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <h1>OpenPIIMap - Country Explorer</h1>
-  <p>Select a country to view PII/PHI definitions:</p>
-  <ul>
+    <h1>OpenPIIMap - Country Explorer</h1>
+    <p>Select a country to view PII/PHI definitions:</p>
+    <ul>
 """ + html_links + """
-  </ul>
+    </ul>
 </body>
 </html>
 """
-
     with open(INDEX_PATH, "w", encoding="utf-8") as f:
         f.write(index_html)
 
+# --- Generate map.html ---
+if os.path.exists(MAP_TEMPLATE_PATH):
+    map_template = env.get_template("map_template.html")
+
+    map_html = map_template.render(
+        country_count=country_count,
+        framework_count=framework_count,
+        pii_category_count=pii_category_count
+    )
+
+    with open(MAP_OUTPUT_PATH, "w", encoding="utf-8") as f:
+        f.write(map_html)
+
+    print("✅ Generated map.html with dynamic counts")
+else:
+    print(f"⚠️  Warning: {MAP_TEMPLATE_PATH} not found. map.html was not generated dynamically.")
+
+print("✅ Static site successfully generated in 'site/'")
 # 3. Load frameworks data for dashboard
 frameworks_json_path = os.path.join(JSON_DIR, "frameworks.json")
 if os.path.exists(frameworks_json_path):

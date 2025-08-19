@@ -232,15 +232,15 @@
                 <div class="col-md-8">
                     <div class="row text-center">
                         <div class="col-3">
-                            <div class="stat-number text-primary h4 mb-0" id="totalCountries" data-count="37">0</div>
+                            <div class="stat-number text-primary h4 mb-0" id="totalCountries" data-count="{{ country_count }}">0</div>
                             <small class="text-muted">Countries</small>
                         </div>
                         <div class="col-3">
-<div class="stat-number text-primary h4 mb-0" id="totalFrameworks" data-count="20">0</div>
+<div class="stat-number text-primary h4 mb-0" id="totalFrameworks" data-count="{{ framework_count }}">0</div>
                             <small class="text-muted">Frameworks</small>
                         </div>
                         <div class="col-3">
-                           <div class="stat-number text-primary h4 mb-0" id="totalCategories" data-count="259">0</div>
+                           <div class="stat-number text-primary h4 mb-0" id="totalCategories" data-count="{{ pii_category_count }}">0</div>
                             <small class="text-muted">PII Categories</small>
                         </div>
                         <div class="col-3">
@@ -909,12 +909,12 @@ function animateStatNumber(element, target, duration = 1200) {
     requestAnimationFrame(animate);
 }
 
-// जेव्हा पेज पूर्णपणे लोड होईल, तेव्हा ही function चालेल
+
 document.addEventListener('DOMContentLoaded', function () {
-    // 'stat-number' class असलेले सर्व elements शोधा
+   
     const statElements = document.querySelectorAll('.stat-number');
 
-    // प्रत्येक element वर loop करून animation सुरू करा
+    
     statElements.forEach(element => {
         const targetValue = element.getAttribute('data-count');
         if (targetValue !== null) {
@@ -923,7 +923,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Event listeners for checkboxes (तुमचा मूळ कोड)
+// Event listeners for checkboxes 
 document.getElementById('showLabels').addEventListener('change', function() {
     console.log('Toggle labels:', this.checked);
 });
