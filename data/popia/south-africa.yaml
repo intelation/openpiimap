@@ -1,0 +1,136 @@
+country: South Africa
+framework: POPIA
+region: Africa
+language: en
+version: 2020-07
+status: published
+last_updated: 2025-08-12
+source_verified: true
+authority: Information Regulator (South Africa)
+notes:
+- The Protection of Personal Information Act (POPIA), Act No. 4 of 2013, commenced on 1 July 2020 with a grace period ending 30 June 2021. :contentReference[oaicite:0]{index=0}
+- It applies to both living natural persons and, where applicable, existing juristic persons. :contentReference[oaicite:1]{index=1}
+- “Personal information” is broadly defined (Section 1) to include race, gender, sexual orientation, contact details, financial, health, opinions, online identifiers, and more. :contentReference[oaicite:2]{index=2}
+- “Special personal information” (Section 26) includes religious or philosophical beliefs, race or ethnic origin, trade union membership, political persuasion, health, sex life, biometric info, and criminal behavior. :contentReference[oaicite:3]{index=3}
+- POPIA enforces eight conditions for lawful processing, regulates cross-border transfers, and governs notifications of security compromises. :contentReference[oaicite:4]{index=4}
+
+categories:
+- name: Full Name
+  type: direct_identifier
+  subtype: personal_name
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: POPIA
+    article: Section 1 – definition of 'personal information' (name, etc.) :contentReference[oaicite:5]{index=5}
+
+- name: Address (postal/residential)
+  type: quasi_identifier
+  subtype: address
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: POPIA
+    article: Section 1 – includes physical address :contentReference[oaicite:6]{index=6}
+
+- name: Email Address
+  type: direct_identifier
+  subtype: digital_contact
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: POPIA
+    article: Section 1 – includes email address :contentReference[oaicite:7]{index=7}
+
+- name: Phone Number
+  type: direct_identifier
+  subtype: telecom_contact
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: POPIA
+    article: Section 1 – includes telephone number :contentReference[oaicite:8]{index=8}
+
+- name: Demographics (race, gender, sexual orientation, age, religion)
+  type: special_category
+  subtype: demographic
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: POPIA
+    section: 26 – special personal information :contentReference[oaicite:9]{index=9}
+
+- name: Health Data
+  type: special_category
+  subtype: health
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: POPIA
+    section: 26 :contentReference[oaicite:10]{index=10}
+
+- name: Biometric Information
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: POPIA
+    section: 26 :contentReference[oaicite:11]{index=11}
+
+- name: Criminal Behavior / Legal Proceedings
+  type: special_category
+  subtype: legal
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: POPIA
+    section: 26 :contentReference[oaicite:12]{index=12}
+
+- name: Financial Information
+  type: contextual_identifier
+  subtype: financial
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: POPIA
+    article: Section 1 – includes financial history :contentReference[oaicite:13]{index=13}
+
+- name: Employment Records
+  type: contextual_identifier
+  subtype: employment
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: POPIA
+    article: Section 1 – includes employment history :contentReference[oaicite:14]{index=14}
+
+- name: IP Address / Online Identifier / Location Info
+  type: indirect_identifier
+  subtype: digital_identifier
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: POPIA
+    article: Section 1 – includes online identifiers, location info :contentReference[oaicite:15]{index=15}
+
+- name: Personal Opinions / Views / Correspondence
+  type: contextual_identifier
+  subtype: opinions
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: POPIA
+    article: Section 1 – includes opinions, correspondence :contentReference[oaicite:16]{index=16}

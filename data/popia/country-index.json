@@ -1,0 +1,13 @@
+{
+  "framework": "POPIA",
+  "region": "Africa",
+  "last_updated": "2025-08-12",
+  "countries": [
+    {
+      "name": "South Africa",
+      "slug": "south-africa",
+      "path": "data/popia/south-africa.yaml",
+      "status": "complete"
+    }
+  ]
+}
