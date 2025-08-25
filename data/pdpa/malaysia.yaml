@@ -1,0 +1,98 @@
+country: Malaysia
+framework: PDPA
+region: Asia
+language: en
+version: 2010
+status: published
+last_updated: 2025-08-25
+source_verified: true
+authority: Personal Data Protection Commissioner (PDPC), Malaysia
+notes:
+- The Personal Data Protection Act 2010 (PDPA) regulates the processing of personal data in commercial transactions.
+- It is based on seven core data protection principles, including General, Notice and Choice, Disclosure, Security, Retention, Data Integrity, and Access.
+- The law does not apply to the federal and state governments of Malaysia.
+categories:
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PDPA 2010
+    article: Section 4 (Definition of Personal Data)
+- name: NRIC (National Registration Identity Card) Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PDPA 2010
+    article: Section 4
+- name: Passport Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PDPA 2010
+    article: Section 4
+- name: Address
+  type: quasi_identifier
+  subtype: address
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PDPA 2010
+    article: Section 4
+- name: Phone Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PDPA 2010
+    article: Section 4
+- name: Email Address
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PDPA 2010
+    article: Section 4
+- name: Health Information
+  type: special_category
+  subtype: medical
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: PDPA 2010
+    article: Section 4 (Definition of Sensitive Personal Data)
+- name: Religious Beliefs
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: PDPA 2010
+    article: Section 4
+- name: Political Opinions
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: PDPA 2010
+    article: Section 4
+- name: Biometric Data
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - sensitive
+  - biometric
+  citations:
+  - regulation: PDPA 2010
+    article: Section 4
