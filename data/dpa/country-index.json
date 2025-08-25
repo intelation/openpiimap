@@ -1,0 +1,13 @@
+{
+  "framework": "DPA",
+  "region": "Asia Pacific",
+  "last_updated": "2025-08-25",
+  "countries": [
+    {
+      "name": "Philippines",
+      "slug": "philippines",
+      "path": "data/dpa/philippines.yaml",
+      "status": "complete"
+    }
+  ]
+}

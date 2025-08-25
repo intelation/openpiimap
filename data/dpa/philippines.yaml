@@ -1,0 +1,97 @@
+country: Philippines
+framework: DPA
+region: Asia Pacific
+language: en
+version: 2012
+status: published
+last_updated: 2025-08-25
+source_verified: true
+authority: National Privacy Commission (NPC)
+notes:
+- The Data Privacy Act of 2012 (DPA) protects the fundamental right of privacy.
+- It applies to all processing of personal data within the Philippines.
+- The law defines "sensitive personal information" and has strict rules for its processing.
+categories:
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: DPA 2012
+    article: Section 3(j)
+- name: National ID (PhilSys ID)
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: DPA 2012
+    article: Section 3(j)
+- name: Address
+  type: quasi_identifier
+  subtype: address
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: DPA 2012
+    article: Section 3(j)
+- name: Phone Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: DPA 2012
+    article: Section 3(j)
+- name: Email Address
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: DPA 2012
+    article: Section 3(j)
+- name: Health Information
+  type: special_category
+  subtype: medical
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPA 2012
+    article: Section 3(l)
+- name: Religious Affiliation
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPA 2012
+    article: Section 3(l)
+- name: Political Affiliations
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPA 2012
+    article: Section 3(l)
+- name: Criminal Record
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPA 2012
+    article: Section 3(l)
+- name: Genetic or Biometric Data
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  - biometric
+  citations:
+  - regulation: DPA 2012
+    article: Section 3(l)

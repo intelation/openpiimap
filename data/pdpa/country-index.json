@@ -1,12 +1,18 @@
 {
   "framework": "PDPA",
   "region": "Asia",
-  "last_updated": "2025-06-30",
+  "last_updated": "2025-08-25",
   "countries": [
     {
       "name": "Singapore",
       "slug": "singapore",
       "path": "data/pdpa/singapore.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Malaysia",
+      "slug": "malaysia",
+      "path": "data/pdpa/malaysia.yaml",
       "status": "complete"
     }
   ]
