@@ -4,19 +4,7 @@ import json
 from datetime import date, datetime
 from jinja2 import Environment, FileSystemLoader
 
-"""
-OpenPIIMap Static Site Builder
 
-This script generates country pages and JSON data files while preserving
-any custom homepage that exists. It will:
-
-1. Generate HTML pages for each country/framework YAML file
-2. Convert YAML data to JSON format
-3. Preserve existing custom homepage (if Bootstrap-based)
-4. Only generate basic homepage if none exists
-
-Usage: python scripts/build_static_site.py
-"""
 
 # Paths
 DATA_DIR = "./data"
@@ -69,14 +57,14 @@ def calculate_dashboard_statistics(countries_data, frameworks_data):
             framework_avg_categories[fw_name] = round(avg_cats)
     
     most_comprehensive_fw = max(framework_avg_categories.keys(), 
-                               key=lambda k: framework_avg_categories[k]) if framework_avg_categories else "GDPR"
+                                key=lambda k: framework_avg_categories[k]) if framework_avg_categories else "GDPR"
     most_comprehensive_avg = framework_avg_categories.get(most_comprehensive_fw, 15)
     
     # Best covered region
     best_region = max(region_counts.keys(), key=lambda k: region_counts[k]) if region_counts else "Europe"
     best_region_count = region_counts.get(best_region, 0)
     
-    # Latest additions (Argentina and Thailand)
+    
     latest_country = "Thailand"
     latest_framework = "PDPA Thailand"
     latest_categories = 20
@@ -87,9 +75,9 @@ def calculate_dashboard_statistics(countries_data, frameworks_data):
         'categories_count': total_categories,
         'regions_count': len(region_counts),
         'avg_categories_per_country': avg_categories,
-        'countries_added_recent': 2,  # Argentina and Thailand
-        'frameworks_added_recent': 2,  # PDPA Argentina and PDPA Thailand
-        'categories_added_recent': 38,  # 18 + 20
+        'countries_added_recent': 2,  
+        'frameworks_added_recent': 2,  
+        'categories_added_recent': 38, 
         'most_comprehensive_framework': most_comprehensive_fw,
         'most_comprehensive_avg': most_comprehensive_avg,
         'best_covered_region': best_region,
@@ -152,7 +140,7 @@ def generate_dashboard(countries_data, frameworks_data):
         
     except Exception as e:
         print(f"⚠️  Failed to generate dashboard: {e}")
-        print("   Keeping existing dashboard.html")
+        print("  Keeping existing dashboard.html")
         return False
 
 def ensure_dirs():
@@ -209,6 +197,16 @@ for framework in os.listdir(DATA_DIR):
     if not os.path.isdir(framework_path):
         continue
 
+    # Collect frameworks data
+    framework_info = {
+        'id': framework,
+        'name': framework, 
+        'abbreviation': framework, 
+        'region': 'Unknown', 
+        'countries': []
+    }
+    frameworks_data.append(framework_info)
+
     for filename in os.listdir(framework_path):
         if not filename.endswith(".yaml"):
             continue
@@ -229,6 +227,12 @@ for framework in os.listdir(DATA_DIR):
             'file': f"{framework}-{base_name}.html"
         }
         countries_data.append(country_info)
+
+        # Add country to the corresponding framework
+        for fw in frameworks_data:
+            if fw['id'] == framework:
+                fw['countries'].append(country_info['name'])
+                break
 
         # Write JSON
         json_out_dir = os.path.join(JSON_DIR, framework)
@@ -284,7 +288,7 @@ else:
     html_links = ""
     for file in sorted(generated_pages):
         label = file.replace(".html", "").replace("-", " ").title()
-        html_links += f'  <li><a href="countries/{file}">{label}</a></li>\n'
+        html_links += f'    <li><a href="countries/{file}">{label}</a></li>\n'
 
     index_html = """<!DOCTYPE html>
 <html lang="en">
@@ -323,15 +327,8 @@ else:
     print(f"⚠️  Warning: {MAP_TEMPLATE_PATH} not found. map.html was not generated dynamically.")
 
 print("✅ Static site successfully generated in 'site/'")
-# 3. Load frameworks data for dashboard
-frameworks_json_path = os.path.join(JSON_DIR, "frameworks.json")
-if os.path.exists(frameworks_json_path):
-    with open(frameworks_json_path, "r", encoding="utf-8") as f:
-        frameworks_data = json.load(f)
-else:
-    frameworks_data = []
 
-# 4. Generate dynamic dashboard
+
 generate_dashboard(countries_data, frameworks_data)
 
 print("✅ Static site successfully generated in 'site/'")

@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analytics Dashboard - OpenPIIMap</title>
     <meta name="description" content="Interactive analytics and insights into global privacy law coverage and trends.">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -94,12 +92,12 @@
         .heatmap-cell:hover {
             opacity: 0.8;
         }
-        
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="site-header">
+    
+<header class="site-header">
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -163,7 +161,7 @@
                         <i class="bi bi-graph-up me-3"></i>Analytics Dashboard
                     </h1>
                     <p class="lead mb-0">
-                        Interactive insights into global privacy law coverage, trends, and compliance complexity across 34 countries and 19 privacy frameworks.
+                        Interactive insights into global privacy law coverage, trends, and compliance complexity across 39 countries and 21 privacy frameworks.
                     </p>
                 </div>
                 <div class="col-lg-4">
@@ -178,7 +176,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="stat-mini">
-                                        <div class="stat-number">11</div>
+                                        <div class="stat-number">13</div>
                                         <div class="stat-label">Regions</div>
                                     </div>
                                 </div>
@@ -195,7 +193,7 @@
         <div class="row g-4">
             <div class="col-lg-3 col-md-6">
                 <div class="metric-card">
-                    <span class="metric-number text-primary" id="totalCountriesMetric">34</span>
+                    <span class="metric-number text-primary" id="totalCountriesMetric">39</span>
                     <div class="metric-label">Countries Covered</div>
                     <div class="metric-change trend-up">
                         <i class="bi bi-arrow-up"></i> 2 added recently
@@ -204,7 +202,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="metric-card">
-                    <span class="metric-number text-success" id="frameworksMetric">19</span>
+                    <span class="metric-number text-success" id="frameworksMetric">21</span>
                     <div class="metric-label">Privacy Frameworks</div>
                     <div class="metric-change trend-up">
                         <i class="bi bi-arrow-up"></i> 2 added recently
@@ -403,185 +401,6 @@
                         <i class="bi bi-shield-check me-2"></i>
                         <span class="fw-semibold">OpenPIIMap</span>
                     </div>
-                    <p class="text-muted small mb-0 mt-1">
-                        Analytics Dashboard - Updated 2025-07-30
-                    </p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <div class="social-links">
-                        <a href="https://github.com/intelation/openpiimap" target="_blank" class="text-light me-3">
-                            <i class="bi bi-github"></i>
-                        </a>
-                        <a href="#" class="text-light me-3">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a href="#" class="text-light">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
-
-    <script>
-        // Dashboard analytics data (populated from template)
-        const dashboardData = {
-            countries: [{"categories": 0, "file": "appi-japan.html", "framework": "APPI", "last_updated": "2025-06-30", "name": "Japan", "region": "Asia"}, {"categories": 0, "file": "cpra-california.html", "framework": "CPRA", "last_updated": "2025-06-30", "name": "United States - California", "region": "North America"}, {"categories": 0, "file": "dpdpb-india.html", "framework": "DPDPB", "last_updated": "2025-06-30", "name": "India", "region": "Asia"}, {"categories": 0, "file": "fadp-switzerland.html", "framework": "FADP", "last_updated": "2025-06-30", "name": "Switzerland", "region": "Europe"}, {"categories": 0, "file": "gdpr-austria.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Austria", "region": "EU"}, {"categories": 0, "file": "gdpr-belgium.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Belgium", "region": "EU"}, {"categories": 0, "file": "gdpr-denmark.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Denmark", "region": "EU"}, {"categories": 0, "file": "gdpr-finland.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Finland", "region": "EU"}, {"categories": 0, "file": "gdpr-france.html", "framework": "GDPR", "last_updated": "2025-06-26", "name": "France", "region": "EU"}, {"categories": 0, "file": "gdpr-germany.html", "framework": "GDPR", "last_updated": "2025-06-26", "name": "Germany", "region": "EU"}, {"categories": 0, "file": "gdpr-greece.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Greece", "region": "EU"}, {"categories": 0, "file": "gdpr-iceland.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Iceland", "region": "EEA"}, {"categories": 0, "file": "gdpr-ireland.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Ireland", "region": "EU"}, {"categories": 0, "file": "gdpr-italy.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Italy", "region": "EU"}, {"categories": 0, "file": "gdpr-liechtenstein.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Liechtenstein", "region": "EEA"}, {"categories": 0, "file": "gdpr-netherlands.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Netherlands", "region": "EU"}, {"categories": 0, "file": "gdpr-norway.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Norway", "region": "EEA"}, {"categories": 0, "file": "gdpr-poland.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Poland", "region": "EU"}, {"categories": 0, "file": "gdpr-spain.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Spain", "region": "EU"}, {"categories": 0, "file": "gdpr-sweden.html", "framework": "GDPR", "last_updated": "2025-06-30", "name": "Sweden", "region": "EU"}, {"categories": 0, "file": "hippa-usa.html", "framework": "HIPAA", "last_updated": "2025-06-30", "name": "United States", "region": "North America"}, {"categories": 0, "file": "lfpdppp-mexico.html", "framework": "LFPDPPP", "last_updated": "2025-06-30", "name": "Mexico", "region": "North America"}, {"categories": 0, "file": "lgpd-brazil.html", "framework": "LGPD", "last_updated": "2025-06-30", "name": "Brazil", "region": "South America"}, {"categories": 0, "file": "ndpr-nigeria.html", "framework": "NDPR", "last_updated": "2025-06-30", "name": "Nigeria", "region": "Africa"}, {"categories": 0, "file": "pdp-indonesia.html", "framework": "PDP Law", "last_updated": "2025-06-30", "name": "Indonesia", "region": "Asia"}, {"categories": 0, "file": "pdpa-singapore.html", "framework": "PDPA", "last_updated": "2025-06-30", "name": "Singapore", "region": "Asia"}, {"categories": 0, "file": "pdpa-argentina-argentina.html", "framework": "PDPA Argentina", "last_updated": "2025-07-20", "name": "Argentina", "region": "Latin America"}, {"categories": 20, "file": "pdpa-thailand-thailand.html", "framework": "Personal Data Protection Act (PDPA) 2019", "last_updated": "2025-07-20", "name": "Thailand", "region": "Other"}, {"categories": 0, "file": "pipa-south-korea.html", "framework": "PIPA", "last_updated": "2025-06-30", "name": "South Korea", "region": "Asia"}, {"categories": 0, "file": "pipeda-canada.html", "framework": "PIPEDA", "last_updated": "2025-06-30", "name": "Canada", "region": "North America"}, {"categories": 0, "file": "pipl-china.html", "framework": "PIPL", "last_updated": "2025-06-30", "name": "China", "region": "Asia"}, {"categories": 0, "file": "privacyact-australia.html", "framework": "Privacy Act", "last_updated": "2025-06-30", "name": "Australia", "region": "Oceania"}, {"categories": 0, "file": "uae-dpl-united-arab-emirates.html", "framework": "UAE Federal Data Protection Law (Law No. 45/2021)", "last_updated": "2025-06-30", "name": "United Arab Emirates", "region": "Middle East"}, {"categories": 0, "file": "uk-gdpr-united-kingdom.html", "framework": "UK GDPR + DPA 2018", "last_updated": "2025-06-30", "name": "United Kingdom", "region": "Europe"}],
-            frameworks: [{"abbreviation": "GDPR", "countries": ["Germany", "France", "Austria", "Belgium", "Denmark", "Finland", "Greece", "Iceland", "Ireland", "Italy", "Liechtenstein", "Netherlands", "Norway", "Poland", "Spain", "Sweden"], "description": "Comprehensive data protection regulation for the European Union and European Economic Area.", "effective_date": "2018-05-25", "id": "gdpr", "key_principles": ["Lawfulness", "Fairness", "Transparency", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Integrity and confidentiality", "Accountability"], "name": "General Data Protection Regulation", "region": "Europe", "type": "comprehensive"}, {"abbreviation": "UK GDPR", "countries": ["United Kingdom"], "description": "UK\u0027s version of GDPR post-Brexit, largely similar to EU GDPR.", "effective_date": "2021-01-01", "id": "uk-gdpr", "key_principles": ["Lawfulness", "Fairness", "Transparency", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Integrity and confidentiality", "Accountability"], "name": "UK General Data Protection Regulation", "region": "Europe", "type": "comprehensive"}, {"abbreviation": "LGPD", "countries": ["Brazil"], "description": "Brazil\u0027s comprehensive data protection law, inspired by GDPR.", "effective_date": "2020-09-18", "id": "lgpd", "key_principles": ["Purpose", "Adequacy", "Necessity", "Free access", "Data quality", "Transparency", "Security", "Prevention", "Non-discrimination", "Accountability"], "name": "Lei Geral de Prote\u00e7\u00e3o de Dados", "region": "Latin America", "type": "comprehensive"}, {"abbreviation": "CPRA", "countries": ["California"], "description": "Enhanced version of CCPA with additional privacy rights and protections.", "effective_date": "2023-01-01", "id": "cpra", "key_principles": ["Consumer rights", "Business transparency", "Data minimization", "Purpose limitation", "Sensitive personal information protection"], "name": "California Privacy Rights Act", "region": "North America", "type": "comprehensive"}, {"abbreviation": "PIPEDA", "countries": ["Canada"], "description": "Canada\u0027s federal privacy law for private sector organizations.", "effective_date": "2001-01-01", "id": "pipeda", "key_principles": ["Accountability", "Identifying purposes", "Consent", "Limiting collection", "Limiting use, disclosure, and retention", "Accuracy", "Safeguards", "Openness", "Individual access", "Challenging compliance"], "name": "Personal Information Protection and Electronic Documents Act", "region": "North America", "type": "comprehensive"}, {"abbreviation": "HIPAA", "countries": ["United States"], "description": "US federal law protecting sensitive patient health information.", "effective_date": "1996-08-21", "id": "hipaa", "key_principles": ["Access", "Portability", "Accountability", "Security", "Privacy"], "name": "Health Insurance Portability and Accountability Act", "region": "North America", "type": "sector-specific"}, {"abbreviation": "APPI", "countries": ["Japan"], "description": "Japan\u0027s comprehensive personal information protection law.", "effective_date": "2005-04-01", "id": "appi", "key_principles": ["Proper acquisition", "Purpose specification", "Use limitation", "Accuracy maintenance", "Safety management", "Transparency"], "name": "Act on Protection of Personal Information", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "PDPA", "countries": ["Singapore"], "description": "Singapore\u0027s comprehensive data protection law.", "effective_date": "2014-07-02", "id": "pdpa", "key_principles": ["Consent", "Purpose limitation", "Notification", "Access and correction", "Accuracy", "Protection", "Retention limitation", "Transfer limitation", "Accountability"], "name": "Personal Data Protection Act", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "PIPA", "countries": ["South Korea"], "description": "South Korea\u0027s personal information protection law.", "effective_date": "2011-09-30", "id": "pipa", "key_principles": ["Consent", "Purpose limitation", "Data minimization", "Accuracy", "Retention limitation", "Security", "Transparency"], "name": "Personal Information Protection Act", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "PIPL", "countries": ["China"], "description": "China\u0027s comprehensive personal information protection law.", "effective_date": "2021-11-01", "id": "pipl", "key_principles": ["Lawfulness", "Legitimacy", "Necessity", "Good faith", "Proportionality", "Transparency", "Purpose limitation", "Data minimization"], "name": "Personal Information Protection Law", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "Privacy Act", "countries": ["Australia"], "description": "Australia\u0027s privacy law governing the handling of personal information.", "effective_date": "1988-12-01", "id": "privacy-act", "key_principles": ["Open and transparent management", "Anonymity and pseudonymity", "Collection", "Dealing with unsolicited information", "Notification", "Use and disclosure", "Direct marketing", "Cross-border disclosure", "Government identifiers", "Data quality", "Security", "Access and correction", "Correction requests"], "name": "Privacy Act", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "FADP", "countries": ["Switzerland"], "description": "Switzerland\u0027s revised data protection law, aligned with GDPR principles.", "effective_date": "2023-09-01", "id": "fadp", "key_principles": ["Lawfulness", "Good faith", "Proportionality", "Purpose limitation", "Data minimization", "Accuracy", "Transparency", "Security"], "name": "Federal Act on Data Protection", "region": "Europe", "type": "comprehensive"}, {"abbreviation": "LFPDPPP", "countries": ["Mexico"], "description": "Mexico\u0027s federal law for the protection of personal data held by private parties.", "effective_date": "2010-07-05", "id": "lfpdppp", "key_principles": ["Lawfulness", "Consent", "Information", "Quality", "Purpose", "Loyalty", "Proportionality", "Accountability"], "name": "Ley Federal de Protecci\u00f3n de Datos Personales en Posesi\u00f3n de los Particulares", "region": "Latin America", "type": "comprehensive"}, {"abbreviation": "NDPR", "countries": ["Nigeria"], "description": "Nigeria\u0027s comprehensive data protection regulation.", "effective_date": "2019-01-25", "id": "ndpr", "key_principles": ["Lawfulness", "Fairness", "Specific legitimate purposes", "Proportionality", "Accuracy", "Storage limitation", "Security", "Accountability"], "name": "Nigeria Data Protection Regulation", "region": "Africa", "type": "comprehensive"}, {"abbreviation": "PDP", "countries": ["Indonesia"], "description": "Indonesia\u0027s comprehensive personal data protection law.", "effective_date": "2022-10-17", "id": "pdp", "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Accountability", "Transparency", "Accessibility", "Proportionality", "Data controller responsibility"], "name": "Personal Data Protection Law", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "DPDPB", "countries": ["India"], "description": "India\u0027s comprehensive digital personal data protection law.", "effective_date": "2023-08-11", "id": "dpdpb", "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Reasonable security safeguards", "Accountability"], "name": "Digital Personal Data Protection Bill", "region": "Asia Pacific", "type": "comprehensive"}, {"abbreviation": "UAE DPL", "countries": ["United Arab Emirates"], "description": "United Arab Emirates federal data protection law.", "effective_date": "2022-01-02", "id": "uae-dpl", "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Security", "Accountability", "Transparency"], "name": "UAE Data Protection Law", "region": "Middle East", "type": "comprehensive"}, {"abbreviation": "PDPA Argentina", "countries": ["Argentina"], "description": "Argentina\u0027s comprehensive personal data protection law with 2018 amendments.", "effective_date": "2000-11-03", "id": "pdpa-argentina", "key_principles": ["Lawfulness", "Purpose limitation", "Proportionality", "Quality", "Previous information", "Security", "Confidentiality", "Consent"], "name": "Personal Data Protection Act (Argentina)", "region": "Latin America", "type": "comprehensive"}, {"abbreviation": "PDPA Thailand", "countries": ["Thailand"], "description": "Thailand\u0027s Personal Data Protection Act 2019 based on GDPR principles, adapted for Thai context.", "effective_date": "2022-06-01", "id": "pdpa-thailand", "key_principles": ["Lawfulness", "Purpose limitation", "Data minimization", "Accuracy", "Storage limitation", "Security", "Accountability", "Transparency"], "name": "Personal Data Protection Act (Thailand)", "region": "Asia Pacific", "type": "comprehensive"}],
-            regions: {"Africa": 1, "Asia": 6, "EEA": 3, "EU": 13, "Europe": 2, "Latin America": 1, "Middle East": 1, "North America": 4, "Oceania": 1, "Other": 1, "South America": 1}
-        };
-
-        // Initialize charts when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeFrameworkChart();
-            initializeRegionChart();
-            initializeComplexityHeatmap();
-            initializeTimelineChart();
-        });
-
-        function initializeFrameworkChart() {
-            const ctx = document.getElementById('frameworkChart').getContext('2d');
-            const frameworkCounts = {};
-            
-            dashboardData.countries.forEach(country => {
-                const fw = country.framework;
-                frameworkCounts[fw] = (frameworkCounts[fw] || 0) + 1;
-            });
-
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: Object.keys(frameworkCounts),
-                    datasets: [{
-                        data: Object.values(frameworkCounts),
-                        backgroundColor: [
-                            '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444',
-                            '#06b6d4', '#84cc16', '#f97316', '#ec4899', '#6b7280'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
-        }
-
-        function initializeRegionChart() {
-            const ctx = document.getElementById('regionChart').getContext('2d');
-            const regionCounts = {};
-            
-            dashboardData.countries.forEach(country => {
-                const region = country.region;
-                regionCounts[region] = (regionCounts[region] || 0) + 1;
-            });
-
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: Object.keys(regionCounts),
-                    datasets: [{
-                        label: 'Countries',
-                        data: Object.values(regionCounts),
-                        backgroundColor: '#3b82f6'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        }
-
-        function initializeComplexityHeatmap() {
-            const container = document.getElementById('complexityHeatmap');
-            const colors = ['#fef3c7', '#fcd34d', '#f59e0b', '#d97706', '#92400e'];
-            
-            dashboardData.countries.forEach(country => {
-                const categories = country.categories || 0;
-                let colorIndex = Math.floor(categories / 5);
-                if (colorIndex >= colors.length) colorIndex = colors.length - 1;
-                
-                const cell = document.createElement('div');
-                cell.className = 'heatmap-cell';
-                cell.style.backgroundColor = colors[colorIndex];
-                cell.style.width = '60px';
-                cell.style.height = '40px';
-                cell.style.display = 'flex';
-                cell.style.alignItems = 'center';
-                cell.style.justifyContent = 'center';
-                cell.textContent = categories;
-                cell.title = `${country.name}: ${categories} categories`;
-                
-                container.appendChild(cell);
-            });
-        }
-
-        function initializeTimelineChart() {
-            const ctx = document.getElementById('timelineChart').getContext('2d');
-            
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
-                    datasets: [{
-                        label: 'Countries Added',
-                        data: [8, 12, 18, 22, 26, 28, 32, 34],
-                        borderColor: '#3b82f6',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        }
-
-        // Auto-update function placeholder
-        function refreshDashboard() {
-            // This could fetch updated data and refresh charts
-            console.log('Dashboard refresh triggered');
-        }
-
-        // Update dashboard every 5 minutes
-        setInterval(refreshDashboard, 5 * 60 * 1000);
-    </script>
-    <!-- Footer -->
-  
-     <footer class="bg-dark text-light py-4">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="d-flex align-items-center">
-                        <i class="bi bi-shield-check me-2"></i>
-                        <span class="fw-semibold">OpenPIIMap</span>
-                    </div>
                     <p class="text-muted small mb-0 mt-1"style="color: white !important;">
                         Global Privacy Law Navigator
                     </p>
@@ -602,36 +421,183 @@
             </div>
         </div>
     </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    // to update static value from 0 to upto digit
 
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
 
-function animateStatNumber(element, target, duration = 1200, suffix = '') {
-    let start = 0;
-    let startTime = null;
-    target = parseInt(target, 10);
+    <script>
+    // Dashboard analytics data (template मधून आलेला डेटा)
+    const dashboardData = {
+        countries: [{"categories": 0, "file": "appi-japan.html", "framework": "APPI", "name": "Japan", "region": "Asia"}, {"categories": 0, "file": "cpra-california.html", "framework": "CPRA", "name": "United States - California", "region": "North America"}, {"categories": 0, "file": "dpa-philippines.html", "framework": "DPA", "name": "Philippines", "region": "Asia Pacific"}, {"categories": 0, "file": "dpdpb-india.html", "framework": "DPDPB", "name": "India", "region": "Asia"}, {"categories": 0, "file": "fadp-switzerland.html", "framework": "FADP", "name": "Switzerland", "region": "Europe"}, {"categories": 0, "file": "gdpr-austria.html", "framework": "GDPR", "name": "Austria", "region": "EU"}, {"categories": 0, "file": "gdpr-belgium.html", "framework": "GDPR", "name": "Belgium", "region": "EU"}, {"categories": 0, "file": "gdpr-denmark.html", "framework": "GDPR", "name": "Denmark", "region": "EU"}, {"categories": 0, "file": "gdpr-finland.html", "framework": "GDPR", "name": "Finland", "region": "EU"}, {"categories": 0, "file": "gdpr-france.html", "framework": "GDPR", "name": "France", "region": "EU"}, {"categories": 0, "file": "gdpr-germany.html", "framework": "GDPR", "name": "Germany", "region": "EU"}, {"categories": 0, "file": "gdpr-greece.html", "framework": "GDPR", "name": "Greece", "region": "EU"}, {"categories": 0, "file": "gdpr-iceland.html", "framework": "GDPR", "name": "Iceland", "region": "EEA"}, {"categories": 0, "file": "gdpr-ireland.html", "framework": "GDPR", "name": "Ireland", "region": "EU"}, {"categories": 0, "file": "gdpr-italy.html", "framework": "GDPR", "name": "Italy", "region": "EU"}, {"categories": 0, "file": "gdpr-liechtenstein.html", "framework": "GDPR", "name": "Liechtenstein", "region": "EEA"}, {"categories": 0, "file": "gdpr-netherlands.html", "framework": "GDPR", "name": "Netherlands", "region": "EU"}, {"categories": 0, "file": "gdpr-norway.html", "framework": "GDPR", "name": "Norway", "region": "EEA"}, {"categories": 0, "file": "gdpr-poland.html", "framework": "GDPR", "name": "Poland", "region": "EU"}, {"categories": 0, "file": "gdpr-spain.html", "framework": "GDPR", "name": "Spain", "region": "EU"}, {"categories": 0, "file": "gdpr-sweden.html", "framework": "GDPR", "name": "Sweden", "region": "EU"}, {"categories": 0, "file": "hippa-usa.html", "framework": "HIPAA", "name": "United States", "region": "North America"}, {"categories": 0, "file": "lfpdppp-mexico.html", "framework": "LFPDPPP", "name": "Mexico", "region": "North America"}, {"categories": 0, "file": "lgpd-brazil.html", "framework": "LGPD", "name": "Brazil", "region": "South America"}, {"categories": 0, "file": "ndpr-nigeria.html", "framework": "NDPR", "name": "Nigeria", "region": "Africa"}, {"categories": 0, "file": "pdp-indonesia.html", "framework": "PDP Law", "name": "Indonesia", "region": "Asia"}, {"categories": 0, "file": "pdpa-malaysia.html", "framework": "PDPA", "name": "Malaysia", "region": "Asia"}, {"categories": 0, "file": "pdpa-singapore.html", "framework": "PDPA", "name": "Singapore", "region": "Asia"}, {"categories": 0, "file": "pdpa-argentina-argentina.html", "framework": "PDPA Argentina", "name": "Argentina", "region": "Latin America"}, {"categories": 20, "file": "pdpa-thailand-thailand.html", "framework": "Personal Data Protection Act (PDPA) 2019", "name": "Thailand", "region": "Other"}, {"categories": 0, "file": "pipa-south-korea.html", "framework": "PIPA", "name": "South Korea", "region": "Asia"}, {"categories": 0, "file": "pipeda-canada.html", "framework": "PIPEDA", "name": "Canada", "region": "North America"}, {"categories": 0, "file": "pipl-china.html", "framework": "PIPL", "name": "China", "region": "Asia"}, {"categories": 0, "file": "popia-south-africa.html", "framework": "POPIA", "name": "South Africa", "region": "Africa"}, {"categories": 0, "file": "privacyact-australia.html", "framework": "Privacy Act", "name": "Australia", "region": "Oceania"}, {"categories": 0, "file": "privacyact-bahamas.html", "framework": "Data Protection (Privacy of Personal Data) Act", "name": "Bahamas", "region": "North America"}, {"categories": 0, "file": "privacyact-new-zealand.html", "framework": "Privacy Act 2020", "name": "New Zealand", "region": "Asia-Pacific"}, {"categories": 0, "file": "uae-dpl-united-arab-emirates.html", "framework": "UAE Federal Data Protection Law (Law No. 45/2021)", "name": "United Arab Emirates", "region": "Middle East"}, {"categories": 0, "file": "uk-gdpr-united-kingdom.html", "framework": "UK GDPR + DPA 2018", "name": "United Kingdom", "region": "Europe"}],
+        frameworks: [{"abbreviation": "appi", "countries": ["Japan"], "id": "appi", "name": "appi", "region": "Unknown"}, {"abbreviation": "cpra", "countries": ["United States - California"], "id": "cpra", "name": "cpra", "region": "Unknown"}, {"abbreviation": "dpa", "countries": ["Philippines"], "id": "dpa", "name": "dpa", "region": "Unknown"}, {"abbreviation": "dpdpb", "countries": ["India"], "id": "dpdpb", "name": "dpdpb", "region": "Unknown"}, {"abbreviation": "fadp", "countries": ["Switzerland"], "id": "fadp", "name": "fadp", "region": "Unknown"}, {"abbreviation": "gdpr", "countries": ["Austria", "Belgium", "Denmark", "Finland", "France", "Germany", "Greece", "Iceland", "Ireland", "Italy", "Liechtenstein", "Netherlands", "Norway", "Poland", "Spain", "Sweden"], "id": "gdpr", "name": "gdpr", "region": "Unknown"}, {"abbreviation": "hippa", "countries": ["United States"], "id": "hippa", "name": "hippa", "region": "Unknown"}, {"abbreviation": "lfpdppp", "countries": ["Mexico"], "id": "lfpdppp", "name": "lfpdppp", "region": "Unknown"}, {"abbreviation": "lgpd", "countries": ["Brazil"], "id": "lgpd", "name": "lgpd", "region": "Unknown"}, {"abbreviation": "ndpr", "countries": ["Nigeria"], "id": "ndpr", "name": "ndpr", "region": "Unknown"}, {"abbreviation": "pdp", "countries": ["Indonesia"], "id": "pdp", "name": "pdp", "region": "Unknown"}, {"abbreviation": "pdpa", "countries": ["Malaysia", "Singapore"], "id": "pdpa", "name": "pdpa", "region": "Unknown"}, {"abbreviation": "pdpa-argentina", "countries": ["Argentina"], "id": "pdpa-argentina", "name": "pdpa-argentina", "region": "Unknown"}, {"abbreviation": "pdpa-thailand", "countries": ["Thailand"], "id": "pdpa-thailand", "name": "pdpa-thailand", "region": "Unknown"}, {"abbreviation": "pipa", "countries": ["South Korea"], "id": "pipa", "name": "pipa", "region": "Unknown"}, {"abbreviation": "pipeda", "countries": ["Canada"], "id": "pipeda", "name": "pipeda", "region": "Unknown"}, {"abbreviation": "pipl", "countries": ["China"], "id": "pipl", "name": "pipl", "region": "Unknown"}, {"abbreviation": "popia", "countries": ["South Africa"], "id": "popia", "name": "popia", "region": "Unknown"}, {"abbreviation": "privacyact", "countries": ["Australia", "Bahamas", "New Zealand"], "id": "privacyact", "name": "privacyact", "region": "Unknown"}, {"abbreviation": "uae-dpl", "countries": ["United Arab Emirates"], "id": "uae-dpl", "name": "uae-dpl", "region": "Unknown"}, {"abbreviation": "uk-gdpr", "countries": ["United Kingdom"], "id": "uk-gdpr", "name": "uk-gdpr", "region": "Unknown"}],
+        regions: {"Africa": 2, "Asia": 7, "Asia Pacific": 1, "Asia-Pacific": 1, "EEA": 3, "EU": 13, "Europe": 2, "Latin America": 1, "Middle East": 1, "North America": 5, "Oceania": 1, "Other": 1, "South America": 1}
+    };
 
-    function animate(currentTime) {
-        if (!startTime) startTime = currentTime;
-        const progress = Math.min((currentTime - startTime) / duration, 1);
-        const value = Math.floor(progress * (target - start) + start);
-        element.textContent = value + suffix;
-        if (progress < 1) {
-            requestAnimationFrame(animate);
-        } else {
-            element.textContent = target + suffix;
+    // संख्यांना ॲनिमेट करण्यासाठी नवीन फंक्शन
+    function animateMetric(elementId, finalValue, duration = 1500) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+
+        const startValue = 0;
+        let startTime = null;
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+
+            const currentValue = Math.floor(startValue + (finalValue - startValue) * (progress / duration));
+            element.textContent = currentValue;
+
+            if (progress < duration) {
+                window.requestAnimationFrame(step);
+            } else {
+                element.textContent = finalValue;
+            }
         }
-    }
-    requestAnimationFrame(animate);
-}
 
-document.addEventListener('DOMContentLoaded', function () {
-    animateStatNumber(document.getElementById('totalCountriesMetric'), 35);
-    animateStatNumber(document.getElementById('frameworksMetric'), 20);
-    animateStatNumber(document.getElementById('categoriesMetric'), 487);
-    animateStatNumber(document.getElementById('complianceMetric'), 73, 1200, '%');
-});
+        window.requestAnimationFrame(step);
+    }
+
+    // चार्ट्स आणि मेट्रिक्स पेज लोड झाल्यावर इनिशियलाईज करा
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeCharts();
+
+        // मेट्रिक्स नंबर ॲनिमेट करा
+        animateMetric('totalCountriesMetric', 39);
+        animateMetric('frameworksMetric', 21);
+        animateMetric('categoriesMetric', 20);
+        animateMetric('avgCategoriesMetric', 1);
+    });
+
+    function initializeCharts() {
+        initializeFrameworkChart();
+        initializeRegionChart();
+        initializeComplexityHeatmap();
+        initializeTimelineChart();
+    }
+
+    function initializeFrameworkChart() {
+        const ctx = document.getElementById('frameworkChart').getContext('2d');
+        const frameworkCounts = {};
+        
+        dashboardData.countries.forEach(country => {
+            const fw = country.framework;
+            frameworkCounts[fw] = (frameworkCounts[fw] || 0) + 1;
+        });
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(frameworkCounts),
+                datasets: [{
+                    data: Object.values(frameworkCounts),
+                    backgroundColor: [
+                        '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444',
+                        '#06b6d4', '#84cc16', '#f97316', '#ec4899', '#6b7280'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    }
+
+    function initializeRegionChart() {
+        const ctx = document.getElementById('regionChart').getContext('2d');
+        const regionCounts = {};
+        
+        dashboardData.countries.forEach(country => {
+            const region = country.region;
+            regionCounts[region] = (regionCounts[region] || 0) + 1;
+        });
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(regionCounts),
+                datasets: [{
+                    label: 'Countries',
+                    data: Object.values(regionCounts),
+                    backgroundColor: '#3b82f6'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    function initializeComplexityHeatmap() {
+        const container = document.getElementById('complexityHeatmap');
+        const colors = ['#fef3c7', '#fcd34d', '#f59e0b', '#d97706', '#92400e'];
+        
+        dashboardData.countries.forEach(country => {
+            const categories = country.categories || 0;
+            let colorIndex = 0;
+            if (categories > 10) colorIndex = 1;
+            if (categories > 15) colorIndex = 2;
+            if (categories > 20) colorIndex = 3;
+            if (categories > 25) colorIndex = 4;
+            
+            const cell = document.createElement('div');
+            cell.className = 'heatmap-cell';
+            cell.style.backgroundColor = colors[colorIndex];
+            cell.style.width = '60px';
+            cell.style.height = '40px';
+            cell.style.display = 'flex';
+            cell.style.alignItems = 'center';
+            cell.style.justifyContent = 'center';
+            cell.textContent = categories;
+            cell.title = `${country.name}: ${categories} categories`;
+            
+            container.appendChild(cell);
+        });
+    }
+
+    function initializeTimelineChart() {
+        const ctx = document.getElementById('timelineChart').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                datasets: [{
+                    label: 'Countries Added',
+                    data: [8, 12, 18, 22, 26, 28, 32, 39],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
 </script>
 </body>
 </html>
