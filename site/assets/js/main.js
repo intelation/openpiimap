@@ -40,7 +40,11 @@ const countries = [
 { name: "New Zealand", framework: "Privacy Act", region: "Asia Pacific", file: "privacyact-new-zealand.html", categories: 8 },
 { name: "Bahamas", framework: "Privacy Act", region: "North America", file: "privacyact-bahamas.html", categories: 5 },
 { name: "Malaysia", framework: "PDPA", region: "Asia", file: "pdpa-malaysia.html", categories: 10 },
-{ name: "Philippines", framework: "DPA", region: "Asia Pacific", file: "dpa-philippines.html", categories: 10 }
+{ name: "Philippines", framework: "DPA", region: "Asia Pacific", file: "dpa-philippines.html", categories: 10 },
+{ name: "Bangladesh", framework: "DPA", region: "Asia", file: "dpa-bangladesh.html", categories: 9 },
+{ name: "Taiwan", framework: "DPA", region: "Asia", file: "dpa-taiwan.html", categories: 11 },
+{name: "Colombia", framework: "PDPA", region: "Latin America", file: "pdpa-argentina-colombia.html", categories: 10 }
+
 ];
 
 // Framework color mapping

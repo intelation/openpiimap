@@ -1,0 +1,105 @@
+country: Bangladesh
+framework: DPA
+region: Asia Pacific
+language: en
+version: 2025 (Ordinance Draft)
+status: published 
+last_updated: 2025-10-08 
+source_verified: true
+authority: Data Protection Board (Proposed) / Cyber Security Agency (CA 2023)
+notes:
+- The Personal Data Protection Ordinance, 2025 (or DPA 2023 Draft) is the primary law, replacing provisions of the Cyber Security Act 2023.
+- The Ordinance defines and regulates 'Sensitive Personal Data'.
+categories:
+# I. Personal Data / Identity Information (Section 26 of CA 2023 / Section 2(o) of DPO 2025)
+- name: Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: DPO 2025
+    article: Section 2(o)
+- name: Address
+  type: quasi_identifier
+  subtype: address
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CA 2023
+    article: Section 26
+- name: Photograph
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CA 2023
+    article: Section 26
+- name: National Identity Card (NID)
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CA 2023
+    article: Section 26
+
+# II. Sensitive Personal Data (Section 2(t) of DPO 2025)
+- name: Health Data
+  type: special_category
+  subtype: medical
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPO 2025
+    article: Section 2(t)(v)
+
+- name: Genetic or Biometric Data
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  - biometric
+  - genetic
+  citations:
+  - regulation: DPO 2025
+    article: Section 2(t)(i)
+
+- name: Religious Beliefs or Affiliations
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPO 2025
+    article: Section 2(t)(iii)
+
+- name: Political Opinions or Affiliations
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPO 2025
+    article: Section 2(t)(iii)
+    
+- name: Data relating to Sexual Life
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPO 2025
+    article: Section 2(t)(vi)
+    
+- name: Data relating to Offence/Criminal History
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: DPO 2025
+    article: Section 2(t)(vii)

@@ -8,6 +8,18 @@
       "slug": "philippines",
       "path": "data/dpa/philippines.yaml",
       "status": "complete"
+    },
+    {
+      "name": "Bangladesh",
+      "slug": "bangladesh",
+      "path": "data/dpa/bangladesh.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Taiwan",
+      "slug": "taiwan",
+      "path": "data/dpa/taiwan.yaml",
+      "status": "complete"
     }
   ]
 }

@@ -1,0 +1,94 @@
+country: Taiwan
+framework: DPA
+region: Asia Pacific
+language: en
+version: 2023 (Amended)
+status: complete 
+last_updated: 2025-09-15 
+source_verified: true
+authority: Personal Data Protection Commission (PDPC - Expected) / National Development Council (NDC - Current)
+notes:
+- The Personal Data Protection Act (PDPA) is the main law.
+- Article 6 of the PDPA restricts the collection, processing, and use of sensitive personal data.
+categories:
+# I. Personal Data (General)
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PDPA
+    article: Definition of Personal Data
+- name: National ID / Passport Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PDPA
+    article: Definition of Personal Data
+- name: Family / Marital Status
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PDPA
+    article: Definition of Personal Data
+- name: Education / Occupation
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: PDPA
+    article: Definition of Personal Data
+
+# II. Sensitive Personal Data (Article 6)
+- name: Medical Records / Healthcare Data
+  type: special_category
+  subtype: medical
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: PDPA
+    article: Article 6
+    
+- name: Genetic Data
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  - genetic
+  citations:
+  - regulation: PDPA
+    article: Article 6
+    
+- name: Sex Life (including Sexual Orientation)
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: PDPA
+    article: Article 6
+    
+- name: Physical Examination Records
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: PDPA
+    article: Article 6
+
+- name: Criminal Records
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: PDPA
+    article: Article 6
