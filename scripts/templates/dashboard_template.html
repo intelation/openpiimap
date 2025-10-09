@@ -347,8 +347,8 @@
                         <i class="bi bi-shield-check me-2"></i>
                         <span class="fw-semibold">OpenPIIMap</span>
                     </div>
-                    <p class="text-muted small mb-0 mt-1">
-                        Analytics Dashboard - Updated {{ last_updated }}
+                    <p class="text-muted small mb-0 mt-1"style="color: white !important;">
+                        Global Privacy Law Navigator
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">
@@ -356,10 +356,10 @@
                         <a href="https://github.com/intelation/openpiimap" target="_blank" class="text-light me-3">
                             <i class="bi bi-github"></i>
                         </a>
-                        <a href="#" class="text-light me-3">
+                        <a href="https://x.com/IntelationApp" class="text-light me-3">
                             <i class="bi bi-twitter"></i>
                         </a>
-                        <a href="#" class="text-light">
+                        <a href="https://www.linkedin.com/company/intelation1/" class="text-light">
                             <i class="bi bi-linkedin"></i>
                         </a>
                     </div>
@@ -376,145 +376,174 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-        // Dashboard analytics data (populated from template)
-        const dashboardData = {
-            countries: {{ countries_data | tojson }},
-            frameworks: {{ frameworks_data | tojson }},
-            regions: {{ regions_data | tojson }}
-        };
+    // Dashboard analytics data (template मधून आलेला डेटा)
+    const dashboardData = {
+        countries: {{ countries_data | tojson }},
+        frameworks: {{ frameworks_data | tojson }},
+        regions: {{ regions_data | tojson }}
+    };
 
-        // Initialize charts when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeFrameworkChart();
-            initializeRegionChart();
-            initializeComplexityHeatmap();
-            initializeTimelineChart();
+    // संख्यांना ॲनिमेट करण्यासाठी नवीन फंक्शन
+    function animateMetric(elementId, finalValue, duration = 1500) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+
+        const startValue = 0;
+        let startTime = null;
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+
+            const currentValue = Math.floor(startValue + (finalValue - startValue) * (progress / duration));
+            element.textContent = currentValue;
+
+            if (progress < duration) {
+                window.requestAnimationFrame(step);
+            } else {
+                element.textContent = finalValue;
+            }
+        }
+
+        window.requestAnimationFrame(step);
+    }
+
+    // चार्ट्स आणि मेट्रिक्स पेज लोड झाल्यावर इनिशियलाईज करा
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeCharts();
+
+        // मेट्रिक्स नंबर ॲनिमेट करा
+        animateMetric('totalCountriesMetric', {{ countries_count }});
+        animateMetric('frameworksMetric', {{ frameworks_count }});
+        animateMetric('categoriesMetric', {{ categories_count }});
+        animateMetric('avgCategoriesMetric', {{ avg_categories_per_country }});
+    });
+
+    function initializeCharts() {
+        initializeFrameworkChart();
+        initializeRegionChart();
+        initializeComplexityHeatmap();
+        initializeTimelineChart();
+    }
+
+    function initializeFrameworkChart() {
+        const ctx = document.getElementById('frameworkChart').getContext('2d');
+        const frameworkCounts = {};
+        
+        dashboardData.countries.forEach(country => {
+            const fw = country.framework;
+            frameworkCounts[fw] = (frameworkCounts[fw] || 0) + 1;
         });
 
-        function initializeFrameworkChart() {
-            const ctx = document.getElementById('frameworkChart').getContext('2d');
-            const frameworkCounts = {};
-            
-            dashboardData.countries.forEach(country => {
-                const fw = country.framework;
-                frameworkCounts[fw] = (frameworkCounts[fw] || 0) + 1;
-            });
-
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: Object.keys(frameworkCounts),
-                    datasets: [{
-                        data: Object.values(frameworkCounts),
-                        backgroundColor: [
-                            '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444',
-                            '#06b6d4', '#84cc16', '#f97316', '#ec4899', '#6b7280'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(frameworkCounts),
+                datasets: [{
+                    data: Object.values(frameworkCounts),
+                    backgroundColor: [
+                        '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444',
+                        '#06b6d4', '#84cc16', '#f97316', '#ec4899', '#6b7280'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
                     }
                 }
-            });
-        }
+            }
+        });
+    }
 
-        function initializeRegionChart() {
-            const ctx = document.getElementById('regionChart').getContext('2d');
-            const regionCounts = {};
-            
-            dashboardData.countries.forEach(country => {
-                const region = country.region;
-                regionCounts[region] = (regionCounts[region] || 0) + 1;
-            });
+    function initializeRegionChart() {
+        const ctx = document.getElementById('regionChart').getContext('2d');
+        const regionCounts = {};
+        
+        dashboardData.countries.forEach(country => {
+            const region = country.region;
+            regionCounts[region] = (regionCounts[region] || 0) + 1;
+        });
 
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: Object.keys(regionCounts),
-                    datasets: [{
-                        label: 'Countries',
-                        data: Object.values(regionCounts),
-                        backgroundColor: '#3b82f6'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(regionCounts),
+                datasets: [{
+                    label: 'Countries',
+                    data: Object.values(regionCounts),
+                    backgroundColor: '#3b82f6'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
-            });
-        }
+            }
+        });
+    }
 
-        function initializeComplexityHeatmap() {
-            const container = document.getElementById('complexityHeatmap');
-            const colors = ['#fef3c7', '#fcd34d', '#f59e0b', '#d97706', '#92400e'];
+    function initializeComplexityHeatmap() {
+        const container = document.getElementById('complexityHeatmap');
+        const colors = ['#fef3c7', '#fcd34d', '#f59e0b', '#d97706', '#92400e'];
+        
+        dashboardData.countries.forEach(country => {
+            const categories = country.categories || 0;
+            let colorIndex = 0;
+            if (categories > 10) colorIndex = 1;
+            if (categories > 15) colorIndex = 2;
+            if (categories > 20) colorIndex = 3;
+            if (categories > 25) colorIndex = 4;
             
-            dashboardData.countries.forEach(country => {
-                const categories = country.categories || 0;
-                let colorIndex = Math.floor(categories / 5);
-                if (colorIndex >= colors.length) colorIndex = colors.length - 1;
-                
-                const cell = document.createElement('div');
-                cell.className = 'heatmap-cell';
-                cell.style.backgroundColor = colors[colorIndex];
-                cell.style.width = '60px';
-                cell.style.height = '40px';
-                cell.style.display = 'flex';
-                cell.style.alignItems = 'center';
-                cell.style.justifyContent = 'center';
-                cell.textContent = categories;
-                cell.title = `${country.name}: ${categories} categories`;
-                
-                container.appendChild(cell);
-            });
-        }
+            const cell = document.createElement('div');
+            cell.className = 'heatmap-cell';
+            cell.style.backgroundColor = colors[colorIndex];
+            cell.style.width = '60px';
+            cell.style.height = '40px';
+            cell.style.display = 'flex';
+            cell.style.alignItems = 'center';
+            cell.style.justifyContent = 'center';
+            cell.textContent = categories;
+            cell.title = `${country.name}: ${categories} categories`;
+            
+            container.appendChild(cell);
+        });
+    }
 
-        function initializeTimelineChart() {
-            const ctx = document.getElementById('timelineChart').getContext('2d');
-            
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
-                    datasets: [{
-                        label: 'Countries Added',
-                        data: [8, 12, 18, 22, 26, 28, 32, {{ countries_count }}],
-                        borderColor: '#3b82f6',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+    function initializeTimelineChart() {
+        const ctx = document.getElementById('timelineChart').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                datasets: [{
+                    label: 'Countries Added',
+                    data: [8, 12, 18, 22, 26, 28, 32, {{ countries_count }}],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
-            });
-        }
-
-        // Auto-update function placeholder
-        function refreshDashboard() {
-            // This could fetch updated data and refresh charts
-            console.log('Dashboard refresh triggered');
-        }
-
-        // Update dashboard every 5 minutes
-        setInterval(refreshDashboard, 5 * 60 * 1000);
-    </script>
+            }
+        });
+    }
+</script>
 </body>
 </html>

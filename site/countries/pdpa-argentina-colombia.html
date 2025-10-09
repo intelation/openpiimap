@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colombia - DPA | OpenPIIMap</title>
+    <meta name="description" content="Privacy law definitions for Colombia under DPA framework.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="bi bi-shield-lock-fill me-2"></i>
+                OpenPIIMap
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-house-fill me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#countries">
+                            <i class="bi bi-globe me-1"></i>Countries
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../map.html">
+                            <i class="bi bi-map me-1"></i>World Map
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../compare.html">
+                            <i class="bi bi-arrow-left-right me-1"></i>Compare
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../dashboard.html">
+                            <i class="bi bi-graph-up me-1"></i>Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../integration.html">
+                            <i class="bi bi-book me-1"></i>Integration
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/intelation/openpiimap" target="_blank">
+                            <i class="bi bi-github me-1"></i>GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <!-- Country Header Section -->
+    <section class="py-4" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-light) 100%); color: white;">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-3" style="--bs-breadcrumb-divider-color: rgba(255,255,255,0.6);">
+                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                    <li class="breadcrumb-item"><a href="../index.html#countries" class="text-white-50">Countries</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Colombia</li>
+                </ol>
+            </nav>
+            
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-5 fw-bold mb-2">Colombia</h1>
+                    <div class="d-flex align-items-center flex-wrap gap-3">
+                        <span class="framework-badge framework-dpa fs-6">
+                            DPA
+                        </span>
+                        
+                        <span class="text-white-50">
+                            <i class="bi bi-geo-alt-fill me-1"></i>LATAM (Latin America)
+                        </span>
+                        
+                        
+                        <span class="text-white-50">
+                            <i class="bi bi-list-check me-1"></i>10 PII Categories
+                        </span>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <div class="d-flex gap-2 justify-content-md-end flex-wrap">
+                        <button class="btn btn-light btn-sm" onclick="copyPageUrl()">
+                            <i class="bi bi-share me-1"></i>Share
+                        </button>
+                        <button class="btn btn-outline-light btn-sm" onclick="downloadJSON()">
+                            <i class="bi bi-download me-1"></i>Download JSON
+                        </button>
+                        <a href="../compare.html?countries=Colombia" class="btn btn-outline-light btn-sm">
+                            <i class="bi bi-arrow-left-right me-1"></i>Compare
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs mb-4" id="countryTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                    <i class="bi bi-info-circle me-1"></i>Overview
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="categories-tab" data-bs-toggle="tab" data-bs-target="#categories" type="button" role="tab">
+                    <i class="bi bi-list-ul me-1"></i>PII Categories (10)
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="legal-tab" data-bs-toggle="tab" data-bs-target="#legal" type="button" role="tab">
+                    <i class="bi bi-book me-1"></i>Legal References
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="technical-tab" data-bs-toggle="tab" data-bs-target="#technical" type="button" role="tab">
+                    <i class="bi bi-code-slash me-1"></i>Technical Data
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="countryTabsContent">
+            <!-- Overview Tab -->
+            <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-info-circle me-2"></i>Framework Information
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <dl class="row">
+                                            <dt class="col-sm-5">Country:</dt>
+                                            <dd class="col-sm-7">Colombia</dd>
+                                            
+                                            <dt class="col-sm-5">Framework:</dt>
+                                            <dd class="col-sm-7">
+                                                <span class="framework-badge framework-dpa">
+                                                    DPA
+                                                </span>
+                                            </dd>
+                                            
+                                            
+                                            <dt class="col-sm-5">Region:</dt>
+                                            <dd class="col-sm-7">LATAM (Latin America)</dd>
+                                            
+                                            
+                                            
+                                            <dt class="col-sm-5">Language:</dt>
+                                            <dd class="col-sm-7">es / en</dd>
+                                            
+                                        </dl>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <dl class="row">
+                                            
+                                            <dt class="col-sm-5">Version:</dt>
+                                            <dd class="col-sm-7">2012</dd>
+                                            
+                                            
+                                            
+                                            <dt class="col-sm-5">Status:</dt>
+                                            <dd class="col-sm-7">
+                                                <span class="badge bg-success">Drafting</span>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            <dt class="col-sm-5">Last Updated:</dt>
+                                            <dd class="col-sm-7">YYYY-MM-DD</dd>
+                                            
+                                            
+                                            
+                                            <dt class="col-sm-5">Source Verified:</dt>
+                                            <dd class="col-sm-7">
+                                                <i class="bi bi-check-circle-fill text-success"></i> Yes
+                                            </dd>
+                                            
+                                        </dl>
+                                    </div>
+                                </div>
+                                
+                                
+                                <hr>
+                                <h6>Regulatory Authority:</h6>
+                                <p class="text-muted">Superintendence of Industry and Commerce (SIC)</p>
+                                
+                                
+                                
+                                <hr>
+                                <h6>Notes:</h6>
+                                <ul class="list-unstyled">
+                                    
+                                    <li class="text-muted mb-2">
+                                        <i class="bi bi-info-circle me-2"></i>The main law is Statutory Law 1581 of 2012.
+                                    </li>
+                                    
+                                    <li class="text-muted mb-2">
+                                        <i class="bi bi-info-circle me-2"></i>Law 1266 of 2008 regulates financial/credit data.
+                                    </li>
+                                    
+                                    <li class="text-muted mb-2">
+                                        <i class="bi bi-info-circle me-2"></i>Processing of Sensitive Personal Data is prohibited, except in limited circumstances (Article 6).
+                                    </li>
+                                    
+                                </ul>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <!-- Quick Stats -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Quick Statistics</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row text-center">
+                                    <div class="col-6">
+                                        <div class="stat-number text-primary" style="font-size: 2rem;">10</div>
+                                        <div class="stat-label small">PII Categories</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="stat-number text-primary" style="font-size: 2rem;">
+                                            
+                                            
+                                                
+                                                    
+                                                
+                                            
+                                                
+                                                    
+                                                
+                                            
+                                                
+                                                    
+                                                
+                                            
+                                                
+                                                    
+                                                
+                                            
+                                                
+                                                    
+                                                
+                                            
+                                                
+                                                    
+                                                
+                                            
+                                                
+                                                    
+                                                
+                                            
+                                                
+                                                    
+                                                
+                                            
+                                                
+                                                    
+                                                
+                                            
+                                                
+                                                    
+                                                
+                                            
+                                            0
+                                        </div>
+                                        <div class="stat-label small">Legal Citations</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Category Types Distribution -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Category Types</h6>
+                            </div>
+                            <div class="card-body">
+                                
+                                
+                                    
+                                        
+                                    
+                                
+                                    
+                                        
+                                    
+                                
+                                    
+                                        
+                                    
+                                
+                                    
+                                        
+                                    
+                                
+                                    
+                                        
+                                    
+                                
+                                    
+                                        
+                                    
+                                
+                                    
+                                        
+                                    
+                                
+                                    
+                                        
+                                    
+                                
+                                    
+                                        
+                                    
+                                
+                                    
+                                        
+                                    
+                                
+                                
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="small">Direct Identifier</span>
+                                    <span class="badge bg-secondary">2</span>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="small">Quasi Identifier</span>
+                                    <span class="badge bg-secondary">1</span>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="small">Special Category</span>
+                                    <span class="badge bg-secondary">7</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Tab -->
+            <div class="tab-pane fade" id="categories" role="tabpanel">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4>PII Categories (10)</h4>
+                            <div class="btn-group" role="group">
+                                <input type="radio" class="btn-check" name="categoryView" id="categoryCards" checked>
+                                <label class="btn btn-outline-primary btn-sm" for="categoryCards">
+                                    <i class="bi bi-grid-3x3-gap-fill"></i> Cards
+                                </label>
+                                <input type="radio" class="btn-check" name="categoryView" id="categoryTable">
+                                <label class="btn btn-outline-primary btn-sm" for="categoryTable">
+                                    <i class="bi bi-list-ul"></i> Table
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Category Filter -->
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <input type="text" id="categorySearch" class="form-control" placeholder="Search categories...">
+                            </div>
+                            <div class="col-md-3">
+                                <select id="typeFilter" class="form-select">
+                                    <option value="">All Types</option>
+                                    
+                                    <option value="direct_identifier">Direct Identifier</option>
+                                    
+                                    <option value="quasi_identifier">Quasi Identifier</option>
+                                    
+                                    <option value="special_category">Special Category</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select id="maskingFilter" class="form-select">
+                                    <option value="">All Masking Requirements</option>
+                                    <option value="true">Required Masking</option>
+                                    <option value="false">Optional Masking</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Categories Display -->
+                        <div id="categoriesDisplay">
+                            <!-- Card View -->
+                            <div id="cardView" class="row g-4">
+                                
+                                <div class="col-lg-6 category-item" data-type="direct_identifier" data-masking="true">
+                                    <div class="card h-100">
+                                        <div class="card-header d-flex justify-content-between align-items-start">
+                                            <h6 class="card-title mb-0">Full Name</h6>
+                                            <div>
+                                                <span class="badge bg-primary">Direct Identifier</span>
+                                                
+                                                <span class="badge bg-warning">Masking Required</span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                            
+                                            
+                                            <div class="mb-2">
+                                                
+                                                <span class="badge bg-light text-dark me-1">pii</span>
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="mt-3">
+                                                <small class="text-muted d-block mb-1">Legal Citations:</small>
+                                                
+                                                <div class="small mb-1">
+                                                    <strong>Law 1581</strong> Article Definition of Personal Data
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6 category-item" data-type="direct_identifier" data-masking="true">
+                                    <div class="card h-100">
+                                        <div class="card-header d-flex justify-content-between align-items-start">
+                                            <h6 class="card-title mb-0">National ID / Passport Number</h6>
+                                            <div>
+                                                <span class="badge bg-primary">Direct Identifier</span>
+                                                
+                                                <span class="badge bg-warning">Masking Required</span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                            
+                                            
+                                            <div class="mb-2">
+                                                
+                                                <span class="badge bg-light text-dark me-1">pii</span>
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="mt-3">
+                                                <small class="text-muted d-block mb-1">Legal Citations:</small>
+                                                
+                                                <div class="small mb-1">
+                                                    <strong>Law 1581</strong> Article Definition of Personal Data
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6 category-item" data-type="quasi_identifier" data-masking="true">
+                                    <div class="card h-100">
+                                        <div class="card-header d-flex justify-content-between align-items-start">
+                                            <h6 class="card-title mb-0">Contact Details (Email, Address, Phone)</h6>
+                                            <div>
+                                                <span class="badge bg-primary">Quasi Identifier</span>
+                                                
+                                                <span class="badge bg-warning">Masking Required</span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                            
+                                            
+                                            <div class="mb-2">
+                                                
+                                                <span class="badge bg-light text-dark me-1">pii</span>
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="mt-3">
+                                                <small class="text-muted d-block mb-1">Legal Citations:</small>
+                                                
+                                                <div class="small mb-1">
+                                                    <strong>Law 1581</strong> Article Definition of Personal Data
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6 category-item" data-type="special_category" data-masking="true">
+                                    <div class="card h-100">
+                                        <div class="card-header d-flex justify-content-between align-items-start">
+                                            <h6 class="card-title mb-0">Race or Ethnic Origin</h6>
+                                            <div>
+                                                <span class="badge bg-primary">Special Category</span>
+                                                
+                                                <span class="badge bg-warning">Masking Required</span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                            
+                                            
+                                            <div class="mb-2">
+                                                
+                                                <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="mt-3">
+                                                <small class="text-muted d-block mb-1">Legal Citations:</small>
+                                                
+                                                <div class="small mb-1">
+                                                    <strong>Law 1581</strong> Article Article 5
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6 category-item" data-type="special_category" data-masking="true">
+                                    <div class="card h-100">
+                                        <div class="card-header d-flex justify-content-between align-items-start">
+                                            <h6 class="card-title mb-0">Political Preference</h6>
+                                            <div>
+                                                <span class="badge bg-primary">Special Category</span>
+                                                
+                                                <span class="badge bg-warning">Masking Required</span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                            
+                                            
+                                            <div class="mb-2">
+                                                
+                                                <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="mt-3">
+                                                <small class="text-muted d-block mb-1">Legal Citations:</small>
+                                                
+                                                <div class="small mb-1">
+                                                    <strong>Law 1581</strong> Article Article 5
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6 category-item" data-type="special_category" data-masking="true">
+                                    <div class="card h-100">
+                                        <div class="card-header d-flex justify-content-between align-items-start">
+                                            <h6 class="card-title mb-0">Religious or Philosophical Convictions</h6>
+                                            <div>
+                                                <span class="badge bg-primary">Special Category</span>
+                                                
+                                                <span class="badge bg-warning">Masking Required</span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                            
+                                            
+                                            <div class="mb-2">
+                                                
+                                                <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="mt-3">
+                                                <small class="text-muted d-block mb-1">Legal Citations:</small>
+                                                
+                                                <div class="small mb-1">
+                                                    <strong>Law 1581</strong> Article Article 5
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6 category-item" data-type="special_category" data-masking="true">
+                                    <div class="card h-100">
+                                        <div class="card-header d-flex justify-content-between align-items-start">
+                                            <h6 class="card-title mb-0">Affiliation to Trade Unions or Social/Human Rights Organizations</h6>
+                                            <div>
+                                                <span class="badge bg-primary">Special Category</span>
+                                                
+                                                <span class="badge bg-warning">Masking Required</span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                            
+                                            
+                                            <div class="mb-2">
+                                                
+                                                <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="mt-3">
+                                                <small class="text-muted d-block mb-1">Legal Citations:</small>
+                                                
+                                                <div class="small mb-1">
+                                                    <strong>Law 1581</strong> Article Article 5
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6 category-item" data-type="special_category" data-masking="true">
+                                    <div class="card h-100">
+                                        <div class="card-header d-flex justify-content-between align-items-start">
+                                            <h6 class="card-title mb-0">Health/Medical Data</h6>
+                                            <div>
+                                                <span class="badge bg-primary">Special Category</span>
+                                                
+                                                <span class="badge bg-warning">Masking Required</span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                            <p class="text-muted small mb-2">
+                                                <strong>Subtype:</strong> Medical
+                                            </p>
+                                            
+                                            
+                                            
+                                            <div class="mb-2">
+                                                
+                                                <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="mt-3">
+                                                <small class="text-muted d-block mb-1">Legal Citations:</small>
+                                                
+                                                <div class="small mb-1">
+                                                    <strong>Law 1581</strong> Article Article 5
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6 category-item" data-type="special_category" data-masking="true">
+                                    <div class="card h-100">
+                                        <div class="card-header d-flex justify-content-between align-items-start">
+                                            <h6 class="card-title mb-0">Sex Life or Sexual Orientation</h6>
+                                            <div>
+                                                <span class="badge bg-primary">Special Category</span>
+                                                
+                                                <span class="badge bg-warning">Masking Required</span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                            
+                                            
+                                            <div class="mb-2">
+                                                
+                                                <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="mt-3">
+                                                <small class="text-muted d-block mb-1">Legal Citations:</small>
+                                                
+                                                <div class="small mb-1">
+                                                    <strong>Law 1581</strong> Article Article 5
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6 category-item" data-type="special_category" data-masking="true">
+                                    <div class="card h-100">
+                                        <div class="card-header d-flex justify-content-between align-items-start">
+                                            <h6 class="card-title mb-0">Biometric Data (Fingerprints, DNA, Facial Recognition)</h6>
+                                            <div>
+                                                <span class="badge bg-primary">Special Category</span>
+                                                
+                                                <span class="badge bg-warning">Masking Required</span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                            <p class="text-muted small mb-2">
+                                                <strong>Subtype:</strong> Biometric
+                                            </p>
+                                            
+                                            
+                                            
+                                            <div class="mb-2">
+                                                
+                                                <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                
+                                                <span class="badge bg-light text-dark me-1">biometric</span>
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="mt-3">
+                                                <small class="text-muted d-block mb-1">Legal Citations:</small>
+                                                
+                                                <div class="small mb-1">
+                                                    <strong>Law 1581</strong> Article Article 5 (and Decree 1377 of 2013)
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                            <!-- Table View -->
+                            <div id="tableView" style="display: none;">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Category Name</th>
+                                                <th>Type</th>
+                                                <th>Subtype</th>
+                                                <th>Masking Required</th>
+                                                <th>Citations</th>
+                                                <th>Tags</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                            <tr class="category-item" data-type="direct_identifier" data-masking="true">
+                                                <td class="fw-semibold">Full Name</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Direct Identifier</span>
+                                                </td>
+                                                <td>-</td>
+                                                <td>
+                                                    
+                                                    <i class="bi bi-check-circle-fill text-success"></i> Yes
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    <span class="badge bg-secondary">1</span>
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    
+                                                    <span class="badge bg-light text-dark me-1">pii</span>
+                                                    
+                                                    
+                                                    
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr class="category-item" data-type="direct_identifier" data-masking="true">
+                                                <td class="fw-semibold">National ID / Passport Number</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Direct Identifier</span>
+                                                </td>
+                                                <td>-</td>
+                                                <td>
+                                                    
+                                                    <i class="bi bi-check-circle-fill text-success"></i> Yes
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    <span class="badge bg-secondary">1</span>
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    
+                                                    <span class="badge bg-light text-dark me-1">pii</span>
+                                                    
+                                                    
+                                                    
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr class="category-item" data-type="quasi_identifier" data-masking="true">
+                                                <td class="fw-semibold">Contact Details (Email, Address, Phone)</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Quasi Identifier</span>
+                                                </td>
+                                                <td>-</td>
+                                                <td>
+                                                    
+                                                    <i class="bi bi-check-circle-fill text-success"></i> Yes
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    <span class="badge bg-secondary">1</span>
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    
+                                                    <span class="badge bg-light text-dark me-1">pii</span>
+                                                    
+                                                    
+                                                    
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr class="category-item" data-type="special_category" data-masking="true">
+                                                <td class="fw-semibold">Race or Ethnic Origin</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Special Category</span>
+                                                </td>
+                                                <td>-</td>
+                                                <td>
+                                                    
+                                                    <i class="bi bi-check-circle-fill text-success"></i> Yes
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    <span class="badge bg-secondary">1</span>
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    
+                                                    <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                    
+                                                    
+                                                    
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr class="category-item" data-type="special_category" data-masking="true">
+                                                <td class="fw-semibold">Political Preference</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Special Category</span>
+                                                </td>
+                                                <td>-</td>
+                                                <td>
+                                                    
+                                                    <i class="bi bi-check-circle-fill text-success"></i> Yes
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    <span class="badge bg-secondary">1</span>
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    
+                                                    <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                    
+                                                    
+                                                    
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr class="category-item" data-type="special_category" data-masking="true">
+                                                <td class="fw-semibold">Religious or Philosophical Convictions</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Special Category</span>
+                                                </td>
+                                                <td>-</td>
+                                                <td>
+                                                    
+                                                    <i class="bi bi-check-circle-fill text-success"></i> Yes
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    <span class="badge bg-secondary">1</span>
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    
+                                                    <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                    
+                                                    
+                                                    
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr class="category-item" data-type="special_category" data-masking="true">
+                                                <td class="fw-semibold">Affiliation to Trade Unions or Social/Human Rights Organizations</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Special Category</span>
+                                                </td>
+                                                <td>-</td>
+                                                <td>
+                                                    
+                                                    <i class="bi bi-check-circle-fill text-success"></i> Yes
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    <span class="badge bg-secondary">1</span>
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    
+                                                    <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                    
+                                                    
+                                                    
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr class="category-item" data-type="special_category" data-masking="true">
+                                                <td class="fw-semibold">Health/Medical Data</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Special Category</span>
+                                                </td>
+                                                <td>Medical</td>
+                                                <td>
+                                                    
+                                                    <i class="bi bi-check-circle-fill text-success"></i> Yes
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    <span class="badge bg-secondary">1</span>
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    
+                                                    <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                    
+                                                    
+                                                    
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr class="category-item" data-type="special_category" data-masking="true">
+                                                <td class="fw-semibold">Sex Life or Sexual Orientation</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Special Category</span>
+                                                </td>
+                                                <td>-</td>
+                                                <td>
+                                                    
+                                                    <i class="bi bi-check-circle-fill text-success"></i> Yes
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    <span class="badge bg-secondary">1</span>
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    
+                                                    <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                    
+                                                    
+                                                    
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr class="category-item" data-type="special_category" data-masking="true">
+                                                <td class="fw-semibold">Biometric Data (Fingerprints, DNA, Facial Recognition)</td>
+                                                <td>
+                                                    <span class="badge bg-primary">Special Category</span>
+                                                </td>
+                                                <td>Biometric</td>
+                                                <td>
+                                                    
+                                                    <i class="bi bi-check-circle-fill text-success"></i> Yes
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    <span class="badge bg-secondary">1</span>
+                                                    
+                                                </td>
+                                                <td>
+                                                    
+                                                    
+                                                    <span class="badge bg-light text-dark me-1">sensitive</span>
+                                                    
+                                                    <span class="badge bg-light text-dark me-1">biometric</span>
+                                                    
+                                                    
+                                                    
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legal References Tab -->
+            <div class="tab-pane fade" id="legal" role="tabpanel">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="mb-4">Legal References & Citations</h4>
+                        
+                        
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                        
+                        
+                        <div class="accordion" id="legalAccordion">
+                            
+                            
+                                
+                                    
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                                    
+                                
+                            
+                            
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button " 
+                                            type="button" data-bs-toggle="collapse" 
+                                            data-bs-target="#collapse1" 
+                                            aria-expanded="true">
+                                        <strong>Law 1581</strong>
+                                        <span class="badge bg-secondary ms-2">10 citations</span>
+                                    </button>
+                                </h2>
+                                <div id="collapse1" 
+                                     class="accordion-collapse collapse show" 
+                                     data-bs-parent="#legalAccordion">
+                                    <div class="accordion-body">
+                                        
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <div>
+                                                        <h6 class="card-title">Article Definition of Personal Data</h6>
+                                                        <p class="card-text">
+                                                            <strong>Applies to:</strong> Full Name
+                                                        </p>
+                                                        
+                                                    </div>
+                                                    <span class="badge bg-primary">Law 1581</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <div>
+                                                        <h6 class="card-title">Article Definition of Personal Data</h6>
+                                                        <p class="card-text">
+                                                            <strong>Applies to:</strong> National ID / Passport Number
+                                                        </p>
+                                                        
+                                                    </div>
+                                                    <span class="badge bg-primary">Law 1581</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <div>
+                                                        <h6 class="card-title">Article Definition of Personal Data</h6>
+                                                        <p class="card-text">
+                                                            <strong>Applies to:</strong> Contact Details (Email, Address, Phone)
+                                                        </p>
+                                                        
+                                                    </div>
+                                                    <span class="badge bg-primary">Law 1581</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <div>
+                                                        <h6 class="card-title">Article Article 5</h6>
+                                                        <p class="card-text">
+                                                            <strong>Applies to:</strong> Race or Ethnic Origin
+                                                        </p>
+                                                        
+                                                    </div>
+                                                    <span class="badge bg-primary">Law 1581</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <div>
+                                                        <h6 class="card-title">Article Article 5</h6>
+                                                        <p class="card-text">
+                                                            <strong>Applies to:</strong> Political Preference
+                                                        </p>
+                                                        
+                                                    </div>
+                                                    <span class="badge bg-primary">Law 1581</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <div>
+                                                        <h6 class="card-title">Article Article 5</h6>
+                                                        <p class="card-text">
+                                                            <strong>Applies to:</strong> Religious or Philosophical Convictions
+                                                        </p>
+                                                        
+                                                    </div>
+                                                    <span class="badge bg-primary">Law 1581</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <div>
+                                                        <h6 class="card-title">Article Article 5</h6>
+                                                        <p class="card-text">
+                                                            <strong>Applies to:</strong> Affiliation to Trade Unions or Social/Human Rights Organizations
+                                                        </p>
+                                                        
+                                                    </div>
+                                                    <span class="badge bg-primary">Law 1581</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <div>
+                                                        <h6 class="card-title">Article Article 5</h6>
+                                                        <p class="card-text">
+                                                            <strong>Applies to:</strong> Health/Medical Data
+                                                        </p>
+                                                        
+                                                    </div>
+                                                    <span class="badge bg-primary">Law 1581</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <div>
+                                                        <h6 class="card-title">Article Article 5</h6>
+                                                        <p class="card-text">
+                                                            <strong>Applies to:</strong> Sex Life or Sexual Orientation
+                                                        </p>
+                                                        
+                                                    </div>
+                                                    <span class="badge bg-primary">Law 1581</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <div>
+                                                        <h6 class="card-title">Article Article 5 (and Decree 1377 of 2013)</h6>
+                                                        <p class="card-text">
+                                                            <strong>Applies to:</strong> Biometric Data (Fingerprints, DNA, Facial Recognition)
+                                                        </p>
+                                                        
+                                                    </div>
+                                                    <span class="badge bg-primary">Law 1581</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Data Tab -->
+            <div class="tab-pane fade" id="technical" role="tabpanel">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4>Technical Data</h4>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="copyJSON()">
+                                    <i class="bi bi-clipboard me-1"></i>Copy JSON
+                                </button>
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="downloadJSON()">
+                                    <i class="bi bi-download me-1"></i>Download
+                                </button>
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="formatJSON()">
+                                    <i class="bi bi-code-slash me-1"></i>Format
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="mb-0">Complete Data Structure</h6>
+                                <small class="text-muted">JSON Format</small>
+                            </div>
+                            <div class="card-body p-0">
+                                <pre class="mb-0"><code class="language-json" id="jsonData">{
+  "country": "Colombia",
+  "framework": "DPA",
+  "region": "LATAM (Latin America)",
+  "law_name": "Law 1581 of 2012 (General Data Protection Regime)",
+  "authority": "Superintendence of Industry and Commerce (SIC)",
+  "language": "es / en",
+  "version": 2012,
+  "status": "drafting",
+  "last_updated": "YYYY-MM-DD",
+  "source_verified": true,
+  "notes": [
+    "The main law is Statutory Law 1581 of 2012.",
+    "Law 1266 of 2008 regulates financial/credit data.",
+    "Processing of Sensitive Personal Data is prohibited, except in limited circumstances (Article 6)."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Definition of Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "National ID / Passport Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Definition of Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "Contact Details (Email, Address, Phone)",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Definition of Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "Race or Ethnic Origin",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Political Preference",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Religious or Philosophical Convictions",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Affiliation to Trade Unions or Social/Human Rights Organizations",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Health/Medical Data",
+      "type": "special_category",
+      "subtype": "medical",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Sex Life or Sexual Orientation",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Data (Fingerprints, DNA, Facial Recognition)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "biometric"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5 (and Decree 1377 of 2013)"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="mb-0">Schema Information</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <dl class="row mb-0">
+                                            <dt class="col-sm-6">Total Categories:</dt>
+                                            <dd class="col-sm-6">10</dd>
+                                            
+                                            <dt class="col-sm-6">Data Size:</dt>
+                                            <dd class="col-sm-6" id="dataSize">3.58 KB</dd>
+                                            
+                                            <dt class="col-sm-6">Schema Version:</dt>
+                                            <dd class="col-sm-6">2012</dd>
+                                            
+                                            <dt class="col-sm-6">Format:</dt>
+                                            <dd class="col-sm-6">JSON</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="mb-0">API Endpoints</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label class="form-label small">JSON Data:</label>
+                                            <div class="input-group input-group-sm">
+                                                <input type="text" class="form-control" value="../json/dpa/colombia.json" readonly>
+                                                <button class="btn btn-outline-secondary" onclick="copyAPIUrl(this.previousElementSibling.value)">
+                                                    <i class="bi bi-clipboard"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-0">
+                                            <label class="form-label small">Country Page:</label>
+                                            <div class="input-group input-group-sm">
+                                                <input type="text" class="form-control" value="colombia-dpa.html" readonly>
+                                                <button class="btn btn-outline-secondary" onclick="copyAPIUrl(this.previousElementSibling.value)">
+                                                    <i class="bi bi-clipboard"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Store the JSON data for manipulation
+        const jsonData = {
+  "country": "Colombia",
+  "framework": "DPA",
+  "region": "LATAM (Latin America)",
+  "law_name": "Law 1581 of 2012 (General Data Protection Regime)",
+  "authority": "Superintendence of Industry and Commerce (SIC)",
+  "language": "es / en",
+  "version": 2012,
+  "status": "drafting",
+  "last_updated": "YYYY-MM-DD",
+  "source_verified": true,
+  "notes": [
+    "The main law is Statutory Law 1581 of 2012.",
+    "Law 1266 of 2008 regulates financial/credit data.",
+    "Processing of Sensitive Personal Data is prohibited, except in limited circumstances (Article 6)."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Definition of Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "National ID / Passport Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Definition of Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "Contact Details (Email, Address, Phone)",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Definition of Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "Race or Ethnic Origin",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Political Preference",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Religious or Philosophical Convictions",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Affiliation to Trade Unions or Social/Human Rights Organizations",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Health/Medical Data",
+      "type": "special_category",
+      "subtype": "medical",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Sex Life or Sexual Orientation",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Data (Fingerprints, DNA, Facial Recognition)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "biometric"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5 (and Decree 1377 of 2013)"
+        }
+      ]
+    }
+  ]
+};
+        
+        // Category filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categorySearch = document.getElementById('categorySearch');
+            const typeFilter = document.getElementById('typeFilter');
+            const maskingFilter = document.getElementById('maskingFilter');
+            const categoryItems = document.querySelectorAll('.category-item');
+            
+            function filterCategories() {
+                const searchTerm = categorySearch.value.toLowerCase();
+                const typeValue = typeFilter.value;
+                const maskingValue = maskingFilter.value;
+                
+                categoryItems.forEach(item => {
+                    const name = item.querySelector('.card-title, .fw-semibold')?.textContent.toLowerCase() || '';
+                    const type = item.dataset.type;
+                    const masking = item.dataset.masking;
+                    
+                    const matchesSearch = !searchTerm || name.includes(searchTerm);
+                    const matchesType = !typeValue || type === typeValue;
+                    const matchesMasking = !maskingValue || masking === maskingValue;
+                    
+                    item.style.display = matchesSearch && matchesType && matchesMasking ? '' : 'none';
+                });
+            }
+            
+            categorySearch?.addEventListener('input', filterCategories);
+            typeFilter?.addEventListener('change', filterCategories);
+            maskingFilter?.addEventListener('change', filterCategories);
+            
+            // View mode toggle
+            document.querySelectorAll('input[name="categoryView"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const cardView = document.getElementById('cardView');
+                    const tableView = document.getElementById('tableView');
+                    
+                    if (this.id === 'categoryCards') {
+                        cardView.style.display = '';
+                        tableView.style.display = 'none';
+                    } else {
+                        cardView.style.display = 'none';
+                        tableView.style.display = '';
+                    }
+                });
+            });
+        });
+        
+        // Utility functions
+        function copyPageUrl() {
+            navigator.clipboard.writeText(window.location.href);
+            showToast('Page URL copied to clipboard');
+        }
+        
+        function downloadJSON() {
+            const blob = new Blob([JSON.stringify(jsonData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'colombia-dpa.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('JSON file downloaded');
+        }
+        
+        function copyJSON() {
+            navigator.clipboard.writeText(JSON.stringify(jsonData, null, 2));
+            showToast('JSON data copied to clipboard');
+        }
+        
+        function formatJSON() {
+            const jsonElement = document.getElementById('jsonData');
+            jsonElement.textContent = JSON.stringify(jsonData, null, 2);
+            Prism.highlightElement(jsonElement);
+        }
+        
+        function copyAPIUrl(url) {
+            navigator.clipboard.writeText(url);
+            showToast('URL copied to clipboard');
+        }
+        
+        function showToast(message) {
+            // Simple toast notification
+            const toast = document.createElement('div');
+            toast.className = 'position-fixed top-0 end-0 p-3';
+            toast.style.zIndex = '1100';
+            toast.innerHTML = `
+                <div class="toast show" role="alert">
+                    <div class="toast-header">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        <strong class="me-auto">Success</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body">${message}</div>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                document.body.removeChild(toast);
+            }, 3000);
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Footer -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-shield-check me-2"></i>
+                        <span class="fw-semibold">OpenPIIMap</span>
+                    </div>
+                    <p class="text-muted small mb-0 mt-1">
+                        Global Privacy Law Navigator
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="https://github.com/intelation/openpiimap" target="_blank" class="text-light me-3">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="#" class="text-light me-3">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="text-light">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

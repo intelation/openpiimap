@@ -1,0 +1,162 @@
+{
+  "country": "Colombia",
+  "framework": "DPA",
+  "region": "LATAM (Latin America)",
+  "law_name": "Law 1581 of 2012 (General Data Protection Regime)",
+  "authority": "Superintendence of Industry and Commerce (SIC)",
+  "language": "es / en",
+  "version": 2012,
+  "status": "drafting",
+  "last_updated": "YYYY-MM-DD",
+  "source_verified": true,
+  "notes": [
+    "The main law is Statutory Law 1581 of 2012.",
+    "Law 1266 of 2008 regulates financial/credit data.",
+    "Processing of Sensitive Personal Data is prohibited, except in limited circumstances (Article 6)."
+  ],
+  "categories": [
+    {
+      "name": "Full Name",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Definition of Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "National ID / Passport Number",
+      "type": "direct_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Definition of Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "Contact Details (Email, Address, Phone)",
+      "type": "quasi_identifier",
+      "required_masking": true,
+      "tags": [
+        "pii"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Definition of Personal Data"
+        }
+      ]
+    },
+    {
+      "name": "Race or Ethnic Origin",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Political Preference",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Religious or Philosophical Convictions",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Affiliation to Trade Unions or Social/Human Rights Organizations",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Health/Medical Data",
+      "type": "special_category",
+      "subtype": "medical",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Sex Life or Sexual Orientation",
+      "type": "special_category",
+      "required_masking": true,
+      "tags": [
+        "sensitive"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5"
+        }
+      ]
+    },
+    {
+      "name": "Biometric Data (Fingerprints, DNA, Facial Recognition)",
+      "type": "special_category",
+      "subtype": "biometric",
+      "required_masking": true,
+      "tags": [
+        "sensitive",
+        "biometric"
+      ],
+      "citations": [
+        {
+          "regulation": "Law 1581",
+          "article": "Article 5 (and Decree 1377 of 2013)"
+        }
+      ]
+    }
+  ]
+}

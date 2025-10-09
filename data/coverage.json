@@ -25,14 +25,20 @@
   "LFPDPPP": ["Mexico"],
   "NDPR": ["Nigeria"],
   "PDP Law": ["Indonesia"],
-  "PDPA": ["Singapore"],
+  "PDPA": [
+    "Singapore",
+    "Malaysia"
+  ],
   "PIPA": ["South Korea"],
   "PIPEDA": ["Canada"],
   "PIPL": ["China"],
-  "Privacy Act": ["Australia"],
-   "Privacy Act": ["New Zealand"],
+  "Privacy Act": [
+    "Australia",
+    "New Zealand"
+  ],
   "UAE Federal Data Protection Law (Law No. 45/2021)": ["United Arab Emirates"],
   "UK GDPR + DPA 2018": ["United Kingdom"],
   "APPI": ["Japan"],
-  "POPIA": ["South Africa"]
+  "POPIA": ["South Africa"],
+  "DPA": ["Philippines", "Bangladesh", "Taiwan"]
 }

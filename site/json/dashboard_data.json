@@ -1,0 +1,18 @@
+{
+  "countries_count": 39,
+  "frameworks_count": 19,
+  "categories_count": 20,
+  "regions_count": 13,
+  "avg_categories_per_country": 1,
+  "countries_added_recent": 2,
+  "frameworks_added_recent": 2,
+  "categories_added_recent": 38,
+  "most_comprehensive_framework": "Personal Data Protection Act (PDPA) 2019",
+  "most_comprehensive_avg": 20,
+  "best_covered_region": "EU",
+  "best_region_count": 13,
+  "latest_country": "Thailand",
+  "latest_framework": "PDPA Thailand",
+  "latest_categories": 20,
+  "last_updated": "2025-09-01"
+}
