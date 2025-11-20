@@ -8,8 +8,7 @@ last_updated: 2025-11-20
 source_verified: true
 authority: Informacijski pooblaščenec (IP) – Information Commissioner of Slovenia
 notes:
-- Slovenia enforces GDPR alongside the Personal Data Protection Act (Zakon o varstvu
-  osebnih podatkov - ZVOP-2).
+- Slovenia enforces GDPR alongside the Personal Data Protection Act (Zakon o varstvu osebnih podatkov - ZVOP-2).
 - The IP oversees data protection compliance and provides guidance.
 categories:
 - name: Full Name
@@ -174,6 +173,7 @@ categories:
   category_tags:
   - financial
   - sensitive
+  subtype: financial_identifier
 - name: Racial or Ethnic Origin
   type: special_category
   required_masking: true

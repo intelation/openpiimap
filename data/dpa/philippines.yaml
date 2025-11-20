@@ -2,7 +2,7 @@ country: Philippines
 framework: DPA 2012
 region: Asia Pacific
 language: en
-version: 2012
+version: "2012"
 status: published
 last_updated: 2025-08-25
 source_verified: true
@@ -20,6 +20,7 @@ categories:
   citations:
   - regulation: DPA 2012
     article: Section 3(j)
+  subtype: personal_name
 - name: National ID (PhilSys ID)
   type: direct_identifier
   required_masking: true
@@ -28,6 +29,7 @@ categories:
   citations:
   - regulation: DPA 2012
     article: Section 3(j)
+  subtype: government_id
 - name: Address
   type: quasi_identifier
   subtype: address
@@ -45,6 +47,7 @@ categories:
   citations:
   - regulation: DPA 2012
     article: Section 3(j)
+  subtype: telecom_contact
 - name: Email Address
   type: direct_identifier
   required_masking: true
@@ -53,6 +56,7 @@ categories:
   citations:
   - regulation: DPA 2012
     article: Section 3(j)
+  subtype: digital_contact
 - name: Health Information
   type: special_category
   subtype: medical
@@ -95,3 +99,4 @@ categories:
   citations:
   - regulation: DPA 2012
     article: Section 3(l)
+  subtype: biometric

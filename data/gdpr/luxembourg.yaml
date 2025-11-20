@@ -8,8 +8,7 @@ last_updated: 2025-11-20
 source_verified: true
 authority: Commission nationale pour la protection des données (CNPD) – National Commission for Data Protection
 notes:
-- Luxembourg enforces GDPR alongside the national Law of 1 August 2018 on the organization
-  of the CNPD and data protection.
+- Luxembourg enforces GDPR alongside the national Law of 1 August 2018 on the organization of the CNPD and data protection.
 - The CNPD supervises data protection compliance and provides guidance.
 categories:
 - name: Full Name
@@ -174,6 +173,7 @@ categories:
   category_tags:
   - financial
   - sensitive
+  subtype: financial_identifier
 - name: Racial or Ethnic Origin
   type: special_category
   required_masking: true

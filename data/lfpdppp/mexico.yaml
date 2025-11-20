@@ -9,8 +9,7 @@ source_verified: true
 authority: INAI (Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales)
 notes:
 - The LFPDPPP regulates the processing of personal data by private entities in Mexico.
-- Sensitive personal data includes information that may affect the most intimate sphere of the data subject
-  (Article 3, Section VI).
+- Sensitive personal data includes information that may affect the most intimate sphere of the data subject (Article 3, Section VI).
 - 'Data subjects are granted ARCO rights: Access, Rectification, Cancellation, and Opposition.'
 categories:
 - name: Full Name
@@ -21,6 +20,7 @@ categories:
   citations:
   - regulation: LFPDPPP
     article: Article 3, Section V – Personal Data
+  subtype: personal_name
 - name: Home Address
   type: quasi_identifier
   subtype: address
@@ -38,6 +38,7 @@ categories:
   citations:
   - regulation: LFPDPPP
     article: Article 3, Section V
+  subtype: telecom_contact
 - name: Email Address
   type: direct_identifier
   required_masking: true
@@ -46,6 +47,7 @@ categories:
   citations:
   - regulation: LFPDPPP
     article: Article 3, Section V
+  subtype: digital_contact
 - name: National ID (CURP) or Voter ID
   type: direct_identifier
   required_masking: true
@@ -54,6 +56,7 @@ categories:
   citations:
   - regulation: LFPDPPP
     article: Article 3, Section V
+  subtype: government_id
 - name: Financial or Payment Information
   type: special_category
   required_masking: true
@@ -62,6 +65,7 @@ categories:
   citations:
   - regulation: LFPDPPP
     article: Article 3, Section VI – Sensitive Personal Data
+  subtype: financial_identifier
 - name: Health or Medical Information
   type: special_category
   subtype: medical
@@ -90,6 +94,7 @@ categories:
   citations:
   - regulation: LFPDPPP
     article: Article 3, Section VI
+  subtype: genetic
 - name: Racial or Ethnic Origin
   type: special_category
   required_masking: true
@@ -131,6 +136,7 @@ categories:
   citations:
   - regulation: LFPDPPP
     article: General Interpretation (Guidelines)
+  subtype: address
 - name: Geolocation Data
   type: special_category
   required_masking: true
@@ -140,6 +146,7 @@ categories:
   citations:
   - regulation: LFPDPPP
     article: General Interpretation (Guidelines)
+  subtype: geolocation
 - name: Employment or Academic Records
   type: quasi_identifier
   required_masking: true
@@ -148,3 +155,4 @@ categories:
   citations:
   - regulation: LFPDPPP
     article: Article 3, Section V
+  subtype: education

@@ -8,12 +8,9 @@ last_updated: 2025-06-30
 source_verified: true
 authority: Personal Data Protection Supervisory Authority (under formation)
 notes:
-- Indonesia’s PDP Law (Law No. 27 of 2022) provides a comprehensive framework for personal data protection,
-  modeled in part after the GDPR.
-- It distinguishes between personal data and specific personal data (Article 3 & 4), with additional safeguards
-  and consent requirements for the latter.
-- The law includes provisions on cross-border data transfers, profiling, automated processing, and children’s
-  data.
+- Indonesia’s PDP Law (Law No. 27 of 2022) provides a comprehensive framework for personal data protection, modeled in part after the GDPR.
+- It distinguishes between personal data and specific personal data (Article 3 & 4), with additional safeguards and consent requirements for the latter.
+- The law includes provisions on cross-border data transfers, profiling, automated processing, and children’s data.
 categories:
 - name: Full Name
   type: direct_identifier
@@ -23,6 +20,7 @@ categories:
   citations:
   - regulation: PDP Law
     article: Article 3 – Personal Data Definition
+  subtype: personal_name
 - name: Address
   type: quasi_identifier
   subtype: address
@@ -40,6 +38,7 @@ categories:
   citations:
   - regulation: PDP Law
     article: Article 3
+  subtype: telecom_contact
 - name: Email Address
   type: direct_identifier
   required_masking: true
@@ -48,6 +47,7 @@ categories:
   citations:
   - regulation: PDP Law
     article: Article 3
+  subtype: digital_contact
 - name: National ID Number (e.g., NIK)
   type: direct_identifier
   required_masking: true
@@ -56,6 +56,7 @@ categories:
   citations:
   - regulation: PDP Law
     article: Article 3
+  subtype: government_id
 - name: Financial Data (e.g., account, transactions)
   type: special_category
   required_masking: true
@@ -92,6 +93,7 @@ categories:
   citations:
   - regulation: PDP Law
     article: Article 4
+  subtype: genetic
 - name: Religion or Beliefs
   type: special_category
   required_masking: true
@@ -135,6 +137,7 @@ categories:
   citations:
   - regulation: PDP Law
     article: Article 3
+  subtype: address
 - name: Geolocation Data
   type: special_category
   required_masking: true
@@ -144,3 +147,4 @@ categories:
   citations:
   - regulation: PDP Law
     article: Article 4
+  subtype: geolocation

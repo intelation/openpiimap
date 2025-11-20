@@ -8,10 +8,8 @@ last_updated: 2025-06-30
 source_verified: true
 authority: California Privacy Protection Agency (CPPA)
 notes:
-- The CPRA expands CCPA by defining Sensitive Personal Information and granting consumers enhanced control
-  over their data.
-- Applicable to businesses that meet revenue, data volume, or sharing thresholds under Cal. Civ. Code
-  §1798.140.
+- The CPRA expands CCPA by defining Sensitive Personal Information and granting consumers enhanced control over their data.
+- Applicable to businesses that meet revenue, data volume, or sharing thresholds under Cal. Civ. Code §1798.140.
 categories:
 - name: Full Name
   type: direct_identifier
@@ -21,6 +19,7 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(v)(1)(A)
+  subtype: personal_name
 - name: Alias
   type: direct_identifier
   required_masking: true
@@ -37,6 +36,7 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(v)(1)(A)
+  subtype: address
 - name: Unique Personal Identifier (e.g., customer ID)
   type: quasi_identifier
   required_masking: true
@@ -53,6 +53,7 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(v)(1)(A)
+  subtype: address
 - name: Email Address
   type: direct_identifier
   required_masking: true
@@ -61,6 +62,7 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(v)(1)(A)
+  subtype: digital_contact
 - name: Account Name
   type: direct_identifier
   required_masking: true
@@ -78,6 +80,7 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(v)(1)(B)
+  subtype: government_id
 - name: Driver’s License or State ID Number
   type: direct_identifier
   required_masking: true
@@ -87,6 +90,7 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(v)(1)(B)
+  subtype: government_id
 - name: Passport Number
   type: direct_identifier
   required_masking: true
@@ -96,6 +100,7 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(v)(1)(B)
+  subtype: government_id
 - name: Financial Account, Debit, or Credit Card Number
   type: direct_identifier
   required_masking: true
@@ -105,6 +110,7 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(v)(1)(B)
+  subtype: financial_identifier
 - name: Geolocation Data (precise)
   type: special_category
   required_masking: true
@@ -114,6 +120,7 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(ae)(1)(D)
+  subtype: geolocation
 - name: Biometric Information (e.g., retina scan, voiceprint)
   type: special_category
   subtype: biometric
@@ -133,6 +140,7 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(ae)(1)(C)
+  subtype: health
 - name: Genetic Data
   type: special_category
   required_masking: true
@@ -141,6 +149,7 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(ae)(1)(C)
+  subtype: genetic
 - name: Sexual Orientation or Sex Life
   type: special_category
   required_masking: true

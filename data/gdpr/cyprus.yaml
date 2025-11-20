@@ -8,8 +8,7 @@ last_updated: 2025-11-20
 source_verified: true
 authority: Commissioner for Personal Data Protection (Office of the Commissioner for Personal Data Protection of Cyprus)
 notes:
-- Cyprus enforces GDPR alongside the Processing of Personal Data (Protection of Individuals)
-  Law.
+- Cyprus enforces GDPR alongside the Processing of Personal Data (Protection of Individuals) Law.
 - The Commissioner supervises data protection compliance and provides guidance.
 categories:
 - name: Full Name
@@ -174,6 +173,7 @@ categories:
   category_tags:
   - financial
   - sensitive
+  subtype: financial_identifier
 - name: Racial or Ethnic Origin
   type: special_category
   required_masking: true

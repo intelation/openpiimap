@@ -8,8 +8,7 @@ last_updated: 2025-11-20
 source_verified: true
 authority: Datu valsts inspekcija (DVI) – Data State Inspectorate of Latvia
 notes:
-- Latvia enforces GDPR alongside the Personal Data Processing Law (Fizisko personu
-  datu apstrādes likums).
+- Latvia enforces GDPR alongside the Personal Data Processing Law (Fizisko personu datu apstrādes likums).
 - DVI supervises data protection and provides guidance on compliance.
 categories:
 - name: Full Name
@@ -174,6 +173,7 @@ categories:
   category_tags:
   - financial
   - sensitive
+  subtype: financial_identifier
 - name: Racial or Ethnic Origin
   type: special_category
   required_masking: true

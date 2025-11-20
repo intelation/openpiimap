@@ -60,7 +60,61 @@ Each item in the `categories` array contains the following fields:
 
 ### `subtype` (optional)
 - **Type:** `string`
-- **Description:** A more granular classification within a type (e.g., `"biometric"`, `"financial"`).
+- **Description:** A more granular classification within a type. Subtypes enable precise filtering and querying of PII categories.
+- **Status:** Optional but **RECOMMENDED** (54-100% coverage as of Nov 2025)
+- **Documentation:** See [Subtype Taxonomy](subtype-taxonomy.md) for complete list and usage guidelines
+
+#### Standard Subtypes
+
+**Identity:**
+- `personal_name` - Full Name, First Name, Last Name
+- `government_id` - Government-issued identification numbers
+
+**Contact:**
+- `digital_contact` - Email addresses, messaging handles
+- `telecom_contact` - Phone, fax, mobile numbers
+- `address` - Physical/postal addresses
+
+**Technical:**
+- `network_identifier` - IP addresses, MAC addresses
+- `device_id` - Cookies, device fingerprints, session IDs
+
+**Sensitive:**
+- `biometric` - Fingerprints, facial recognition, iris scans
+- `health` - Health information (general)
+- `medical` - Medical records and clinical data (specific)
+- `genetic` - DNA, genetic test results
+
+**Financial:**
+- `financial_identifier` - Credit cards, payment info (general)
+- `bank_account` - Bank account numbers, routing numbers
+- `insurance_id` - Insurance policy numbers
+- `tax_identifier` - Tax identification numbers
+
+**Contextual:**
+- `employment` - Employee ID, job title, employment status
+- `hr_data` - Performance reviews, personnel files
+- `compensation` - Salary, benefits information
+- `education` - Student records, grades, transcripts
+- `geolocation` - GPS coordinates, location data
+
+**Other:**
+- `personal_attributes` - Date of birth, age, physical characteristics
+- `vehicle_identifier` - License plates, VIN numbers
+- `digital_identity` - Usernames, account IDs
+
+**Usage Example:**
+```yaml
+- name: Email Address
+  type: direct_identifier
+  subtype: digital_contact
+  required_masking: true
+  
+- name: Social Security Number
+  type: national_identifier
+  subtype: government_id
+  required_masking: true
+```
 
 ---
 

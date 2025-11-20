@@ -8,10 +8,8 @@ last_updated: 2025-06-30
 source_verified: true
 authority: Federal Data Protection and Information Commissioner (FDPIC)
 notes:
-- The revised FADP came into effect on September 1, 2023, harmonizing with GDPR principles while maintaining
-  Swiss legal specifics.
-- Sensitive personal data is explicitly defined and includes health, religion, biometric, political views,
-  and racial origin.
+- The revised FADP came into effect on September 1, 2023, harmonizing with GDPR principles while maintaining Swiss legal specifics.
+- Sensitive personal data is explicitly defined and includes health, religion, biometric, political views, and racial origin.
 - Profiling and cross-border data transfers are regulated under stricter conditions.
 categories:
 - name: Full Name
@@ -22,6 +20,7 @@ categories:
   citations:
   - regulation: FADP
     article: Article 5(a) – Definition of Personal Data
+  subtype: personal_name
 - name: Address
   type: quasi_identifier
   subtype: address
@@ -39,6 +38,7 @@ categories:
   citations:
   - regulation: FADP
     article: Article 5(a)
+  subtype: telecom_contact
 - name: Email Address
   type: direct_identifier
   required_masking: true
@@ -47,6 +47,7 @@ categories:
   citations:
   - regulation: FADP
     article: Article 5(a)
+  subtype: digital_contact
 - name: Swiss National ID or AVS Number
   type: direct_identifier
   required_masking: true
@@ -55,6 +56,7 @@ categories:
   citations:
   - regulation: FADP
     article: Article 5(a)
+  subtype: government_id
 - name: Health Information
   type: special_category
   subtype: medical
@@ -83,6 +85,7 @@ categories:
   citations:
   - regulation: FADP
     article: Article 5(c)
+  subtype: genetic
 - name: Racial or Ethnic Origin
   type: special_category
   required_masking: true
@@ -125,3 +128,4 @@ categories:
   citations:
   - regulation: FADP
     article: Article 5(a)
+  subtype: address

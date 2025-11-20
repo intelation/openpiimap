@@ -8,10 +8,8 @@ last_updated: 2025-06-30
 source_verified: true
 authority: U.S. Department of Health and Human Services (HHS), Office for Civil Rights (OCR)
 notes:
-- HIPAA governs the use and disclosure of protected health information (PHI) by covered entities and business
-  associates.
-- De-identification standards are defined under 45 CFR §164.514, including the Safe Harbor and Expert
-  Determination methods.
+- HIPAA governs the use and disclosure of protected health information (PHI) by covered entities and business associates.
+- De-identification standards are defined under 45 CFR §164.514, including the Safe Harbor and Expert Determination methods.
 categories:
 - name: Full Name
   type: direct_identifier
@@ -22,6 +20,7 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(A)
+  subtype: personal_name
 - name: Geographic Subdivisions Smaller Than State
   type: quasi_identifier
   subtype: address
@@ -50,6 +49,7 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(D)
+  subtype: telecom_contact
 - name: Fax Numbers
   type: direct_identifier
   required_masking: true
@@ -58,6 +58,7 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(D)
+  subtype: telecom_contact
 - name: Email Addresses
   type: direct_identifier
   required_masking: true
@@ -67,6 +68,7 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(E)
+  subtype: digital_contact
 - name: Social Security Numbers
   type: direct_identifier
   required_masking: true
@@ -76,6 +78,7 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(F)
+  subtype: government_id
 - name: Medical Record Numbers
   type: direct_identifier
   required_masking: true
@@ -84,6 +87,7 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(G)
+  subtype: medical
 - name: Health Plan Beneficiary Numbers
   type: direct_identifier
   required_masking: true
@@ -92,6 +96,7 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(H)
+  subtype: insurance_id
 - name: Account Numbers
   type: direct_identifier
   required_masking: true
@@ -100,6 +105,7 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(I)
+  subtype: financial_identifier
 - name: Certificate or License Numbers
   type: quasi_identifier
   required_masking: true
@@ -116,6 +122,7 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(K)
+  subtype: vehicle_identifier
 - name: Device Identifiers and Serial Numbers
   type: quasi_identifier
   required_masking: true
@@ -124,6 +131,7 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(L)
+  subtype: device_id
 - name: Web URLs
   type: direct_identifier
   required_masking: true
@@ -140,6 +148,7 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(M)
+  subtype: address
 - name: Biometric Identifiers (e.g., fingerprints, voiceprints)
   type: special_category
   subtype: biometric
@@ -159,6 +168,7 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(N)
+  subtype: personal_attributes
 - name: Any Other Unique Identifying Number, Characteristic, or Code
   type: quasi_identifier
   required_masking: true

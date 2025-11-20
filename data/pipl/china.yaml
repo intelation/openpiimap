@@ -8,11 +8,9 @@ last_updated: 2025-06-30
 source_verified: true
 authority: Cyberspace Administration of China (CAC)
 notes:
-- PIPL defines personal information broadly and imposes stricter rules for processing sensitive personal
-  information, including biometric, religious, health, and children's data.
+- PIPL defines personal information broadly and imposes stricter rules for processing sensitive personal information, including biometric, religious, health, and children's data.
 - Cross-border transfers are highly regulated, requiring security assessments and contractual safeguards.
-- Personal information processing must follow principles of legality, necessity, and transparency under
-  Article 5.
+- Personal information processing must follow principles of legality, necessity, and transparency under Article 5.
 categories:
 - name: Full Name
   type: direct_identifier
@@ -22,6 +20,7 @@ categories:
   citations:
   - regulation: PIPL
     article: Article 4 – Definition of Personal Information
+  subtype: personal_name
 - name: Contact Information (Phone, Email)
   type: direct_identifier
   required_masking: true
@@ -30,6 +29,7 @@ categories:
   citations:
   - regulation: PIPL
     article: Article 4
+  subtype: digital_contact
 - name: National ID Number (e.g., Resident Identity Card)
   type: direct_identifier
   required_masking: true
@@ -38,6 +38,7 @@ categories:
   citations:
   - regulation: PIPL
     article: Article 4
+  subtype: government_id
 - name: Home Address
   type: quasi_identifier
   subtype: address
@@ -56,6 +57,7 @@ categories:
   citations:
   - regulation: PIPL
     article: Article 4
+  subtype: address
 - name: Location Data (precise)
   type: special_category
   required_masking: true
@@ -65,6 +67,7 @@ categories:
   citations:
   - regulation: PIPL
     article: Article 28 – Definition of Sensitive Personal Information
+  subtype: geolocation
 - name: Biometric Information (e.g., facial features, voiceprints)
   type: special_category
   subtype: biometric

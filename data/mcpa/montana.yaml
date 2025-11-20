@@ -23,6 +23,7 @@ categories:
     section: Mont. Code Ann. § 30-14-2703(10)
     description: Personal data means information that is linked or reasonably linkable to an identified or identifiable individual
     url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+  subtype: personal_name
 - name: Alias
   type: direct_identifier
   required_masking: true
@@ -41,6 +42,7 @@ categories:
   - regulation: MCPA
     section: Mont. Code Ann. § 30-14-2703(10)
     url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+  subtype: digital_contact
 - name: Postal Address
   type: quasi_identifier
   required_masking: true
@@ -50,6 +52,7 @@ categories:
   - regulation: MCPA
     section: Mont. Code Ann. § 30-14-2703(10)
     url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+  subtype: address
 - name: Telephone Number
   type: direct_identifier
   required_masking: true
@@ -59,6 +62,7 @@ categories:
   - regulation: MCPA
     section: Mont. Code Ann. § 30-14-2703(10)
     url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+  subtype: telecom_contact
 - name: Social Security Number
   type: direct_identifier
   subtype: government_id

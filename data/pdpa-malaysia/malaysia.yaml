@@ -2,7 +2,7 @@ country: Malaysia
 framework: PDPA (Malaysia)
 region: Asia
 language: en
-version: "2010"
+version: '2010'
 status: published
 last_updated: 2025-08-25
 source_verified: true
@@ -20,6 +20,7 @@ categories:
   citations:
   - regulation: PDPA 2010
     article: Section 4 (Definition of Personal Data)
+  subtype: personal_name
 - name: NRIC (National Registration Identity Card) Number
   type: direct_identifier
   required_masking: true
@@ -28,6 +29,7 @@ categories:
   citations:
   - regulation: PDPA 2010
     article: Section 4
+  subtype: government_id
 - name: Passport Number
   type: direct_identifier
   required_masking: true
@@ -36,6 +38,7 @@ categories:
   citations:
   - regulation: PDPA 2010
     article: Section 4
+  subtype: government_id
 - name: Address
   type: quasi_identifier
   subtype: address
@@ -53,6 +56,7 @@ categories:
   citations:
   - regulation: PDPA 2010
     article: Section 4
+  subtype: telecom_contact
 - name: Email Address
   type: direct_identifier
   required_masking: true
@@ -61,6 +65,7 @@ categories:
   citations:
   - regulation: PDPA 2010
     article: Section 4
+  subtype: digital_contact
 - name: Health Information
   type: special_category
   subtype: medical

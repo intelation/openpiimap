@@ -8,10 +8,8 @@ last_updated: 2025-06-30
 source_verified: true
 authority: ANPD (Autoridade Nacional de Proteção de Dados)
 notes:
-- The LGPD applies to any processing of personal data carried out in Brazil or related to individuals
-  located in Brazil.
-- Sensitive personal data is explicitly defined under Article 5, II and includes health, biometric, racial,
-  and political information.
+- The LGPD applies to any processing of personal data carried out in Brazil or related to individuals located in Brazil.
+- Sensitive personal data is explicitly defined under Article 5, II and includes health, biometric, racial, and political information.
 - The law closely aligns with GDPR principles but applies to both online and offline data processing.
 categories:
 - name: Full Name
@@ -22,6 +20,7 @@ categories:
   citations:
   - regulation: LGPD
     article: Article 5, I
+  subtype: personal_name
 - name: Home Address
   type: quasi_identifier
   subtype: address
@@ -39,6 +38,7 @@ categories:
   citations:
   - regulation: LGPD
     article: Article 5, I
+  subtype: telecom_contact
 - name: Email Address
   type: direct_identifier
   required_masking: true
@@ -47,6 +47,7 @@ categories:
   citations:
   - regulation: LGPD
     article: Article 5, I
+  subtype: digital_contact
 - name: CPF (Cadastro de Pessoas Físicas)
   type: direct_identifier
   required_masking: true
@@ -55,6 +56,7 @@ categories:
   citations:
   - regulation: LGPD
     article: Article 5, I
+  subtype: government_id
 - name: RG (Registro Geral – National ID)
   type: direct_identifier
   required_masking: true
@@ -63,6 +65,7 @@ categories:
   citations:
   - regulation: LGPD
     article: Article 5, I
+  subtype: government_id
 - name: Financial Information (e.g., banking, income)
   type: special_category
   required_masking: true
@@ -141,3 +144,4 @@ categories:
   citations:
   - regulation: LGPD
     article: Article 5, I
+  subtype: geolocation

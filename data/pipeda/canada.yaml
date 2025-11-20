@@ -8,11 +8,9 @@ last_updated: 2025-06-30
 source_verified: true
 authority: Office of the Privacy Commissioner of Canada (OPC)
 notes:
-- PIPEDA applies to private-sector organizations that collect, use, or disclose personal information in
-  the course of commercial activity.
+- PIPEDA applies to private-sector organizations that collect, use, or disclose personal information in the course of commercial activity.
 - Personal information is defined broadly and includes any information about an identifiable individual.
-- Sensitive information (e.g. health, financial, biometric) requires higher protection and typically express
-  consent.
+- Sensitive information (e.g. health, financial, biometric) requires higher protection and typically express consent.
 categories:
 - name: Full Name
   type: direct_identifier
@@ -22,6 +20,7 @@ categories:
   citations:
   - regulation: PIPEDA
     section: Section 2 – Definition of Personal Information
+  subtype: personal_name
 - name: Home Address
   type: quasi_identifier
   subtype: address
@@ -39,6 +38,7 @@ categories:
   citations:
   - regulation: PIPEDA
     section: Section 2
+  subtype: telecom_contact
 - name: Email Address
   type: direct_identifier
   required_masking: true
@@ -47,6 +47,7 @@ categories:
   citations:
   - regulation: PIPEDA
     section: Section 2
+  subtype: digital_contact
 - name: Social Insurance Number (SIN)
   type: direct_identifier
   required_masking: true
@@ -56,6 +57,7 @@ categories:
   citations:
   - regulation: PIPEDA
     section: Section 2
+  subtype: insurance_id
 - name: Financial Information (e.g., income, banking, credit)
   type: special_category
   required_masking: true
@@ -127,3 +129,4 @@ categories:
   citations:
   - regulation: PIPEDA
     section: OPC Interpretation (2013)
+  subtype: address

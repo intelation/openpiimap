@@ -8,12 +8,9 @@ last_updated: 2025-06-30
 source_verified: true
 authority: UAE Data Office
 notes:
-- Federal Decree-Law No. 45/2021 establishes the UAE’s first federal data protection regime, applicable
-  to both onshore and offshore processing.
-- Sensitive personal data includes health, biometric, religious beliefs, ethnic origin, and criminal records
-  (Article 4).
-- Requires Data Protection Impact Assessments (DPIAs) and regulates automated decision-making, consent,
-  and cross-border transfers.
+- Federal Decree-Law No. 45/2021 establishes the UAE’s first federal data protection regime, applicable to both onshore and offshore processing.
+- Sensitive personal data includes health, biometric, religious beliefs, ethnic origin, and criminal records (Article 4).
+- Requires Data Protection Impact Assessments (DPIAs) and regulates automated decision-making, consent, and cross-border transfers.
 categories:
 - name: Full Name
   type: direct_identifier
@@ -23,6 +20,7 @@ categories:
   citations:
   - regulation: UAE DPL
     article: Article 4 – Definition of Personal Data
+  subtype: personal_name
 - name: Address
   type: quasi_identifier
   subtype: address
@@ -40,6 +38,7 @@ categories:
   citations:
   - regulation: UAE DPL
     article: Article 4
+  subtype: telecom_contact
 - name: Email Address
   type: direct_identifier
   required_masking: true
@@ -48,6 +47,7 @@ categories:
   citations:
   - regulation: UAE DPL
     article: Article 4
+  subtype: digital_contact
 - name: Emirates ID Number
   type: direct_identifier
   required_masking: true
@@ -110,6 +110,7 @@ categories:
   citations:
   - regulation: UAE DPL
     article: Article 4
+  subtype: address
 - name: Location or Geolocation Data
   type: special_category
   required_masking: true
@@ -119,6 +120,7 @@ categories:
   citations:
   - regulation: UAE DPL
     article: Article 4
+  subtype: geolocation
 - name: Behavioral or Profiling Data
   type: behavioral
   required_masking: true

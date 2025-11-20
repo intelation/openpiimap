@@ -8,10 +8,8 @@ last_updated: 2025-06-30
 source_verified: true
 authority: Personal Information Protection Commission (PIPC)
 notes:
-- PIPA applies to both public and private entities and contains comprehensive rules for the collection,
-  use, and transfer of personal and sensitive information.
-- Sensitive information under Article 23 includes ideology, health, genetic, sexual life, and criminal
-  records, requiring separate and explicit consent.
+- PIPA applies to both public and private entities and contains comprehensive rules for the collection, use, and transfer of personal and sensitive information.
+- Sensitive information under Article 23 includes ideology, health, genetic, sexual life, and criminal records, requiring separate and explicit consent.
 - Recent amendments introduced stronger cross-border restrictions and new data subject rights.
 categories:
 - name: Full Name
@@ -22,6 +20,7 @@ categories:
   citations:
   - regulation: PIPA
     article: Article 2(1) – Definition of Personal Information
+  subtype: personal_name
 - name: Resident Registration Number (RRN)
   type: direct_identifier
   required_masking: true
@@ -31,6 +30,7 @@ categories:
   citations:
   - regulation: PIPA
     article: Article 24
+  subtype: government_id
 - name: Passport or National ID Number
   type: direct_identifier
   required_masking: true
@@ -39,6 +39,7 @@ categories:
   citations:
   - regulation: PIPA
     article: Article 2(1)
+  subtype: government_id
 - name: Address
   type: quasi_identifier
   subtype: address
@@ -56,6 +57,7 @@ categories:
   citations:
   - regulation: PIPA
     article: Article 2(1)
+  subtype: telecom_contact
 - name: Email Address
   type: direct_identifier
   required_masking: true
@@ -64,6 +66,7 @@ categories:
   citations:
   - regulation: PIPA
     article: Article 2(1)
+  subtype: digital_contact
 - name: Biometric Data (e.g., fingerprints, facial image)
   type: special_category
   subtype: biometric
@@ -116,6 +119,7 @@ categories:
   citations:
   - regulation: PIPA
     article: Article 23(1)
+  subtype: genetic
 - name: IP Address and Online Identifiers
   type: quasi_identifier
   required_masking: true
@@ -125,6 +129,7 @@ categories:
   citations:
   - regulation: PIPA
     article: Article 2(1)
+  subtype: address
 - name: Employment Information
   type: quasi_identifier
   subtype: employment

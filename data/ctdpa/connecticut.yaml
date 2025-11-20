@@ -22,6 +22,7 @@ categories:
     section: Conn. Gen. Stat. § 42-515(13)
     description: Personal data means information that is linked or reasonably linkable to an identified or identifiable individual
     url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+  subtype: personal_name
 - name: Alias
   type: direct_identifier
   required_masking: true
@@ -40,6 +41,7 @@ categories:
   - regulation: CTDPA
     section: Conn. Gen. Stat. § 42-515(13)
     url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+  subtype: digital_contact
 - name: Postal Address
   type: quasi_identifier
   required_masking: true
@@ -49,6 +51,7 @@ categories:
   - regulation: CTDPA
     section: Conn. Gen. Stat. § 42-515(13)
     url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+  subtype: address
 - name: Telephone Number
   type: direct_identifier
   required_masking: true
@@ -58,6 +61,7 @@ categories:
   - regulation: CTDPA
     section: Conn. Gen. Stat. § 42-515(13)
     url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+  subtype: telecom_contact
 - name: Social Security Number
   type: direct_identifier
   subtype: government_id

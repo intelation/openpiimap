@@ -8,10 +8,8 @@ last_updated: 2025-06-30
 source_verified: true
 authority: Personal Information Protection Commission (PPC)
 notes:
-- Japan’s APPI regulates personal information handled by businesses and includes rules for sensitive data,
-  data transfers, and anonymized processing.
-- Special care-required personal information includes race, religion, medical history, and criminal records
-  (Article 2(3)).
+- Japan’s APPI regulates personal information handled by businesses and includes rules for sensitive data, data transfers, and anonymized processing.
+- Special care-required personal information includes race, religion, medical history, and criminal records (Article 2(3)).
 - Revised in 2022 to expand individual rights and cross-border transfer rules.
 categories:
 - name: Full Name
@@ -22,6 +20,7 @@ categories:
   citations:
   - regulation: APPI
     article: Article 2(1) – Definition of Personal Information
+  subtype: personal_name
 - name: Address
   type: quasi_identifier
   subtype: address
@@ -39,6 +38,7 @@ categories:
   citations:
   - regulation: APPI
     article: Article 2(1)
+  subtype: telecom_contact
 - name: Email Address
   type: direct_identifier
   required_masking: true
@@ -47,6 +47,7 @@ categories:
   citations:
   - regulation: APPI
     article: Article 2(1)
+  subtype: digital_contact
 - name: Government-issued Identifier (e.g., My Number)
   type: direct_identifier
   required_masking: true
@@ -64,6 +65,7 @@ categories:
   citations:
   - regulation: APPI
     article: PPC Guidelines (2022)
+  subtype: financial_identifier
 - name: Medical or Health Information
   type: special_category
   subtype: medical
@@ -92,6 +94,7 @@ categories:
   citations:
   - regulation: APPI
     article: Article 2(3)
+  subtype: personal_attributes
 - name: Religious Beliefs or Political Opinions
   type: special_category
   required_masking: true
@@ -117,6 +120,7 @@ categories:
   citations:
   - regulation: APPI
     article: PPC Interpretation (2022)
+  subtype: address
 - name: Employee Information
   type: quasi_identifier
   subtype: employment
@@ -135,3 +139,4 @@ categories:
   citations:
   - regulation: APPI
     article: PPC Interpretation (2022)
+  subtype: personal_attributes

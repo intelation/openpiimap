@@ -8,10 +8,8 @@ last_updated: 2025-11-20
 source_verified: true
 authority: Úřad pro ochranu osobních údajů (ÚOOÚ) – Czech Data Protection Authority
 notes:
-- Czech Republic enforces GDPR alongside Act No. 110/2019 Coll., on Personal Data
-  Processing.
-- The ÚOOÚ provides interpretation and enforcement of data protection rules in the
-  Czech context.
+- Czech Republic enforces GDPR alongside Act No. 110/2019 Coll., on Personal Data Processing.
+- The ÚOOÚ provides interpretation and enforcement of data protection rules in the Czech context.
 categories:
 - name: Full Name
   type: direct_identifier
@@ -191,6 +189,7 @@ categories:
   category_tags:
   - financial
   - sensitive
+  subtype: financial_identifier
 - name: Racial or Ethnic Origin
   type: special_category
   required_masking: true

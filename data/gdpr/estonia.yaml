@@ -8,8 +8,7 @@ last_updated: 2025-11-20
 source_verified: true
 authority: Andmekaitse Inspektsioon (AKI) – Estonian Data Protection Inspectorate
 notes:
-- Estonia enforces GDPR alongside the Personal Data Protection Act (Isikuandmete
-  kaitse seadus).
+- Estonia enforces GDPR alongside the Personal Data Protection Act (Isikuandmete kaitse seadus).
 - AKI supervises data protection compliance and provides guidance.
 categories:
 - name: Full Name
@@ -174,6 +173,7 @@ categories:
   category_tags:
   - financial
   - sensitive
+  subtype: financial_identifier
 - name: Racial or Ethnic Origin
   type: special_category
   required_masking: true
