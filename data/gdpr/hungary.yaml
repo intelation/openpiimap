@@ -1,0 +1,212 @@
+country: Hungary
+framework: GDPR
+region: EU
+language: hu
+version: 2024-06
+status: published
+last_updated: 2025-11-20
+source_verified: true
+authority: Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH) – National Authority for Data Protection and Freedom of Information
+notes:
+- Hungary enforces GDPR alongside Act CXII of 2011 on Informational Self-Determination
+  and Freedom of Information.
+- NAIH supervises data protection compliance and provides guidance.
+categories:
+- name: Full Name
+  type: direct_identifier
+  subtype: personal_name
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - core
+  - identity
+- name: Email Address
+  type: direct_identifier
+  subtype: digital_contact
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - core
+  - contact
+- name: Phone Number
+  type: direct_identifier
+  subtype: telecom_contact
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - core
+  - contact
+- name: IP Address
+  type: indirect_identifier
+  subtype: network_identifier
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: GDPR
+    recital: '30'
+  category_tags:
+  - digital
+  - behavioral
+- name: Személyazonosító szám (Personal Identity Number)
+  type: national_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - national_id
+  citations:
+  - regulation: GDPR
+    article: '87'
+  - national_law: Act CXII of 2011
+    section: Section 13
+    description: Special provisions for processing personal identification numbers
+  category_tags:
+  - identity
+  - sensitive
+- name: Társadalombiztosítási Azonosító Jel (TAJ / Social Security Number)
+  type: national_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - national_id
+  citations:
+  - regulation: GDPR
+    article: '87'
+  - national_law: Act CXII of 2011
+    section: Section 13
+  category_tags:
+  - identity
+  - sensitive
+- name: Health Data (medical records, diagnoses, treatments)
+  type: special_category
+  subtype: health
+  required_masking: true
+  tags:
+  - phi
+  - sensitive
+  citations:
+  - regulation: GDPR
+    article: 9(1)
+  category_tags:
+  - health
+  - sensitive
+- name: Biometric Data (fingerprints, facial recognition)
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - biometric
+  - sensitive
+  citations:
+  - regulation: GDPR
+    article: 9(1)
+  category_tags:
+  - biometric
+  - sensitive
+- name: Genetic Data
+  type: special_category
+  subtype: genetic
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: GDPR
+    article: 9(1)
+  category_tags:
+  - genetic
+  - sensitive
+- name: Location Data (GPS tracking, geolocation)
+  type: behavioral
+  subtype: geolocation
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - tracking
+  - digital
+- name: Cookie Identifiers / Online Tracking
+  type: indirect_identifier
+  subtype: device_id
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: GDPR
+    recital: '30'
+  category_tags:
+  - tracking
+  - digital
+- name: Employment Data (HR records, performance evaluations)
+  type: contextual_identifier
+  subtype: hr_data
+  required_masking: true
+  tags:
+  - pii
+  - hr_data
+  citations:
+  - regulation: GDPR
+    article: '88'
+  category_tags:
+  - employment
+  - sensitive
+- name: Education Records (student data, grades, transcripts)
+  type: contextual_identifier
+  subtype: education
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - education
+  - sensitive
+- name: Financial Information (bank accounts, credit card numbers)
+  type: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - financial
+  citations:
+  - regulation: GDPR
+    article: 4(1)
+  category_tags:
+  - financial
+  - sensitive
+- name: Racial or Ethnic Origin
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: GDPR
+    article: 9(1)
+  category_tags:
+  - sensitive
+- name: Religious or Philosophical Beliefs
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: GDPR
+    article: 9(1)
+  category_tags:
+  - sensitive

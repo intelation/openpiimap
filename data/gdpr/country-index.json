@@ -1,7 +1,7 @@
 {
   "framework": "GDPR",
   "region": "EU + EEA",
-  "last_updated": "2025-06-30",
+  "last_updated": "2025-11-20",
   "countries": [
     {
       "name": "Germany",
@@ -97,6 +97,90 @@
       "name": "Liechtenstein",
       "slug": "liechtenstein",
       "path": "data/gdpr/liechtenstein.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Portugal",
+      "slug": "portugal",
+      "path": "data/gdpr/portugal.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Czech Republic",
+      "slug": "czech-republic",
+      "path": "data/gdpr/czech-republic.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Romania",
+      "slug": "romania",
+      "path": "data/gdpr/romania.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Bulgaria",
+      "slug": "bulgaria",
+      "path": "data/gdpr/bulgaria.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Croatia",
+      "slug": "croatia",
+      "path": "data/gdpr/croatia.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Slovakia",
+      "slug": "slovakia",
+      "path": "data/gdpr/slovakia.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Slovenia",
+      "slug": "slovenia",
+      "path": "data/gdpr/slovenia.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Estonia",
+      "slug": "estonia",
+      "path": "data/gdpr/estonia.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Latvia",
+      "slug": "latvia",
+      "path": "data/gdpr/latvia.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Lithuania",
+      "slug": "lithuania",
+      "path": "data/gdpr/lithuania.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Hungary",
+      "slug": "hungary",
+      "path": "data/gdpr/hungary.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Luxembourg",
+      "slug": "luxembourg",
+      "path": "data/gdpr/luxembourg.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Cyprus",
+      "slug": "cyprus",
+      "path": "data/gdpr/cyprus.yaml",
+      "status": "complete"
+    },
+    {
+      "name": "Malta",
+      "slug": "malta",
+      "path": "data/gdpr/malta.yaml",
       "status": "complete"
     }
   ]
