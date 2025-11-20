@@ -2,7 +2,7 @@ country: Malaysia
 framework: PDPA (Malaysia)
 region: Asia
 language: en
-version: 2010
+version: "2010"
 status: published
 last_updated: 2025-08-25
 source_verified: true

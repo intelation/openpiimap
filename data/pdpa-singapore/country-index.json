@@ -1,0 +1,22 @@
+{
+  "framework": "PDPA (Singapore)",
+  "description": "Personal Data Protection Act of Singapore - Comprehensive privacy legislation regulating collection, use, disclosure, and protection of personal data",
+  "region": "Asia",
+  "last_updated": "2025-11-20",
+  "countries": [
+    {
+      "name": "Singapore",
+      "slug": "singapore",
+      "path": "data/pdpa-singapore/singapore.yaml",
+      "status": "complete"
+    }
+  ],
+  "total_countries": 1,
+  "enforcement_authority": "PDPC",
+  "key_features": [
+    "Consent-based data collection",
+    "Data breach notification requirements",
+    "Cross-border transfer restrictions",
+    "Do Not Call Registry"
+  ]
+}

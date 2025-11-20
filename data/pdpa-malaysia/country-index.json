@@ -1,0 +1,22 @@
+{
+  "framework": "PDPA (Malaysia)",
+  "description": "Personal Data Protection Act 2010 of Malaysia - Regulates the processing of personal data in commercial transactions",
+  "region": "Asia",
+  "last_updated": "2025-11-20",
+  "countries": [
+    {
+      "name": "Malaysia",
+      "slug": "malaysia",
+      "path": "data/pdpa-malaysia/malaysia.yaml",
+      "status": "complete"
+    }
+  ],
+  "total_countries": 1,
+  "enforcement_authority": "PDPD",
+  "key_features": [
+    "Consent-based processing",
+    "Data security requirements",
+    "Data subject access rights",
+    "Cross-border transfer provisions"
+  ]
+}
