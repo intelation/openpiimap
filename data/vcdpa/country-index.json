@@ -1,0 +1,13 @@
+{
+  "framework": "VCDPA",
+  "region": "United States",
+  "last_updated": "2025-11-20",
+  "countries": [
+    {
+      "name": "Virginia",
+      "slug": "virginia",
+      "path": "data/vcdpa/virginia.yaml",
+      "status": "complete"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "framework": "CTDPA",
+  "region": "United States",
+  "last_updated": "2025-11-20",
+  "countries": [
+    {
+      "name": "Connecticut",
+      "slug": "connecticut",
+      "path": "data/ctdpa/connecticut.yaml",
+      "status": "complete"
+    }
+  ]
+}

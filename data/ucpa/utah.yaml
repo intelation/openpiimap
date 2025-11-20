@@ -1,0 +1,273 @@
+country: United States - Utah
+framework: UCPA
+region: North America
+language: en
+version: 2023-12
+status: published
+last_updated: 2025-11-20
+source_verified: true
+authority: Utah Division of Consumer Protection
+notes:
+- The Utah Consumer Privacy Act (UCPA) grants Utah residents rights to access, delete, and opt out of certain data processing activities.
+- Applies to businesses that control or process personal data of at least 100,000 Utah residents or derive over 50% of gross revenue from sale of personal data and control or process personal data of at least 25,000 Utah residents.
+- Effective December 31, 2023.
+- UCPA does not include a private right of action; enforcement is handled by the Utah Division of Consumer Protection.
+categories:
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    description: Personal data means information that is linked or reasonably linkable to an identified or identifiable individual
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Alias
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Email Address
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Postal Address
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Telephone Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Social Security Number
+  type: direct_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(18)
+    description: Sensitive data requiring notice and opt-out opportunity
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Driver's License Number
+  type: direct_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(18)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Passport Number
+  type: direct_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(18)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Financial Account Number
+  type: direct_identifier
+  subtype: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Credit Card Number
+  type: direct_identifier
+  subtype: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Debit Card Number
+  type: direct_identifier
+  subtype: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Online Identifiers (IP address, cookies, device ID)
+  type: quasi_identifier
+  subtype: network_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Unique Identifiers
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Geolocation Data (precise)
+  type: special_category
+  subtype: geolocation
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(18)
+    description: Sensitive data requiring notice and opt-out opportunity
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Biometric Data
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - sensitive
+  - biometric
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(18)
+    description: Sensitive data requiring notice and opt-out opportunity
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Health Information
+  type: special_category
+  subtype: health
+  required_masking: true
+  tags:
+  - phi
+  - sensitive
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(18)
+    description: Sensitive data requiring notice and opt-out opportunity
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Genetic Data
+  type: special_category
+  subtype: genetic
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(18)
+    description: Sensitive data requiring notice and opt-out opportunity
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Racial or Ethnic Origin
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(18)
+    description: Sensitive data requiring notice and opt-out opportunity
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Religious Beliefs
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(18)
+    description: Sensitive data requiring notice and opt-out opportunity
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Sexual Orientation
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(18)
+    description: Sensitive data requiring notice and opt-out opportunity
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Personal Data of a Child
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  - child
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(18)
+    description: Sensitive data of children under 13 years of age requiring notice and opt-out opportunity
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Browsing History
+  type: behavioral
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Search History
+  type: behavioral
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Employment Information
+  type: contextual_identifier
+  subtype: employment
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html
+- name: Education Information
+  type: contextual_identifier
+  subtype: education
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: UCPA
+    section: Utah Code § 13-61-101(13)
+    url: https://le.utah.gov/~2022/bills/static/SB0227.html

@@ -2,8 +2,14 @@
   "APPI": [
     "Japan"
   ],
+  "CPA": [
+    "Colorado"
+  ],
   "CPRA": [
     "California"
+  ],
+  "CTDPA": [
+    "Connecticut"
   ],
   "DPA 2012": [
     "Philippines"
@@ -55,6 +61,9 @@
   "LGPD": [
     "Brazil"
   ],
+  "MCPA": [
+    "Montana"
+  ],
   "NDPR": [
     "Nigeria"
   ],
@@ -94,10 +103,16 @@
   "Privacy Act 2020 (New Zealand)": [
     "New Zealand"
   ],
+  "UCPA": [
+    "Utah"
+  ],
   "UAE DPL": [
     "United Arab Emirates"
   ],
   "UK GDPR": [
     "United Kingdom"
+  ],
+  "VCDPA": [
+    "Virginia"
   ]
 }

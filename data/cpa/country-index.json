@@ -1,0 +1,13 @@
+{
+  "framework": "CPA",
+  "region": "United States",
+  "last_updated": "2025-11-20",
+  "countries": [
+    {
+      "name": "Colorado",
+      "slug": "colorado",
+      "path": "data/cpa/colorado.yaml",
+      "status": "complete"
+    }
+  ]
+}

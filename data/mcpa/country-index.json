@@ -1,0 +1,13 @@
+{
+  "framework": "MCPA",
+  "region": "United States",
+  "last_updated": "2025-11-20",
+  "countries": [
+    {
+      "name": "Montana",
+      "slug": "montana",
+      "path": "data/mcpa/montana.yaml",
+      "status": "complete"
+    }
+  ]
+}

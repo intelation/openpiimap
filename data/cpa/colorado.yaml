@@ -1,0 +1,282 @@
+country: United States - Colorado
+framework: CPA
+region: North America
+language: en
+version: 2023-07
+status: published
+last_updated: 2025-11-20
+source_verified: true
+authority: Colorado Attorney General's Office
+notes:
+- The Colorado Privacy Act (CPA) grants Colorado residents rights to access, correct, delete, and opt out of certain data processing activities.
+- Applies to businesses that control or process personal data of at least 100,000 Colorado residents or derive revenue from sale of personal data and control or process personal data of at least 25,000 Colorado residents.
+- Effective July 1, 2023.
+categories:
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    description: Personal data means information that is linked or reasonably linkable to an identified or identifiable individual
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Alias
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Email Address
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Postal Address
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Telephone Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Social Security Number
+  type: direct_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(25)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Driver's License Number
+  type: direct_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(25)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Passport Number
+  type: direct_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(25)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Financial Account Number
+  type: direct_identifier
+  subtype: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Credit Card Number
+  type: direct_identifier
+  subtype: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Debit Card Number
+  type: direct_identifier
+  subtype: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Online Identifiers (IP address, cookies, device ID)
+  type: quasi_identifier
+  subtype: network_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Unique Identifiers
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Geolocation Data (precise)
+  type: special_category
+  subtype: geolocation
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(25)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Biometric Data
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - sensitive
+  - biometric
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(25)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Health Information
+  type: special_category
+  subtype: health
+  required_masking: true
+  tags:
+  - phi
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(25)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Genetic Data
+  type: special_category
+  subtype: genetic
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(25)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Racial or Ethnic Origin
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(25)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Religious Beliefs
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(25)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Sexual Orientation
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(25)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Citizenship or Immigration Status
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(25)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Personal Data of a Child
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  - child
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(25)
+    description: Sensitive data of children under 13 years of age requiring opt-in consent
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Browsing History
+  type: behavioral
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Search History
+  type: behavioral
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Employment Information
+  type: contextual_identifier
+  subtype: employment
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330
+- name: Education Information
+  type: contextual_identifier
+  subtype: education
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CPA
+    section: C.R.S. § 6-1-1303(14)
+    url: https://leg.colorado.gov/bills/hb21-1330

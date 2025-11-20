@@ -1,0 +1,13 @@
+{
+  "framework": "UCPA",
+  "region": "United States",
+  "last_updated": "2025-11-20",
+  "countries": [
+    {
+      "name": "Utah",
+      "slug": "utah",
+      "path": "data/ucpa/utah.yaml",
+      "status": "complete"
+    }
+  ]
+}

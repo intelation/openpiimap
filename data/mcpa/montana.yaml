@@ -1,0 +1,294 @@
+country: United States - Montana
+framework: MCPA
+region: North America
+language: en
+version: 2024-10
+status: published
+last_updated: 2025-11-20
+source_verified: true
+authority: Montana Attorney General's Office
+notes:
+- The Montana Consumer Data Privacy Act (MCPA) grants Montana residents rights to access, correct, delete, and opt out of certain data processing activities.
+- Applies to businesses that control or process personal data of at least 50,000 Montana residents (excluding payment data) or derive over 25% of gross revenue from sale of personal data and control or process personal data of at least 25,000 Montana residents.
+- Effective October 1, 2024.
+- MCPA has a lower threshold (50,000 residents) compared to other state laws.
+categories:
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    description: Personal data means information that is linked or reasonably linkable to an identified or identifiable individual
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Alias
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Email Address
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Postal Address
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Telephone Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Social Security Number
+  type: direct_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Driver's License Number
+  type: direct_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Passport Number
+  type: direct_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Financial Account Number
+  type: direct_identifier
+  subtype: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Credit Card Number
+  type: direct_identifier
+  subtype: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Debit Card Number
+  type: direct_identifier
+  subtype: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Online Identifiers (IP address, cookies, device ID)
+  type: quasi_identifier
+  subtype: network_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Unique Identifiers
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Account Credentials
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Geolocation Data (precise)
+  type: special_category
+  subtype: geolocation
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Biometric Data
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - sensitive
+  - biometric
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Health Information
+  type: special_category
+  subtype: health
+  required_masking: true
+  tags:
+  - phi
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Genetic Data
+  type: special_category
+  subtype: genetic
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Racial or Ethnic Origin
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Religious Beliefs
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Sexual Orientation
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Citizenship or Immigration Status
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    description: Sensitive data requiring opt-in consent
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Personal Data of a Child
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  - child
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(12)
+    description: Sensitive data of children under 13 years of age requiring opt-in consent
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Browsing History
+  type: behavioral
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Search History
+  type: behavioral
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Employment Information
+  type: contextual_identifier
+  subtype: employment
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf
+- name: Education Information
+  type: contextual_identifier
+  subtype: education
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: MCPA
+    section: Mont. Code Ann. § 30-14-2703(10)
+    url: https://leg.mt.gov/bills/2023/billpdf/SB0384.pdf

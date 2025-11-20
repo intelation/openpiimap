@@ -1,0 +1,293 @@
+country: United States - Connecticut
+framework: CTDPA
+region: North America
+language: en
+version: 2023-07
+status: published
+last_updated: 2025-11-20
+source_verified: true
+authority: Connecticut Attorney General's Office
+notes:
+- The Connecticut Data Privacy Act (CTDPA) grants Connecticut residents rights to access, correct, delete, and opt out of certain data processing activities.
+- Applies to businesses that control or process personal data of at least 100,000 Connecticut residents (excluding payment data) or derive over 25% of gross revenue from sale of personal data and control or process personal data of at least 25,000 Connecticut residents.
+- Effective July 1, 2023.
+categories:
+- name: Full Name
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    description: Personal data means information that is linked or reasonably linkable to an identified or identifiable individual
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Alias
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Email Address
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Postal Address
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Telephone Number
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Social Security Number
+  type: direct_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    description: Sensitive data requiring opt-in consent
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Driver's License Number
+  type: direct_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Passport Number
+  type: direct_identifier
+  subtype: government_id
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Financial Account Number
+  type: direct_identifier
+  subtype: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Credit Card Number
+  type: direct_identifier
+  subtype: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Debit Card Number
+  type: direct_identifier
+  subtype: financial_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Online Identifiers (IP address, cookies, device ID)
+  type: quasi_identifier
+  subtype: network_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Unique Identifiers
+  type: quasi_identifier
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Account Credentials
+  type: direct_identifier
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    description: Sensitive data requiring opt-in consent
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Geolocation Data (precise)
+  type: special_category
+  subtype: geolocation
+  required_masking: true
+  tags:
+  - pii
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    description: Sensitive data requiring opt-in consent
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Biometric Data
+  type: special_category
+  subtype: biometric
+  required_masking: true
+  tags:
+  - sensitive
+  - biometric
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    description: Sensitive data requiring opt-in consent
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Health Information
+  type: special_category
+  subtype: health
+  required_masking: true
+  tags:
+  - phi
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    description: Sensitive data requiring opt-in consent
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Genetic Data
+  type: special_category
+  subtype: genetic
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    description: Sensitive data requiring opt-in consent
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Racial or Ethnic Origin
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    description: Sensitive data requiring opt-in consent
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Religious Beliefs
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    description: Sensitive data requiring opt-in consent
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Sexual Orientation
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    description: Sensitive data requiring opt-in consent
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Citizenship or Immigration Status
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    description: Sensitive data requiring opt-in consent
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Personal Data of a Child
+  type: special_category
+  required_masking: true
+  tags:
+  - sensitive
+  - child
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(15)
+    description: Sensitive data of children under 13 years of age requiring opt-in consent
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Browsing History
+  type: behavioral
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Search History
+  type: behavioral
+  required_masking: true
+  tags:
+  - tracking
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Employment Information
+  type: contextual_identifier
+  subtype: employment
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
+- name: Education Information
+  type: contextual_identifier
+  subtype: education
+  required_masking: true
+  tags:
+  - pii
+  citations:
+  - regulation: CTDPA
+    section: Conn. Gen. Stat. § 42-515(13)
+    url: https://www.cga.ct.gov/2022/ACT/PA/PDF/2022PA-00015-R00SB-00006-PA.PDF
