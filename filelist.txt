@@ -50,7 +50,7 @@ C:.
 |   |       spain.yaml
 |   |       sweden.yaml
 |   |       
-|   +---hippa
+|   +---hipaa
 |   |       country-index.json
 |   |       usa.yaml
 |   |       

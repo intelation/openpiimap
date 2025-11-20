@@ -31,5 +31,8 @@ jobs:
       - name: Run schema validation
         run: python scripts/validate-yamls.py
 
+      - name: Run path validation
+        run: python scripts/validate-paths.py
+
       - name: Run YAML linter
         run: python scripts/lint-yamls.py

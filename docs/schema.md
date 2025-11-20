@@ -42,11 +42,19 @@ Each item in the `categories` array contains the following fields:
 - **Type:** `enum`
 - **Required:** ✅
 - **Accepted Values:**
-  - `direct_identifier` — Uniquely identifies an individual (e.g., passport number)
-  - `indirect_identifier` — May identify an individual when combined (e.g., birthdate, ZIP code)
-  - `special_category` — Sensitive categories defined by law (e.g., health, biometric, race)
-  - `pseudonymized_data` — Reversible transformation of identifiers
-  - `anonymized_data` — Irreversible; not considered personal data under some laws
+  - `direct_identifier` — Uniquely identifies an individual on its own (e.g., full name, email address, passport number, social security number)
+  - `indirect_identifier` — May identify an individual when combined with other data (e.g., birthdate, ZIP code, gender). Also known as `quasi_identifier` in some frameworks
+  - `quasi_identifier` — Alternative term for `indirect_identifier` used in HIPAA and some other frameworks. May identify an individual when combined with other data
+  - `special_category` — Sensitive categories requiring heightened protection under law (e.g., health data, biometric data, genetic data, racial or ethnic origin, religious beliefs, sexual orientation)
+  - `national_identifier` — Government-issued identification numbers specific to a country (e.g., Social Security Number in US, National Insurance Number in UK, CPF in Brazil, Aadhaar in India)
+  - `financial_identifier` — Financial account or transaction information (e.g., bank account numbers, credit card numbers, IBAN, payment history)
+  - `contextual_identifier` — Data that becomes PII in specific contexts such as employment or education (e.g., employee ID, salary information, performance reviews, student ID, grades)
+  - `behavioral` — Information about actions, preferences, or patterns of behavior (e.g., browsing history, location data, purchase history, search queries, app usage patterns)
+  - `meta` — Metadata about data processing, compliance, or governance (e.g., consent records, processing purposes, retention periods, data lineage)
+  - `pseudonymized_data` — Reversible transformation of identifiers (reserved for future use)
+  - `anonymized_data` — Irreversible transformation; not considered personal data under some laws (reserved for future use)
+
+**Note:** The terms `indirect_identifier` and `quasi_identifier` are used interchangeably across different frameworks. GDPR countries typically use `indirect_identifier`, while HIPAA and CPRA use `quasi_identifier`. Both refer to the same concept.
 
 ---
 
@@ -95,6 +103,31 @@ Each item in the `categories` array contains the following fields:
 ### `tags` (optional)
 - **Type:** `list of strings`
 - **Description:** Helpful tags to classify the data element (e.g., `["health", "genetic", "identifier"]`).
+
+---
+
+## 📋 Type Taxonomy Decision
+
+### `indirect_identifier` vs `quasi_identifier`
+
+**Status:** Both terms are **officially accepted** and considered equivalent.
+
+**Rationale:**
+- Different privacy frameworks use different terminology for the same concept
+- GDPR countries typically use `indirect_identifier`
+- HIPAA, CPRA, and many Asian frameworks use `quasi_identifier`
+- Both refer to data that may identify an individual when combined with other information
+
+**Implementation:**
+- Both terms are valid in the schema
+- Use `indirect_identifier` for GDPR-based frameworks
+- Use `quasi_identifier` for HIPAA, CPRA, and other non-GDPR frameworks
+- Validation and querying tools treat both as equivalent
+- No migration required; maintaining framework-specific conventions
+
+**Current Usage:**
+- `indirect_identifier`: 34 occurrences (primarily GDPR countries)
+- `quasi_identifier`: 51 occurrences (HIPAA, CPRA, and other frameworks)
 
 ---
 

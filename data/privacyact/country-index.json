@@ -6,19 +6,19 @@
     {
       "name": "Australia",
       "slug": "australia",
-      "path": "data/privacy-act/australia.yaml",
+      "path": "data/privacyact/australia.yaml",
       "status": "complete"
     },
     {
       "name": "New Zealand",
       "slug": "new-zealand",
-      "path": "data/privacy-act/new-zealand.yaml",
+      "path": "data/privacyact/new-zealand.yaml",
       "status": "pending"
     },
     {
       "name": "Bahamas",
       "slug": "bahamas",
-      "path": "data/privacy-act/bahamas.yaml",
+      "path": "data/privacyact/bahamas.yaml",
       "status": "pending"
     }
   ]

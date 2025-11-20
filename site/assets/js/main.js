@@ -20,7 +20,7 @@ const countries = [
     { name: "Liechtenstein", framework: "GDPR", region: "Europe", file: "gdpr-liechtenstein.html", categories: 15 },
     { name: "United Kingdom", framework: "UK GDPR", region: "Europe", file: "uk-gdpr-united-kingdom.html", categories: 15 },
     { name: "California, USA", framework: "CPRA", region: "North America", file: "cpra-california.html", categories: 12 },
-    { name: "USA (Health)", framework: "HIPAA", region: "North America", file: "hippa-usa.html", categories: 18 },
+    { name: "USA (Health)", framework: "HIPAA", region: "North America", file: "hipaa-usa.html", categories: 18 },
     { name: "Canada", framework: "PIPEDA", region: "North America", file: "pipeda-canada.html", categories: 10 },
     { name: "Brazil", framework: "LGPD", region: "Latin America", file: "lgpd-brazil.html", categories: 14 },
     { name: "Mexico", framework: "LFPDPPP", region: "Latin America", file: "lfpdppp-mexico.html", categories: 11 },
