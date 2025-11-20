@@ -1,0 +1,13 @@
+{
+  "framework": "DPDPB",
+  "region": "Asia",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "India",
+      "slug": "india",
+      "path": "data/dpdpb/india.yaml",
+      "status": "complete"
+    }
+  ]
+}

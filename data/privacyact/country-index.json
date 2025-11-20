@@ -1,25 +1,29 @@
 {
   "framework": "Privacy Act",
-  "region": "Asia-Pacific",
-  "last_updated": "2025-08-14",
+  "note": "This directory contains Privacy Act implementations from multiple countries with different laws. Directory restructure planned for Phase 2, Task 2.5.",
+  "region": "Multiple",
+  "last_updated": "2025-11-20",
   "countries": [
     {
       "name": "Australia",
       "slug": "australia",
       "path": "data/privacyact/australia.yaml",
+      "framework_specific": "Privacy Act (Australia)",
       "status": "complete"
     },
     {
       "name": "New Zealand",
       "slug": "new-zealand",
       "path": "data/privacyact/new-zealand.yaml",
-      "status": "pending"
+      "framework_specific": "Privacy Act 2020 (New Zealand)",
+      "status": "complete"
     },
     {
       "name": "Bahamas",
       "slug": "bahamas",
       "path": "data/privacyact/bahamas.yaml",
-      "status": "pending"
+      "framework_specific": "Privacy Act (Bahamas)",
+      "status": "complete"
     }
   ]
 }

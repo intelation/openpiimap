@@ -1,3 +1,13 @@
 {
-  "thailand": "thailand.yaml"
+  "framework": "PDPA (Thailand)",
+  "region": "Asia",
+  "last_updated": "2025-06-30",
+  "countries": [
+    {
+      "name": "Thailand",
+      "slug": "thailand",
+      "path": "data/pdpa-thailand/thailand.yaml",
+      "status": "complete"
+    }
+  ]
 }

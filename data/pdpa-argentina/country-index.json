@@ -1,13 +1,12 @@
 {
-  "framework": "PDPA Argentina",
+  "framework": "PDPA (Argentina)",
   "description": "Personal Data Protection Act of Argentina - Comprehensive privacy law with GDPR-inspired provisions",
   "countries": [
     {
-      "country": "Argentina",
-      "file": "argentina.yaml",
+      "name": "Argentina",
+      "slug": "argentina",
       "path": "data/pdpa-argentina/argentina.yaml",
-      "status": "published",
-      "last_updated": "2025-07-20"
+      "status": "published"
     }
   ],
   "total_countries": 1,

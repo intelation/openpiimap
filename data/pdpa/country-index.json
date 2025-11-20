@@ -1,18 +1,21 @@
 {
   "framework": "PDPA",
+  "note": "This directory contains PDPA implementations from multiple countries. Directory restructure planned for Phase 2, Task 2.5.",
   "region": "Asia",
-  "last_updated": "2025-08-25",
+  "last_updated": "2025-11-20",
   "countries": [
     {
       "name": "Singapore",
       "slug": "singapore",
       "path": "data/pdpa/singapore.yaml",
+      "framework_specific": "PDPA (Singapore)",
       "status": "complete"
     },
     {
       "name": "Malaysia",
       "slug": "malaysia",
       "path": "data/pdpa/malaysia.yaml",
+      "framework_specific": "PDPA (Malaysia)",
       "status": "complete"
     }
   ]

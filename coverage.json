@@ -5,6 +5,12 @@
   "CPRA": [
     "California"
   ],
+  "DPA 2012": [
+    "Philippines"
+  ],
+  "DPDPB": [
+    "India"
+  ],
   "FADP": [
     "Switzerland"
   ],
@@ -41,8 +47,17 @@
   "PDP Law": [
     "Indonesia"
   ],
-  "PDPA": [
+  "PDPA (Malaysia)": [
+    "Malaysia"
+  ],
+  "PDPA (Singapore)": [
     "Singapore"
+  ],
+  "PDPA (Argentina)": [
+    "Argentina"
+  ],
+  "PDPA (Thailand)": [
+    "Thailand"
   ],
   "PIPA": [
     "South Korea"
@@ -53,13 +68,22 @@
   "PIPL": [
     "China"
   ],
-  "Privacy Act": [
+  "POPIA": [
+    "South Africa"
+  ],
+  "Privacy Act (Australia)": [
     "Australia"
   ],
-  "UAE Federal Data Protection Law (Law No. 45/2021)": [
+  "Privacy Act (Bahamas)": [
+    "Bahamas"
+  ],
+  "Privacy Act 2020 (New Zealand)": [
+    "New Zealand"
+  ],
+  "UAE DPL": [
     "United Arab Emirates"
   ],
-  "UK GDPR + DPA 2018": [
+  "UK GDPR": [
     "United Kingdom"
   ]
 }
