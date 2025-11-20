@@ -69,6 +69,27 @@ categories:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(E)
   subtype: digital_contact
+  processing_purposes:
+    allowed:
+      - service_delivery
+      - patient_communication
+      - appointment_reminders
+      - billing_notices
+      - care_coordination
+      - customer_support
+      - authentication
+      - password_reset
+    restricted:
+      - marketing_without_authorization
+      - third_party_sharing
+      - research_without_consent
+    prohibited:
+      - sale_without_consent
+      - unauthorized_disclosure
+      - discrimination
+    consent_required: false
+    opt_out_available: true
+    notes: "HIPAA permits using email for treatment, payment, and healthcare operations without authorization. Marketing requires written authorization."
 - name: Social Security Numbers
   type: direct_identifier
   required_masking: true
@@ -101,9 +122,9 @@ categories:
       suitability: display
       reversible: false
   retention:
-    legal_minimum: "6 years"
+    legal_minimum: "7 years"
     recommended: "7 years after last service date"
-    basis: "HIPAA § 164.316(b)(2) + IRS regulations"
+    basis: "HIPAA retention requirements + IRS regulations"
     deletion_trigger:
       - "patient_death + 7 years"
       - "account_closure + 7 years"
@@ -111,6 +132,28 @@ categories:
       - "ongoing litigation or audit"
       - "minor records (retain until age 25)"
     archival_allowed: true
+  processing_purposes:
+    allowed:
+      - patient_identification
+      - billing
+      - tax_compliance
+      - eligibility_verification
+      - benefit_coordination
+      - legal_compliance
+      - fraud_prevention
+    restricted:
+      - employment_screening
+      - credit_decisions
+      - insurance_underwriting
+      - third_party_sharing
+    prohibited:
+      - sale_without_consent
+      - discrimination
+      - unauthorized_disclosure
+      - identity_theft
+    consent_required: false
+    opt_out_available: false
+    notes: "SSN usage for healthcare purposes is permitted under HIPAA but must be protected. Use limited to necessary purposes only."
 - name: Medical Record Numbers
   type: direct_identifier
   required_masking: true

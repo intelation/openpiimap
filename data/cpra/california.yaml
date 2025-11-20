@@ -116,7 +116,29 @@ categories:
       - "compliance with other laws"
     archival_allowed: false
     notes: "CPRA requires businesses to honor deletion requests unless exception applies"
-- name: Driver’s License or State ID Number
+  processing_purposes:
+    allowed:
+      - service_delivery
+      - identity_verification
+      - fraud_prevention
+      - legal_compliance
+      - tax_compliance
+      - employment_verification
+      - benefit_administration
+    restricted:
+      - credit_decisions
+      - third_party_sharing
+      - automated_decision_making
+      - cross_context_tracking
+    prohibited:
+      - sale_without_consent
+      - discrimination
+      - unauthorized_disclosure
+      - profiling_for_employment
+    consent_required: false
+    opt_out_available: true
+    notes: "CPRA classifies SSN as sensitive personal information. Consumers have right to limit use. Businesses must disclose processing purposes and allow opt-out of sale/sharing."
+- name: Driver's License or State ID Number
   type: direct_identifier
   required_masking: true
   tags:
@@ -203,7 +225,29 @@ categories:
       - "security purposes (limited)"
     archival_allowed: false
     notes: "Sensitive PI under CPRA requires opt-in consent; consumers can limit use at any time"
-- name: Health Information (non-HIPAA)
+  processing_purposes:
+    allowed:
+      - authentication
+      - identity_verification
+      - security
+      - fraud_prevention
+      - access_control
+    restricted:
+      - automated_decision_making
+      - profiling
+      - third_party_sharing
+      - ai_training
+      - behavioral_advertising
+    prohibited:
+      - sale_without_consent
+      - discrimination
+      - surveillance
+      - unauthorized_tracking
+      - employment_discrimination
+    consent_required: true
+    opt_out_available: true
+    notes: "CPRA §1798.121 requires opt-in consent for sensitive PI. Consumers have right to limit use and disclosure. Biometric data subject to strict purpose limitation and minimal retention."
+- name: Race or Ethnicity
   type: special_category
   required_masking: true
   tags:

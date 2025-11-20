@@ -39,6 +39,33 @@ categories:
   category_tags:
   - core
   - contact
+  processing_purposes:
+    allowed:
+      - service_delivery
+      - contract_fulfillment
+      - communication
+      - customer_support
+      - authentication
+      - marketing_with_consent
+      - analytics_with_consent
+    restricted:
+      - profiling_without_consent
+      - automated_decision_making
+      - third_party_sharing
+      - behavioral_advertising
+      - cross_context_tracking
+    prohibited:
+      - sale_without_consent
+      - discrimination
+      - surveillance
+      - unauthorized_disclosure
+    legal_basis:
+      - consent
+      - contract
+      - legitimate_interest
+    consent_required: false
+    opt_out_available: true
+    notes: "GDPR Article 6 legal basis required. Marketing requires consent (opt-in). Service communications permitted under contract basis."
 - name: Phone Number
   type: direct_identifier
   subtype: telecom_contact
@@ -171,6 +198,40 @@ categories:
       - "public health requirements"
     archival_allowed: true
     notes: "Medical records retention varies by German state law; some require 30 years for surgical records"
+  processing_purposes:
+    allowed:
+      - medical_treatment
+      - health_monitoring
+      - emergency_care
+      - preventive_medicine
+      - medical_diagnosis
+      - healthcare_management
+      - public_health
+      - research_with_consent
+      - legal_compliance
+    restricted:
+      - insurance_underwriting
+      - employment_screening
+      - third_party_sharing
+      - ai_training
+      - predictive_analytics
+      - automated_decision_making
+    prohibited:
+      - sale_without_consent
+      - discrimination
+      - insurance_discrimination
+      - employment_discrimination
+      - unauthorized_disclosure
+      - genetic_discrimination
+    legal_basis:
+      - explicit_consent
+      - vital_interests
+      - medical_treatment
+      - public_health
+      - scientific_research
+    consent_required: true
+    opt_out_available: false
+    notes: "GDPR Article 9(2) permits processing for medical treatment, public health, and research with safeguards. Explicit consent required except for vital interests or medical necessity."
   tags:
   - phi
   - sensitive

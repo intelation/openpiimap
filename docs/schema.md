@@ -451,6 +451,205 @@ Each item in the `categories` array contains the following fields:
 
 ---
 
+### `processing_purposes` (optional)
+- **Type:** `object`
+- **Description:** Defines the lawful purposes for which this data element can be processed, including allowed, restricted, and prohibited uses. Helps enforce purpose limitation principle (GDPR Article 5(1)(b)) and supports consent management and compliance automation.
+- **Status:** Optional enhancement feature (Phase 4)
+
+#### Processing Purposes Object Fields
+
+##### `allowed`
+- **Type:** `list of strings`
+- **Description:** Processing purposes that are permitted under the applicable legal framework, either with explicit consent, under legitimate interest, or by legal obligation.
+
+**Common Allowed Purposes:**
+- `service_delivery` - Providing the core service or product to the user
+- `account_management` - Managing user accounts and authentication
+- `authentication` - Verifying user identity and access control
+- `communication` - Sending transactional or service-related communications
+- `password_reset` - Account recovery and security features
+- `billing` - Payment processing and invoicing
+- `fraud_prevention` - Detecting and preventing fraudulent activity
+- `security` - Protecting systems and data security
+- `legal_compliance` - Meeting legal and regulatory obligations
+- `contract_fulfillment` - Performing contractual obligations
+- `customer_support` - Providing customer service and support
+- `analytics_with_consent` - Data analysis with explicit user consent
+- `marketing_with_consent` - Marketing communications with explicit consent
+- `research_with_consent` - Research purposes with explicit consent
+- `personalization_with_consent` - Personalizing user experience with consent
+
+##### `restricted`
+- **Type:** `list of strings`
+- **Description:** Processing purposes that require additional safeguards, explicit consent, or specific legal basis. May be subject to heightened scrutiny or regulatory oversight.
+
+**Common Restricted Purposes:**
+- `profiling_without_consent` - Creating user profiles without explicit consent
+- `automated_decision_making` - Automated decisions significantly affecting individuals (GDPR Article 22)
+- `sensitive_inference` - Inferring sensitive attributes from non-sensitive data
+- `behavioral_advertising` - Targeted advertising based on behavior tracking
+- `cross_context_tracking` - Tracking across websites or services
+- `third_party_sharing` - Sharing data with third parties (requires disclosure)
+- `data_enrichment` - Combining with external data sources
+- `predictive_analytics` - Predicting future behavior or characteristics
+- `ai_training` - Using data to train artificial intelligence models
+- `location_tracking` - Continuous or frequent location monitoring
+- `biometric_processing` - Processing biometric data for identification
+- `secondary_use` - Using data for purposes beyond original collection
+
+##### `prohibited`
+- **Type:** `list of strings`
+- **Description:** Processing purposes that are explicitly forbidden under the applicable legal framework, regardless of consent or other legal basis.
+
+**Common Prohibited Purposes:**
+- `sale_without_consent` - Selling personal data without explicit consent
+- `third_party_sale_without_consent` - Selling data to third parties without consent
+- `discrimination` - Using data to discriminate or cause harm
+- `surveillance` - Unauthorized surveillance or monitoring
+- `manipulation` - Manipulating vulnerable individuals or children
+- `credit_scoring_protected_classes` - Using protected characteristics for credit decisions
+- `employment_discrimination` - Using data for discriminatory hiring practices
+- `insurance_discrimination` - Denying coverage based on health/genetic data
+- `law_enforcement_without_warrant` - Sharing with law enforcement without legal process
+- `unauthorized_access` - Any access not authorized by law or consent
+- `data_breach_negligence` - Inadequate security measures
+- `deceptive_collection` - Collecting data through deception or misrepresentation
+
+##### `legal_basis` (optional)
+- **Type:** `list of strings`
+- **Description:** Legal justifications under which processing is permitted (particularly relevant for GDPR).
+
+**GDPR Legal Bases:**
+- `consent` - GDPR Article 6(1)(a) - Explicit consent from data subject
+- `contract` - GDPR Article 6(1)(b) - Necessary for contract performance
+- `legal_obligation` - GDPR Article 6(1)(c) - Required by law
+- `vital_interests` - GDPR Article 6(1)(d) - Protecting life or physical safety
+- `public_interest` - GDPR Article 6(1)(e) - Public interest or official authority
+- `legitimate_interest` - GDPR Article 6(1)(f) - Legitimate interests of controller
+
+##### `consent_required` (optional)
+- **Type:** `boolean`
+- **Description:** Whether explicit consent is required for any processing of this data element.
+
+##### `opt_out_available` (optional)
+- **Type:** `boolean`
+- **Description:** Whether users can opt out of certain processing purposes while still using the service.
+
+##### `notes` (optional)
+- **Type:** `string`
+- **Description:** Additional context or jurisdiction-specific guidance on processing purposes.
+
+#### Example Usage
+
+```yaml
+- name: Email Address
+  type: direct_identifier
+  subtype: digital_contact
+  required_masking: true
+  processing_purposes:
+    allowed:
+      - service_delivery
+      - authentication
+      - password_reset
+      - account_management
+      - communication
+      - customer_support
+      - fraud_prevention
+      - marketing_with_consent
+    restricted:
+      - third_party_sharing
+      - profiling_without_consent
+      - automated_decision_making
+      - behavioral_advertising
+    prohibited:
+      - sale_without_consent
+      - third_party_sale_without_consent
+      - surveillance
+      - discrimination
+    legal_basis:
+      - consent
+      - contract
+      - legitimate_interest
+    consent_required: false
+    opt_out_available: true
+    notes: "Marketing communications require explicit opt-in consent under GDPR. Transactional emails are permitted under contract basis."
+  citations:
+    - regulation: GDPR
+      article: 5(1)(b)
+      description: Purpose limitation principle
+      url: https://gdpr-info.eu/art-5-gdpr/
+
+- name: Health Data
+  type: special_category
+  subtype: health
+  required_masking: true
+  processing_purposes:
+    allowed:
+      - service_delivery
+      - medical_treatment
+      - health_monitoring
+      - emergency_care
+      - legal_compliance
+      - research_with_consent
+    restricted:
+      - insurance_underwriting
+      - employment_screening
+      - third_party_sharing
+      - ai_training
+      - predictive_analytics
+    prohibited:
+      - sale_without_consent
+      - discrimination
+      - insurance_discrimination
+      - employment_discrimination
+      - unauthorized_access
+      - public_disclosure
+    legal_basis:
+      - explicit_consent
+      - vital_interests
+      - medical_treatment
+      - public_health
+    consent_required: true
+    opt_out_available: false
+    notes: "GDPR Article 9 requires explicit consent for health data processing. Medical treatment and public health may proceed under other legal bases."
+  citations:
+    - regulation: GDPR
+      article: 9
+      description: Processing of special categories of personal data
+      url: https://gdpr-info.eu/art-9-gdpr/
+
+- name: Location Data
+  type: behavioral
+  subtype: geolocation
+  required_masking: true
+  processing_purposes:
+    allowed:
+      - service_delivery
+      - navigation
+      - location_based_services
+      - emergency_services
+      - fraud_prevention_with_consent
+    restricted:
+      - behavioral_advertising
+      - cross_context_tracking
+      - third_party_sharing
+      - location_tracking
+      - data_enrichment
+    prohibited:
+      - surveillance
+      - sale_without_consent
+      - stalking
+      - unauthorized_tracking
+    legal_basis:
+      - consent
+      - legitimate_interest
+    consent_required: true
+    opt_out_available: true
+    notes: "Continuous location tracking requires explicit consent. One-time location requests may proceed under legitimate interest for service delivery."
+```
+
+---
+
 ## 📋 Type Taxonomy Decision
 
 ### `indirect_identifier` vs `quasi_identifier`
