@@ -10,60 +10,38 @@ It helps privacy engineers, data scientists, and compliance teams understand and
 
 There is no publicly available, standardized, developer-friendly map of what qualifies as sensitive data across jurisdictions. OpenPIIMap solves that by offering:
 
-- YAML/JSON definitions of PII and PHI for 100+ regions
-- Legal citations, classifications, and regulatory context
-- A planned REST API and interactive web UI
+- YAML/JSON definitions of PII and PHI covering **29 frameworks** across **59 countries**
+- Legal citations, classifications, and regulatory context with authoritative URLs
+- Rich metadata including subtypes, risk levels, masking techniques, and retention guidelines
 - Extensible schema to support policy-as-code, data governance, anonymization, and risk analysis
 
 ---
 
 ## Coverage Index (All Frameworks)
 
-See the full global coverage: [`coverage.json`](./coverage.json)
+See the full global coverage: [`coverage.json`](./data/coverage.json)
 
-Frameworks supported:
+**29 Frameworks** spanning **59 countries** including:
 
-- GDPR (EU/EEA)
-- HIPAA (USA Health)
-- CPRA (California)
-- DPDPB (India)
-- LGPD (Brazil)
-- LFPDPPP (Mexico)
-- NDPR (Nigeria)
-- PDP Law (Indonesia)
-- PDPA (Singapore)
-- PIPA (South Korea)
-- PIPEDA (Canada)
-- PIPL (China)
-- Privacy Act (Australia)
-- UAE DPL (United Arab Emirates)
-- UK GDPR + DPA 2018
-- APPI (Japan)
+- **GDPR** - All 30 EU/EEA countries (Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Netherlands, Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden)
+- **US State Laws** - CPRA (California), VCDPA (Virginia), CPA (Colorado), CTDPA (Connecticut), UCPA (Utah), MCPA (Montana)
+- **HIPAA** (United States), **UK GDPR** (United Kingdom)
+- **LGPD** (Brazil), **LFPDPPP** (Mexico), **NDPR** (Nigeria), **POPIA** (South Africa)
+- **PIPL** (China), **DPDPB** (India), **APPI** (Japan), **PIPA** (South Korea)
+- **PDPA** (Singapore, Malaysia, Thailand, Argentina), **PIPEDA** (Canada)
+- **Privacy Acts** (Australia, Bahamas, New Zealand), **PDP Law** (Indonesia), **FADP** (Switzerland), **UAE DPL** (United Arab Emirates)
 
 ---
 
-## GDPR Coverage (Live)
+## Recent Updates
 
-We currently provide full YAML definitions for the following **EU and EEA** countries:
-
-| Country       | File Path                      |
-| ------------- | ------------------------------ |
-| Germany       | `data/gdpr/germany.yaml`       |
-| France        | `data/gdpr/france.yaml`        |
-| Ireland       | `data/gdpr/ireland.yaml`       |
-| Netherlands   | `data/gdpr/netherlands.yaml`   |
-| Spain         | `data/gdpr/spain.yaml`         |
-| Italy         | `data/gdpr/italy.yaml`         |
-| Belgium       | `data/gdpr/belgium.yaml`       |
-| Sweden        | `data/gdpr/sweden.yaml`        |
-| Austria       | `data/gdpr/austria.yaml`       |
-| Denmark       | `data/gdpr/denmark.yaml`       |
-| Finland       | `data/gdpr/finland.yaml`       |
-| Poland        | `data/gdpr/poland.yaml`        |
-| Greece        | `data/gdpr/greece.yaml`        |
-| Norway        | `data/gdpr/norway.yaml`        |
-| Iceland       | `data/gdpr/iceland.yaml`       |
-| Liechtenstein | `data/gdpr/liechtenstein.yaml` |
+**November 2025** - Major enhancements:
+- ✅ **Complete GDPR coverage** - All 30 EU/EEA countries now included (added 14 new countries)
+- ✅ **Expanded US coverage** - 5 new state privacy laws: Virginia (VCDPA), Colorado (CPA), Connecticut (CTDPA), Utah (UCPA), Montana (MCPA)
+- ✅ **Enhanced metadata** - Risk levels, breach impact analysis, masking techniques, retention guidelines, and processing purposes
+- ✅ **Comprehensive subtypes** - 81% coverage across all frameworks with 24 standardized subtypes
+- ✅ **Standardized citations** - Consistent format with authoritative URLs documented
+- ✅ **Framework naming** - Clarified PDPA variants with country-specific directories
 
 See the full GDPR index: [`data/gdpr/country-index.json`](./data/gdpr/country-index.json)
 
@@ -80,8 +58,7 @@ openpiimap/
 ├── examples/             # Sample use cases and before/after anonymization
 ├── docs/                 # Format guides, contributor instructions
 ├── .github/              # Issue and PR templates
-├── country-index.json    # (Deprecated: use coverage.json instead)
-├── coverage.json         # Global summary of supported frameworks and countries
+├── coverage.json         # Root-level summary (see data/coverage.json for latest)
 ├── README.md             # This file
 ├── LICENSE               # MIT License
 └── .gitignore
@@ -89,24 +66,32 @@ openpiimap/
 
 ---
 
-## YAML Example: GDPR – Germany
+## YAML Example: Enhanced Schema
 
 ```yaml
 country: Germany
 framework: GDPR
 categories:
-  - name: Full Name
+  - name: Email Address
     type: direct_identifier
+    subtype: digital_contact
     required_masking: true
+    risk_level: high
     citations:
       - regulation: GDPR
         article: 4(1)
-  - name: Health Data
-    type: special_category
-    required_masking: true
-    citations:
-      - regulation: GDPR
-        article: 9
+        url: https://eur-lex.europa.eu/eli/reg/2016/679/oj
+    masking_techniques:
+      - method: hash
+        algorithm: SHA-256
+        suitability: production
+    processing_purposes:
+      allowed:
+        - service_delivery
+        - authentication
+      legal_basis:
+        - consent
+        - contract
 ```
 
 ---
@@ -160,16 +145,17 @@ MIT License © 2025 [Intelation](https://www.intelation.com) Built for the globa
 Coming soon at [https://www.openpiimap.org](https://www.openpiimap.org)
 ---
 
-## Validation CLI (Scripts)
+## Validation & Tools
 
-Run all core checks using the following commands:
+Run core validation and generation commands:
 
 ```bash
-python scripts/openpiimap.py validate            # Validate all YAML files against schema
-python scripts/openpiimap.py lint                # Lint for field order and tag presence
-python scripts/openpiimap.py format              # Reorder fields for consistency
-python scripts/openpiimap.py generate-coverage   # Regenerate coverage.json
-python scripts/tag-all-yamls.py                  # Auto-fill tags where missing
+python scripts/openpiimap.py validate              # Validate all YAML files
+python scripts/openpiimap.py lint                  # Check field order and tags
+python scripts/openpiimap.py format                # Reformat YAML files
+python scripts/generate-coverage-json.py           # Update coverage.json
+python scripts/generate-country-indexes.py         # Auto-generate country indexes
+python scripts/validate-paths.py                   # Verify file path references
 ```
 
 ---
