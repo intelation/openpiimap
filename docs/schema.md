@@ -267,6 +267,190 @@ Each item in the `categories` array contains the following fields:
 
 ---
 
+### `risk_level` (optional)
+- **Type:** `enum`
+- **Accepted Values:** `critical`, `high`, `medium`, `low`
+- **Description:** Indicates the risk level associated with exposure or breach of this data element. Used for risk assessment and prioritization.
+- **Status:** Optional enhancement feature (Phase 4)
+
+#### Risk Level Definitions
+
+| Level | Description | Examples |
+|-------|-------------|----------|
+| `critical` | Highest risk; direct identity theft or severe harm possible | SSN, Passport Number, National ID, Financial Account Numbers |
+| `high` | Significant risk; serious harm or fraud possible | Health Data, Biometric Data, Genetic Data, Credit Card Numbers |
+| `medium` | Moderate risk; harm possible when combined with other data | Phone Number, Email Address, IP Address, Date of Birth |
+| `low` | Lower risk; minimal harm in isolation | ZIP Code, Gender, Job Title, General Demographic Data |
+
+---
+
+### `breach_impact` (optional)
+- **Type:** `list of strings`
+- **Description:** Potential consequences or harms that could result from unauthorized disclosure, loss, or breach of this data element.
+- **Status:** Optional enhancement feature (Phase 4)
+
+#### Common Breach Impact Categories
+
+- `identity_theft` - Can be used to steal or impersonate identity
+- `financial_fraud` - Can lead to unauthorized financial transactions
+- `account_takeover` - Can be used to gain unauthorized access to accounts
+- `discrimination` - Can lead to unfair treatment or bias
+- `reputational_harm` - Can damage personal or professional reputation
+- `physical_harm` - Can lead to physical safety risks (e.g., stalking, harassment)
+- `emotional_distress` - Can cause psychological harm or distress
+- `privacy_violation` - Intrusive disclosure of personal information
+- `regulatory_penalties` - Non-compliance leading to fines or sanctions
+- `medical_fraud` - Misuse of health information for fraud
+- `insurance_discrimination` - Unfair insurance decisions based on health/genetic data
+
+---
+
+### `gdpr_penalty_tier` (optional)
+- **Type:** `enum`
+- **Accepted Values:** `high`, `medium`, `low`
+- **Description:** Indicates the potential penalty tier under GDPR for violations related to this data category. Relevant for GDPR-regulated jurisdictions.
+- **Status:** Optional enhancement feature (Phase 4)
+
+#### GDPR Penalty Tiers
+
+| Tier | Maximum Fine | Violation Types | Examples |
+|------|-------------|-----------------|----------|
+| `high` | Up to €20M or 4% of annual global turnover | Article 9 violations (special category data), consent violations, data transfer violations | Health Data, Biometric Data, Genetic Data, Racial/Ethnic Origin |
+| `medium` | Up to €10M or 2% of annual global turnover | Other GDPR principle violations, security violations | General PII processing violations, inadequate security measures |
+| `low` | Administrative measures or warnings | Minor violations, first-time offenders with corrective action | Technical compliance issues, documentation gaps |
+
+**Note:** Actual penalties depend on multiple factors including intent, severity, prior violations, and cooperation with authorities.
+
+---
+
+### `masking_techniques` (optional)
+- **Type:** `list of objects`
+- **Description:** Recommended techniques for anonymizing, pseudonymizing, or masking this data element. Provides practical guidance for data protection implementation.
+- **Status:** Optional enhancement feature (Phase 4)
+
+#### Each masking technique object contains:
+
+##### `method`
+- **Type:** `enum`
+- **Required:** ✅
+- **Accepted Values:**
+  - `hash` - One-way cryptographic hashing
+  - `encryption` - Reversible encryption with key management
+  - `pseudonymization` - Replacing identifiers with pseudonyms
+  - `tokenization` - Replacing sensitive data with non-sensitive tokens
+  - `partial_mask` - Partially obscuring data (e.g., `***-**-1234`)
+  - `generalization` - Reducing precision (e.g., age ranges instead of exact age)
+  - `suppression` - Complete removal of data
+  - `noise_addition` - Adding statistical noise to numerical data
+  - `aggregation` - Combining individual records into aggregates
+
+##### `algorithm` (optional)
+- **Type:** `string`
+- **Description:** Specific algorithm or technique used (e.g., `"SHA-256"`, `"AES-256"`, `"k-anonymity"`).
+
+##### `suitability`
+- **Type:** `enum`
+- **Required:** ✅
+- **Accepted Values:**
+  - `production` - Suitable for production data storage and processing
+  - `analytics` - Suitable for analytical and research purposes
+  - `testing` - Suitable for testing and development environments
+  - `display` - Suitable for displaying to end users or in logs
+  - `archival` - Suitable for long-term archival storage
+  - `sharing` - Suitable for sharing with third parties
+
+##### `reversible` (optional)
+- **Type:** `boolean`
+- **Description:** Whether the masking can be reversed to recover original data.
+
+##### `notes` (optional)
+- **Type:** `string`
+- **Description:** Additional implementation notes or considerations.
+
+#### Example Usage
+
+```yaml
+- name: Email Address
+  type: direct_identifier
+  masking_techniques:
+    - method: hash
+      algorithm: SHA-256
+      suitability: production
+      reversible: false
+    - method: pseudonymization
+      algorithm: tokenization
+      suitability: analytics
+      reversible: true
+      notes: Maintain token mapping in secure vault
+    - method: partial_mask
+      algorithm: "us***@example.com"
+      suitability: display
+      reversible: false
+```
+
+---
+
+### `retention` (optional)
+- **Type:** `object`
+- **Description:** Guidelines for data retention and deletion of this data element. Helps implement data lifecycle management and comply with regulatory requirements.
+- **Status:** Optional enhancement feature (Phase 4)
+
+#### Retention Object Fields
+
+##### `legal_minimum`
+- **Type:** `string`
+- **Description:** Minimum retention period required by law (e.g., `"5 years"`, `"7 years"`, `"until consent withdrawn"`).
+
+##### `recommended`
+- **Type:** `string`
+- **Description:** Recommended retention period that balances legal requirements with privacy principles (e.g., `"7 years"`, `"3 years after account closure"`).
+
+##### `maximum` (optional)
+- **Type:** `string`
+- **Description:** Maximum retention period allowed under data minimization principles.
+
+##### `basis`
+- **Type:** `string`
+- **Description:** Legal or business basis for the retention period (e.g., `"Tax law + GDPR Article 17"`, `"SOX compliance"`, `"Statute of limitations"`).
+
+##### `deletion_trigger`
+- **Type:** `list of strings`
+- **Description:** Events or conditions that trigger data deletion (e.g., `"account_closure"`, `"consent_withdrawal"`, `"contract_termination"`).
+
+##### `exceptions` (optional)
+- **Type:** `list of strings`
+- **Description:** Circumstances where normal retention rules don't apply (e.g., `"ongoing legal proceedings"`, `"regulatory investigation"`, `"fraud prevention"`).
+
+##### `archival_allowed` (optional)
+- **Type:** `boolean`
+- **Description:** Whether data can be moved to archival storage with restricted access instead of deletion.
+
+##### `notes` (optional)
+- **Type:** `string`
+- **Description:** Additional implementation guidance or jurisdiction-specific requirements.
+
+#### Example Usage
+
+```yaml
+- name: Financial Transaction Data
+  type: special_category
+  retention:
+    legal_minimum: "5 years"
+    recommended: "7 years"
+    maximum: "10 years"
+    basis: "Tax law (IRC Section 6001) + GDPR Article 17"
+    deletion_trigger:
+      - "account_closure + 7 years"
+      - "consent_withdrawal (unless legal obligation applies)"
+    exceptions:
+      - "ongoing audit or legal proceedings"
+      - "fraud investigation"
+    archival_allowed: true
+    notes: "Financial institutions may have extended retention requirements under AML regulations"
+```
+
+---
+
 ## 📋 Type Taxonomy Decision
 
 ### `indirect_identifier` vs `quasi_identifier`
@@ -292,7 +476,7 @@ Each item in the `categories` array contains the following fields:
 
 ---
 
-## ✅ Example
+## ✅ Example (Basic)
 
 ```yaml
 country: Germany
@@ -311,3 +495,275 @@ categories:
       - regulation: GDPR
         article: 9
     tags: ["health", "sensitive"]
+ 
+ 
+ 
+ - - - 
+ 
+ 
+ 
+ # #   � x �   E x a m p l e   ( W i t h   A d v a n c e d   F e a t u r e s   -   P h a s e   4 ) 
+ 
+ 
+ 
+ ` ` ` y a m l 
+ 
+ c o u n t r y :   U n i t e d   S t a t e s 
+ 
+ f r a m e w o r k :   H I P A A 
+ 
+ c a t e g o r i e s : 
+ 
+     -   n a m e :   S o c i a l   S e c u r i t y   N u m b e r 
+ 
+         t y p e :   n a t i o n a l _ i d e n t i f i e r 
+ 
+         s u b t y p e :   g o v e r n m e n t _ i d 
+ 
+         r e q u i r e d _ m a s k i n g :   t r u e 
+ 
+         r i s k _ l e v e l :   c r i t i c a l 
+ 
+         b r e a c h _ i m p a c t : 
+ 
+             -   i d e n t i t y _ t h e f t 
+ 
+             -   f i n a n c i a l _ f r a u d 
+ 
+             -   a c c o u n t _ t a k e o v e r 
+ 
+         m a s k i n g _ t e c h n i q u e s : 
+ 
+             -   m e t h o d :   h a s h 
+ 
+                 a l g o r i t h m :   S H A - 2 5 6 
+ 
+                 s u i t a b i l i t y :   p r o d u c t i o n 
+ 
+                 r e v e r s i b l e :   f a l s e 
+ 
+                 n o t e s :   O n e - w a y   h a s h   f o r   v e r i f i c a t i o n   p u r p o s e s   o n l y 
+ 
+             -   m e t h o d :   e n c r y p t i o n 
+ 
+                 a l g o r i t h m :   A E S - 2 5 6 
+ 
+                 s u i t a b i l i t y :   a r c h i v a l 
+ 
+                 r e v e r s i b l e :   t r u e 
+ 
+                 n o t e s :   U s e   H S M - b a c k e d   k e y   m a n a g e m e n t 
+ 
+             -   m e t h o d :   p a r t i a l _ m a s k 
+ 
+                 a l g o r i t h m :   " * * * - * * - 1 2 3 4 " 
+ 
+                 s u i t a b i l i t y :   d i s p l a y 
+ 
+                 r e v e r s i b l e :   f a l s e 
+ 
+         r e t e n t i o n : 
+ 
+             l e g a l _ m i n i m u m :   " 7   y e a r s " 
+ 
+             r e c o m m e n d e d :   " 7   y e a r s   a f t e r   l a s t   s e r v i c e   d a t e " 
+ 
+             b a s i s :   " H I P A A   r e t e n t i o n   r e q u i r e m e n t s   +   I R S   r e g u l a t i o n s " 
+ 
+             d e l e t i o n _ t r i g g e r : 
+ 
+                 -   " p a t i e n t _ d e a t h   +   7   y e a r s " 
+ 
+                 -   " a c c o u n t _ c l o s u r e   +   7   y e a r s " 
+ 
+             e x c e p t i o n s : 
+ 
+                 -   " o n g o i n g   l i t i g a t i o n   o r   a u d i t " 
+ 
+                 -   " m i n o r   r e c o r d s   ( r e t a i n   u n t i l   a g e   2 5 ) " 
+ 
+             a r c h i v a l _ a l l o w e d :   t r u e 
+ 
+         c i t a t i o n s : 
+ 
+             -   r e g u l a t i o n :   H I P A A 
+ 
+                 s e c t i o n :   4 5   C F R   � � 1 6 4 . 5 1 4 ( b ) ( 2 ) ( i ) ( A ) 
+ 
+                 u r l :   h t t p s : / / w w w . e c f r . g o v / c u r r e n t / t i t l e - 4 5 / s u b t i t l e - A / s u b c h a p t e r - C / p a r t - 1 6 4 
+ 
+         t a g s :   [ " i d e n t i f i e r " ,   " n a t i o n a l _ i d " ,   " s e n s i t i v e " ] 
+ 
+         
+ 
+     -   n a m e :   M e d i c a l   R e c o r d   N u m b e r 
+ 
+         t y p e :   d i r e c t _ i d e n t i f i e r 
+ 
+         s u b t y p e :   m e d i c a l 
+ 
+         r e q u i r e d _ m a s k i n g :   t r u e 
+ 
+         r i s k _ l e v e l :   h i g h 
+ 
+         b r e a c h _ i m p a c t : 
+ 
+             -   m e d i c a l _ f r a u d 
+ 
+             -   p r i v a c y _ v i o l a t i o n 
+ 
+             -   i d e n t i t y _ t h e f t 
+ 
+         g d p r _ p e n a l t y _ t i e r :   h i g h 
+ 
+         m a s k i n g _ t e c h n i q u e s : 
+ 
+             -   m e t h o d :   p s e u d o n y m i z a t i o n 
+ 
+                 a l g o r i t h m :   t o k e n i z a t i o n 
+ 
+                 s u i t a b i l i t y :   a n a l y t i c s 
+ 
+                 r e v e r s i b l e :   t r u e 
+ 
+                 n o t e s :   M a i n t a i n   s e c u r e   t o k e n   v a u l t   w i t h   a c c e s s   c o n t r o l s 
+ 
+             -   m e t h o d :   p a r t i a l _ m a s k 
+ 
+                 a l g o r i t h m :   " M R N - * * * - 4 5 6 " 
+ 
+                 s u i t a b i l i t y :   d i s p l a y 
+ 
+                 r e v e r s i b l e :   f a l s e 
+ 
+         r e t e n t i o n : 
+ 
+             l e g a l _ m i n i m u m :   " 6   y e a r s " 
+ 
+             r e c o m m e n d e d :   " 1 0   y e a r s " 
+ 
+             m a x i m u m :   " 5 0   y e a r s " 
+ 
+             b a s i s :   " H I P A A   � �   1 6 4 . 3 1 6 ( b ) ( 2 )   +   s t a t e   m e d i c a l   r e c o r d s   l a w s " 
+ 
+             d e l e t i o n _ t r i g g e r : 
+ 
+                 -   " p a t i e n t _ r e q u e s t   ( R i g h t   t o   E r a s u r e ) " 
+ 
+                 -   " e n d _ o f _ r e t e n t i o n _ p e r i o d " 
+ 
+             e x c e p t i o n s : 
+ 
+                 -   " p u b l i c   h e a l t h   r e p o r t i n g   r e q u i r e m e n t s " 
+ 
+                 -   " q u a l i t y   i m p r o v e m e n t   p r o g r a m s " 
+ 
+             a r c h i v a l _ a l l o w e d :   t r u e 
+ 
+             n o t e s :   " S o m e   s t a t e s   r e q u i r e   l o n g e r   r e t e n t i o n   f o r   m i n o r s " 
+ 
+         c i t a t i o n s : 
+ 
+             -   r e g u l a t i o n :   H I P A A 
+ 
+                 s e c t i o n :   4 5   C F R   � � 1 6 4 . 5 1 4 ( b ) ( 2 ) ( i ) ( B ) 
+ 
+                 d e s c r i p t i o n :   M e d i c a l   r e c o r d   n u m b e r s   m u s t   b e   r e m o v e d   f o r   d e - i d e n t i f i c a t i o n 
+ 
+                 u r l :   h t t p s : / / w w w . e c f r . g o v / c u r r e n t / t i t l e - 4 5 / s u b t i t l e - A / s u b c h a p t e r - C / p a r t - 1 6 4 
+ 
+         t a g s :   [ " m e d i c a l " ,   " i d e n t i f i e r " ,   " p h i " ] 
+ 
+ ` ` ` 
+ 
+ 
+
+---
+
+## �Y"� Example (With Advanced Features - Phase 4)
+
+```yaml
+country: United States
+framework: HIPAA
+categories:
+  - name: Social Security Number
+    type: national_identifier
+    subtype: government_id
+    required_masking: true
+    risk_level: critical
+    breach_impact:
+      - identity_theft
+      - financial_fraud
+      - account_takeover
+    masking_techniques:
+      - method: hash
+        algorithm: SHA-256
+        suitability: production
+        reversible: false
+        notes: One-way hash for verification purposes only
+      - method: encryption
+        algorithm: AES-256
+        suitability: archival
+        reversible: true
+        notes: Use HSM-backed key management
+      - method: partial_mask
+        algorithm: "***-**-1234"
+        suitability: display
+        reversible: false
+    retention:
+      legal_minimum: "7 years"
+      recommended: "7 years after last service date"
+      basis: "HIPAA retention requirements + IRS regulations"
+      deletion_trigger:
+        - "patient_death + 7 years"
+        - "account_closure + 7 years"
+      exceptions:
+        - "ongoing litigation or audit"
+        - "minor records (retain until age 25)"
+      archival_allowed: true
+    citations:
+      - regulation: HIPAA
+        section: 45 CFR §164.514(b)(2)(i)(A)
+        url: https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164
+    tags: ["identifier", "national_id", "sensitive"]
+    
+  - name: Medical Record Number
+    type: direct_identifier
+    subtype: medical
+    required_masking: true
+    risk_level: high
+    breach_impact:
+      - medical_fraud
+      - privacy_violation
+      - identity_theft
+    gdpr_penalty_tier: high
+    masking_techniques:
+      - method: pseudonymization
+        algorithm: tokenization
+        suitability: analytics
+        reversible: true
+        notes: Maintain secure token vault with access controls
+      - method: partial_mask
+        algorithm: "MRN-***-456"
+        suitability: display
+        reversible: false
+    retention:
+      legal_minimum: "6 years"
+      recommended: "10 years"
+      maximum: "50 years"
+      basis: "HIPAA § 164.316(b)(2) + state medical records laws"
+      deletion_trigger:
+        - "patient_request (Right to Erasure)"
+        - "end_of_retention_period"
+      exceptions:
+        - "public health reporting requirements"
+        - "quality improvement programs"
+      archival_allowed: true
+      notes: "Some states require longer retention for minors"
+    citations:
+      - regulation: HIPAA
+        section: 45 CFR §164.514(b)(2)(i)(B)
+        description: Medical record numbers must be removed for de-identification
+        url: https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164
+    tags: ["medical", "identifier", "phi"]
+```

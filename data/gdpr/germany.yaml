@@ -90,14 +90,87 @@ categories:
   citations:
   - regulation: GDPR
     article: 9(1)
+    url: https://gdpr-info.eu/art-9-gdpr/
+    description: Processing of special categories requires explicit consent or legal basis
   category_tags:
   - core
   - biometric
   - sensitive
+  risk_level: high
+  breach_impact:
+    - identity_theft
+    - privacy_violation
+    - discrimination
+    - physical_harm
+  gdpr_penalty_tier: high
+  masking_techniques:
+    - method: encryption
+      algorithm: AES-256-GCM
+      suitability: production
+      reversible: true
+      notes: Store encrypted templates only; never store raw biometric images
+    - method: hash
+      algorithm: SHA-3-256
+      suitability: verification
+      reversible: false
+    - method: suppression
+      suitability: analytics
+      reversible: false
+      notes: Remove entirely for non-essential analytics
+  retention:
+    legal_minimum: "As long as processing purpose exists"
+    recommended: "Delete immediately after verification or authentication"
+    maximum: "No longer than necessary (GDPR Article 5(1)(e))"
+    basis: "GDPR Article 9 + Article 5(1)(e) storage limitation"
+    deletion_trigger:
+      - "consent_withdrawal"
+      - "purpose_fulfilled"
+      - "user_account_deletion"
+    exceptions:
+      - "legal obligation to retain (e.g., employment law)"
+      - "vital interests of data subject"
+    archival_allowed: false
+    notes: "Biometric data requires explicit consent; must be deleted when no longer needed"
 - name: Health Data (diagnoses, medical history)
   type: special_category
   subtype: health
   required_masking: true
+  risk_level: high
+  breach_impact:
+    - medical_fraud
+    - discrimination
+    - insurance_discrimination
+    - privacy_violation
+    - emotional_distress
+  gdpr_penalty_tier: high
+  masking_techniques:
+    - method: pseudonymization
+      algorithm: tokenization
+      suitability: analytics
+      reversible: true
+      notes: Required for research under GDPR Article 89
+    - method: generalization
+      algorithm: k-anonymity (k>=5)
+      suitability: research
+      reversible: false
+    - method: encryption
+      algorithm: AES-256
+      suitability: production
+      reversible: true
+  retention:
+    legal_minimum: "10 years"
+    recommended: "10 years after last treatment"
+    maximum: "30 years"
+    basis: "German Medical Association guidelines + GDPR Article 17"
+    deletion_trigger:
+      - "patient_death + 10 years"
+      - "end_of_medical_relationship + 10 years"
+    exceptions:
+      - "ongoing medical treatment"
+      - "legal claims or proceedings"
+      - "public health requirements"
+    archival_allowed: true
+    notes: "Medical records retention varies by German state law; some require 30 years for surgical records"
   tags:
   - phi
   - sensitive

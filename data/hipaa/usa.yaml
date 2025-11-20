@@ -78,7 +78,39 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(F)
+    url: https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164
   subtype: government_id
+  risk_level: critical
+  breach_impact:
+    - identity_theft
+    - financial_fraud
+    - account_takeover
+  masking_techniques:
+    - method: hash
+      algorithm: SHA-256
+      suitability: production
+      reversible: false
+      notes: One-way hash for verification purposes only
+    - method: encryption
+      algorithm: AES-256
+      suitability: archival
+      reversible: true
+      notes: Use FIPS 140-2 compliant HSM for key management
+    - method: partial_mask
+      algorithm: "***-**-1234"
+      suitability: display
+      reversible: false
+  retention:
+    legal_minimum: "6 years"
+    recommended: "7 years after last service date"
+    basis: "HIPAA § 164.316(b)(2) + IRS regulations"
+    deletion_trigger:
+      - "patient_death + 7 years"
+      - "account_closure + 7 years"
+    exceptions:
+      - "ongoing litigation or audit"
+      - "minor records (retain until age 25)"
+    archival_allowed: true
 - name: Medical Record Numbers
   type: direct_identifier
   required_masking: true
@@ -87,7 +119,38 @@ categories:
   citations:
   - regulation: HIPAA
     section: 45 CFR §164.514(b)(2)(i)(G)
+    description: Medical record numbers must be removed for de-identification
+    url: https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164
   subtype: medical
+  risk_level: high
+  breach_impact:
+    - medical_fraud
+    - privacy_violation
+    - identity_theft
+  masking_techniques:
+    - method: pseudonymization
+      algorithm: tokenization
+      suitability: analytics
+      reversible: true
+      notes: Maintain secure token vault with strict access controls
+    - method: partial_mask
+      algorithm: "MRN-***-456"
+      suitability: display
+      reversible: false
+  retention:
+    legal_minimum: "6 years"
+    recommended: "10 years"
+    maximum: "50 years"
+    basis: "HIPAA § 164.316(b)(2) + state medical records laws"
+    deletion_trigger:
+      - "patient_request (Right to Erasure where applicable)"
+      - "end_of_retention_period"
+    exceptions:
+      - "public health reporting requirements"
+      - "quality improvement programs"
+      - "ongoing medical care"
+    archival_allowed: true
+    notes: "Pediatric records may require longer retention; check state-specific requirements"
 - name: Health Plan Beneficiary Numbers
   type: direct_identifier
   required_masking: true

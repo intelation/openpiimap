@@ -80,7 +80,42 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(v)(1)(B)
+    url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=1798.140
   subtype: government_id
+  risk_level: critical
+  breach_impact:
+    - identity_theft
+    - financial_fraud
+    - account_takeover
+    - regulatory_penalties
+  masking_techniques:
+    - method: hash
+      algorithm: SHA-256
+      suitability: production
+      reversible: false
+    - method: encryption
+      algorithm: AES-256
+      suitability: archival
+      reversible: true
+      notes: Use secure key management with periodic rotation
+    - method: partial_mask
+      algorithm: "***-**-1234"
+      suitability: display
+      reversible: false
+  retention:
+    legal_minimum: "As long as business purpose exists"
+    recommended: "No longer than reasonably necessary"
+    basis: "CPRA §1798.105 Right to Delete + business justification"
+    deletion_trigger:
+      - "consumer_deletion_request"
+      - "account_closure + 12 months"
+      - "end_of_business_purpose"
+    exceptions:
+      - "legal obligation to retain"
+      - "security incident investigation"
+      - "compliance with other laws"
+    archival_allowed: false
+    notes: "CPRA requires businesses to honor deletion requests unless exception applies"
 - name: Driver’s License or State ID Number
   type: direct_identifier
   required_masking: true
@@ -131,6 +166,43 @@ categories:
   citations:
   - regulation: CPRA
     section: Cal. Civ. Code §1798.140(ae)(1)(E)
+    description: Consumers can limit use and disclosure of sensitive personal information
+    url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=1798.140
+  risk_level: high
+  breach_impact:
+    - identity_theft
+    - privacy_violation
+    - discrimination
+    - physical_harm
+    - regulatory_penalties
+  masking_techniques:
+    - method: encryption
+      algorithm: AES-256-GCM
+      suitability: production
+      reversible: true
+      notes: Encrypt biometric templates; never store raw biometric data
+    - method: pseudonymization
+      algorithm: irreversible transformation
+      suitability: analytics
+      reversible: false
+    - method: suppression
+      suitability: sharing
+      reversible: false
+  retention:
+    legal_minimum: "Only while collecting or processing for disclosed purpose"
+    recommended: "Delete immediately after verification or authentication"
+    maximum: "3 years from collection"
+    basis: "CPRA §1798.121 Right to Limit + §1798.105 Right to Delete"
+    deletion_trigger:
+      - "consumer_requests_deletion"
+      - "consent_withdrawal"
+      - "purpose_fulfilled"
+      - "no_longer_necessary"
+    exceptions:
+      - "legal compliance requirement"
+      - "security purposes (limited)"
+    archival_allowed: false
+    notes: "Sensitive PI under CPRA requires opt-in consent; consumers can limit use at any time"
 - name: Health Information (non-HIPAA)
   type: special_category
   required_masking: true
