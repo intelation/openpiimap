@@ -1,0 +1,236 @@
+country: China
+framework: PIPL
+region: Asia
+language: zh
+version: "2021-11"
+status: published
+last_updated: 2026-06-02
+source_verified: true
+authority: Cyberspace Administration of China (CAC)
+notes:
+  - "China's Personal Information Protection Law (个人信息保护法, PIPL) took
+    effect on November 1, 2021, and is the primary statute governing personal
+    information processing by organizations and individuals in Mainland China."
+  - "PIPL applies extraterritorially to processing of personal information of
+    persons located in China, even when processing occurs outside China
+    (Article 3)."
+  - "Sensitive personal information (敏感个人信息) receives heightened protection
+    and requires separate explicit consent (Article 28-32)."
+  - "Cross-border transfers are subject to one of three mechanisms: security
+    assessment by CAC, personal information protection certification, or
+    standard contract filing (Article 38)."
+  - "The Data Security Law (DSL, 2021) and Cybersecurity Law (CSL, 2017)
+    apply in parallel and govern data classification and critical information
+    infrastructure protection respectively."
+  - "Key subordinate regulations include: Measures for Security Assessment of
+    Outbound Data Transfer (2022), Measures for the Standard Contract for
+    Outbound Transfer of Personal Information (2023), Provisions on
+    Facilitating and Regulating Cross-border Data Flows (2024), Network Data
+    Security Management Regulation (effective Jan 1, 2025), and Measures for
+    the Administration of Personal Information Protection Compliance Audits
+    (effective May 1, 2025)."
+
+categories:
+  - name: Full Name
+    name_zh: 姓名
+    type: direct_identifier
+    required_masking: true
+    tags:
+      - pii
+    citations:
+      - regulation: PIPL
+        article: "Article 4 - Definition of Personal Information"
+      - regulation: "GB/T 35273-2020"
+        article: "5.1 - Personal Information Identifier Examples"
+    subtype: personal_name
+
+  - name: ID Card Number
+    name_zh: 身份证号码
+    type: direct_identifier
+    required_masking: true
+    tags:
+      - pii
+      - government_id
+    citations:
+      - regulation: PIPL
+        article: "Article 4 - Definition of Personal Information"
+      - regulation: "GB/T 35273-2020"
+        article: "5.1 - Personal Information Identifier Examples"
+    subtype: government_id
+
+  - name: Biometric Information
+    name_zh: 生物识别信息
+    type: direct_identifier
+    required_masking: true
+    sensitive: true
+    tags:
+      - pii
+      - sensitive_pii
+    citations:
+      - regulation: PIPL
+        article: "Article 28 - Definition of Sensitive Personal Information"
+      - regulation: PIPL
+        article: "Article 29 - Explicit Consent Requirement for Sensitive PII"
+    subtype: biometric
+    notes: "Includes fingerprints, facial recognition data, iris scans,
+      voiceprints, and genetic data. Requires separate explicit consent
+      under Article 29."
+
+  - name: Medical and Health Information
+    name_zh: 医疗健康信息
+    type: quasi_identifier
+    required_masking: true
+    sensitive: true
+    tags:
+      - pii
+      - sensitive_pii
+      - phi
+    citations:
+      - regulation: PIPL
+        article: "Article 28 - Definition of Sensitive Personal Information"
+    subtype: health
+    notes: "Includes medical records, health status, genetic information,
+      and disease history. Sector-specific rules also apply under national
+      health data regulations."
+
+  - name: Financial Account Information
+    name_zh: 金融账户信息
+    type: direct_identifier
+    required_masking: true
+    sensitive: true
+    tags:
+      - pii
+      - sensitive_pii
+      - financial
+    citations:
+      - regulation: PIPL
+        article: "Article 28 - Definition of Sensitive Personal Information"
+      - regulation: "JR/T 0171-2020"
+        article: "Personal Financial Information Classification"
+    subtype: financial_account
+    notes: "Includes bank account numbers, credit card numbers, transaction
+      records, and credit scores. Additional obligations apply under
+      People's Bank of China (PBOC) regulations."
+
+  - name: Precise Location and Whereabouts
+    name_zh: 精确位置信息及行踪轨迹
+    type: quasi_identifier
+    required_masking: true
+    sensitive: true
+    tags:
+      - pii
+      - sensitive_pii
+      - location
+    citations:
+      - regulation: PIPL
+        article: "Article 28 - Definition of Sensitive Personal Information"
+    subtype: geolocation
+    notes: "Real-time or historical precise geolocation data. Granularity
+      that can reveal habitual movement patterns qualifies as sensitive."
+
+  - name: Religious Belief
+    name_zh: 宗教信仰
+    type: quasi_identifier
+    required_masking: true
+    sensitive: true
+    tags:
+      - pii
+      - sensitive_pii
+    citations:
+      - regulation: PIPL
+        article: "Article 28 - Definition of Sensitive Personal Information"
+    subtype: religion
+
+  - name: Specific Identity Information
+    name_zh: 特定身份信息
+    type: direct_identifier
+    required_masking: true
+    sensitive: true
+    tags:
+      - pii
+      - sensitive_pii
+    citations:
+      - regulation: PIPL
+        article: "Article 28 - Definition of Sensitive Personal Information"
+    subtype: government_id
+    notes: "Refers to information revealing particular identity
+      characteristics, including ethnic or racial origin, political
+      opinions, and trade union membership."
+
+  - name: Personal Information of Minors Under 14
+    name_zh: 不满十四周岁未成年人个人信息
+    type: direct_identifier
+    required_masking: true
+    sensitive: true
+    tags:
+      - pii
+      - sensitive_pii
+      - minor
+    citations:
+      - regulation: PIPL
+        article: "Article 28 - Definition of Sensitive Personal Information"
+      - regulation: PIPL
+        article: "Article 31 - Special Rules for Minors Under 14"
+    subtype: personal_name
+    notes: "All personal information of children under 14 is classified as
+      sensitive. Handlers must obtain consent from a parent or legal
+      guardian."
+
+  - name: Phone Number
+    name_zh: 手机号码
+    type: direct_identifier
+    required_masking: true
+    tags:
+      - pii
+      - contact
+    citations:
+      - regulation: PIPL
+        article: "Article 4 - Definition of Personal Information"
+      - regulation: "GB/T 35273-2020"
+        article: "5.1 - Personal Information Identifier Examples"
+    subtype: phone_number
+
+  - name: Email Address
+    name_zh: 电子邮件地址
+    type: direct_identifier
+    required_masking: true
+    tags:
+      - pii
+      - contact
+    citations:
+      - regulation: PIPL
+        article: "Article 4 - Definition of Personal Information"
+    subtype: email
+
+  - name: Network Identity Information
+    name_zh: 网络身份标识信息
+    type: direct_identifier
+    required_masking: true
+    tags:
+      - pii
+      - digital_identity
+    citations:
+      - regulation: PIPL
+        article: "Article 4 - Definition of Personal Information"
+      - regulation: "GB/T 35273-2020"
+        article: "5.2 - Network Identity Information"
+    subtype: username
+    notes: "Includes account names, IP addresses, device identifiers
+      (IMEI, MAC address), and cookies where linkable to a natural person."
+
+  - name: Personal Communications Content
+    name_zh: 个人通信内容
+    type: indirect_identifier
+    required_masking: true
+    tags:
+      - pii
+      - communications
+    citations:
+      - regulation: PIPL
+        article: "Article 4 - Definition of Personal Information"
+      - regulation: CSL
+        article: "Article 40 - Network Operator Data Protection Obligations"
+    subtype: other
+    notes: "Content of private messages, emails, and call records where
+      attributable to an individual. Subject to confidentiality obligations
+      under both PIPL and Cybersecurity Law."
